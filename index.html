@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>École SVT – 2BAC Sciences Physiques</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f8f5;
+      color: #24332a;
+    }
+
+    header {
+      background: #176b45;
+      color: white;
+      text-align: center;
+      padding: 28px 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 34px;
+    }
+
+    header p {
+      margin: 8px 0 0;
+      font-size: 17px;
+    }
+
+    .prof {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 35px 20px 50px;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .intro h2 {
+      color: #176b45;
+      margin-bottom: 10px;
+    }
+
+    .intro p {
+      line-height: 1.6;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .card h3 {
+      color: #176b45;
+      margin-top: 0;
+    }
+
+    .card p {
+      line-height: 1.5;
+      color: #536158;
+    }
+
+    button {
+      border: none;
+      border-radius: 9px;
+      padding: 12px 17px;
+      margin: 6px 3px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: #176b45;
+      color: white;
+    }
+
+    .secondary {
+      background: #e8f3ed;
+      color: #176b45;
+      border: 1px solid #b9d8c7;
+    }
+
+    .parents {
+      margin-top: 18px;
+      padding-top: 15px;
+      border-top: 1px solid #e0e7e2;
+    }
+
+    .parents button {
+      background: transparent;
+      color: #4e6758;
+      font-weight: bold;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: white;
+      width: 100%;
+      max-width: 430px;
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+    }
+
+    .modal-content h3 {
+      color: #176b45;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border: 1px solid #cbd7cf;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .close {
+      background: #eeeeee;
+      color: #444;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #66736a;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 28px;
+      }
+
+      main {
+        padding: 25px 15px 40px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>🧬 École SVT</h1>
+  <p>2BAC Sciences Physiques</p>
+  <div class="prof">LABNIHI Brahim – Prof SVT</div>
+</header>
+
+<main>
+
+  <section class="intro">
+    <h2>Comprendre • Raisonner • Réussir</h2>
+    <p>
+      Un espace pédagogique pour accompagner les élèves en SVT,
+      approfondir la compréhension et progresser efficacement
+      vers le Baccalauréat.
+    </p>
+  </section>
+
+  <section class="cards">
+
+    <div class="card">
+      <h3>📚 Ressources SVT</h3>
+      <p>
+        Des ressources pédagogiques pour mieux comprendre
+        les notions essentielles du programme.
+      </p>
+      <button class="secondary">Découvrir</button>
+    </div>
+
+    <div class="card">
+      <h3>🧬 Quiz SVT</h3>
+      <p>
+        Testez vos connaissances grâce aux quiz
+        associés aux séances et aux révisions.
+      </p>
+      <button class="secondary">Accéder aux quiz</button>
+    </div>
+
+    <div class="card">
+      <h3>🎓 Mon espace SVT</h3>
+
+      <p>
+        Votre espace personnel pour apprendre,
+        vous entraîner et suivre votre progression.
+      </p>
+
+      <button class="primary" onclick="openStudent()">
+        Je suis abonné
+      </button>
+
+      <button class="secondary" onclick="openSubscribe()">
+        Je souhaite m'abonner
+      </button>
+
+      <div class="parents">
+        <button onclick="openParents()">
+          👨‍👩‍👧 Espace Parents
+        </button>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  École SVT • LABNIHI Brahim – Prof SVT
+</footer>
+
+
+<!-- Fenêtre élève abonné -->
+
+<div id="studentModal" class="modal">
+  <div class="modal-content">
+
+    <h3>🎓 Mon espace SVT</h3>
+
+    <p>
+      Saisissez votre code élève pour accéder
+      à votre espace personnel.
+    </p>
+
+    <input
+      type="text"
+      placeholder="Code élève"
+    >
+
+    <button class="primary">
+      Entrer dans Mon Espace SVT
+    </button>
+
+    <button class="close" onclick="closeModals()">
+      Fermer
+    </button>
+
+  </div>
+</div>
+
+
+<!-- Fenêtre abonnement -->
+
+<div id="subscribeModal" class="modal">
+  <div class="modal-content">
+
+    <h3>Je souhaite m'abonner</h3>
+
+    <p>
+      Vous souhaitez accéder à École SVT et bénéficier
+      de l'accompagnement pédagogique proposé ?
+    </p>
+
+    <p>
+      Contactez-moi pour obtenir les informations
+      nécessaires à l'abonnement.
+    </p>
+
+    <button class="primary">
+      ✉️ Me contacter
+    </button>
+
+    <button class="close" onclick="closeModals()">
+      Fermer
+    </button>
+
+  </div>
+</div>
+
+
+<!-- Fenêtre parents -->
+
+<div id="parentsModal" class="modal">
+  <div class="modal-content">
+
+    <h3>👨‍👩‍👧 Espace Parents</h3>
+
+    <p>
+      Accès réservé aux parents disposant
+      d'un code parent.
+    </p>
+
+    <input
+      type="text"
+      placeholder="Code parent"
+    >
+
+    <button class="primary">
+      Accéder à l'Espace Parents
+    </button>
+
+    <button class="close" onclick="closeModals()">
+      Fermer
+    </button>
+
+  </div>
+</div>
+
+
+<script>
+
+  function closeModals() {
+    document.querySelectorAll(".modal").forEach(function(modal) {
+      modal.style.display = "none";
+    });
+  }
+
+  function openStudent() {
+    closeModals();
+    document.getElementById("studentModal").style.display = "flex";
+  }
+
+  function openSubscribe() {
+    closeModals();
+    document.getElementById("subscribeModal").style.display = "flex";
+  }
+
+  function openParents() {
+    closeModals();
+    document.getElementById("parentsModal").style.display = "flex";
+  }
+
+</script>
+
+</body>
+</html>
