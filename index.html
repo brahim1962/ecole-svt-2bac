@@ -19,9 +19,7 @@
     .parents-button { margin-top:8px; border:none; background:transparent; cursor:pointer; color:#4f6758; font-size:clamp(9px,.92vw,13px); font-weight:700; padding:4px 8px; }
     .professor-link { position:absolute; left:53.5%; top:59.1%; width:17%; height:4.3%; border-radius:999px; cursor:pointer; background:transparent; border:none; }
     .afterbac-link { position:absolute; left:32.8%; top:82.5%; width:34%; height:4.2%; border-radius:999px; cursor:pointer; background:transparent; border:none; }
-
     .mobile-home { display:none; }
-
     .modal { display:none; position:fixed; z-index:1000; inset:0; align-items:center; justify-content:center; padding:20px; background:rgba(11,25,38,.58); backdrop-filter:blur(2px); }
     .modal.open { display:flex; }
     .modal-card { width:min(440px,94vw); background:white; border-radius:22px; padding:28px 26px; text-align:center; box-shadow:0 22px 60px rgba(0,0,0,.25); }
@@ -32,25 +30,24 @@
     .modal-primary,.modal-close { border:none; border-radius:10px; padding:12px 17px; font-size:15px; cursor:pointer; }
     .modal-primary { background:#087c40; color:white; font-weight:700; }
     .modal-close { background:#eef0ef; color:#47504a; }
-
     @media (max-width:700px) {
       body { background:#fff; }
       .home-wrapper { display:none; }
       .mobile-home { display:flex; flex-direction:column; width:100%; min-height:100vh; background:#f7fbf8; }
-      .mobile-section { width:100%; padding:28px 22px; text-align:center; }
-      .mobile-hero { min-height:32vh; display:flex; flex-direction:column; justify-content:center; background:linear-gradient(180deg,#ffffff 0%,#edf8f1 100%); border-bottom:1px solid #dcebe1; }
-      .mobile-hero h1 { margin:0; color:#087c40; font-size:clamp(34px,10vw,48px); line-height:1; }
-      .mobile-hero .level { margin:8px 0 16px; font-size:18px; font-weight:700; color:#263d61; }
-      .mobile-hero .teacher { margin:0 0 6px; font-size:17px; font-weight:700; }
-      .mobile-hero .experience { margin:0 auto 18px; max-width:340px; font-size:14px; line-height:1.4; color:#506056; }
-      .keywords { display:flex; justify-content:center; gap:7px; flex-wrap:wrap; }
-      .keywords span { padding:7px 10px; border-radius:999px; background:white; box-shadow:0 2px 8px rgba(0,0,0,.07); font-size:12px; font-weight:700; color:#087c40; }
-      .mobile-card { margin:14px 16px 0; padding:28px 20px; border-radius:22px; background:white; box-shadow:0 7px 24px rgba(26,78,48,.10); text-align:center; }
-      .mobile-card h2 { margin:0 0 8px; font-size:25px; color:#087c40; }
-      .mobile-card p { margin:0 auto 20px; max-width:330px; line-height:1.45; color:#536259; }
-      .mobile-actions { display:flex; flex-direction:column; align-items:stretch; gap:10px; max-width:340px; margin:0 auto; }
-      .mobile-actions .access-button { width:100%; min-height:48px; font-size:15px; padding:12px 14px; }
-      .mobile-actions .parents-button { min-height:42px; margin:0; font-size:14px; }
+      .mobile-section { width:100%; padding:15px 18px; text-align:center; }
+      .mobile-hero { min-height:0; display:flex; flex-direction:column; justify-content:center; background:linear-gradient(180deg,#ffffff 0%,#edf8f1 100%); border-bottom:1px solid #dcebe1; }
+      .mobile-hero h1 { margin:0; color:#087c40; font-size:clamp(30px,8.5vw,42px); line-height:1; }
+      .mobile-hero .level { margin:5px 0 8px; font-size:16px; font-weight:700; color:#263d61; }
+      .mobile-hero .teacher { margin:0 0 3px; font-size:15px; font-weight:700; }
+      .mobile-hero .experience { margin:0 auto 9px; max-width:350px; font-size:12px; line-height:1.3; color:#506056; }
+      .keywords { display:flex; justify-content:center; gap:5px; flex-wrap:nowrap; }
+      .keywords span { padding:5px 7px; border-radius:999px; background:white; box-shadow:0 2px 8px rgba(0,0,0,.07); font-size:10px; font-weight:700; color:#087c40; }
+      .mobile-card { margin:9px 12px 0; padding:18px 18px; border-radius:22px; background:white; box-shadow:0 7px 24px rgba(26,78,48,.10); text-align:center; }
+      .mobile-card h2 { margin:0 0 4px; font-size:23px; color:#087c40; }
+      .mobile-card p { margin:0 auto 10px; max-width:340px; line-height:1.35; font-size:14px; color:#536259; }
+      .mobile-actions { display:flex; flex-direction:column; align-items:stretch; gap:7px; max-width:350px; margin:0 auto; }
+      .mobile-actions .access-button { width:100%; min-height:42px; font-size:14px; padding:9px 12px; }
+      .mobile-actions .parents-button { min-height:32px; margin:0; font-size:13px; }
       .mobile-professor { background:#f7fbff; }
       .mobile-professor h2 { color:#244f87; }
       .mobile-link { width:100%; min-height:48px; border:none; border-radius:999px; cursor:pointer; font-size:15px; font-weight:700; color:white; background:#244f87; }
@@ -62,66 +59,19 @@
   </style>
 </head>
 <body>
-  <main class="home-wrapper">
-    <div class="poster">
-      <img class="poster-image" src="accueil-ecole-svt.png" alt="École SVT – 2BAC Sciences Physiques">
-      <div class="student-access">
-        <div class="access-main-buttons">
-          <button class="access-button subscriber-button" onclick="openModal('studentModal')">Je suis abonné</button>
-          <button class="access-button subscribe-button" onclick="openModal('subscribeModal')">Je souhaite m'abonner</button>
-        </div>
-        <button class="parents-button" onclick="openModal('parentsModal')">👨‍👩‍👧 Espace Parents</button>
-      </div>
-      <button class="professor-link" aria-label="Découvrir mon professeur" onclick="window.location.href='mon-professeur.html'"></button>
-      <button class="afterbac-link" aria-label="Découvrir Après le Bac" onclick="openModal('afterbacModal')"></button>
-    </div>
-  </main>
-
+  <main class="home-wrapper"><div class="poster"><img class="poster-image" src="accueil-ecole-svt.png" alt="École SVT – 2BAC Sciences Physiques"><div class="student-access"><div class="access-main-buttons"><button class="access-button subscriber-button" onclick="openModal('studentModal')">Je suis abonné</button><button class="access-button subscribe-button" onclick="openModal('subscribeModal')">Je souhaite m'abonner</button></div><button class="parents-button" onclick="openModal('parentsModal')">👨‍👩‍👧 Espace Parents</button></div><button class="professor-link" aria-label="Découvrir mon professeur" onclick="window.location.href='mon-professeur.html'"></button><button class="afterbac-link" aria-label="Découvrir Après le Bac" onclick="openModal('afterbacModal')"></button></div></main>
   <main class="mobile-home">
-    <section class="mobile-section mobile-hero">
-      <h1>ÉCOLE SVT</h1>
-      <div class="level">2BAC Sciences Physiques</div>
-      <div class="teacher">LABNIHI Brahim — Professeur SVT</div>
-      <div class="experience">40 années d’expérience au service de la compréhension des SVT</div>
-      <div class="keywords"><span>Comprendre</span><span>Raisonner</span><span>S’entraîner</span><span>Progresser</span></div>
-    </section>
-
-    <section class="mobile-card">
-      <h2>🎓 Mon Espace SVT</h2>
-      <p>Cours, exercices, quiz et progression.</p>
-      <div class="mobile-actions">
-        <button class="access-button subscriber-button" onclick="openModal('studentModal')">Je suis abonné</button>
-        <button class="access-button subscribe-button" onclick="openModal('subscribeModal')">Je souhaite m'abonner</button>
-        <button class="parents-button" onclick="openModal('parentsModal')">👨‍👩‍👧 Espace Parents</button>
-      </div>
-    </section>
-
-    <section class="mobile-card mobile-professor">
-      <h2>👨‍🏫 Mon professeur</h2>
-      <p>Découvrir mon parcours et ma philosophie pédagogique.</p>
-      <div class="mobile-actions"><button class="mobile-link" onclick="window.location.href='mon-professeur.html'">En savoir plus →</button></div>
-    </section>
-
-    <section class="mobile-card mobile-afterbac">
-      <h2>🧭 Après le Bac</h2>
-      <p>Orientation, études supérieures et préparation aux concours de Médecine.</p>
-      <div class="mobile-actions"><button class="mobile-link afterbac-mobile-button" onclick="openModal('afterbacModal')">Découvrir →</button></div>
-    </section>
-
+    <section class="mobile-section mobile-hero"><h1>ÉCOLE SVT</h1><div class="level">2BAC Sciences Physiques</div><div class="teacher">LABNIHI Brahim — Professeur SVT</div><div class="experience">40 années d’expérience au service de la compréhension des SVT</div><div class="keywords"><span>Comprendre</span><span>Raisonner</span><span>S’entraîner</span><span>Progresser</span></div></section>
+    <section class="mobile-card"><h2>🎓 Mon Espace SVT</h2><p>Cours, exercices, quiz et progression.</p><div class="mobile-actions"><button class="access-button subscriber-button" onclick="openModal('studentModal')">Je suis abonné</button><button class="access-button subscribe-button" onclick="openModal('subscribeModal')">Je souhaite m'abonner</button><button class="parents-button" onclick="openModal('parentsModal')">👨‍👩‍👧 Espace Parents</button></div></section>
+    <section class="mobile-card mobile-professor"><h2>👨‍🏫 Mon professeur</h2><p>Découvrir mon parcours et ma philosophie pédagogique.</p><div class="mobile-actions"><button class="mobile-link" onclick="window.location.href='mon-professeur.html'">En savoir plus →</button></div></section>
+    <section class="mobile-card mobile-afterbac"><h2>🧭 Après le Bac</h2><p>Orientation, études supérieures et préparation aux concours de Médecine.</p><div class="mobile-actions"><button class="mobile-link afterbac-mobile-button" onclick="openModal('afterbacModal')">Découvrir →</button></div></section>
     <div class="mobile-quote">« Comprendre avant de mémoriser, raisonner avant de répondre, progresser vers l’autonomie. »</div>
   </main>
-
   <div id="studentModal" class="modal"><div class="modal-card"><h2>🎓 Mon Espace SVT</h2><p>Saisissez votre code élève pour accéder à votre espace personnel.</p><input id="studentCode" type="text" placeholder="Code élève" autocomplete="off"><div class="modal-actions"><button class="modal-primary">Entrer dans Mon Espace SVT</button><button class="modal-close" onclick="closeModals()">Fermer</button></div></div></div>
   <div id="subscribeModal" class="modal"><div class="modal-card"><h2>Je souhaite m'abonner</h2><p>Vous souhaitez accéder à École SVT et bénéficier de l'accompagnement pédagogique proposé ?</p><p>Contactez-moi pour obtenir les informations nécessaires à l'abonnement.</p><div class="modal-actions"><button class="modal-primary">✉️ Me contacter</button><button class="modal-close" onclick="closeModals()">Fermer</button></div></div></div>
   <div id="parentsModal" class="modal"><div class="modal-card"><h2>👨‍👩‍👧 Espace Parents</h2><p>Accès réservé aux parents disposant d'un code parent.</p><input id="parentCode" type="text" placeholder="Code parent" autocomplete="off"><div class="modal-actions"><button class="modal-primary">Accéder à l'Espace Parents</button><button class="modal-close" onclick="closeModals()">Fermer</button></div></div></div>
   <div id="professorModal" class="modal"><div class="modal-card"><h2>👨‍🏫 Mon professeur</h2><p>Cette rubrique présentera le parcours, l'expérience et la philosophie pédagogique de LABNIHI Brahim.</p><div class="modal-actions"><button class="modal-close" onclick="closeModals()">Fermer</button></div></div></div>
   <div id="afterbacModal" class="modal"><div class="modal-card"><h2>🧭 Après le Bac</h2><p>Orientation, études supérieures et préparation aux concours de Médecine.</p><p>Cette rubrique sera enrichie progressivement.</p><div class="modal-actions"><button class="modal-close" onclick="closeModals()">Fermer</button></div></div></div>
-
-  <script>
-    function openModal(id){ closeModals(); const modal=document.getElementById(id); if(modal){ modal.classList.add('open'); } }
-    function closeModals(){ document.querySelectorAll('.modal').forEach(function(modal){ modal.classList.remove('open'); }); }
-    document.addEventListener('keydown',function(event){ if(event.key==='Escape'){ closeModals(); } });
-    document.querySelectorAll('.modal').forEach(function(modal){ modal.addEventListener('click',function(event){ if(event.target===modal){ closeModals(); } }); });
-  </script>
+  <script>function openModal(id){closeModals();const modal=document.getElementById(id);if(modal){modal.classList.add('open');}}function closeModals(){document.querySelectorAll('.modal').forEach(function(modal){modal.classList.remove('open');});}document.addEventListener('keydown',function(event){if(event.key==='Escape'){closeModals();}});document.querySelectorAll('.modal').forEach(function(modal){modal.addEventListener('click',function(event){if(event.target===modal){closeModals();}});});</script>
 </body>
 </html>
