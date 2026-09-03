@@ -48,13 +48,8 @@
       display: block;
       width: 85%;
       height: auto;
-     margin: 0 auto; 
+      margin: 0 auto;
     }
-
-    /*
-      Zone interactive ajoutée sur la carte
-      "Mon Espace SVT".
-    */
 
     .student-access {
       position: absolute;
@@ -62,21 +57,18 @@
       top: 57.6%;
       width: 28.5%;
       min-height: 8.2%;
-     background: #eefaf0;
+      background: #eefaf0;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-
       padding: 10px 14px;
-
       background:
         linear-gradient(
           180deg,
           rgba(235, 248, 235, 0.97),
           rgba(225, 244, 229, 0.97)
         );
-
       border-radius: 18px;
       box-shadow: 0 5px 18px rgba(27, 108, 59, 0.12);
     }
@@ -122,18 +114,11 @@
       border: none;
       background: transparent;
       cursor: pointer;
-
       color: #4f6758;
       font-size: clamp(9px, 0.92vw, 13px);
       font-weight: 700;
       padding: 4px 8px;
     }
-
-    /*
-      Boutons des deux autres grandes cartes.
-      Ils sont transparents et placés sur les
-      boutons déjà dessinés dans la maquette.
-    */
 
     .professor-link {
       position: absolute;
@@ -168,10 +153,8 @@
       position: fixed;
       z-index: 1000;
       inset: 0;
-
       align-items: center;
       justify-content: center;
-
       padding: 20px;
       background: rgba(11, 25, 38, 0.58);
       backdrop-filter: blur(2px);
@@ -186,9 +169,7 @@
       background: white;
       border-radius: 22px;
       padding: 28px 26px;
-
       text-align: center;
-
       box-shadow:
         0 22px 60px rgba(0, 0, 0, 0.25);
     }
@@ -209,10 +190,8 @@
       width: 100%;
       margin: 16px 0 12px;
       padding: 13px 14px;
-
       border: 1px solid #c8d8ce;
       border-radius: 10px;
-
       font-size: 16px;
       outline: none;
     }
@@ -255,15 +234,21 @@
        ========================= */
 
     @media (max-width: 700px) {
-
       .poster {
-        min-width: 100%;
+        width: 100%;
+        min-width: 0;
+      }
+
+      .poster-image {
+        width: 100%;
+        max-width: none;
+        margin: 0;
       }
 
       .student-access {
-        left: 11.8%;
+        left: 5.1%;
         top: 57.1%;
-        width: 30.5%;
+        width: 35.9%;
         padding: 5px;
         border-radius: 10px;
       }
@@ -282,33 +267,31 @@
         padding: 2px;
         font-size: clamp(6px, 1.8vw, 9px);
       }
+
+      .professor-link {
+        left: 54.1%;
+        width: 20%;
+      }
+
+      .afterbac-link {
+        left: 29.8%;
+        width: 40%;
+      }
     }
   </style>
 </head>
 
-
 <body>
-
   <main class="home-wrapper">
-
     <div class="poster">
-
-      <!-- Notre maquette validée -->
       <img
         class="poster-image"
         src="accueil-ecole-svt.png"
         alt="École SVT – 2BAC Sciences Physiques"
       >
 
-
-      <!-- =========================
-           MON ESPACE SVT
-           ========================= -->
-
       <div class="student-access">
-
         <div class="access-main-buttons">
-
           <button
             class="access-button subscriber-button"
             onclick="openModal('studentModal')"
@@ -322,7 +305,6 @@
           >
             Je souhaite m'abonner
           </button>
-
         </div>
 
         <button
@@ -331,233 +313,149 @@
         >
           👨‍👩‍👧 Espace Parents
         </button>
-
       </div>
 
-
-      <!-- Bouton transparent sur "En savoir plus" -->
       <button
         class="professor-link"
         aria-label="Découvrir mon professeur"
-       onclick="window.location.href='mon-professeur.html'"
+        onclick="window.location.href='mon-professeur.html'"
       ></button>
 
-
-      <!-- Bouton transparent sur "Découvrir cette rubrique" -->
       <button
         class="afterbac-link"
         aria-label="Découvrir Après le Bac"
         onclick="openModal('afterbacModal')"
       ></button>
-
     </div>
-
   </main>
 
-
-  <!-- =========================
-       ÉLÈVE ABONNÉ
-       ========================= -->
-
   <div id="studentModal" class="modal">
-
     <div class="modal-card">
-
       <h2>🎓 Mon Espace SVT</h2>
-
       <p>
         Saisissez votre code élève pour accéder
         à votre espace personnel.
       </p>
-
       <input
         id="studentCode"
         type="text"
         placeholder="Code élève"
         autocomplete="off"
       >
-
       <div class="modal-actions">
-
         <button class="modal-primary">
           Entrer dans Mon Espace SVT
         </button>
-
         <button
           class="modal-close"
           onclick="closeModals()"
         >
           Fermer
         </button>
-
       </div>
-
     </div>
-
   </div>
 
-
-  <!-- =========================
-       ABONNEMENT
-       ========================= -->
-
   <div id="subscribeModal" class="modal">
-
     <div class="modal-card">
-
       <h2>Je souhaite m'abonner</h2>
-
       <p>
         Vous souhaitez accéder à École SVT et bénéficier
         de l'accompagnement pédagogique proposé ?
       </p>
-
       <p>
         Contactez-moi pour obtenir les informations
         nécessaires à l'abonnement.
       </p>
-
       <div class="modal-actions">
-
         <button class="modal-primary">
           ✉️ Me contacter
         </button>
-
         <button
           class="modal-close"
           onclick="closeModals()"
         >
           Fermer
         </button>
-
       </div>
-
     </div>
-
   </div>
 
-
-  <!-- =========================
-       ESPACE PARENTS
-       ========================= -->
-
   <div id="parentsModal" class="modal">
-
     <div class="modal-card">
-
       <h2>👨‍👩‍👧 Espace Parents</h2>
-
       <p>
         Accès réservé aux parents disposant
         d'un code parent.
       </p>
-
       <input
         id="parentCode"
         type="text"
         placeholder="Code parent"
         autocomplete="off"
       >
-
       <div class="modal-actions">
-
         <button class="modal-primary">
           Accéder à l'Espace Parents
         </button>
-
         <button
           class="modal-close"
           onclick="closeModals()"
         >
           Fermer
         </button>
-
       </div>
-
     </div>
-
   </div>
 
-
-  <!-- =========================
-       MON PROFESSEUR
-       ========================= -->
-
   <div id="professorModal" class="modal">
-
     <div class="modal-card">
-
       <h2>👨‍🏫 Mon professeur</h2>
-
       <p>
         Cette rubrique présentera le parcours,
         l'expérience et la philosophie pédagogique
         de LABNIHI Brahim.
       </p>
-
       <div class="modal-actions">
-
         <button
           class="modal-close"
           onclick="closeModals()"
         >
           Fermer
         </button>
-
       </div>
-
     </div>
-
   </div>
 
-
-  <!-- =========================
-       APRÈS LE BAC
-       ========================= -->
-
   <div id="afterbacModal" class="modal">
-
     <div class="modal-card">
-
       <h2>🧭 Après le Bac</h2>
-
       <p>
         Orientation, études supérieures et préparation
         aux concours de Médecine.
       </p>
-
       <p>
         Cette rubrique sera enrichie progressivement.
       </p>
-
       <div class="modal-actions">
-
         <button
           class="modal-close"
           onclick="closeModals()"
         >
           Fermer
         </button>
-
       </div>
-
     </div>
-
   </div>
 
-
   <script>
-
     function openModal(id) {
       closeModals();
-
       const modal = document.getElementById(id);
-
       if (modal) {
         modal.classList.add("open");
       }
     }
-
 
     function closeModals() {
       document
@@ -567,27 +465,19 @@
         });
     }
 
-
     document.addEventListener("keydown", function(event) {
       if (event.key === "Escape") {
         closeModals();
       }
     });
 
-
     document.querySelectorAll(".modal").forEach(function(modal) {
-
       modal.addEventListener("click", function(event) {
-
         if (event.target === modal) {
           closeModals();
         }
-
       });
-
     });
-
   </script>
-
 </body>
 </html>
