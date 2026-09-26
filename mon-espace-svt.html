@@ -287,6 +287,160 @@
     width: 100%;
   }
 }
+
+  /* ===== MA PROGRESSION ===== */
+
+.progress-section {
+  margin-top: 18px;
+  background: white;
+  border-radius: 16px;
+  padding: 24px 26px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.progress-header h2 {
+  color: #174b38;
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.progress-header h2 span {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.progress-header p {
+  color: #56645f;
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+
+.learning-path {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.path-step {
+  width: 145px;
+  text-align: center;
+  position: relative;
+}
+
+.step-circle {
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 5px;
+  border-radius: 50%;
+  background: #72bd55;
+  border: 3px solid #26883f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  position: relative;
+  z-index: 2;
+}
+
+.step-number {
+  font-size: 12px;
+  font-weight: bold;
+  color: #23883d;
+  margin-bottom: 3px;
+}
+
+.path-step h3 {
+  color: #174b38;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.path-step p {
+  color: #596a63;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.path-line {
+  height: 4px;
+  background: #61ae45;
+  flex: 1;
+  min-width: 35px;
+  margin-top: 25px;
+  position: relative;
+}
+
+.path-line::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #61ae45;
+  border-radius: 50%;
+  position: absolute;
+  right: 50%;
+  top: -2px;
+}
+
+/* ===== PROGRESSION SUR SMARTPHONE ===== */
+
+@media (max-width: 700px) {
+
+  .progress-section {
+    padding: 20px 16px;
+  }
+
+  .progress-header h2 {
+    font-size: 18px;
+  }
+
+  .progress-header h2 span {
+    display: block;
+    margin-top: 4px;
+  }
+
+  .learning-path {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .path-step {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    text-align: left;
+    column-gap: 12px;
+    align-items: center;
+  }
+
+  .step-circle {
+    grid-row: 1 / 4;
+    margin: 0;
+  }
+
+  .step-number {
+    display: none;
+  }
+
+  .path-step h3 {
+    margin: 0 0 3px;
+  }
+
+  .path-step p {
+    margin: 0;
+  }
+
+  .path-line {
+    width: 4px;
+    height: 28px;
+    min-width: 4px;
+    flex: none;
+    margin: 4px 0 4px 25px;
+  }
+
+  .path-line::after {
+    display: none;
+  }
+}  
   </style>
 </head>
 
@@ -369,6 +523,62 @@
   </a>
 
 </section>
+
+  <section class="progress-section">
+
+  <div class="progress-header">
+    <h2>2. MA PROGRESSION <span>— TON PARCOURS D’APPRENTISSAGE</span></h2>
+    <p>Saisis où tu en es et avance étape par étape.</p>
+  </div>
+
+  <div class="learning-path">
+
+    <div class="path-step">
+      <div class="step-circle">📖</div>
+      <div class="step-number">1</div>
+      <h3>Découvrir</h3>
+      <p>Lire le cours<br>et comprendre</p>
+    </div>
+
+    <div class="path-line"></div>
+
+    <div class="path-step">
+      <div class="step-circle">✏️</div>
+      <div class="step-number">2</div>
+      <h3>S’entraîner</h3>
+      <p>Faire des exercices<br>et s’exercer</p>
+    </div>
+
+    <div class="path-line"></div>
+
+    <div class="path-step">
+      <div class="step-circle">?</div>
+      <div class="step-number">3</div>
+      <h3>S’évaluer</h3>
+      <p>Tester ses connaissances<br>avec les quiz</p>
+    </div>
+
+    <div class="path-line"></div>
+
+    <div class="path-step">
+      <div class="step-circle">📊</div>
+      <div class="step-number">4</div>
+      <h3>Analyser</h3>
+      <p>Voir ses résultats<br>et ses points à améliorer</p>
+    </div>
+
+    <div class="path-line"></div>
+
+    <div class="path-step">
+      <div class="step-circle">🎯</div>
+      <div class="step-number">5</div>
+      <h3>Progresser</h3>
+      <p>Revoir, consolider<br>et aller plus loin</p>
+    </div>
+
+  </div>
+
+</section>  
 
   </main>
 
