@@ -600,7 +600,115 @@
     align-items: flex-start;
   }
 }
-    
+
+/* ===== OBJECTIFS & DERNIÈRES ACTIVITÉS ===== */
+
+.dashboard-section {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.dashboard-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 22px 26px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.dashboard-card h2 {
+  color: #174b38;
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+
+/* MES OBJECTIFS */
+
+.objectives-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.objectives-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  font-size: 13px;
+  color: #455b52;
+}
+
+.objectives-list label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.objectives-illustration {
+  font-size: 64px;
+}
+
+/* DERNIÈRES ACTIVITÉS */
+
+.activity-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 7px 0;
+  border-bottom: 1px solid #edf1ee;
+  font-size: 13px;
+  color: #455b52;
+}
+
+.activity-status,
+.activity-score {
+  color: #24923e;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* BOUTONS */
+
+.dashboard-button {
+  display: block;
+  width: fit-content;
+  margin: 18px auto 0;
+  padding: 8px 18px;
+  background: #08783b;
+  color: white;
+  text-decoration: none;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* SMARTPHONE */
+
+@media (max-width: 700px) {
+
+  .dashboard-section {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-card {
+    padding: 20px 16px;
+  }
+
+  .dashboard-card h2 {
+    font-size: 17px;
+  }
+
+  .objectives-illustration {
+    font-size: 48px;
+  }
+
+  .activity-row {
+    align-items: flex-start;
+  }
+}    
   </style>
 </head>
 
@@ -832,7 +940,59 @@
     </div>
   </div>
 
-</section>  
+</section> 
+
+ <!-- ===== 4. MES OBJECTIFS / 5. MES DERNIÈRES ACTIVITÉS ===== -->
+
+<section class="dashboard-section">
+
+  <!-- MES OBJECTIFS -->
+  <div class="dashboard-card objectives-card">
+    <h2>🎯 4. MES OBJECTIFS</h2>
+
+    <div class="objectives-content">
+      <div class="objectives-list">
+        <label><input type="checkbox"> Comprendre le cours d'aujourd'hui</label>
+        <label><input type="checkbox"> Faire les exercices associés</label>
+        <label><input type="checkbox"> Réussir le quiz de la séance</label>
+        <label><input type="checkbox"> Corriger mes erreurs</label>
+        <label><input type="checkbox"> Consolider mes acquis</label>
+      </div>
+
+      <div class="objectives-illustration">📋</div>
+    </div>
+
+    <a href="#" class="dashboard-button">Voir mes objectifs →</a>
+  </div>
+
+  <!-- MES DERNIÈRES ACTIVITÉS -->
+  <div class="dashboard-card activities-card">
+    <h2>🕘 5. MES DERNIÈRES ACTIVITÉS</h2>
+
+    <div class="activity-row">
+      <span>📖 Cours : La cellule, unité structurale du vivant</span>
+      <span class="activity-status">✓</span>
+    </div>
+
+    <div class="activity-row">
+      <span>📝 Exercices : La cellule (Ex. 1 à 3)</span>
+      <span class="activity-status">✓</span>
+    </div>
+
+    <div class="activity-row">
+      <span>🏆 Quiz : Séance 1 — Énergie et organisation cellulaire</span>
+      <strong class="activity-score">16/20</strong>
+    </div>
+
+    <div class="activity-row">
+      <span>🏆 Quiz : Introduction aux SVT</span>
+      <strong class="activity-score">12/20</strong>
+    </div>
+
+    <a href="#" class="dashboard-button">Voir toute mon activité →</a>
+  </div>
+
+</section>   
   </main>
 
 </body>
