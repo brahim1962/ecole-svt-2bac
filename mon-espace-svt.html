@@ -440,7 +440,167 @@
   .path-line::after {
     display: none;
   }
-}  
+} 
+/* ===== ACCÈS RAPIDES ===== */
+
+.resources-section {
+  margin-top: 18px;
+  background: white;
+  border-radius: 16px;
+  padding: 24px 26px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.resources-header h2 {
+  color: #174b38;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.resources-header h2 span {
+  font-size: 13px;
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+
+.resource-card {
+  border: 1px solid #dce8df;
+  border-radius: 12px;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  min-height: 360px;
+  background: #ffffff;
+}
+
+.resource-icon {
+  font-size: 38px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.resource-card h3 {
+  color: #21723d;
+  text-align: center;
+  font-size: 15px;
+  min-height: 38px;
+  margin-bottom: 10px;
+}
+
+.resource-intro {
+  color: #465a52;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  min-height: 54px;
+}
+
+.resource-card ul {
+  padding-left: 18px;
+  margin-bottom: 16px;
+  color: #53655e;
+  font-size: 12px;
+  line-height: 1.55;
+  flex-grow: 1;
+}
+
+.resource-button {
+  display: block;
+  text-align: center;
+  color: #176b38;
+  border: 1px solid #82b895;
+  border-radius: 7px;
+  padding: 8px 10px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.resource-button:hover {
+  background: #edf7ef;
+}
+
+/* ===== SOUPLESSE PÉDAGOGIQUE ===== */
+
+.flexibility-box {
+  margin-top: 16px;
+  background: #eef7fb;
+  border-radius: 10px;
+  padding: 13px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.flexibility-icon {
+  font-size: 30px;
+}
+
+.flexibility-box strong {
+  color: #245b70;
+  font-size: 13px;
+}
+
+.flexibility-box p {
+  color: #50656d;
+  font-size: 12px;
+  line-height: 1.45;
+  margin-top: 3px;
+}
+
+/* ===== ACCÈS RAPIDES SUR TABLETTE ===== */
+
+@media (max-width: 1000px) {
+
+  .resources-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .resource-card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ===== ACCÈS RAPIDES SUR SMARTPHONE ===== */
+
+@media (max-width: 700px) {
+
+  .resources-section {
+    padding: 20px 16px;
+  }
+
+  .resources-header h2 {
+    font-size: 18px;
+  }
+
+  .resources-header h2 span {
+    display: block;
+    margin-top: 4px;
+  }
+
+  .resources-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .resource-card,
+  .resource-card:last-child {
+    grid-column: auto;
+    min-height: auto;
+  }
+
+  .resource-intro {
+    min-height: auto;
+  }
+
+  .flexibility-box {
+    align-items: flex-start;
+  }
+}
+    
   </style>
 </head>
 
@@ -580,6 +740,99 @@
 
 </section>  
 
+  <section class="resources-section">
+
+  <div class="resources-header">
+    <h2>3. ACCÈS RAPIDES <span>— MES RESSOURCES DE TRAVAIL</span></h2>
+  </div>
+
+  <div class="resources-grid">
+
+    <article class="resource-card">
+      <div class="resource-icon">📚</div>
+      <h3>1. COMPLÉMENTS<br>DE COURS</h3>
+      <p class="resource-intro">Approfondir, visualiser et mieux comprendre.</p>
+      <ul>
+        <li>L'essentiel à comprendre</li>
+        <li>Documents & schémas</li>
+        <li>Animations</li>
+        <li>Expériences & interprétations</li>
+        <li>Compléments & approfondissements</li>
+      </ul>
+      <a href="#" class="resource-button">Accéder →</a>
+    </article>
+
+    <article class="resource-card">
+      <div class="resource-icon">📝</div>
+      <h3>2. EXERCICES</h3>
+      <p class="resource-intro">S'entraîner pour comprendre et maîtriser.</p>
+      <ul>
+        <li>Exercices d'application</li>
+        <li>Analyses de documents</li>
+        <li>Raisonnement scientifique</li>
+        <li>Résolution de problèmes</li>
+        <li>Corrigés expliqués</li>
+      </ul>
+      <a href="#" class="resource-button">Accéder →</a>
+    </article>
+
+    <article class="resource-card">
+      <div class="resource-icon">🏆</div>
+      <h3>3. QUIZ SVT</h3>
+      <p class="resource-intro">Tester ses connaissances et se préparer.</p>
+      <ul>
+        <li>Quiz par séance / chapitre</li>
+        <li>QCM aléatoires</li>
+        <li>Résultats immédiats</li>
+        <li>Corrections détaillées</li>
+        <li>Suivi de tes performances</li>
+      </ul>
+      <a href="#" class="resource-button">Accéder →</a>
+    </article>
+
+    <article class="resource-card">
+      <div class="resource-icon">📈</div>
+      <h3>4. MA PROGRESSION</h3>
+      <p class="resource-intro">Suivre ses résultats et identifier ses besoins.</p>
+      <ul>
+        <li>Tableau de bord personnel</li>
+        <li>Historique des quiz</li>
+        <li>Points forts / à améliorer</li>
+        <li>Conseils personnalisés</li>
+        <li>Objectifs à atteindre</li>
+      </ul>
+      <a href="#" class="resource-button">Accéder →</a>
+    </article>
+
+    <article class="resource-card">
+      <div class="resource-icon">🎓</div>
+      <h3>5. RÉVISIONS BAC</h3>
+      <p class="resource-intro">Se préparer efficacement pour le Bac.</p>
+      <ul>
+        <li>Fiches de révision</li>
+        <li>Rappels essentiels</li>
+        <li>Sujets d'examens</li>
+        <li>Corrections détaillées</li>
+        <li>Conseils & méthodes</li>
+      </ul>
+      <a href="#" class="resource-button">Accéder →</a>
+    </article>
+
+  </div>
+
+  <div class="flexibility-box">
+    <div class="flexibility-icon">ℹ️</div>
+    <div>
+      <strong>SOUPLESSE PÉDAGOGIQUE</strong>
+      <p>
+        Ce parcours est un guide. Tu peux avancer dans l'ordre proposé
+        ou choisir l'accès dont tu as besoin. À toi de décider progressivement
+        et de devenir autonome !
+      </p>
+    </div>
+  </div>
+
+</section>  
   </main>
 
 </body>
