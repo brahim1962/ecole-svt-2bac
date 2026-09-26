@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Compléments de cours — École SVT</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5faf7;
+      color: #003f46;
+    }
+
+    /* ===== BARRE DE NAVIGATION ===== */
+
+    .navbar {
+      background: #004c54;
+      color: white;
+      min-height: 70px;
+      padding: 14px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #73c900;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      color: #9de34b;
+    }
+
+    /* ===== CONTENU ===== */
+
+    main {
+      width: 86%;
+      max-width: 1180px;
+      margin: 28px auto 50px;
+    }
+
+    .page-title {
+      background: white;
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+
+    .page-title h1 {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .page-title p {
+      color: #356368;
+    }
+
+    .course-card {
+      background: white;
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .course-label {
+      color: #07853e;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .course-card h2 {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .course-card p {
+      line-height: 1.6;
+      color: #34565a;
+      margin-bottom: 22px;
+    }
+
+    .course-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      background: #087f3e;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .button-secondary {
+      background: white;
+      color: #087f3e;
+      border: 1px solid #087f3e;
+    }
+
+    /* ===== SMARTPHONE ===== */
+
+    @media (max-width: 700px) {
+
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      main {
+        width: 92%;
+        margin-top: 18px;
+      }
+
+      .page-title,
+      .course-card {
+        padding: 20px;
+      }
+
+      .page-title h1 {
+        font-size: 25px;
+      }
+
+      .course-card h2 {
+        font-size: 21px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+
+    <div class="logo">
+      🧬 ÉCOLE <span>SVT</span>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html">🏠 Accueil</a>
+      <a href="mon-espace-svt.html">🎓 Mon Espace SVT</a>
+      <a href="mon-professeur.html">👨‍🏫 Mon professeur</a>
+    </nav>
+
+  </header>
+
+  <main>
+
+    <section class="page-title">
+
+      <h1>📚 Compléments de cours</h1>
+
+      <p>
+        Comprendre, approfondir et visualiser les notions essentielles du cours.
+      </p>
+
+    </section>
+
+    <section class="course-card">
+
+      <div class="course-label">
+        COURS À FAIRE MAINTENANT
+      </div>
+
+      <h2>La cellule, unité structurale du vivant</h2>
+
+      <p>
+        Reprends les notions essentielles du cours, observe les documents
+        et assure-toi d'avoir compris avant de passer aux exercices.
+      </p>
+
+      <div class="course-actions">
+
+        <a href="#" class="button">
+          📖 Ouvrir le cours →
+        </a>
+
+        <a href="mon-espace-svt.html" class="button button-secondary">
+          ← Retour à Mon Espace SVT
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>
