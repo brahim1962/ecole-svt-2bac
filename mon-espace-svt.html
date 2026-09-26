@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mon Espace SVT — École SVT</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5faf7;
+      color: #18372d;
+    }
+
+    /* ===== BARRE DE NAVIGATION ===== */
+
+    .navbar {
+      background: #003c46;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 5%;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: #9bd35a;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    .nav-links .active {
+      background: #23883d;
+    }
+
+    /* ===== CONTENU ===== */
+
+    .container {
+      width: min(1180px, 94%);
+      margin: 25px auto;
+    }
+
+    /* ===== TITRE ===== */
+
+    .hero {
+      background: white;
+      border-radius: 18px;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .hero-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #0b7b3e;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      flex-shrink: 0;
+    }
+
+    .hero h1 {
+      font-size: 38px;
+      color: #082f3b;
+      margin-bottom: 5px;
+    }
+
+    .hero p {
+      color: #31834a;
+      font-size: 17px;
+    }
+
+    /* ===== BIENVENUE ===== */
+
+    .welcome {
+      margin-top: 18px;
+      background: white;
+      border-radius: 16px;
+      padding: 22px 26px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .student-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #63b846;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      flex-shrink: 0;
+    }
+
+    .welcome h2 {
+      font-size: 22px;
+      color: #173e35;
+      margin-bottom: 6px;
+    }
+
+    .student-name {
+      color: #16843f;
+    }
+
+    .welcome p {
+      color: #56645f;
+      line-height: 1.5;
+    }
+
+    /* ===== SMARTPHONE ===== */
+
+    @media (max-width: 700px) {
+
+      .navbar {
+        flex-direction: column;
+        padding: 12px;
+      }
+
+      .nav-links {
+        width: 100%;
+        overflow-x: auto;
+        justify-content: flex-start;
+      }
+
+      .nav-links a {
+        white-space: nowrap;
+        font-size: 13px;
+        padding: 8px 10px;
+      }
+
+      .container {
+        width: 94%;
+        margin-top: 15px;
+      }
+
+      .hero {
+        padding: 20px 16px;
+      }
+
+      .hero-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 27px;
+      }
+
+      .hero h1 {
+        font-size: 26px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .welcome {
+        padding: 18px 16px;
+      }
+
+      .welcome h2 {
+        font-size: 18px;
+      }
+
+      .welcome p {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+
+    <div class="logo">
+      🧬 ÉCOLE <span>SVT</span>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html">🏠 Accueil</a>
+      <a href="mon-espace-svt.html" class="active">🎓 Mon Espace SVT</a>
+      <a href="mon-professeur.html">👤 Mon professeur</a>
+      <a href="#">⚕ Après le Bac</a>
+    </nav>
+
+  </header>
+
+
+  <main class="container">
+
+    <section class="hero">
+
+      <div class="hero-icon">🎓</div>
+
+      <div>
+        <h1>MON ESPACE SVT</h1>
+        <p>Ton espace de travail, d'apprentissage et de progression</p>
+      </div>
+
+    </section>
+
+
+    <section class="welcome">
+
+      <div class="student-icon">👤</div>
+
+      <div>
+        <h2>
+          Bonjour <span class="student-name">Yassine LABNIHI</span> 👋
+        </h2>
+
+        <p>
+          Organise ton travail, avance à ton rythme et deviens
+          progressivement autonome.
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>
