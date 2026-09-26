@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Matière et ATP — École SVT</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5faf7;
+      color: #003f46;
+    }
+
+    .navbar {
+      background: #004c54;
+      color: white;
+      min-height: 70px;
+      padding: 14px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #73c900;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    main {
+      width: 86%;
+      max-width: 1180px;
+      margin: 28px auto 50px;
+    }
+
+    .course-header,
+    .lesson {
+      background: white;
+      border-radius: 16px;
+      padding: 26px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .course-label {
+      color: #07853e;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .course-header h1 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .course-header p,
+    .lesson p {
+      line-height: 1.7;
+      color: #385b60;
+    }
+
+    .lesson h2 {
+      color: #006b45;
+      margin-bottom: 15px;
+      font-size: 21px;
+    }
+
+    .key-idea {
+      background: #eef8e9;
+      border-left: 5px solid #65b83b;
+      border-radius: 10px;
+      padding: 18px;
+      margin-top: 18px;
+      line-height: 1.6;
+    }
+
+    .matter-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .matter-card {
+      border: 1px solid #dcebe2;
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .matter-card h3 {
+      color: #087f3e;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      main {
+        width: 92%;
+      }
+
+      .matter-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .course-header h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+
+    <div class="logo">
+      🧬 ÉCOLE <span>SVT</span>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html">🏠 Accueil</a>
+      <a href="mon-espace-svt.html">🎓 Mon Espace SVT</a>
+      <a href="cours.html">📚 Compléments de cours</a>
+    </nav>
+
+  </header>
+
+  <main>
+
+    <section class="course-header">
+
+      <div class="course-label">
+        COMPLÉMENT DE COURS
+      </div>
+
+      <h1>⚡ Matière et ATP : l'énergie dans la cellule</h1>
+
+      <p>
+        Une cellule vivante réalise en permanence des activités.
+        Pour les accomplir, elle a besoin de matière et d'énergie.
+        Découvrons comment ces deux notions sont liées.
+      </p>
+
+    </section>
+
+
+    <section class="lesson">
+
+      <h2>1. La cellule a besoin d'énergie</h2>
+
+      <p>
+        Une cellule n'est pas une structure inactive : elle réalise
+        différentes activités qui nécessitent de l'énergie.
+        Cette énergie est liée à l'utilisation de la matière organique
+        consommée par la cellule.
+      </p>
+
+      <div class="key-idea">
+        <strong>💡 Idée essentielle :</strong><br>
+        Pour réaliser ses activités, la cellule a besoin d'énergie.
+      </div>
+
+    </section>
+
+
+    <section class="lesson">
+
+      <h2>2. Matière organique et matière minérale</h2>
+
+      <p>
+        Le cours distingue deux catégories de matière :
+        la matière organique et la matière minérale.
+      </p>
+
+      <div class="matter-grid">
+
+        <div class="matter-card">
+          <h3>🌿 Matière organique</h3>
+
+          <p>
+            Dans le cours, elle correspond aux molécules composées
+            de carbone (C), d'hydrogène (H) et d'oxygène (O).
+          </p>
+
+          <p>
+            <strong>Exemple étudié :</strong><br>
+            Glucose : C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>
+          </p>
+        </div>
+
+
+        <div class="matter-card">
+          <h3>💧 Matière minérale</h3>
+
+          <p>
+            Dans le cours, elle correspond aux molécules ne répondant
+            pas à la définition précédente.
+          </p>
+
+          <p>
+            <strong>Exemples étudiés :</strong><br>
+            CO<sub>2</sub>, H<sub>2</sub>O, O<sub>2</sub>,
+            NaCl et H<sub>3</sub>PO<sub>4</sub>.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+        <section class="lesson">
+
+      <h2>3. L'ATP : une molécule énergétique</h2>
+
+      <p>
+        Dans la cellule, l'énergie est stockée dans une molécule appelée
+        <strong>ATP : Adénosine Triphosphate</strong>.
+      </p>
+
+      <div class="key-idea">
+        <strong>⚡ À retenir :</strong><br>
+        L'ATP constitue une forme d'énergie directement utilisable
+        pour le travail cellulaire.
+      </div>
+
+    </section>
+
+
+    <section class="lesson">
+
+      <h2>4. Hydrolyse de l'ATP : libérer de l'énergie</h2>
+
+      <p>
+        Lorsque la cellule a besoin d'énergie, l'ATP est hydrolysé.
+        Cette réaction transforme l'ATP en ADP et libère de l'énergie.
+      </p>
+
+      <div class="key-idea">
+        <strong>ATP + H<sub>2</sub>O → ADP + Pi + énergie</strong>
+      </div>
+
+      <p style="margin-top:15px;">
+        ADP signifie <strong>Adénosine Diphosphate</strong> et
+        Pi représente le phosphate inorganique.
+      </p>
+
+    </section>
+
+
+    <section class="lesson">
+
+      <h2>5. Synthèse de l'ATP : stocker de l'énergie</h2>
+
+      <p>
+        L'ATP peut être reformé à partir de l'ADP et du phosphate
+        inorganique. Cette synthèse nécessite un apport d'énergie.
+      </p>
+
+      <div class="key-idea">
+        <strong>ADP + Pi + énergie → ATP + H<sub>2</sub>O</strong>
+      </div>
+
+    </section>
+        <section class="lesson">
+
+      <h2>6. Du glucose au travail cellulaire</h2>
+
+      <p>
+        L'ATP joue un rôle d'intermédiaire entre l'énergie provenant
+        de la dégradation de la matière organique et les activités
+        réalisées par la cellule.
+      </p>
+
+      <div class="key-idea" style="text-align:center; font-size:18px;">
+
+        <strong>
+          Glucose
+          &nbsp; → &nbsp;
+          Énergie
+          &nbsp; → &nbsp;
+          ATP
+          &nbsp; → &nbsp;
+          Énergie
+          &nbsp; → &nbsp;
+          Travail cellulaire
+        </strong>
+
+      </div>
+
+      <p style="margin-top:18px;">
+        Ainsi, l'énergie issue de la dégradation du glucose peut être
+        utilisée pour synthétiser l'ATP. L'hydrolyse de l'ATP libère
+        ensuite l'énergie nécessaire au travail cellulaire.
+      </p>
+
+    </section>
+
+
+    <section class="lesson">
+
+      <h2>🧠 Je vérifie que j'ai compris</h2>
+
+      <p>
+        Avant de poursuivre, assure-toi de pouvoir expliquer avec tes
+        propres mots :
+      </p>
+
+      <div class="key-idea">
+        ✓ Pourquoi la cellule a besoin d'énergie.<br><br>
+        ✓ La différence entre matière organique et matière minérale
+        telle qu'elle est présentée dans le cours.<br><br>
+        ✓ Ce que signifient ATP et ADP.<br><br>
+        ✓ Ce qui se produit lors de l'hydrolyse de l'ATP.<br><br>
+        ✓ Le lien entre glucose, ATP et travail cellulaire.
+      </div>
+
+    </section>
+
+
+    <div style="margin-top:25px;">
+
+      <a href="cours.html"
+         style="display:inline-block;
+                padding:12px 20px;
+                border:1px solid #087f3e;
+                border-radius:8px;
+                color:#087f3e;
+                text-decoration:none;
+                font-weight:bold;">
+        ← Retour aux compléments de cours
+      </a>
+
+    </div>
+
+  </main>
+
+</body>
+</html>
