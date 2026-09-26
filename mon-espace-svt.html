@@ -708,7 +708,112 @@
   .activity-row {
     align-items: flex-start;
   }
-}    
+} 
+   /* ===== MESSAGE FINAL ===== */
+
+.final-message {
+  margin-top: 18px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 22px 28px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  display: grid;
+  grid-template-columns: 1.8fr 0.7fr 0.8fr;
+  align-items: center;
+  gap: 25px;
+}
+
+.final-quote {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.quote-mark {
+  color: #65a947;
+  font-size: 42px;
+  line-height: 1;
+  font-weight: bold;
+}
+
+.final-quote p {
+  color: #4c604f;
+  font-family: Georgia, serif;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.final-book {
+  text-align: center;
+  font-size: 58px;
+}
+
+.final-signature {
+  display: flex;
+  flex-direction: column;
+  color: #24483b;
+}
+
+.final-signature strong {
+  font-size: 16px;
+}
+
+.final-signature span {
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+/* ===== BANDEAU D'AIDE ===== */
+
+.help-bar {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 8px 18px;
+  background: #eef7ea;
+  border: 1px solid #d8e8d2;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: #4c6556;
+  font-size: 11px;
+}
+
+/* ===== MESSAGE FINAL SUR SMARTPHONE ===== */
+
+@media (max-width: 700px) {
+
+  .final-message {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 20px 16px;
+    gap: 14px;
+  }
+
+  .final-quote {
+    justify-content: center;
+  }
+
+  .final-quote p {
+    font-size: 14px;
+  }
+
+  .final-book {
+    font-size: 48px;
+  }
+
+  .final-signature {
+    align-items: center;
+  }
+
+  .help-bar {
+    flex-direction: column;
+    text-align: center;
+    gap: 5px;
+    border-radius: 12px;
+  }
+} 
   </style>
 </head>
 
@@ -992,7 +1097,35 @@
     <a href="#" class="dashboard-button">Voir toute mon activité →</a>
   </div>
 
-</section>   
+</section> 
+
+  <!-- ===== MESSAGE FINAL ===== -->
+
+<section class="final-message">
+
+  <div class="final-quote">
+    <div class="quote-mark">❝</div>
+
+    <p>
+      La réussite n'est pas une question de chance,<br>
+      mais de méthode, de travail et de persévérance.<br>
+      Tu as tout ce qu'il faut pour y arriver.
+    </p>
+  </div>
+
+  <div class="final-book">📖🌱</div>
+
+  <div class="final-signature">
+    <strong>LABNIHI Brahim</strong>
+    <span>Prof SVT</span>
+  </div>
+
+</section>
+
+<div class="help-bar">
+  <span>⭐ Besoin d'aide ? Consulte la rubrique correspondant à ton besoin ou demande conseil à ton professeur.</span>
+  <span>💚 École SVT est là pour t'accompagner.</span>
+</div>  
   </main>
 
 </body>
