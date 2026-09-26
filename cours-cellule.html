@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>La cellule — École SVT</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5faf7;
+      color: #003f46;
+    }
+
+    /* ===== NAVIGATION ===== */
+
+    .navbar {
+      background: #004c54;
+      color: white;
+      min-height: 70px;
+      padding: 14px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #73c900;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* ===== PAGE ===== */
+
+    main {
+      width: 86%;
+      max-width: 1180px;
+      margin: 28px auto 50px;
+    }
+
+    .course-header {
+      background: white;
+      border-radius: 18px;
+      padding: 30px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .course-label {
+      color: #07853e;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .course-header h1 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .course-header p {
+      line-height: 1.6;
+      color: #45666a;
+    }
+
+    /* ===== OBJECTIFS ===== */
+
+    .objectives {
+      background: #eef8e9;
+      border-left: 5px solid #65b83b;
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 20px;
+    }
+
+    .objectives h2 {
+      font-size: 19px;
+      margin-bottom: 12px;
+    }
+
+    .objectives ul {
+      padding-left: 22px;
+      line-height: 1.8;
+    }
+
+    /* ===== PARTIES DU COURS ===== */
+
+    .lesson {
+      background: white;
+      border-radius: 16px;
+      padding: 26px;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    }
+
+    .lesson h2 {
+      font-size: 21px;
+      margin-bottom: 12px;
+      color: #006b45;
+    }
+
+    .lesson p {
+      line-height: 1.7;
+      color: #385b60;
+    }
+
+    .document-box {
+      margin-top: 18px;
+      padding: 22px;
+      border: 2px dashed #9bc7aa;
+      border-radius: 12px;
+      text-align: center;
+      color: #527068;
+      background: #fbfdfb;
+    }
+
+    /* ===== BAS DE PAGE ===== */
+
+    .bottom-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      background: #087f3e;
+      color: white;
+    }
+
+    .button-secondary {
+      background: white;
+      color: #087f3e;
+      border: 1px solid #087f3e;
+    }
+
+    /* ===== SMARTPHONE ===== */
+
+    @media (max-width: 700px) {
+
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      main {
+        width: 92%;
+        margin-top: 18px;
+      }
+
+      .course-header,
+      .lesson {
+        padding: 20px;
+      }
+
+      .course-header h1 {
+        font-size: 24px;
+      }
+
+      .bottom-actions {
+        flex-direction: column;
+      }
+
+      .button {
+        text-align: center;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+
+    <div class="logo">
+      🧬 ÉCOLE <span>SVT</span>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html">🏠 Accueil</a>
+      <a href="mon-espace-svt.html">🎓 Mon Espace SVT</a>
+      <a href="cours.html">📚 Compléments de cours</a>
+    </nav>
+
+  </header>
+
+  <main>
+
+    <section class="course-header">
+
+      <div class="course-label">
+        COMPLÉMENT DE COURS
+      </div>
+
+      <h1>🔬 La cellule, unité structurale du vivant</h1>
+
+      <p>
+        Observe, analyse et comprends l'organisation de la cellule
+        avant de retenir les notions essentielles.
+      </p>
+
+    </section>
+
+
+    <section class="objectives">
+
+      <h2>🎯 Ce que tu dois comprendre</h2>
+
+      <ul>
+        <li>Reconnaître la cellule comme unité structurale du vivant.</li>
+        <li>Identifier les principales structures cellulaires.</li>
+        <li>Comparer l'organisation d'une cellule animale et d'une cellule végétale.</li>
+        <li>Relier une structure cellulaire à sa fonction.</li>
+      </ul>
+
+    </section>
+
+
+    <section class="lesson">
+
+      <h2>1. Observer la cellule</h2>
+
+      <p>
+        L'étude de la cellule commence par l'observation.
+        Les documents proposés permettront d'identifier progressivement
+        les structures qui constituent une cellule.
+      </p>
+
+      <div class="document-box">
+        🔬 Document d'observation à intégrer
+      </div>
+
+    </section>
+
+
+    <section class="lesson">
+
+      <h2>2. Identifier les constituants cellulaires</h2>
+
+      <p>
+        À partir des observations, nous distinguerons les principales
+        structures cellulaires et préciserons leur organisation.
+      </p>
+
+      <div class="document-box">
+        🧬 Schéma ou document explicatif à intégrer
+      </div>
+
+    </section>
+
+
+    <section class="lesson">
+
+      <h2>3. Comparer cellule animale et cellule végétale</h2>
+
+      <p>
+        La comparaison permet de mettre en évidence les structures communes
+        ainsi que certaines particularités propres à chaque type de cellule.
+      </p>
+
+      <div class="document-box">
+        🔎 Comparaison à construire
+      </div>
+
+    </section>
+
+
+    <div class="bottom-actions">
+
+      <a href="cours.html" class="button button-secondary">
+        ← Retour aux compléments de cours
+      </a>
+
+      <a href="#" class="button">
+        Exercices associés →
+      </a>
+
+    </div>
+
+  </main>
+
+</body>
+</html>
