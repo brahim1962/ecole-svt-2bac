@@ -1138,7 +1138,7 @@ console.log('Code élève reçu :', studentCode);
     return;
 } 
 const response = await fetch(
-    `${SUPABASE_URL}/rest/v1/students?Students_code=eq.${encodeURIComponent(studentCode)}&select=first_name,last_name`,
+    `${SUPABASE_URL}/rest/v1/Students?Students_code=eq.${encodeURIComponent(studentCode)}&select=first_name,last_name`,
     {
         headers: {
             apikey: SUPABASE_KEY,
