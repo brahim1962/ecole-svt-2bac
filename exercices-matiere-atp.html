@@ -66,7 +66,20 @@
       font-weight: bold;
       margin-bottom: 18px;
     }
+.correction {
+  margin-top: 22px;
+  padding: 18px 20px;
+  background: #f1f8ed;
+  border-left: 5px solid #67c23a;
+  border-radius: 10px;
+  line-height: 1.6;
+  color: #003f45;
+}
 
+.correction strong:first-child {
+  color: #087f3e;
+  font-size: 18px;
+}
     .button {
       display: inline-block;
       padding: 12px 20px;
@@ -127,6 +140,16 @@
       <strong>2.</strong> Indique la formule chimique du glucose.<br><br>
       <strong>3.</strong> Justifie le classement du glucose dans la matière organique.
     </p>
+
+    <div class="correction" style="display:none;">
+  <strong>Correction :</strong><br><br>
+
+  <strong>1.</strong> Matière organique : glucose. Matière minérale : H₂O, O₂, CO₂, NaCl et H₃PO₄.<br><br>
+
+  <strong>2.</strong> La formule chimique du glucose est C₆H₁₂O₆.<br><br>
+
+  <strong>3.</strong> Le glucose est classé dans la matière organique car sa molécule est composée de carbone (C), d’hydrogène (H) et d’oxygène (O).
+</div>
   </section>
 
   <section class="exercise">
@@ -139,6 +162,16 @@
       <strong>3.</strong> Complète la représentation simplifiée :
       <strong>Adénosine — P ~ ... ~ ...</strong>
     </p>
+
+    <div class="correction" style="display:none;">
+  <strong>Correction :</strong><br><br>
+
+  <strong>1.</strong> ATP signifie Adénosine Triphosphate.<br><br>
+
+  <strong>2.</strong> L’ATP est constitué d’adénine, de ribose et de trois groupements phosphate.<br><br>
+
+  <strong>3.</strong> Adénosine — P ~ P ~ P
+</div>
   </section>
 
   <section class="exercise">
@@ -151,6 +184,18 @@
       <strong>3.</strong> Écris la réaction de synthèse de l'ATP.<br><br>
       <strong>4.</strong> Précise ce qui est nécessaire pour réaliser cette synthèse.
     </p>
+
+    <div class="correction" style="display:none;">
+  <strong>Correction :</strong><br><br>
+
+  <strong>1.</strong> ATP + H₂O → ADP + Pi + énergie libérée.<br><br>
+
+  <strong>2.</strong> Lors de l’hydrolyse de l’ATP, de l’énergie est libérée.<br><br>
+
+  <strong>3.</strong> ADP + Pi + énergie → ATP + H₂O.<br><br>
+
+  <strong>4.</strong> La synthèse de l’ATP nécessite un apport d’énergie.
+</div>
   </section>
 
   <section class="exercise">
@@ -163,6 +208,16 @@
       <strong>3.</strong> Remets dans l'ordre :
       <strong>travail cellulaire — ATP — glucose — énergie.</strong>
     </p>
+
+    <div class="correction" style="display:none;">
+  <strong>Correction :</strong><br><br>
+
+  <strong>1.</strong> L’ATP fournit à la cellule une énergie directement utilisable.<br><br>
+
+  <strong>2.</strong> L’énergie provenant de la dégradation du glucose permet la synthèse de l’ATP. L’hydrolyse de l’ATP libère ensuite l’énergie nécessaire au travail cellulaire.<br><br>
+
+  <strong>3.</strong> Glucose → énergie → ATP → travail cellulaire.
+</div>
   </section>
 
   <div class="buttons">
@@ -170,9 +225,10 @@
       ← Retour
     </a>
 
-    <a href="#" class="button">
-      Vérifier mes réponses →
-    </a>
+    <a href="#" class="button"
+   onclick="event.preventDefault(); document.querySelectorAll('.correction').forEach(function(c){ c.style.display='block'; });">
+  Vérifier mes réponses →
+</a>
   </div>
 
 </main>
