@@ -1147,6 +1147,7 @@ const response = await fetch(
     }
 ); 
  const data = await response.json();
+ console.log('Réponse Supabase :', data);   
    if (data.length > 0) {
     const eleve = data[0];
     document.getElementById('studentName').textContent =
