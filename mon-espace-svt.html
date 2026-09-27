@@ -855,7 +855,7 @@
 
       <div>
         <h2>
-          Bonjour <span class="student-name">Yassine LABNIHI</span> 👋
+          Bonjour <span class="student-name" id="studentName">Élève</span> 👋
         </h2>
 
         <p>
@@ -1127,6 +1127,9 @@
   <span>💚 École SVT est là pour t'accompagner.</span>
 </div>  
   </main>
-
+<script>
+const studentCode = sessionStorage.getItem('studentCode');
+console.log('Code élève reçu :', studentCode);
+</script>
 </body>
 </html>
