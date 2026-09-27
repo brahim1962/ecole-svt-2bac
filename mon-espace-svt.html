@@ -1152,7 +1152,12 @@ const response = await fetch(
     const eleve = data[0];
     document.getElementById('studentName').textContent =
         `${eleve.first_name} ${eleve.last_name}`;
-} 
+}
+else {
+    alert("Code élève non reconnu. Vérifiez votre code et réessayez.");
+    sessionStorage.removeItem('studentCode');
+    window.location.href = 'index.html';
+}    
 }
  chargerEleve(); 
 </script>
