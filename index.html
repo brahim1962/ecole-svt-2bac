@@ -68,11 +68,22 @@
     <section class="mobile-card mobile-afterbac"><h2>🧭 Après le Bac</h2><p>Orientation, études supérieures et préparation aux concours de Médecine.</p><div class="mobile-actions"><button class="mobile-link afterbac-mobile-button" onclick="openModal('afterbacModal')">Découvrir →</button></div></section>
     <div class="mobile-quote">« Comprendre avant de mémoriser, raisonner avant de répondre, progresser vers l’autonomie. »</div>
   </main>
-  <div id="studentModal" class="modal"><div class="modal-card"><h2>🎓 Mon Espace SVT</h2><p>Saisissez votre code élève pour accéder à votre espace personnel.</p><input id="studentCode" type="text" placeholder="Code élève" autocomplete="off"><div class="modal-actions"><button class="modal-primary" onclick="window.location.href='mon-espace-svt.html'">Entrer dans Mon Espace SVT</button><button class="modal-close" onclick="closeModals()">Fermer</button></div></div></div>
+  <div id="studentModal" class="modal"><div class="modal-card"><h2>🎓 Mon Espace SVT</h2><p>Saisissez votre code élève pour accéder à votre espace personnel.</p><input id="studentCode" type="text" placeholder="Code élève" autocomplete="off"><div class="modal-actions"><button class="modal-primary" onclick="entrerEspaceEleve()">Entrer dans Mon Espace SVT</button><button class="modal-close" onclick="closeModals()">Fermer</button></div></div></div>
   <div id="subscribeModal" class="modal"><div class="modal-card"><h2>Je souhaite m'abonner</h2><p>Vous souhaitez accéder à École SVT et bénéficier de l'accompagnement pédagogique proposé ?</p><p>Contactez-moi pour obtenir les informations nécessaires à l'abonnement.</p><div class="modal-actions"><button class="modal-primary">✉️ Me contacter</button><button class="modal-close" onclick="closeModals()">Fermer</button></div></div></div>
   <div id="parentsModal" class="modal"><div class="modal-card"><h2>👨‍👩‍👧 Espace Parents</h2><p>Accès réservé aux parents disposant d'un code parent.</p><input id="parentCode" type="text" placeholder="Code parent" autocomplete="off"><div class="modal-actions"><button class="modal-primary">Accéder à l'Espace Parents</button><button class="modal-close" onclick="closeModals()">Fermer</button></div></div></div>
   <div id="professorModal" class="modal"><div class="modal-card"><h2>👨‍🏫 Mon professeur</h2><p>Cette rubrique présentera le parcours, l'expérience et la philosophie pédagogique de LABNIHI Brahim.</p><div class="modal-actions"><button class="modal-close" onclick="closeModals()">Fermer</button></div></div></div>
   <div id="afterbacModal" class="modal"><div class="modal-card"><h2>🧭 Après le Bac</h2><p>Orientation, études supérieures et préparation aux concours de Médecine.</p><p>Cette rubrique sera enrichie progressivement.</p><div class="modal-actions"><button class="modal-close" onclick="closeModals()">Fermer</button></div></div></div>
-  <script>function openModal(id){closeModals();const modal=document.getElementById(id);if(modal){modal.classList.add('open');}}function closeModals(){document.querySelectorAll('.modal').forEach(function(modal){modal.classList.remove('open');});}document.addEventListener('keydown',function(event){if(event.key==='Escape'){closeModals();}});document.querySelectorAll('.modal').forEach(function(modal){modal.addEventListener('click',function(event){if(event.target===modal){closeModals();}});});</script>
+  <script>
+    function entrerEspaceEleve() {
+    const code = document.getElementById('studentCode').value.trim();
+
+    if (code === '') {
+        alert('Veuillez saisir votre code élève.');
+        return;
+    }
+
+    sessionStorage.setItem('studentCode', code);
+    window.location.href = 'mon-espace-svt.html';
+}function openModal(id){closeModals();const modal=document.getElementById(id);if(modal){modal.classList.add('open');}}function closeModals(){document.querySelectorAll('.modal').forEach(function(modal){modal.classList.remove('open');});}document.addEventListener('keydown',function(event){if(event.key==='Escape'){closeModals();}});document.querySelectorAll('.modal').forEach(function(modal){modal.addEventListener('click',function(event){if(event.target===modal){closeModals();}});});</script>
 </body>
 </html>
