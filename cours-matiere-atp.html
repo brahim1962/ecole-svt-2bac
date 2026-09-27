@@ -300,18 +300,18 @@
 
   <div id="animation-atp" class="key-idea" style="text-align:center;">
 
-    <div id="reaction-atp" style="font-size:22px; font-weight:bold; margin:20px 0;">
+    <div id="reaction-atp" style="font-size:22px; font-weight:bold; margin:20px 0; transition:all 0.5s ease;">
       ATP + H₂O ⇄ ADP + Pi + énergie
     </div>
 
     <button type="button"
-      onclick="document.getElementById('reaction-atp').innerHTML='ATP + H₂O → ADP + Pi + énergie';"
+     onclick="let r=document.getElementById('reaction-atp'); r.style.transform='scale(0.8)'; r.style.opacity='0'; setTimeout(()=>{r.innerHTML='ATP + H₂O → ADP + Pi + ⚡ énergie libérée'; r.style.transform='scale(1)'; r.style.opacity='1';},300);"
       style="padding:10px 18px; margin:6px; cursor:pointer;">
       Hydrolyse
     </button>
 
     <button type="button"
-      onclick="document.getElementById('reaction-atp').innerHTML='ADP + Pi + énergie → ATP + H₂O';"
+      onclick="let r=document.getElementById('reaction-atp'); r.style.transform='scale(0.8)'; r.style.opacity='0'; setTimeout(()=>{r.innerHTML='ADP + Pi + ⚡ énergie apportée → ATP + H₂O'; r.style.transform='scale(1)'; r.style.opacity='1';},300);"
       style="padding:10px 18px; margin:6px; cursor:pointer;">
       Synthèse
     </button>
