@@ -89,30 +89,7 @@
       padding: 13px 16px;
       border-radius: 7px;
     }
-.notification-bell {
-    position: relative;
-    font-size: 22px;
-    cursor: pointer;
-    margin-left: 8px;
-    padding: 8px;
-}
 
-.notification-count {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 18px;
-    height: 18px;
-    padding: 0 5px;
-    border-radius: 999px;
-    background: #e53935;
-    color: white;
-    font-size: 11px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
     .nav-links a:hover {
       background: rgba(255,255,255,0.12);
     }
@@ -171,11 +148,7 @@
         <a href="index.html#mon-espace-svt">🎓 Mon Espace SVT</a>
         <a href="mon-professeur.html" class="active">👤 Mon professeur</a>
         <a href="index.html#apres-le-bac">🪧 Après le Bac</a>
-       <div class="notification-bell" id="notificationBell">
-    🔔
-    <span class="notification-count" id="notificationCount">0</span>
-</div> 
-      </div>
+       
 
     </nav>
 
@@ -187,33 +160,8 @@
 
   </main>
 <script>
-const SUPABASE_URL = 'https://jnbgeclyxlrjggyewbaq.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_3U3GQYUOvopdBYANuH_bdg_7_Qgqzg0';
 
-async function chargerNotifications() {
-    try {
-        const response = await fetch(
-            `${SUPABASE_URL}/rest/v1/student_logins?seen=eq.false&select=id`,
-            {
-                headers: {
-                    apikey: SUPABASE_KEY,
-                    Authorization: `Bearer ${SUPABASE_KEY}`
-                }
-            }
-        );
 
-        const entrees = await response.json();
-        const compteur = document.getElementById('notificationCount');
-
-        if (Array.isArray(entrees)) {
-            compteur.textContent = entrees.length;
-        }
-    } catch (error) {
-        console.error('Erreur notifications :', error);
-    }
-}
-
-chargerNotifications();
 </script>
 </body>
 </html>
