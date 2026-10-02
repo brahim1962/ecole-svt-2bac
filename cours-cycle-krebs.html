@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acétyl-CoA et cycle de Krebs — École SVT</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5faf7;
+      color: #003f46;
+      line-height: 1.7;
+    }
+    .navbar {
+      background: #004c54;
+      color: white;
+      padding: 14px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .logo { font-size: 23px; font-weight: bold; }
+    .logo span { color: #9de34b; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 20px; }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    main {
+      width: 88%;
+      max-width: 1100px;
+      margin: 25px auto 45px;
+    }
+    .card {
+      background: white;
+      padding: 26px;
+      margin-bottom: 22px;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,.05);
+    }
+    h1 { font-size: 28px; line-height: 1.3; }
+    h2 { font-size: 23px; color: #087f3e; }
+    h3 { font-size: 19px; }
+    .label {
+      color: #087f3e;
+      font-weight: bold;
+      font-size: 13px;
+    }
+    .essential {
+      background: #eef8ee;
+      border-left: 4px solid #087f3e;
+      padding: 16px;
+      margin-top: 18px;
+      border-radius: 8px;
+    }
+    .equation {
+      background: #f1f7fa;
+      padding: 16px;
+      border-radius: 8px;
+      text-align: center;
+      overflow-wrap: anywhere;
+      margin: 16px 0;
+    }
+    .table-wrap { overflow-x: auto; }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 15px 0;
+    }
+    th, td {
+      border: 1px solid #c8dfd0;
+      padding: 11px;
+      text-align: left;
+    }
+    th { background: #eaf5ed; }
+    .total { background: #eef8ee; font-weight: bold; }
+    .exercise {
+      border: 2px dashed #38964f;
+      padding: 24px;
+      border-radius: 14px;
+      margin-bottom: 24px;
+      background: white;
+    }
+    li { margin-bottom: 8px; }
+    textarea {
+      display: block;
+      width: 100%;
+      min-height: 125px;
+      margin: 12px 0;
+      padding: 12px;
+      border: 1px solid #9abfa7;
+      border-radius: 8px;
+      font: inherit;
+      color: #1765ad;
+      resize: vertical;
+    }
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 14px;
+    }
+    .button {
+      display: inline-block;
+      border: 0;
+      border-radius: 8px;
+      background: #087f3e;
+      color: white;
+      padding: 12px 18px;
+      font: inherit;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .button:hover { background: #056632; }
+    .button:focus-visible {
+      outline: 3px solid #73c900;
+      outline-offset: 3px;
+    }
+    .correction {
+      background: #edf8e9;
+      border: 1px solid #b8dca8;
+      padding: 18px;
+      margin-top: 18px;
+      border-radius: 10px;
+      color: #1765ad;
+    }
+    .correction h3 { color: #087f3e; margin-top: 0; }
+    [hidden] { display: none !important; }
+    .navigation { display: flex; flex-wrap: wrap; gap: 12px; }
+    footer { text-align: center; margin-top: 25px; font-size: 14px; }
+
+    @media (max-width: 700px) {
+      .navbar { flex-direction: column; align-items: flex-start; }
+      .nav-links { gap: 12px; font-size: 14px; }
+      main { width: 94%; }
+      .card, .exercise { padding: 18px; }
+      h1 { font-size: 24px; }
+      h2 { font-size: 21px; }
+      th, td { padding: 8px; font-size: 14px; }
+      .actions .button { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="logo">🧬 ÉCOLE <span>SVT</span></div>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="index.html">🏠 Accueil</a>
+      <a href="mon-espace-svt.html">🎓 Mon Espace SVT</a>
+      <a href="mon-espace-svt.html#ressources">📚 Ressources</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <p class="label">BLOC 3 · COMPRENDRE ET S’ENTRAÎNER</p>
+      <h1>Formation de l’acétyl-CoA et cycle de Krebs</h1>
+      <p>Comment se poursuit la dégradation du pyruvate dans la mitochondrie ?</p>
+
+      <div class="essential">
+        <strong>Objectifs :</strong> localiser les réactions,
+        distinguer décarboxylation et déshydrogénation,
+        puis établir les bilans par pyruvate et par glucose.
+      </div>
+
+      <p>Étudie les notions, puis réponds avant d’afficher les corrections.</p>
+      <p><small>Les réponses saisies ne sont pas enregistrées
+      ni envoyées au professeur.</small></p>
+      <a href="#exercices" class="button">Passer aux exercices →</a>
+    </section>
+
+    <section class="card">
+      <h2>1. Du hyaloplasme à la matrice</h2>
+      <p>La glycolyse produit deux pyruvates par glucose dans le
+      <strong>hyaloplasme</strong>. Dans les conditions de respiration
+      étudiées, ces pyruvates entrent dans la mitochondrie.</p>
+
+      <p>Dans la <strong>matrice mitochondriale</strong>, chacun subit
+      deux étapes successives :</p>
+      <ol>
+        <li>La formation de l’acétyl-CoA.</li>
+        <li>Le cycle de Krebs, alimenté par l’acétyl-CoA.</li>
+      </ol>
+
+      <div class="essential">
+        <strong>Décarboxylation :</strong> réaction libérant du CO₂.<br>
+        <strong>Déshydrogénation :</strong> retrait d’hydrogène accompagné
+        d’un transfert d’électrons vers des transporteurs,
+        notamment NAD⁺ ou FAD.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2. La formation de l’acétyl-CoA</h2>
+      <p>Le pyruvate possède <strong>3 atomes de carbone</strong>.
+      Il perd un carbone sous forme de CO₂ et subit une oxydation.
+      Le NAD⁺ est réduit en NADH, noté NADH,H⁺ dans le cours.</p>
+
+      <p>Le groupement à deux carbones obtenu se lie au coenzyme A
+      pour former l’<strong>acétyl-CoA</strong>.</p>
+
+      <div class="equation">
+        Pyruvate (C₃) + CoA-SH + NAD⁺<br>
+        → Acétyl-CoA (groupement acétyle C₂) + CO₂ + NADH + H⁺
+      </div>
+
+      <div class="essential">
+        <strong>Pour un pyruvate :</strong>
+        1 acétyl-CoA + 1 CO₂ + 1 NADH,H⁺.<br>
+        Cette étape ne produit <strong>pas directement d’ATP</strong>.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>3. Le cycle de Krebs</h2>
+      <p>Le groupement acétyle à deux carbones de l’acétyl-CoA
+      s’associe à l’<strong>acide oxaloacétique</strong>,
+      appelé AOA, à quatre carbones. Il se forme un composé
+      à six carbones : le citrate.</p>
+
+      <p>Une succession de réactions entraîne des décarboxylations,
+      des déshydrogénations et la régénération de l’AOA.
+      Cette régénération permet au cycle de recommencer.</p>
+
+      <div class="equation">
+        Groupement acétyle (C₂) + AOA (C₄)<br>
+        → Composé C₆ → Composé C₅ → Composés C₄ → AOA régénéré
+      </div>
+
+      <div class="essential">
+        <strong>Pour un acétyl-CoA, un tour de cycle produit :</strong><br>
+        2 CO₂ + 3 NADH,H⁺ + 1 FADH₂ + 1 ATP équivalent.
+      </div>
+
+      <p><small>Pour les bilans de ce cours, la production énergétique
+      directe du cycle est comptée comme 1 ATP par tour.</small></p>
+    </section>
+
+    <section class="card">
+      <h2>4. Bien distinguer les bilans</h2>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Bilan pour un pyruvate</caption>
+          <thead>
+            <tr>
+              <th>Étape</th><th>CO₂</th><th>NADH,H⁺</th>
+              <th>FADH₂</th><th>ATP direct</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Formation de l’acétyl-CoA</td>
+              <td>1</td><td>1</td><td>0</td><td>0</td>
+            </tr>
+            <tr>
+              <td>Un tour du cycle de Krebs</td>
+              <td>2</td><td>3</td><td>1</td><td>1</td>
+            </tr>
+            <tr class="total">
+              <td>Total pour un pyruvate</td>
+              <td>3</td><td>4</td><td>1</td><td>1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Un glucose donne <strong>deux pyruvates</strong> :
+      il faut donc multiplier les bilans mitochondriaux par deux,
+      puis ajouter celui de la glycolyse.</p>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Bilan pour un glucose, avant la phosphorylation oxydative</caption>
+          <thead>
+            <tr>
+              <th>Étape</th><th>CO₂</th><th>NADH,H⁺</th>
+              <th>FADH₂</th><th>ATP direct net</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Glycolyse</td>
+              <td>0</td><td>2</td><td>0</td><td>2</td>
+            </tr>
+            <tr>
+              <td>Formation de deux acétyl-CoA</td>
+              <td>2</td><td>2</td><td>0</td><td>0</td>
+            </tr>
+            <tr>
+              <td>Deux tours du cycle de Krebs</td>
+              <td>4</td><td>6</td><td>2</td><td>2</td>
+            </tr>
+            <tr class="total">
+              <td>Total</td>
+              <td>6</td><td>10</td><td>2</td><td>4</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="essential">
+        Les <strong>4 ATP</strong> constituent le bilan direct net
+        de ces étapes. Ils ne représentent pas le bilan total
+        de la respiration : les transporteurs réduits fourniront
+        des électrons à la chaîne respiratoire, permettant
+        une production supplémentaire d’ATP.
+      </div>
+    </section>
+
+    <section id="exercices" class="card">
+      <h2>✏️ À toi de raisonner</h2>
+      <p>Précise toujours si ton bilan concerne un pyruvate,
+      un tour de cycle ou un glucose.</p>
+    </section>
+
+    <article class="exercise">
+      <h2>Exercice 1 — Suivre les carbones</h2>
+      <ol>
+        <li>Dans quel compartiment se forme l’acétyl-CoA ?</li>
+        <li>Le pyruvate possède trois carbones.
+        Combien en compte le groupement acétyle ?
+        Que devient le carbone retiré ?</li>
+        <li>Pourquoi le composé formé au début du cycle
+        possède-t-il six carbones ?</li>
+        <li>Pourquoi cette suite de réactions est-elle appelée un cycle ?</li>
+      </ol>
+
+      <label for="reponse1">Mes réponses :</label>
+      <textarea id="reponse1"
+        placeholder="Localise les réactions et suis les carbones."></textarea>
+
+      <div class="actions">
+        <button class="button" type="button"
+          aria-expanded="false" aria-controls="correction1">
+          Vérifier mes réponses →
+        </button>
+      </div>
+
+      <div class="correction" id="correction1" hidden>
+        <h3>Correction expliquée</h3>
+        <p><strong>1.</strong> Dans la matrice mitochondriale.</p>
+        <p><strong>2.</strong> Le groupement acétyle possède deux carbones.
+        Le carbone retiré est libéré sous forme de CO₂
+        par décarboxylation.</p>
+        <p><strong>3.</strong> Le groupement acétyle C₂ s’associe
+        à l’AOA C₄ : 2 + 4 = 6 carbones.</p>
+        <p><strong>4.</strong> L’AOA est régénéré à la fin des réactions.
+        Il peut s’associer à un nouveau groupement acétyle.</p>
+      </div>
+    </article>
+
+    <article class="exercise">
+      <h2>Exercice 2 — Construire le bilan mitochondrial</h2>
+      <p>Les deux pyruvates issus d’un glucose subissent
+      la formation de l’acétyl-CoA puis le cycle de Krebs.</p>
+
+      <ol>
+        <li>Combien d’acétyl-CoA se forment et combien de tours
+        du cycle de Krebs sont nécessaires ?</li>
+        <li>Calcule le nombre total de CO₂ produits
+        par ces deux étapes.</li>
+        <li>Calcule les quantités de NADH,H⁺, de FADH₂
+        et d’ATP direct produites par ces deux étapes.</li>
+        <li>Ajoute la glycolyse pour retrouver le bilan
+        d’un glucose avant la phosphorylation oxydative.</li>
+      </ol>
+
+      <label for="reponse2">Mes réponses :</label>
+      <textarea id="reponse2"
+        placeholder="Multiplie le bilan d’un pyruvate par 2, puis ajoute la glycolyse."></textarea>
+
+      <div class="actions">
+        <button class="button" type="button"
+          aria-expanded="false" aria-controls="correction2">
+          Vérifier mes réponses →
+        </button>
+      </div>
+
+      <div class="correction" id="correction2" hidden>
+        <h3>Correction expliquée</h3>
+        <p><strong>1.</strong> Deux acétyl-CoA se forment.
+        Ils alimentent deux tours du cycle.</p>
+        <p><strong>2.</strong> Formation de l’acétyl-CoA : 2 × 1 = 2 CO₂.
+        Cycle : 2 × 2 = 4 CO₂.
+        Total : <strong>6 CO₂</strong>.</p>
+        <p><strong>3.</strong> NADH,H⁺ : 2 × (1 + 3) = <strong>8</strong>.
+        FADH₂ : 2 × 1 = <strong>2</strong>.
+        ATP direct : 2 × 1 = <strong>2</strong>.</p>
+        <p><strong>4.</strong> La glycolyse ajoute 2 NADH,H⁺
+        et 2 ATP nets. Le bilan devient :
+        <strong>6 CO₂, 10 NADH,H⁺, 2 FADH₂ et 4 ATP nets</strong>.</p>
+      </div>
+    </article>
+
+    <article class="exercise">
+      <h2>Exercice 3 — Corriger un raisonnement</h2>
+      <p>Un élève écrit :</p>
+      <div class="equation">
+        « Un glucose donne un seul pyruvate. Le cycle de Krebs
+        se déroule dans le hyaloplasme. La formation de l’acétyl-CoA
+        produit directement de l’ATP. Après ces étapes,
+        la respiration est terminée et son bilan total est de 4 ATP. »
+      </div>
+
+      <ol>
+        <li>Repère et corrige les quatre erreurs.</li>
+        <li>Explique pourquoi les transporteurs réduits sont
+        importants pour la suite de la respiration.</li>
+        <li>Le dioxygène est-il consommé directement par le cycle
+        de Krebs ? Où intervient-il dans la respiration ?</li>
+      </ol>
+
+      <label for="reponse3">Mes réponses :</label>
+      <textarea id="reponse3"
+        placeholder="Corrige chaque erreur et explique la suite du processus."></textarea>
+
+      <div class="actions">
+        <button class="button" type="button"
+          aria-expanded="false" aria-controls="correction3">
+          Vérifier mes réponses →
+        </button>
+      </div>
+
+      <div class="correction" id="correction3" hidden>
+        <h3>Correction expliquée</h3>
+        <p><strong>1.</strong> Un glucose donne <strong>deux pyruvates</strong>.
+        Le cycle de Krebs se déroule dans la <strong>matrice mitochondriale</strong>.
+        La formation de l’acétyl-CoA ne produit <strong>pas directement d’ATP</strong>.
+        Les 4 ATP sont un <strong>bilan direct intermédiaire</strong> :
+        la phosphorylation oxydative reste à prendre en compte.</p>
+
+        <p><strong>2.</strong> Les NADH,H⁺ et FADH₂ fournissent
+        des électrons à la chaîne respiratoire. Leur transfert
+        permet la création d’un gradient de protons utilisé
+        pour produire de l’ATP.</p>
+
+        <p><strong>3.</strong> Le cycle ne consomme pas directement d’O₂.
+        Le dioxygène intervient comme accepteur final des électrons
+        de la chaîne respiratoire et est réduit en eau.
+        Son utilisation permet la réoxydation des transporteurs,
+        nécessaire à la poursuite des étapes précédentes.</p>
+      </div>
+    </article>
+
+    <section class="card">
+      <h2>✅ Avant de terminer</h2>
+      <div class="essential">
+        <strong>Dans la matrice :</strong> formation de l’acétyl-CoA,
+        puis cycle de Krebs.<br>
+        <strong>Pour un glucose, avec la glycolyse :</strong>
+        6 CO₂ + 10 NADH,H⁺ + 2 FADH₂ + 4 ATP nets,
+        avant la phosphorylation oxydative.
+      </div>
+
+      <p>Vérifie que tu sais distinguer un bilan par pyruvate
+      d’un bilan par glucose.</p>
+
+      <div class="navigation">
+        <a href="cours-glycolyse.html" class="button">
+          ← Revoir la glycolyse
+        </a>
+        <a href="cours.html" class="button">
+          Retour au travail à faire
+        </a>
+      </div>
+    </section>
+
+    <footer>LABNIHI Brahim – Prof SVT · École SVT</footer>
+  </main>
+
+  <script>
+    document.querySelectorAll('button[aria-controls]').forEach(function(button) {
+      button.addEventListener('click', function() {
+        const correction = document.getElementById(
+          button.getAttribute('aria-controls')
+        );
+        const ouvrir = button.getAttribute('aria-expanded') !== 'true';
+        correction.hidden = !ouvrir;
+        button.setAttribute('aria-expanded', String(ouvrir));
+        button.textContent = ouvrir
+          ? 'Masquer la correction ↑'
+          : 'Vérifier mes réponses →';
+      });
+    });
+  </script>
+</body>
+</html>
