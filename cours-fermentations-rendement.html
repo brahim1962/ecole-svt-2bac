@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fermentations et rendement énergétique — École SVT</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5faf7;
+      color: #003f46;
+      line-height: 1.7;
+    }
+    .navbar {
+      background: #004c54;
+      color: white;
+      padding: 14px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .logo { font-size: 23px; font-weight: bold; }
+    .logo span { color: #9de34b; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 20px; }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    main {
+      width: 88%;
+      max-width: 1100px;
+      margin: 25px auto 45px;
+    }
+    .card {
+      background: white;
+      padding: 26px;
+      margin-bottom: 22px;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,.05);
+    }
+    h1 { font-size: 28px; line-height: 1.3; }
+    h2 { font-size: 23px; color: #087f3e; }
+    h3 { font-size: 19px; }
+    .label {
+      color: #087f3e;
+      font-weight: bold;
+      font-size: 13px;
+    }
+    .essential {
+      background: #eef8ee;
+      border-left: 4px solid #087f3e;
+      padding: 16px;
+      margin-top: 18px;
+      border-radius: 8px;
+    }
+    .equation {
+      background: #f1f7fa;
+      padding: 16px;
+      border-radius: 8px;
+      text-align: center;
+      overflow-wrap: anywhere;
+      margin: 16px 0;
+    }
+    .table-wrap { overflow-x: auto; }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 15px 0;
+    }
+    th, td {
+      border: 1px solid #c8dfd0;
+      padding: 11px;
+      text-align: left;
+    }
+    th { background: #eaf5ed; }
+    .total { background: #eef8ee; font-weight: bold; }
+    .exercise {
+      border: 2px dashed #38964f;
+      padding: 24px;
+      border-radius: 14px;
+      margin-bottom: 24px;
+      background: white;
+    }
+    li { margin-bottom: 8px; }
+    textarea {
+      display: block;
+      width: 100%;
+      min-height: 125px;
+      margin: 12px 0;
+      padding: 12px;
+      border: 1px solid #9abfa7;
+      border-radius: 8px;
+      font: inherit;
+      color: #1765ad;
+      resize: vertical;
+    }
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 14px;
+    }
+    .button {
+      display: inline-block;
+      border: 0;
+      border-radius: 8px;
+      background: #087f3e;
+      color: white;
+      padding: 12px 18px;
+      font: inherit;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .button:hover { background: #056632; }
+    .button:focus-visible {
+      outline: 3px solid #73c900;
+      outline-offset: 3px;
+    }
+    .correction {
+      background: #edf8e9;
+      border: 1px solid #b8dca8;
+      padding: 18px;
+      margin-top: 18px;
+      border-radius: 10px;
+      color: #1765ad;
+    }
+    .correction h3 { color: #087f3e; margin-top: 0; }
+    [hidden] { display: none !important; }
+    .navigation { display: flex; flex-wrap: wrap; gap: 12px; }
+    footer { text-align: center; margin-top: 25px; font-size: 14px; }
+
+    @media (max-width: 700px) {
+      .navbar { flex-direction: column; align-items: flex-start; }
+      .nav-links { gap: 12px; font-size: 14px; }
+      main { width: 94%; }
+      .card, .exercise { padding: 18px; }
+      h1 { font-size: 24px; }
+      h2 { font-size: 21px; }
+      th, td { padding: 8px; font-size: 14px; }
+      .actions .button { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="logo">🧬 ÉCOLE <span>SVT</span></div>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="index.html">🏠 Accueil</a>
+      <a href="mon-espace-svt.html">🎓 Mon Espace SVT</a>
+      <a href="mon-espace-svt.html#ressources">📚 Ressources</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <p class="label">BLOC 5 · COMPRENDRE ET S’ENTRAÎNER</p>
+      <h1>Fermentations et rendement énergétique</h1>
+      <p>Pourquoi la respiration et les fermentations
+      ne produisent-elles pas la même quantité d’ATP ?</p>
+
+      <div class="essential">
+        <strong>Objectifs :</strong> distinguer les fermentations,
+        expliquer la régénération du NAD⁺, établir un bilan en ATP
+        et calculer un rendement énergétique.
+      </div>
+
+      <p>Étudie les notions, puis réponds aux exercices
+      avant d’afficher les corrections.</p>
+      <p><small>Les réponses saisies ne sont pas enregistrées
+      ni envoyées au professeur.</small></p>
+      <a href="#exercices" class="button">Passer aux exercices →</a>
+    </section>
+
+    <section class="card">
+      <h2>1. Une étape commune : la glycolyse</h2>
+      <p>La respiration et les fermentations commencent
+      par la <strong>glycolyse dans le hyaloplasme</strong>.
+      Un glucose donne deux pyruvates, deux ATP nets
+      et deux NADH,H⁺.</p>
+
+      <p>Pour que la glycolyse se poursuive, les cellules doivent
+      disposer de NAD⁺. Les fermentations permettent de
+      <strong>régénérer le NAD⁺</strong> par oxydation du NADH,H⁺.</p>
+
+      <div class="essential">
+        Les réactions qui suivent la glycolyse pendant
+        une fermentation ne produisent pas d’ATP supplémentaire.
+        Le bilan net reste donc de <strong>2 ATP par glucose</strong>.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2. La fermentation alcoolique</h2>
+      <p>Chez la levure, en absence de dioxygène,
+      le pyruvate subit deux transformations dans le hyaloplasme :</p>
+
+      <ol>
+        <li><strong>Décarboxylation :</strong> le pyruvate C₃
+        donne de l’éthanal C₂ et du CO₂.</li>
+        <li><strong>Réduction de l’éthanal :</strong> l’éthanal
+        devient de l’éthanol, tandis que le NADH,H⁺ est oxydé en NAD⁺.</li>
+      </ol>
+
+      <div class="equation">
+        CH₃COCOOH → CH₃CHO + CO₂
+      </div>
+
+      <div class="equation">
+        CH₃CHO + NADH,H⁺ → CH₃CH₂OH + NAD⁺
+      </div>
+
+      <h3>Transformation globale du glucose</h3>
+      <div class="equation">
+        C₆H₁₂O₆ → 2 CH₃CH₂OH + 2 CO₂
+      </div>
+
+      <div class="essential">
+        <strong>Produits :</strong> éthanol et CO₂.<br>
+        <strong>Bilan énergétique net :</strong> 2 ATP,
+        produits pendant la glycolyse.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>3. La fermentation lactique</h2>
+      <p>Le pyruvate est réduit en lactate grâce à une enzyme :
+      la <strong>lactate déshydrogénase (LDH)</strong>.
+      Cette réaction régénère le NAD⁺.</p>
+
+      <div class="equation">
+        Pyruvate + NADH,H⁺ → Lactate + NAD⁺
+      </div>
+
+      <p>La fermentation lactique se déroule dans le hyaloplasme.
+      Elle peut intervenir dans les cellules musculaires
+      et chez certaines bactéries. Elle ne libère pas de CO₂.</p>
+
+      <h3>Transformation globale, écrite avec l’acide lactique</h3>
+      <div class="equation">
+        C₆H₁₂O₆ → 2 CH₃CHOHCOOH
+      </div>
+
+      <div class="essential">
+        <strong>Produit :</strong> lactate.<br>
+        <strong>Bilan énergétique net :</strong> 2 ATP,
+        produits pendant la glycolyse.
+      </div>
+
+      <p>La production de lactate peut aussi avoir lieu
+      en présence de dioxygène. Elle ne signifie donc pas
+      toujours que la cellule est totalement privée d’O₂.</p>
+    </section>
+
+    <section class="card">
+      <h2>4. Comparer les voies métaboliques</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Critère</th>
+              <th>Respiration</th>
+              <th>Fermentation alcoolique</th>
+              <th>Fermentation lactique</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Étape initiale</td>
+              <td>Glycolyse</td><td>Glycolyse</td><td>Glycolyse</td>
+            </tr>
+            <tr>
+              <td>Localisation</td>
+              <td>Hyaloplasme puis mitochondrie</td>
+              <td>Hyaloplasme</td><td>Hyaloplasme</td>
+            </tr>
+            <tr>
+              <td>Utilisation directe d’O₂</td>
+              <td>Oui, par la chaîne respiratoire</td>
+              <td>Non</td><td>Non</td>
+            </tr>
+            <tr>
+              <td>Dégradation du glucose</td>
+              <td>Totale</td><td>Partielle</td><td>Partielle</td>
+            </tr>
+            <tr>
+              <td>Produits finaux</td>
+              <td>CO₂ et H₂O</td>
+              <td>Éthanol et CO₂</td><td>Lactate</td>
+            </tr>
+            <tr>
+              <td>ATP net par glucose</td>
+              <td>Quantité élevée</td><td>2 ATP</td><td>2 ATP</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Dans les fermentations, les produits organiques
+      conservent une partie importante de l’énergie chimique
+      initialement contenue dans le glucose.</p>
+    </section>
+
+    <section class="card">
+      <h2>5. Calculer le bilan en ATP de la respiration</h2>
+      <p>Pour les calculs suivants, on adopte le
+      <strong>modèle conventionnel à 38 ATP</strong> :
+      l’oxydation d’un NADH,H⁺ est comptée pour 3 ATP,
+      et celle d’un FADH₂ pour 2 ATP.</p>
+
+      <p><small>Ces valeurs constituent un modèle de calcul.
+      La production réelle d’ATP peut varier selon les cellules
+      et les conditions.</small></p>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Bilan conventionnel pour un glucose</caption>
+          <thead>
+            <tr>
+              <th>Origine</th><th>Calcul</th><th>ATP</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Production directe nette</td>
+              <td>2 par glycolyse + 2 par cycle de Krebs</td><td>4</td>
+            </tr>
+            <tr>
+              <td>Oxydation des 10 NADH,H⁺</td>
+              <td>10 × 3</td><td>30</td>
+            </tr>
+            <tr>
+              <td>Oxydation des 2 FADH₂</td>
+              <td>2 × 2</td><td>4</td>
+            </tr>
+            <tr class="total">
+              <td>Total</td><td>4 + 30 + 4</td><td>38</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="essential">
+        <strong>Phosphorylation oxydative :</strong> 34 ATP.<br>
+        <strong>Production directe nette :</strong> 4 ATP.<br>
+        <strong>Total conventionnel :</strong> 38 ATP par glucose.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>6. Le rendement énergétique</h2>
+      <p>Le rendement énergétique représente le pourcentage
+      de l’énergie initiale du glucose conservé dans l’ATP produit.</p>
+
+      <div class="equation">
+        Rendement (%) = (Énergie conservée dans l’ATP / Énergie initiale du glucose) × 100
+      </div>
+
+      <p>On utilise les données suivantes, exprimées par mole :</p>
+      <ul>
+        <li>Énergie du glucose : <strong>2 840 kJ/mol</strong>.</li>
+        <li>Valeur énergétique retenue pour l’ATP :
+        <strong>30,5 kJ/mol</strong>.</li>
+      </ul>
+
+      <h3>Respiration : modèle à 38 ATP</h3>
+      <div class="equation">
+        Rr = [(38 × 30,5) / 2 840] × 100 ≈ 40,8 %
+      </div>
+
+      <h3>Fermentation : 2 ATP</h3>
+      <div class="equation">
+        Rf = [(2 × 30,5) / 2 840] × 100 ≈ 2,15 %
+      </div>
+
+      <div class="essential">
+        Le rendement de la respiration est supérieur
+        à celui des fermentations, mais reste inférieur à 100 %.
+        Une partie de l’énergie est
+        <strong>dissipée (dispersée) sous forme de chaleur</strong>.<br>
+        Dans les fermentations, une grande partie de l’énergie
+        reste également contenue dans les produits organiques.
+      </div>
+    </section>
+
+    <section id="exercices" class="card">
+      <h2>✏️ À toi de raisonner</h2>
+      <p>Identifie les produits, explique les mécanismes
+      et montre les étapes de tes calculs.</p>
+    </section>
+
+    <article class="exercise">
+      <h2>Exercice 1 — Identifier les voies</h2>
+      <p>On étudie trois situations :</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Situation</th><th>Observations</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>A</td>
+              <td>Consommation d’O₂ ; production de CO₂ et d’H₂O.</td>
+            </tr>
+            <tr>
+              <td>B</td>
+              <td>Production d’éthanol et de CO₂ sans consommation d’O₂.</td>
+            </tr>
+            <tr>
+              <td>C</td>
+              <td>Transformation du pyruvate en lactate, sans libération de CO₂.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <ol>
+        <li>Identifie la voie métabolique de chaque situation.</li>
+        <li>Quelle étape est commune aux trois voies ? Où se déroule-t-elle ?</li>
+        <li>Quel est le rôle des réactions qui suivent la glycolyse
+        dans les situations B et C ?</li>
+        <li>Pourquoi leur bilan reste-t-il de 2 ATP par glucose ?</li>
+      </ol>
+
+      <label for="reponse1">Mes réponses :</label>
+      <textarea id="reponse1"
+        placeholder="Identifie chaque voie et justifie avec les observations."></textarea>
+
+      <div class="actions">
+        <button class="button" type="button"
+          aria-expanded="false" aria-controls="correction1">
+          Vérifier mes réponses →
+        </button>
+      </div>
+
+      <div class="correction" id="correction1" hidden>
+        <h3>Correction expliquée</h3>
+        <p><strong>1.</strong> A : respiration.
+        B : fermentation alcoolique.
+        C : fermentation lactique.</p>
+        <p><strong>2.</strong> La glycolyse, dans le hyaloplasme.</p>
+        <p><strong>3.</strong> Ces réactions régénèrent le NAD⁺
+        par oxydation du NADH,H⁺, permettant la poursuite de la glycolyse.</p>
+        <p><strong>4.</strong> Elles ne produisent pas d’ATP supplémentaire.
+        Les 2 ATP nets proviennent de la glycolyse.</p>
+      </div>
+    </article>
+
+    <article class="exercise">
+      <h2>Exercice 2 — Retrouver le bilan en ATP</h2>
+      <p>Avant la phosphorylation oxydative, la dégradation
+      d’un glucose a produit 4 ATP nets, 10 NADH,H⁺ et 2 FADH₂.</p>
+
+      <p>On utilise le modèle conventionnel :
+      3 ATP par NADH,H⁺ et 2 ATP par FADH₂.</p>
+
+      <ol>
+        <li>Calcule l’ATP provenant de l’oxydation des NADH,H⁺.</li>
+        <li>Calcule l’ATP provenant de l’oxydation des FADH₂.</li>
+        <li>Déduis le bilan de la phosphorylation oxydative,
+        puis celui de la respiration entière.</li>
+        <li>Un élève trouve 42 ATP après avoir ajouté une seconde fois
+        les 4 ATP directs. Explique son erreur.</li>
+      </ol>
+
+      <label for="reponse2">Mes réponses :</label>
+      <textarea id="reponse2"
+        placeholder="Sépare l’ATP direct de l’ATP produit par phosphorylation oxydative."></textarea>
+
+      <div class="actions">
+        <button class="button" type="button"
+          aria-expanded="false" aria-controls="correction2">
+          Vérifier mes réponses →
+        </button>
+      </div>
+
+      <div class="correction" id="correction2" hidden>
+        <h3>Correction expliquée</h3>
+        <p><strong>1.</strong> 10 × 3 = <strong>30 ATP</strong>.</p>
+        <p><strong>2.</strong> 2 × 2 = <strong>4 ATP</strong>.</p>
+        <p><strong>3.</strong> Phosphorylation oxydative :
+        30 + 4 = <strong>34 ATP</strong>.
+        Respiration entière : 34 + 4 = <strong>38 ATP</strong>.</p>
+        <p><strong>4.</strong> Les 38 ATP comprennent déjà les
+        4 ATP directs. Les ajouter à nouveau revient
+        à les compter deux fois.</p>
+      </div>
+    </article>
+
+    <article class="exercise">
+      <h2>Exercice 3 — Calculer et interpréter un rendement</h2>
+      <p>Données : énergie du glucose = 2 840 kJ/mol ;
+      valeur énergétique de l’ATP = 30,5 kJ/mol.</p>
+
+      <ol>
+        <li>Calcule l’énergie conservée dans l’ATP
+        pour une respiration à 38 ATP.</li>
+        <li>Calcule son rendement énergétique.</li>
+        <li>Effectue les mêmes calculs pour une fermentation à 2 ATP.</li>
+        <li>Explique pourquoi la respiration n’a pas un rendement de 100 %.</li>
+        <li>Pourquoi le faible rendement d’une fermentation
+        ne signifie-t-il pas que toute l’énergie restante
+        est transformée en chaleur ?</li>
+      </ol>
+
+      <label for="reponse3">Mes réponses :</label>
+      <textarea id="reponse3"
+        placeholder="Écris la formule, remplace les valeurs, puis interprète."></textarea>
+
+      <div class="actions">
+        <button class="button" type="button"
+          aria-expanded="false" aria-controls="correction3">
+          Vérifier mes réponses →
+        </button>
+      </div>
+
+      <div class="correction" id="correction3" hidden>
+        <h3>Correction expliquée</h3>
+        <p><strong>1.</strong> 38 × 30,5 = <strong>1 159 kJ</strong>
+        conservés dans l’ATP par mole de glucose.</p>
+        <p><strong>2.</strong> Rr = (1 159 / 2 840) × 100
+        ≈ <strong>40,8 %</strong>.</p>
+        <p><strong>3.</strong> Énergie conservée :
+        2 × 30,5 = <strong>61 kJ</strong>.
+        Rf = (61 / 2 840) × 100 ≈ <strong>2,15 %</strong>.</p>
+        <p><strong>4.</strong> Toute l’énergie libérée n’est pas
+        conservée dans l’ATP. Une partie est
+        dissipée (dispersée) sous forme de chaleur.</p>
+        <p><strong>5.</strong> La dégradation du glucose est partielle.
+        Les produits organiques, éthanol ou lactate,
+        conservent une partie importante de son énergie chimique.</p>
+      </div>
+    </article>
+
+    <section class="card">
+      <h2>✅ Avant de terminer</h2>
+      <div class="essential">
+        <strong>Fermentations :</strong> régénération du NAD⁺
+        et bilan net de 2 ATP par glucose.<br>
+        <strong>Respiration :</strong> 38 ATP dans le modèle
+        conventionnel utilisé pour les calculs.<br>
+        <strong>Rendement :</strong> énergie conservée dans l’ATP
+        rapportée à l’énergie initiale du glucose.
+      </div>
+
+      <p>Tu dois pouvoir comparer les voies, retrouver les bilans
+      et expliquer la différence entre dégradation totale
+      et rendement de 100 %.</p>
+
+      <div class="navigation">
+        <a href="cours-phosphorylation-oxydative.html" class="button">
+          ← Revoir la phosphorylation oxydative
+        </a>
+        <a href="cours.html" class="button">
+          Retour au travail à faire
+        </a>
+      </div>
+    </section>
+
+    <footer>LABNIHI Brahim – Prof SVT · École SVT</footer>
+  </main>
+
+  <script>
+    document.querySelectorAll('button[aria-controls]').forEach(function(button) {
+      button.addEventListener('click', function() {
+        const correction = document.getElementById(
+          button.getAttribute('aria-controls')
+        );
+        const ouvrir = button.getAttribute('aria-expanded') !== 'true';
+        correction.hidden = !ouvrir;
+        button.setAttribute('aria-expanded', String(ouvrir));
+        button.textContent = ouvrir
+          ? 'Masquer la correction ↑'
+          : 'Vérifier mes réponses →';
+      });
+    });
+  </script>
+</body>
+</html>
