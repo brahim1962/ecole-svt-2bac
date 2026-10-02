@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Respiration et fermentation — École SVT</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5faf7;
+      color: #003f46;
+      line-height: 1.7;
+    }
+    .navbar {
+      background: #004c54;
+      color: white;
+      padding: 14px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .logo { font-size: 23px; font-weight: bold; }
+    .logo span { color: #9de34b; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 20px; }
+    .nav-links a { color: white; text-decoration: none; font-weight: bold; }
+    main { width: 88%; max-width: 1100px; margin: 25px auto 45px; }
+    .card {
+      background: white;
+      padding: 26px;
+      margin-bottom: 22px;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,.05);
+    }
+    h1 { font-size: 28px; line-height: 1.3; }
+    h2 { font-size: 23px; color: #087f3e; }
+    h3 { font-size: 19px; }
+    .label { color: #087f3e; font-weight: bold; font-size: 13px; }
+    .essential {
+      background: #eef8ee;
+      border-left: 4px solid #087f3e;
+      padding: 16px;
+      margin-top: 18px;
+      border-radius: 8px;
+    }
+    .equation {
+      background: #f1f7fa;
+      padding: 14px;
+      border-radius: 8px;
+      text-align: center;
+      overflow-wrap: anywhere;
+      margin: 14px 0;
+    }
+    .table-wrap { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+    th, td { border: 1px solid #c8dfd0; padding: 11px; text-align: left; }
+    th { background: #eaf5ed; }
+    .exercise {
+      border: 2px dashed #38964f;
+      padding: 24px;
+      border-radius: 14px;
+      margin-bottom: 24px;
+      background: white;
+    }
+    li { margin-bottom: 8px; }
+    textarea {
+      display: block;
+      width: 100%;
+      min-height: 125px;
+      margin: 12px 0;
+      padding: 12px;
+      border: 1px solid #9abfa7;
+      border-radius: 8px;
+      font: inherit;
+      color: #1765ad;
+      resize: vertical;
+    }
+    .actions { display: flex; justify-content: flex-end; margin-top: 14px; }
+    .button {
+      display: inline-block;
+      border: 0;
+      border-radius: 8px;
+      background: #087f3e;
+      color: white;
+      padding: 12px 18px;
+      font: inherit;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .button:hover { background: #056632; }
+    .button:focus-visible { outline: 3px solid #73c900; outline-offset: 3px; }
+    .correction {
+      background: #edf8e9;
+      border: 1px solid #b8dca8;
+      padding: 18px;
+      margin-top: 18px;
+      border-radius: 10px;
+      color: #1765ad;
+    }
+    .correction h3 { color: #087f3e; margin-top: 0; }
+    [hidden] { display: none !important; }
+    footer { text-align: center; margin-top: 25px; font-size: 14px; }
+    @media (max-width: 700px) {
+      .navbar { flex-direction: column; align-items: flex-start; }
+      .nav-links { gap: 12px; font-size: 14px; }
+      main { width: 94%; }
+      .card, .exercise { padding: 18px; }
+      h1 { font-size: 24px; }
+      h2 { font-size: 21px; }
+      th, td { padding: 8px; font-size: 14px; }
+      .actions .button { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">🧬 ÉCOLE <span>SVT</span></div>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="index.html">🏠 Accueil</a>
+      <a href="mon-espace-svt.html">🎓 Mon Espace SVT</a>
+      <a href="mon-espace-svt.html#ressources">📚 Ressources</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <p class="label">BLOC 1 · COMPRENDRE ET S’ENTRAÎNER</p>
+      <h1>Respiration, fermentation et mitochondries</h1>
+      <p>Comment les cellules exploitent-elles l’énergie contenue dans le glucose ?</p>
+      <div class="essential">
+        <strong>Objectifs :</strong> distinguer respiration et fermentation,
+        analyser une expérience et reconnaître les compartiments d’une mitochondrie.
+      </div>
+      <p>Lis les notions, puis réponds aux exercices sur ton cahier ou dans les zones proposées.
+      Affiche ensuite les corrections pour comparer ton raisonnement.</p>
+      <p><small>Les réponses saisies sur cette page ne sont pas enregistrées ni envoyées au professeur.</small></p>
+      <a href="#exercices" class="button">Passer aux exercices →</a>
+    </section>
+
+    <section class="card">
+      <h2>1. Deux voies de dégradation du glucose</h2>
+      <p>Le glucose est une molécule organique contenant de l’énergie chimique.
+      Sa dégradation permet à la cellule de produire de l’ATP,
+      une molécule énergétique utilisée pour ses activités.</p>
+
+      <h3>La respiration cellulaire</h3>
+      <p>En présence de dioxygène, la respiration permet une dégradation totale
+      du glucose en dioxyde de carbone et en eau. Une partie de l’énergie
+      libérée permet la synthèse d’ATP ; une autre est dissipée sous forme de chaleur.</p>
+      <div class="equation">
+        C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> + 6 O<sub>2</sub>
+        → 6 CO<sub>2</sub> + 6 H<sub>2</sub>O + énergie
+      </div>
+
+      <h3>La fermentation alcoolique</h3>
+      <p>En absence de dioxygène, la levure peut dégrader partiellement
+      le glucose par fermentation alcoolique. Elle produit de l’éthanol
+      et du dioxyde de carbone. Une partie de l’énergie reste contenue
+      dans l’éthanol ; la production d’ATP par glucose est faible.</p>
+      <div class="equation">
+        C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>
+        → 2 C<sub>2</sub>H<sub>5</sub>OH + 2 CO<sub>2</sub> + énergie
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Comparaison des deux voies chez la levure</caption>
+          <thead>
+            <tr><th>Critère</th><th>Respiration</th><th>Fermentation alcoolique</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Conditions étudiées</td><td>Présence d’O₂</td><td>Absence d’O₂</td></tr>
+            <tr><td>Dégradation du glucose</td><td>Totale</td><td>Partielle</td></tr>
+            <tr><td>Produits</td><td>CO₂ et H₂O</td><td>Éthanol et CO₂</td></tr>
+            <tr><td>ATP produit par glucose</td><td>Quantité élevée</td><td>Quantité faible : 2 ATP</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="essential">
+        <strong>Vocabulaire :</strong> aérobie = en présence de dioxygène ;
+        anaérobie = en absence de dioxygène.<br>
+        Le <strong>métabolisme</strong> regroupe les réactions chimiques cellulaires :
+        le <strong>catabolisme</strong> correspond aux dégradations,
+        et l’<strong>anabolisme</strong> aux synthèses.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2. La mitochondrie et la respiration</h2>
+      <p>Les mitochondries interviennent dans la respiration cellulaire.
+      La première étape, la glycolyse, se déroule cependant dans le
+      <strong>hyaloplasme</strong>. Les étapes suivantes font intervenir
+      la matrice et la membrane interne mitochondriales.</p>
+      <ul>
+        <li><strong>Membrane externe :</strong> délimite la mitochondrie.</li>
+        <li><strong>Membrane interne :</strong> porte notamment la chaîne respiratoire et l’ATP synthase.</li>
+        <li><strong>Espace intermembranaire :</strong> situé entre les deux membranes.</li>
+        <li><strong>Matrice :</strong> compartiment interne où se déroulent la formation de l’acétyl-CoA et le cycle de Krebs.</li>
+        <li><strong>Crêtes :</strong> replis de la membrane interne qui augmentent sa surface.</li>
+      </ul>
+      <div class="essential">
+        La fermentation se déroule dans le <strong>hyaloplasme</strong>.
+        La présence de mitochondries dans une cellule ne signifie donc pas
+        qu’elle respire dans toutes les conditions.
+      </div>
+    </section>
+
+    <section id="exercices" class="card">
+      <h2>✏️ À toi de raisonner</h2>
+      <p>Pour chaque exercice : observe les données, réponds, puis compare
+      ta réponse à la correction expliquée.</p>
+    </section>
+
+    <article class="exercise">
+      <h2>Exercice 1 — Exploiter une expérience</h2>
+      <p>On cultive initialement 2 g de levures dans deux milieux contenant du glucose.
+      Après un certain temps, on obtient les résultats suivants :</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Milieu</th><th>Glucose consommé</th>
+              <th>Masse de levure produite</th><th>Produits rejetés</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>A : aérobie</td><td>0,098 g</td><td>0,225 g</td><td>CO₂ et H₂O</td></tr>
+            <tr><td>B : anaérobie</td><td>0,45 g</td><td>0,024 g</td><td>Éthanol et CO₂</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ol>
+        <li>Compare la consommation de glucose et la production de levure dans les deux milieux.</li>
+        <li>Identifie la voie métabolique utilisée dans chaque milieu en justifiant ta réponse.</li>
+        <li>Explique pourquoi la levure se développe davantage dans le milieu A malgré une consommation de glucose plus faible.</li>
+      </ol>
+      <label for="reponse1">Mes réponses :</label>
+      <textarea id="reponse1" placeholder="Observe → compare → interprète → déduis."></textarea>
+      <div class="actions">
+        <button class="button" type="button" aria-expanded="false"
+          aria-controls="correction1">Vérifier mes réponses →</button>
+      </div>
+      <div class="correction" id="correction1" hidden>
+        <h3>Correction expliquée</h3>
+        <p><strong>1.</strong> Dans le milieu A, la consommation de glucose
+        est plus faible (0,098 g contre 0,45 g), mais la masse de levure
+        produite est plus élevée (0,225 g contre 0,024 g).</p>
+        <p><strong>2.</strong> Dans A, la présence d’O₂ et le rejet de CO₂
+        et d’H₂O indiquent une respiration. Dans B, l’absence d’O₂ et
+        le rejet d’éthanol et de CO₂ indiquent une fermentation alcoolique.</p>
+        <p><strong>3.</strong> La respiration fournit davantage d’ATP par
+        quantité de glucose consommée. Cela permet une production de biomasse
+        plus importante dans les conditions de cette expérience.</p>
+      </div>
+    </article>
+
+    <article class="exercise">
+      <h2>Exercice 2 — Comprendre les différences</h2>
+      <ol>
+        <li>Écris la réaction globale de la respiration cellulaire.</li>
+        <li>Écris la réaction globale de la fermentation alcoolique.</li>
+        <li>Pourquoi parle-t-on de dégradation partielle dans le cas de la fermentation ?</li>
+        <li>Le rejet de CO₂ suffit-il à distinguer ces deux voies ? Justifie.</li>
+      </ol>
+      <label for="reponse2">Mes réponses :</label>
+      <textarea id="reponse2" placeholder="Écris les réactions et justifie tes réponses."></textarea>
+      <div class="actions">
+        <button class="button" type="button" aria-expanded="false"
+          aria-controls="correction2">Vérifier mes réponses →</button>
+      </div>
+      <div class="correction" id="correction2" hidden>
+        <h3>Correction expliquée</h3>
+        <p><strong>1.</strong> C₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O + énergie.</p>
+        <p><strong>2.</strong> C₆H₁₂O₆ → 2 C₂H₅OH + 2 CO₂ + énergie.</p>
+        <p><strong>3.</strong> L’éthanol produit est une molécule organique
+        qui conserve une partie de l’énergie chimique initiale du glucose.</p>
+        <p><strong>4.</strong> Non. Les deux voies rejettent du CO₂.
+        Il faut aussi considérer la consommation d’O₂ et les autres produits,
+        notamment l’éthanol.</p>
+      </div>
+    </article>
+
+    <article class="exercise">
+      <h2>Exercice 3 — Relier structure et fonction</h2>
+      <p>Dans les observations du cours, les levures cultivées en milieu
+      aérobie présentent des mitochondries plus développées, avec des crêtes
+      plus importantes que celles des levures cultivées en milieu anaérobie.</p>
+      <ol>
+        <li>Que sont les crêtes mitochondriales ?</li>
+        <li>Quel est l’intérêt d’une membrane interne présentant de nombreux replis ?</li>
+        <li>Indique le lieu de la glycolyse et celui de la fermentation.</li>
+        <li>Corrige cette affirmation : « Toutes les étapes de la respiration se déroulent dans la mitochondrie. »</li>
+      </ol>
+      <label for="reponse3">Mes réponses :</label>
+      <textarea id="reponse3" placeholder="Relie les structures à leur rôle."></textarea>
+      <div class="actions">
+        <button class="button" type="button" aria-expanded="false"
+          aria-controls="correction3">Vérifier mes réponses →</button>
+      </div>
+      <div class="correction" id="correction3" hidden>
+        <h3>Correction expliquée</h3>
+        <p><strong>1.</strong> Les crêtes sont des replis de la membrane interne mitochondriale.</p>
+        <p><strong>2.</strong> Elles augmentent la surface de cette membrane,
+        qui porte les composants de la chaîne respiratoire et l’ATP synthase.</p>
+        <p><strong>3.</strong> La glycolyse et la fermentation se déroulent dans le hyaloplasme.</p>
+        <p><strong>4.</strong> La glycolyse se déroule dans le hyaloplasme.
+        La formation de l’acétyl-CoA et le cycle de Krebs se déroulent dans
+        la matrice mitochondriale ; la phosphorylation oxydative fait intervenir
+        la membrane interne.</p>
+      </div>
+    </article>
+
+    <section class="card">
+      <h2>✅ Avant de terminer</h2>
+      <p>Tu dois pouvoir distinguer les deux voies, justifier tes conclusions
+      à partir des données et nommer les compartiments de la mitochondrie.</p>
+      <a href="cours.html" class="button">← Retour au travail à faire</a>
+    </section>
+
+    <footer>LABNIHI Brahim – Prof SVT · École SVT</footer>
+  </main>
+
+  <script>
+    document.querySelectorAll('button[aria-controls]').forEach(function(button) {
+      button.addEventListener('click', function() {
+        const correction = document.getElementById(button.getAttribute('aria-controls'));
+        const ouvrir = button.getAttribute('aria-expanded') !== 'true';
+        correction.hidden = !ouvrir;
+        button.setAttribute('aria-expanded', String(ouvrir));
+        button.textContent = ouvrir
+          ? 'Masquer la correction ↑'
+          : 'Vérifier mes réponses →';
+      });
+    });
+  </script>
+</body>
+</html>
