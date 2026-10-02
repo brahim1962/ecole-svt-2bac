@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phosphorylation oxydative — École SVT</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5faf7;
+      color: #003f46;
+      line-height: 1.7;
+    }
+    .navbar {
+      background: #004c54;
+      color: white;
+      padding: 14px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .logo { font-size: 23px; font-weight: bold; }
+    .logo span { color: #9de34b; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 20px; }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    main {
+      width: 88%;
+      max-width: 1100px;
+      margin: 25px auto 45px;
+    }
+    .card {
+      background: white;
+      padding: 26px;
+      margin-bottom: 22px;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,.05);
+    }
+    h1 { font-size: 28px; line-height: 1.3; }
+    h2 { font-size: 23px; color: #087f3e; }
+    h3 { font-size: 19px; }
+    .label {
+      color: #087f3e;
+      font-weight: bold;
+      font-size: 13px;
+    }
+    .essential {
+      background: #eef8ee;
+      border-left: 4px solid #087f3e;
+      padding: 16px;
+      margin-top: 18px;
+      border-radius: 8px;
+    }
+    .equation {
+      background: #f1f7fa;
+      padding: 16px;
+      border-radius: 8px;
+      text-align: center;
+      overflow-wrap: anywhere;
+      margin: 16px 0;
+    }
+    .table-wrap { overflow-x: auto; }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 15px 0;
+    }
+    th, td {
+      border: 1px solid #c8dfd0;
+      padding: 11px;
+      text-align: left;
+    }
+    th { background: #eaf5ed; }
+    .exercise {
+      border: 2px dashed #38964f;
+      padding: 24px;
+      border-radius: 14px;
+      margin-bottom: 24px;
+      background: white;
+    }
+    li { margin-bottom: 8px; }
+    textarea {
+      display: block;
+      width: 100%;
+      min-height: 125px;
+      margin: 12px 0;
+      padding: 12px;
+      border: 1px solid #9abfa7;
+      border-radius: 8px;
+      font: inherit;
+      color: #1765ad;
+      resize: vertical;
+    }
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 14px;
+    }
+    .button {
+      display: inline-block;
+      border: 0;
+      border-radius: 8px;
+      background: #087f3e;
+      color: white;
+      padding: 12px 18px;
+      font: inherit;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .button:hover { background: #056632; }
+    .button:focus-visible {
+      outline: 3px solid #73c900;
+      outline-offset: 3px;
+    }
+    .correction {
+      background: #edf8e9;
+      border: 1px solid #b8dca8;
+      padding: 18px;
+      margin-top: 18px;
+      border-radius: 10px;
+      color: #1765ad;
+    }
+    .correction h3 { color: #087f3e; margin-top: 0; }
+    [hidden] { display: none !important; }
+    .navigation { display: flex; flex-wrap: wrap; gap: 12px; }
+    footer { text-align: center; margin-top: 25px; font-size: 14px; }
+
+    @media (max-width: 700px) {
+      .navbar { flex-direction: column; align-items: flex-start; }
+      .nav-links { gap: 12px; font-size: 14px; }
+      main { width: 94%; }
+      .card, .exercise { padding: 18px; }
+      h1 { font-size: 24px; }
+      h2 { font-size: 21px; }
+      th, td { padding: 8px; font-size: 14px; }
+      .actions .button { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="logo">🧬 ÉCOLE <span>SVT</span></div>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="index.html">🏠 Accueil</a>
+      <a href="mon-espace-svt.html">🎓 Mon Espace SVT</a>
+      <a href="mon-espace-svt.html#ressources">📚 Ressources</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <p class="label">BLOC 4 · COMPRENDRE ET S’ENTRAÎNER</p>
+      <h1>La phosphorylation oxydative</h1>
+      <p>Comment l’énergie des transporteurs réduits permet-elle
+      la production d’ATP ?</p>
+
+      <div class="essential">
+        <strong>Objectifs :</strong> comprendre le transfert des électrons,
+        la formation du gradient de protons et les rôles du dioxygène
+        et de l’ATP synthase.
+      </div>
+
+      <p>Étudie le mécanisme, puis réponds aux exercices
+      avant d’afficher les corrections.</p>
+      <p><small>Les réponses saisies ne sont pas enregistrées
+      ni envoyées au professeur.</small></p>
+      <a href="#exercices" class="button">Passer aux exercices →</a>
+    </section>
+
+    <section class="card">
+      <h2>1. Les composants de la membrane interne</h2>
+      <p>La <strong>membrane interne mitochondriale</strong>
+      contient deux ensembles essentiels :</p>
+
+      <ul>
+        <li><strong>La chaîne respiratoire :</strong> des complexes
+        protéiques et des transporteurs qui assurent le transfert
+        des électrons jusqu’au dioxygène.</li>
+        <li><strong>L’ATP synthase :</strong> une enzyme qui utilise
+        l’énergie du retour des protons H⁺ vers la matrice
+        pour synthétiser l’ATP.</li>
+      </ul>
+
+      <p>La chaîne comprend les complexes I, II, III et IV,
+      la quinone Q et le cytochrome c.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Origine des électrons</th><th>Parcours simplifié</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>NADH,H⁺</td>
+              <td>Complexe I → Q → Complexe III → Cytochrome c → Complexe IV → O₂</td>
+            </tr>
+            <tr>
+              <td>FADH₂ associé au complexe II</td>
+              <td>Complexe II → Q → Complexe III → Cytochrome c → Complexe IV → O₂</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="essential">
+        Les complexes I et II constituent deux voies d’entrée
+        des électrons. Les électrons ne passent pas successivement
+        par I puis II.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2. L’oxydation des transporteurs réduits</h2>
+      <p>Les transporteurs réduits cèdent leurs électrons :
+      ils sont <strong>oxydés</strong>.</p>
+
+      <h3>Oxydation du NADH,H⁺</h3>
+      <div class="equation">
+        NADH,H⁺ → NAD⁺ + 2 H⁺ + 2 e⁻
+      </div>
+
+      <h3>Oxydation du FADH₂</h3>
+      <div class="equation">
+        FADH₂ → FAD + 2 H⁺ + 2 e⁻
+      </div>
+
+      <p>Les électrons sont transférés entre les composants
+      de la chaîne respiratoire. L’énergie libérée lors de ces
+      transferts permet le pompage de protons.</p>
+    </section>
+
+    <section class="card">
+      <h2>3. La formation du gradient de protons</h2>
+      <p>Les complexes <strong>I, III et IV</strong> utilisent
+      l’énergie des transferts d’électrons pour déplacer des H⁺
+      de la <strong>matrice</strong> vers
+      l’<strong>espace intermembranaire</strong>.
+      Le complexe II ne pompe pas de protons.</p>
+
+      <p>Les protons s’accumulent dans l’espace intermembranaire.
+      Il se forme une différence de concentration et de charge
+      électrique entre les deux côtés de la membrane :
+      un <strong>gradient électrochimique de protons</strong>.</p>
+
+      <div class="essential">
+        La membrane interne est très peu perméable aux H⁺.
+        Cette propriété permet le maintien du gradient,
+        qui constitue une réserve d’énergie.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>4. L’ATP synthase et la production d’ATP</h2>
+      <p>Les H⁺ reviennent vers la matrice en traversant
+      l’<strong>ATP synthase</strong>, associée aux sphères
+      pédonculées de la membrane interne.</p>
+
+      <p>L’énergie de ce passage permet la phosphorylation de l’ADP :
+      un phosphate inorganique Pi est associé à l’ADP pour former l’ATP.</p>
+
+      <div class="equation">
+        ADP + Pi + énergie → ATP + H₂O
+      </div>
+
+      <div class="essential">
+        <strong>Pompage :</strong> matrice → espace intermembranaire.<br>
+        <strong>Retour par l’ATP synthase :</strong>
+        espace intermembranaire → matrice.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>5. Le rôle du dioxygène</h2>
+      <p>Le dioxygène est l’<strong>accepteur final des électrons</strong>.
+      Il capte des électrons et réagit avec des protons pour former de l’eau :
+      il est <strong>réduit</strong>.</p>
+
+      <div class="equation">
+        ½ O₂ + 2 H⁺ + 2 e⁻ → H₂O
+      </div>
+
+      <p>Sans dioxygène, le transfert des électrons finit par s’arrêter.
+      Le pompage des protons cesse et la production d’ATP
+      par phosphorylation oxydative ne peut pas se poursuivre.</p>
+
+      <div class="essential">
+        La <strong>phosphorylation oxydative</strong> associe
+        l’oxydation des transporteurs réduits à la production d’ATP,
+        grâce à la chaîne respiratoire et au gradient de protons.
+      </div>
+    </section>
+
+    <section id="exercices" class="card">
+      <h2>✏️ À toi de raisonner</h2>
+      <p>Distingue le trajet des électrons de celui des protons.
+      Explique les relations entre les différentes étapes.</p>
+    </section>
+
+    <article class="exercise">
+      <h2>Exercice 1 — Reconstituer le mécanisme</h2>
+      <p>Voici cinq événements présentés dans le désordre :</p>
+      <ul>
+        <li>A : les H⁺ reviennent vers la matrice par l’ATP synthase.</li>
+        <li>B : le NADH,H⁺ cède ses électrons.</li>
+        <li>C : l’ATP synthase produit de l’ATP à partir d’ADP et de Pi.</li>
+        <li>D : le transfert des électrons permet le pompage des H⁺.</li>
+        <li>E : un gradient de protons se forme.</li>
+      </ul>
+
+      <ol>
+        <li>Classe les événements selon leur relation de cause à effet.</li>
+        <li>Indique le sens du pompage et celui du retour des H⁺.</li>
+        <li>Précise le devenir final des électrons.</li>
+      </ol>
+
+      <label for="reponse1">Mes réponses :</label>
+      <textarea id="reponse1"
+        placeholder="Relie le transfert des électrons à la production d’ATP."></textarea>
+
+      <div class="actions">
+        <button class="button" type="button"
+          aria-expanded="false" aria-controls="correction1">
+          Vérifier mes réponses →
+        </button>
+      </div>
+
+      <div class="correction" id="correction1" hidden>
+        <h3>Correction expliquée</h3>
+        <p><strong>1.</strong> B → D → E → A → C.
+        L’oxydation du transporteur fournit des électrons.
+        Leur transfert permet le pompage des protons,
+        puis la formation du gradient.
+        Le retour des H⁺ par l’ATP synthase permet la synthèse d’ATP.</p>
+        <p><strong>2.</strong> Pompage : matrice vers espace
+        intermembranaire. Retour : espace intermembranaire
+        vers matrice.</p>
+        <p><strong>3.</strong> Les électrons sont captés par le dioxygène,
+        qui est réduit en eau en présence de H⁺.</p>
+      </div>
+    </article>
+
+    <article class="exercise">
+      <h2>Exercice 2 — Comprendre le rôle de l’oxygène</h2>
+      <p>On place des mitochondries fonctionnelles dans un milieu
+      contenant du dioxygène, de l’ADP, du Pi et des substrats
+      fournissant des électrons à la chaîne respiratoire.
+      On observe une consommation d’O₂ et une production d’ATP.</p>
+
+      <p>Lorsque le dioxygène est épuisé, la production d’ATP
+      par phosphorylation oxydative s’arrête.</p>
+
+      <ol>
+        <li>Explique pourquoi le dioxygène est consommé.</li>
+        <li>Quel produit se forme lors de sa réduction ?</li>
+        <li>Explique l’arrêt de la production d’ATP lorsque l’O₂ est épuisé.</li>
+        <li>L’O₂ est-il directement utilisé par l’ATP synthase ?</li>
+      </ol>
+
+      <label for="reponse2">Mes réponses :</label>
+      <textarea id="reponse2"
+        placeholder="Explique le lien entre O₂, électrons, gradient et ATP."></textarea>
+
+      <div class="actions">
+        <button class="button" type="button"
+          aria-expanded="false" aria-controls="correction2">
+          Vérifier mes réponses →
+        </button>
+      </div>
+
+      <div class="correction" id="correction2" hidden>
+        <h3>Correction expliquée</h3>
+        <p><strong>1.</strong> L’O₂ est consommé parce qu’il capte
+        les électrons à la fin de la chaîne respiratoire.</p>
+        <p><strong>2.</strong> Sa réduction produit de l’eau :
+        ½ O₂ + 2 H⁺ + 2 e⁻ → H₂O.</p>
+        <p><strong>3.</strong> Sans accepteur final, le transfert
+        des électrons s’arrête. Le pompage des H⁺ cesse,
+        le gradient se dissipe et ne permet plus une production
+        durable d’ATP.</p>
+        <p><strong>4.</strong> Non. L’ATP synthase utilise l’énergie
+        du retour des H⁺. L’O₂ intervient à la fin
+        de la chaîne respiratoire.</p>
+      </div>
+    </article>
+
+    <article class="exercise">
+      <h2>Exercice 3 — Tester l’importance du gradient</h2>
+      <p>Une substance rend la membrane interne perméable aux H⁺.
+      Les protons peuvent alors revenir vers la matrice
+      sans traverser l’ATP synthase.</p>
+
+      <ol>
+        <li>Quel est l’effet de cette substance sur le gradient de protons ?</li>
+        <li>Quelle conséquence attends-tu sur la production d’ATP
+        par phosphorylation oxydative ?</li>
+        <li>Le transfert des électrons et la consommation d’O₂
+        peuvent-ils se poursuivre si les autres conditions restent favorables ?</li>
+        <li>Que montre cette expérience sur le rôle de la membrane interne ?</li>
+      </ol>
+
+      <label for="reponse3">Mes réponses :</label>
+      <textarea id="reponse3"
+        placeholder="Distingue transfert des électrons et synthèse d’ATP."></textarea>
+
+      <div class="actions">
+        <button class="button" type="button"
+          aria-expanded="false" aria-controls="correction3">
+          Vérifier mes réponses →
+        </button>
+      </div>
+
+      <div class="correction" id="correction3" hidden>
+        <h3>Correction expliquée</h3>
+        <p><strong>1.</strong> Le passage libre des H⁺ dissipe
+        le gradient : la différence entre les deux côtés
+        de la membrane diminue.</p>
+        <p><strong>2.</strong> La production d’ATP diminue fortement,
+        voire s’arrête si le gradient est complètement dissipé.</p>
+        <p><strong>3.</strong> Oui. Le transfert des électrons
+        et la consommation d’O₂ peuvent se poursuivre,
+        mais leur énergie n’est plus efficacement utilisée
+        pour synthétiser l’ATP. Elle est davantage dissipée
+        sous forme de chaleur.</p>
+        <p><strong>4.</strong> La faible perméabilité de la membrane
+        interne aux H⁺ est indispensable au maintien du gradient
+        et au couplage entre oxydation et phosphorylation.</p>
+      </div>
+    </article>
+
+    <section class="card">
+      <h2>✅ Avant de terminer</h2>
+      <div class="essential">
+        Les transporteurs réduits fournissent les électrons.
+        La chaîne respiratoire permet le pompage des H⁺.
+        Le gradient fournit l’énergie à l’ATP synthase.
+        Le dioxygène capte les électrons et est réduit en eau.
+      </div>
+
+      <p>Tu dois pouvoir expliquer le rôle de chaque composant
+      et distinguer les deux sens de déplacement des protons.</p>
+
+      <div class="navigation">
+        <a href="cours-cycle-krebs.html" class="button">
+          ← Revoir le cycle de Krebs
+        </a>
+        <a href="cours.html" class="button">
+          Retour au travail à faire
+        </a>
+      </div>
+    </section>
+
+    <footer>LABNIHI Brahim – Prof SVT · École SVT</footer>
+  </main>
+
+  <script>
+    document.querySelectorAll('button[aria-controls]').forEach(function(button) {
+      button.addEventListener('click', function() {
+        const correction = document.getElementById(
+          button.getAttribute('aria-controls')
+        );
+        const ouvrir = button.getAttribute('aria-expanded') !== 'true';
+        correction.hidden = !ouvrir;
+        button.setAttribute('aria-expanded', String(ouvrir));
+        button.textContent = ouvrir
+          ? 'Masquer la correction ↑'
+          : 'Vérifier mes réponses →';
+      });
+    });
+  </script>
+</body>
+</html>
