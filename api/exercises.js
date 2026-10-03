@@ -22,7 +22,7 @@ module.exports = async function handler(req, res) {
         status(code) { sessionStatus = code; return this; },
         json(data) { sessionData = data; return this; }
       };
-      await schoolAuth({ ...req, method: 'GET', query: { action: 'session' } }, sessionResponse);
+      await schoolAuth({ method: 'GET', headers: req.headers, socket: req.socket, query: { action: 'session' } }, sessionResponse);
       if (sessionStatus !== 200) return res.status(sessionStatus).json(sessionData);
       const code = sessionData.student.Students_code;
       const headers = { apikey: secret, 'Content-Type': 'application/json' };
