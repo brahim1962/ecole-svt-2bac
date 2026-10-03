@@ -21,6 +21,23 @@
 <p id="message" class="message" role="status" aria-live="polite"></p>
 <div id="dashboard" hidden>
 <div class="toolbar"><label for="filter">Afficher</label><select id="filter"><option value="all">Tous les travaux</option><option value="submitted">À corriger</option><option value="reviewed">À reprendre par l’élève</option><option value="completed">Terminés</option></select><button id="reload" class="secondary">Actualiser</button><button id="logout" class="secondary">Se déconnecter</button></div>
+<section aria-labelledby="accountsTitle">
+<h2 id="accountsTitle">Accès des élèves à École SVT</h2>
+<p>Créer un mot de passe personnel ou remplacer celui d’un élève. Remettez-le uniquement à l’élève concerné.</p>
+<button id="loadAccounts" type="button" class="secondary">Afficher / actualiser les élèves</button>
+<form id="accountForm" hidden>
+<label for="accountSearch">Rechercher un élève, un code ou une classe</label>
+<input id="accountSearch" type="search" autocomplete="off">
+<label for="accountStudent">Élève</label><select id="accountStudent" required></select>
+<p id="accountDetails" class="muted"></p>
+<label for="studentPassword">Nouveau mot de passe personnel (10 caractères minimum)</label>
+<input id="studentPassword" type="password" minlength="10" maxlength="128" autocomplete="new-password" required>
+<div class="toolbar"><button id="generatePassword" type="button" class="secondary">Générer un mot de passe</button><button id="showPassword" type="button" class="secondary" aria-pressed="false">Afficher le mot de passe</button><button id="copyPassword" type="button" class="secondary">Copier le mot de passe</button></div>
+<p class="muted">Après enregistrement, les anciennes connexions de cet élève seront invalidées. Le mot de passe existant ne peut pas être affiché.</p>
+<button id="savePassword" type="submit">Enregistrer le nouveau mot de passe</button>
+</form>
+<p id="accountMessage" class="message" role="status" aria-live="polite"></p>
+</section>
 <p id="count" class="muted"></p><div id="works"></div>
 </div>
 </main><footer>Comprendre avant de mémoriser, raisonner avant de répondre, progresser vers l’autonomie.</footer>
@@ -28,7 +45,7 @@
 'use strict';
 const SUPABASE_URL='https://jnbgeclyxlrjggyewbaq.supabase.co';
 const PUBLIC_KEY='sb_publishable_3U3GQYUOvopdBYANuH_bdg_7_Qgqzg0';
-let accessToken='',submissions=[];
+let accessToken='',submissions=[],schoolStudents=[];
 const $=id=>document.getElementById(id);
 const statusNames={submitted:'À corriger',reviewed:'À reprendre par l’élève',completed:'Terminé'};
 const exerciseNames={'u1p1-restitution':'Restitution des connaissances','u1p1-raisonnement':'Raisonnement scientifique'};
@@ -75,7 +92,52 @@ $('loginForm').addEventListener('submit',async e=>{e.preventDefault();$('connect
  const data=await r.json();if(!r.ok||!data.access_token)throw new Error('Connexion refusée. Vérifiez vos identifiants.');
  accessToken=data.access_token;$('password').value='';await load();$('login').hidden=true;$('dashboard').hidden=false;say('Connexion réussie.');
  }catch(err){accessToken='';say(err.message);}finally{$('connect').disabled=false;}});
+async function schoolApi(method,body){
+ const r=await fetch('/api/school-auth'+(method==='GET'?'?action=accounts':''),{method,headers:{Authorization:'Bearer '+accessToken,'Content-Type':'application/json'},...(body?{body:JSON.stringify(body)}:{}),cache:'no-store'});
+ const data=await r.json();if(!r.ok)throw new Error(data.error||'La demande a échoué.');return data;
+}
+function accountSay(text){$('accountMessage').textContent=text;}
+function clearPassword(){ $('studentPassword').value='';$('studentPassword').type='password';$('showPassword').textContent='Afficher le mot de passe';$('showPassword').setAttribute('aria-pressed','false'); }
+function selectedStudent(){return schoolStudents.find(s=>s.Students_code===$('accountStudent').value);}
+function accountDetails(){
+ clearPassword();accountSay('');const s=selectedStudent();
+ $('accountDetails').textContent=s?(s.has_password?'Un mot de passe existe déjà pour cet élève.':'Cet élève n’a pas encore de mot de passe.'):'';
+ $('savePassword').disabled=!s;
+}
+function renderAccounts(){
+ const term=$('accountSearch').value.trim().toLocaleLowerCase('fr');
+ const list=schoolStudents.filter(s=>s.active===true&&[s.Students_code,s.first_name,s.last_name,s.class_name].join(' ').toLocaleLowerCase('fr').includes(term));
+ $('accountStudent').replaceChildren();const placeholder=node('option',list.length?'Choisir un élève…':'Aucun élève actif correspondant');placeholder.value='';$('accountStudent').append(placeholder);
+ for(const s of list){const option=node('option',[s.first_name,s.last_name].filter(Boolean).join(' ')+' — '+s.Students_code+' — '+(s.class_name||'Sans classe'));option.value=s.Students_code;$('accountStudent').append(option);}
+ accountDetails();
+}
+$('loadAccounts').addEventListener('click',async()=>{
+ $('loadAccounts').disabled=true;accountSay('Chargement des élèves…');
+ try{const data=await schoolApi('GET');schoolStudents=data.students;$('accountForm').hidden=false;renderAccounts();accountSay('Liste des élèves chargée.');}
+ catch(err){accountSay(err.message);}finally{$('loadAccounts').disabled=false;}
+});
+$('accountSearch').addEventListener('input',renderAccounts);
+$('accountStudent').addEventListener('change',accountDetails);
+$('generatePassword').addEventListener('click',()=>{
+ const alphabet='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789';let value='';
+ while(value.length<14){const bytes=crypto.getRandomValues(new Uint8Array(24));for(const b of bytes){if(b<256-256%alphabet.length)value+=alphabet[b%alphabet.length];if(value.length===14)break;}}
+ $('studentPassword').value=value;accountSay('Mot de passe généré. Enregistrez-le avant de le remettre à l’élève.');
+});
+$('showPassword').addEventListener('click',()=>{
+ const show=$('studentPassword').type==='password';$('studentPassword').type=show?'text':'password';$('showPassword').textContent=show?'Masquer le mot de passe':'Afficher le mot de passe';$('showPassword').setAttribute('aria-pressed',String(show));
+});
+$('copyPassword').addEventListener('click',async()=>{
+ if(!$('studentPassword').value){accountSay('Saisissez ou générez d’abord un mot de passe.');return;}
+ try{await navigator.clipboard.writeText($('studentPassword').value);accountSay('Mot de passe copié.');}
+ catch{$('studentPassword').focus();$('studentPassword').select();accountSay('Appuyez sur Ctrl + C pour copier le mot de passe.');}
+});
+$('accountForm').addEventListener('submit',async e=>{
+ e.preventDefault();const s=selectedStudent();if(!s)return;
+ $('savePassword').disabled=true;$('accountStudent').disabled=true;$('accountSearch').disabled=true;accountSay('Enregistrement…');
+ try{await schoolApi('POST',{action:'set-password',student_code:s.Students_code,password:$('studentPassword').value});s.has_password=true;$('accountDetails').textContent='Un mot de passe existe pour cet élève.';accountSay('Mot de passe enregistré pour '+[s.first_name,s.last_name].filter(Boolean).join(' ')+' ('+s.Students_code+'). Copiez-le pour le remettre à cet élève.');}
+ catch(err){accountSay(err.message);}finally{$('savePassword').disabled=false;$('accountStudent').disabled=false;$('accountSearch').disabled=false;}
+});
 $('filter').addEventListener('change',render);
 $('reload').addEventListener('click',async()=>{ $('reload').disabled=true;try{await load();say('Liste actualisée.');}catch(err){say(err.message);}finally{$('reload').disabled=false;}});
-$('logout').addEventListener('click',async()=>{const previous=accessToken;accessToken='';submissions=[];$('works').replaceChildren();$('dashboard').hidden=true;$('login').hidden=false;say('Vous êtes déconnecté.');try{await fetch(SUPABASE_URL+'/auth/v1/logout',{method:'POST',headers:{apikey:PUBLIC_KEY,Authorization:'Bearer '+previous}});}catch{}});
+$('logout').addEventListener('click',async()=>{const previous=accessToken;accessToken='';submissions=[];schoolStudents=[];clearPassword();$('accountStudent').replaceChildren();$('accountSearch').value='';$('accountDetails').textContent='';$('accountForm').hidden=true;accountSay('');$('works').replaceChildren();$('dashboard').hidden=true;$('login').hidden=false;say('Vous êtes déconnecté.');try{await fetch(SUPABASE_URL+'/auth/v1/logout',{method:'POST',headers:{apikey:PUBLIC_KEY,Authorization:'Bearer '+previous}});}catch{}});
 </script></body></html>
