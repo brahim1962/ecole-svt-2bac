@@ -76,7 +76,7 @@ function render(){
   const feedback=node('textarea');feedback.id=feedbackId;feedback.value=s.teacher_feedback||'';feedback.maxLength=20000;
   const sl=node('label','Note (facultative)');sl.htmlFor=scoreId;const score=node('input');score.id=scoreId;score.type='number';score.min='0';score.step='0.25';score.value=s.score??'';
   const tl=node('label','Suite du travail');tl.htmlFor=statusId;const state=node('select');state.id=statusId;
-  for(const [value,text] of [['reviewed','Demander une version corrigée'],['completed','Terminer le travail']]){const o=node('option',text);o.value=value;state.append(o);}state.value=s.status==='completed'?'completed':'reviewed';
+  for(const [value,text] of [['reviewed','Demander une version corrigée'],['completed','Travail terminé']]){const o=node('option',text);o.value=value;state.append(o);}state.value=s.status==='completed'?'completed':'reviewed';
   const save=node('button','Enregistrer le retour');save.type='submit';const result=node('p');result.setAttribute('role','status');
   form.append(fl,feedback,sl,score,tl,state,save,result);
   form.addEventListener('submit',async e=>{e.preventDefault();save.disabled=true;result.textContent='Enregistrement…';try{
