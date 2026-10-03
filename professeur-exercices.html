@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Correction des exercices — École SVT</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f5f8f5;color:#213b30;font:17px/1.6 Arial,sans-serif}header{background:white;border-bottom:1px solid #dce7de;padding:16px 5%;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}header strong{color:#236b43}nav{display:flex;gap:20px;flex-wrap:wrap}a{color:#236b43;text-decoration:none}main{max-width:1060px;margin:35px auto;padding:0 20px}h1{line-height:1.2}h2{font-size:1.3rem}section,article{background:white;border:2px dashed #84af8c;border-radius:18px;padding:24px;margin:22px 0}label{display:block;font-weight:bold;margin:12px 0 5px}input,textarea,select{width:100%;padding:12px;border:1px solid #a4b6a8;border-radius:9px;font:inherit}textarea{min-height:140px;resize:vertical}button{border:0;border-radius:10px;background:#277348;color:white;padding:12px 20px;font:inherit;cursor:pointer;margin-top:16px}button:disabled{opacity:.6;cursor:wait}.secondary{background:#e8f2e9;color:#215b39}.toolbar{display:flex;align-items:center;gap:15px;flex-wrap:wrap}.toolbar select{width:auto;max-width:100%}.muted{color:#5c7064;font-size:.95rem}.feedback{background:#edf6ec;padding:18px;border-radius:12px}.answer{color:#24578b;white-space:pre-wrap;overflow-wrap:anywhere}.message{padding:12px 0;white-space:pre-wrap;color:#245b3b}[hidden]{display:none!important}footer{text-align:center;padding:28px;color:#5c7064;font-size:.9rem}input:focus,textarea:focus,select:focus,button:focus-visible{outline:3px solid #b4d8bc;outline-offset:2px}@media(max-width:600px){main{padding:0 12px;margin-top:25px}section,article{padding:17px}h1{font-size:1.8rem}nav{gap:12px;font-size:.9rem}}
+</style>
+</head>
+<body>
+<header><strong>ÉCOLE SVT</strong><nav><a href="index.html">Accueil</a><a href="mon-espace-svt.html">Mon Espace SVT</a><a href="mon-espace-svt.html#resources">Ressources</a></nav></header>
+<main>
+<p class="muted">LABNIHI Brahim — Prof SVT · 2BAC Sciences Physiques</p>
+<h1>Correction des exercices</h1>
+<p>Lire les réponses, préciser les points à corriger et accompagner la progression de chaque élève.</p>
+<section id="login"><h2>Connexion professeur</h2><form id="loginForm">
+<label for="email">Adresse e-mail</label><input id="email" type="email" autocomplete="username" required>
+<label for="password">Mot de passe</label><input id="password" type="password" autocomplete="current-password" required>
+<button id="connect" type="submit">Se connecter</button>
+</form></section>
+<p id="message" class="message" role="status" aria-live="polite"></p>
+<div id="dashboard" hidden>
+<div class="toolbar"><label for="filter">Afficher</label><select id="filter"><option value="all">Tous les travaux</option><option value="submitted">À corriger</option><option value="reviewed">À reprendre par l’élève</option><option value="completed">Terminés</option></select><button id="reload" class="secondary">Actualiser</button><button id="logout" class="secondary">Se déconnecter</button></div>
+<p id="count" class="muted"></p><div id="works"></div>
+</div>
+</main><footer>Comprendre avant de mémoriser, raisonner avant de répondre, progresser vers l’autonomie.</footer>
+<script>
+'use strict';
+const SUPABASE_URL='https://jnbgeclyxlrjggyewbaq.supabase.co';
+const PUBLIC_KEY='sb_publishable_3U3GQYUOvopdBYANuH_bdg_7_Qgqzg0';
+let accessToken='',submissions=[];
+const $=id=>document.getElementById(id);
+const statusNames={submitted:'À corriger',reviewed:'À reprendre par l’élève',completed:'Terminé'};
+const exerciseNames={'u1p1-restitution':'Restitution des connaissances','u1p1-raisonnement':'Raisonnement scientifique'};
+function say(text){$('message').textContent=text;}
+async function api(method,body){
+ const r=await fetch('/api/exercises',{method,headers:{Authorization:'Bearer '+accessToken,'Content-Type':'application/json'},...(body?{body:JSON.stringify(body)}:{}),cache:'no-store'});
+ const data=await r.json();if(!r.ok)throw new Error(data.error||'La demande a échoué.');return data;
+}
+function node(tag,text,className){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(className)e.className=className;return e;}
+function showAnswer(parent,value,prefix){
+ if(value&&typeof value==='object'){
+  for(const [key,item] of Object.entries(value))showAnswer(parent,item,prefix?prefix+' · '+key:key);
+ }else{parent.append(node('p',(prefix?prefix+' : ':'')+String(value??'Sans réponse'),'answer'));}
+}
+function render(){
+ const list=submissions.filter(s=>$('filter').value==='all'||s.status===$('filter').value);$('works').replaceChildren();
+ $('count').textContent=list.length+' travail(aux) affiché(s).';
+ if(!list.length){$('works').append(node('p','Aucun travail pour le moment.'));return;}
+ for(const s of list){
+  const article=node('article');article.append(node('h2',exerciseNames[s.exercise_id]||s.exercise_id));
+  article.append(node('p','Élève : '+s.student_code+' · Version '+s.version+' · '+(statusNames[s.status]||s.status)));
+  const date=new Date(s.submitted_at);article.append(node('p','Envoi : '+(Number.isNaN(date.getTime())?'Date inconnue':date.toLocaleString('fr-FR')),'muted'));
+  const answers=node('div');showAnswer(answers,s.answers||{},'');article.append(answers);
+  if(s.attachment_paths?.length)article.append(node('p',s.attachment_paths.length+' pièce(s) jointe(s). L’ouverture des copies sera ajoutée avec le dépôt des élèves.','muted'));
+  const form=node('form');form.className='feedback';
+  const feedbackId='feedback-'+s.id,scoreId='score-'+s.id,statusId='status-'+s.id;
+  const fl=node('label','Points à corriger et conseils');fl.htmlFor=feedbackId;
+  const feedback=node('textarea');feedback.id=feedbackId;feedback.value=s.teacher_feedback||'';feedback.maxLength=20000;
+  const sl=node('label','Note (facultative)');sl.htmlFor=scoreId;const score=node('input');score.id=scoreId;score.type='number';score.min='0';score.step='0.25';score.value=s.score??'';
+  const tl=node('label','Suite du travail');tl.htmlFor=statusId;const state=node('select');state.id=statusId;
+  for(const [value,text] of [['reviewed','Demander une version corrigée'],['completed','Terminer le travail']]){const o=node('option',text);o.value=value;state.append(o);}state.value=s.status==='completed'?'completed':'reviewed';
+  const save=node('button','Enregistrer le retour');save.type='submit';const result=node('p');result.setAttribute('role','status');
+  form.append(fl,feedback,sl,score,tl,state,save,result);
+  form.addEventListener('submit',async e=>{e.preventDefault();save.disabled=true;result.textContent='Enregistrement…';try{
+   const data=await api('POST',{id:s.id,teacher_feedback:feedback.value,score:score.value===''?null:Number(score.value),status:state.value});
+   Object.assign(s,data.submission);result.textContent='Retour enregistré.';
+  }catch(err){result.textContent=err.message;}finally{save.disabled=false;}});
+  article.append(form);$('works').append(article);
+ }
+}
+async function load(){const data=await api('GET');submissions=data.submissions;render();}
+$('loginForm').addEventListener('submit',async e=>{e.preventDefault();$('connect').disabled=true;say('Connexion…');try{
+ const r=await fetch(SUPABASE_URL+'/auth/v1/token?grant_type=password',{method:'POST',headers:{apikey:PUBLIC_KEY,'Content-Type':'application/json'},body:JSON.stringify({email:$('email').value.trim(),password:$('password').value})});
+ const data=await r.json();if(!r.ok||!data.access_token)throw new Error('Connexion refusée. Vérifiez vos identifiants.');
+ accessToken=data.access_token;$('password').value='';await load();$('login').hidden=true;$('dashboard').hidden=false;say('Connexion réussie.');
+ }catch(err){accessToken='';say(err.message);}finally{$('connect').disabled=false;}});
+$('filter').addEventListener('change',render);
+$('reload').addEventListener('click',async()=>{ $('reload').disabled=true;try{await load();say('Liste actualisée.');}catch(err){say(err.message);}finally{$('reload').disabled=false;}});
+$('logout').addEventListener('click',async()=>{const previous=accessToken;accessToken='';submissions=[];$('works').replaceChildren();$('dashboard').hidden=true;$('login').hidden=false;say('Vous êtes déconnecté.');try{await fetch(SUPABASE_URL+'/auth/v1/logout',{method:'POST',headers:{apikey:PUBLIC_KEY,Authorization:'Bearer '+previous}});}catch{}});
+</script></body></html>
