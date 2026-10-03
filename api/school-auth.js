@@ -33,7 +33,8 @@ module.exports = async function handler(req, res) {
       signal: AbortSignal.timeout(10000)
     });
     if (!reply.ok) failure(502, 'Service temporairement indisponible.');
-    return reply.status === 204 ? null : reply.json();
+    const text = await reply.text();
+return text.trim() ? JSON.parse(text) : null;
   }
   async function account(code) {
     const q = new URLSearchParams({ student_code: 'eq.' + code, select: 'student_code,password_hash,session_version', limit: '1' });
