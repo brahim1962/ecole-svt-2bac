@@ -68,22 +68,82 @@
     <section class="mobile-card mobile-afterbac"><h2>🧭 Après le Bac</h2><p>Orientation, études supérieures et préparation aux concours de Médecine.</p><div class="mobile-actions"><button class="mobile-link afterbac-mobile-button" onclick="openModal('afterbacModal')">Découvrir →</button></div></section>
     <div class="mobile-quote">« Comprendre avant de mémoriser, raisonner avant de répondre, progresser vers l’autonomie. »</div>
   </main>
-  <div id="studentModal" class="modal"><div class="modal-card"><h2>🎓 Mon Espace SVT</h2><p>Saisissez votre code élève pour accéder à votre espace personnel.</p><input id="studentCode" type="text" placeholder="Code élève" autocomplete="off"><div class="modal-actions"><button class="modal-primary" onclick="entrerEspaceEleve()">Entrer dans Mon Espace SVT</button><button class="modal-close" onclick="closeModals()">Fermer</button></div></div></div>
+  <div id="studentModal" class="modal">
+  <div class="modal-card">
+    <h2>🎓 Mon Espace SVT</h2>
+    <p>Saisissez votre code élève et votre mot de passe personnel.</p>
+    <form onsubmit="event.preventDefault(); entrerEspaceEleve();">
+      <label for="studentCode">Code élève</label>
+      <input id="studentCode" type="text" placeholder="Code élève"
+             autocomplete="username" maxlength="100" required>
+
+      <label for="studentPassword">Mot de passe</label>
+      <input id="studentPassword" type="password"
+             placeholder="Mot de passe personnel"
+             autocomplete="current-password" maxlength="128" required>
+
+      <p id="studentLoginMessage" role="status" aria-live="polite"></p>
+
+      <div class="modal-actions">
+        <button id="studentLoginButton" class="modal-primary" type="submit">
+          Entrer dans Mon Espace SVT
+        </button>
+        <button class="modal-close" type="button" onclick="closeModals()">
+          Fermer
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
   <div id="subscribeModal" class="modal"><div class="modal-card"><h2>Je souhaite m'abonner</h2><p>Vous souhaitez accéder à École SVT et bénéficier de l'accompagnement pédagogique proposé ?</p><p>Contactez-moi pour obtenir les informations nécessaires à l'abonnement.</p><div class="modal-actions"><button class="modal-primary">✉️ Me contacter</button><button class="modal-close" onclick="closeModals()">Fermer</button></div></div></div>
   <div id="parentsModal" class="modal"><div class="modal-card"><h2>👨‍👩‍👧 Espace Parents</h2><p>Accès réservé aux parents disposant d'un code parent.</p><input id="parentCode" type="text" placeholder="Code parent" autocomplete="off"><div class="modal-actions"><button class="modal-primary">Accéder à l'Espace Parents</button><button class="modal-close" onclick="closeModals()">Fermer</button></div></div></div>
   <div id="professorModal" class="modal"><div class="modal-card"><h2>👨‍🏫 Mon professeur</h2><p>Cette rubrique présentera le parcours, l'expérience et la philosophie pédagogique de LABNIHI Brahim.</p><div class="modal-actions"><button class="modal-close" onclick="closeModals()">Fermer</button></div></div></div>
   <div id="afterbacModal" class="modal"><div class="modal-card"><h2>🧭 Après le Bac</h2><p>Orientation, études supérieures et préparation aux concours de Médecine.</p><p>Cette rubrique sera enrichie progressivement.</p><div class="modal-actions"><button class="modal-close" onclick="closeModals()">Fermer</button></div></div></div>
   <script>
-    function entrerEspaceEleve() {
-    const code = document.getElementById('studentCode').value.trim();
+   async function entrerEspaceEleve() {
+  const code = document.getElementById('studentCode').value.trim();
+  const passwordInput = document.getElementById('studentPassword');
+  const message = document.getElementById('studentLoginMessage');
+  const button = document.getElementById('studentLoginButton');
 
-    if (code === '') {
-        alert('Veuillez saisir votre code élève.');
-        return;
+  if (button.disabled) return;
+
+  if (!code || !passwordInput.value) {
+    message.textContent = 'Saisissez votre code et votre mot de passe.';
+    return;
+  }
+
+  button.disabled = true;
+  message.textContent = 'Connexion…';
+
+  try {
+    const response = await fetch('/api/school-auth', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action: 'login',
+        student_code: code,
+        password: passwordInput.value
+      })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || 'Connexion refusée.');
     }
 
-    sessionStorage.setItem('studentCode', code);
-    window.location.href = 'mon-espace-svt.html';
+    sessionStorage.setItem('studentCode', data.student.Students_code);
+    passwordInput.value = '';
+    window.location.replace('mon-espace-svt.html');
+
+  } catch (error) {
+    message.textContent = error.message || 'Connexion impossible. Réessayez.';
+  } finally {
+    button.disabled = false;
+  }
+} 
 }function openModal(id){closeModals();const modal=document.getElementById(id);if(modal){modal.classList.add('open');}}function closeModals(){document.querySelectorAll('.modal').forEach(function(modal){modal.classList.remove('open');});}document.addEventListener('keydown',function(event){if(event.key==='Escape'){closeModals();}});document.querySelectorAll('.modal').forEach(function(modal){modal.addEventListener('click',function(event){if(event.target===modal){closeModals();}});});</script>
 </body>
 </html>
