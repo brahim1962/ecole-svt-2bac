@@ -144,6 +144,6 @@
     button.disabled = false;
   }
 } 
-}function openModal(id){closeModals();const modal=document.getElementById(id);if(modal){modal.classList.add('open');}}function closeModals(){document.querySelectorAll('.modal').forEach(function(modal){modal.classList.remove('open');});}document.addEventListener('keydown',function(event){if(event.key==='Escape'){closeModals();}});document.querySelectorAll('.modal').forEach(function(modal){modal.addEventListener('click',function(event){if(event.target===modal){closeModals();}});});</script>
+function openModal(id){closeModals();const modal=document.getElementById(id);if(modal){modal.classList.add('open');}}function closeModals(){document.querySelectorAll('.modal').forEach(function(modal){modal.classList.remove('open');});}document.addEventListener('keydown',function(event){if(event.key==='Escape'){closeModals();}});document.querySelectorAll('.modal').forEach(function(modal){modal.addEventListener('click',function(event){if(event.target===modal){closeModals();}});});</script>
 </body>
 </html>
