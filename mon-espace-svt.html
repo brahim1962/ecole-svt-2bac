@@ -1167,52 +1167,61 @@
 </div>  
   </main>
 <script>
-const studentCode = sessionStorage.getItem('studentCode');
- const SUPABASE_URL = 'https://jnbgeclyxlrjggyewbaq.supabase.co'; 
-  const SUPABASE_KEY = 'sb_publishable_3U3GQYUOvopdBYANuH_bdg_7_Qgqzg0';
-console.log('Code élève reçu :', studentCode);
-  async function chargerEleve() {
-   if (!studentCode) {
-    document.getElementById('studentName').textContent = 'Élève';
-    return;
-} 
-const response = await fetch(
-    `${SUPABASE_URL}/rest/v1/Students?Students_code=eq.${encodeURIComponent(studentCode)}&select=first_name,last_name,class_name`,
-    {
-        headers: {
-            apikey: SUPABASE_KEY,
-            Authorization: `Bearer ${SUPABASE_KEY}`
-        }
+const SUPABASE_URL = 'https://jnbgeclyxlrjggyewbaq.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_3U3GQYUOvopdBYANuH_bdg_7_Qgqzg0';
+const espace = document.querySelector('main');
+if (espace) espace.hidden = true;
+
+async function chargerEleve() {
+  try {
+    const response = await fetch('/api/school-auth?action=session', {
+      credentials: 'same-origin',
+      cache: 'no-store'
+    });
+    if (response.status === 401) {
+      sessionStorage.removeItem('studentCode');
+      window.location.replace('index.html');
+      return;
     }
-); 
- const data = await response.json();
- console.log('Réponse Supabase :', data);   
-   if (data.length > 0) {
-    const eleve = data[0];
-     await fetch(`${SUPABASE_URL}/rest/v1/student_logins`, {
-    method: 'POST',
-    headers: {
+    if (!response.ok) throw new Error('Service indisponible');
+    const data = await response.json();
+    const eleve = data.student;
+    if (!eleve || !eleve.Students_code) throw new Error('Session invalide');
+    const studentCode = eleve.Students_code;
+    sessionStorage.setItem('studentCode', studentCode);
+    document.getElementById('studentName').textContent =
+      `${eleve.first_name || ''} ${eleve.last_name || ''}`.trim();
+    if (espace) espace.hidden = false;
+
+    // Conserver la notification des visites au professeur.
+    fetch(`${SUPABASE_URL}/rest/v1/student_logins`, {
+      method: 'POST',
+      headers: {
         apikey: SUPABASE_KEY,
         Authorization: `Bearer ${SUPABASE_KEY}`,
         'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
+      },
+      body: JSON.stringify({
         student_code: studentCode,
         first_name: eleve.first_name,
         last_name: eleve.last_name,
         class_name: eleve.class_name
-    })
-});
-    document.getElementById('studentName').textContent =
-        `${eleve.first_name} ${eleve.last_name}`;
+      })
+    }).catch(() => {});
+  } catch (error) {
+    const message = document.createElement('p');
+    message.setAttribute('role', 'alert');
+    message.style.cssText = 'padding:24px;text-align:center;';
+    message.textContent = 'Impossible de vÃ©rifier la connexion pour le moment. ';
+    const retry = document.createElement('button');
+    retry.type = 'button';
+    retry.textContent = 'RÃ©essayer';
+    retry.addEventListener('click', () => window.location.reload());
+    message.appendChild(retry);
+    document.body.appendChild(message);
+  }
 }
-else {
-    alert("Code élève non reconnu. Vérifiez votre code et réessayez.");
-    sessionStorage.removeItem('studentCode');
-    window.location.href = 'index.html';
-}    
-}
- chargerEleve(); 
+chargerEleve();
 </script>
 </body>
 </html>
