@@ -51,7 +51,7 @@ const PUBLIC_KEY='sb_publishable_3U3GQYUOvopdBYANuH_bdg_7_Qgqzg0';
 let accessToken='',submissions=[],schoolStudents=[];
 const $=id=>document.getElementById(id);
 const statusNames={submitted:'À corriger',reviewed:'À reprendre par l’élève',completed:'Terminé'};
-const exerciseNames={'u1p1-restitution':'Restitution des connaissances','u1p1-raisonnement':'Raisonnement scientifique'};
+const exerciseNames={'u1p1-restitution':'Couple 1 · Restitution des connaissances','u1p1-raisonnement':'Couple 1 · Raisonnement scientifique','u1p1-restitution-2':'Couple 2 · Restitution des connaissances','u1p1-raisonnement-2':'Couple 2 · Raisonnement scientifique','u1p1-restitution-3':'Couple 3 · Restitution des connaissances','u1p1-raisonnement-3':'Couple 3 · Raisonnement scientifique'};
 function say(text){$('message').textContent=text;}
 async function api(method,body){
  const r=await fetch('/api/exercises',{method,headers:{Authorization:'Bearer '+accessToken,'Content-Type':'application/json'},...(body?{body:JSON.stringify(body)}:{}),cache:'no-store'});
@@ -71,7 +71,7 @@ function render(){
   const article=node('article');article.append(node('h2',exerciseNames[s.exercise_id]||s.exercise_id));
   article.append(node('p','Élève : '+s.student_code+' · Version '+s.version+' · '+(statusNames[s.status]||s.status)));
   const date=new Date(s.submitted_at);article.append(node('p','Envoi : '+(Number.isNaN(date.getTime())?'Date inconnue':date.toLocaleString('fr-FR')),'muted'));
-  if(s.exercise_id!=='u1p1-raisonnement'){
+  if(!['u1p1-raisonnement','u1p1-raisonnement-2','u1p1-raisonnement-3'].includes(s.exercise_id)){
    const answers=node('div');showAnswer(answers,s.answers||{},'');article.append(answers);
   }
   if(s.attachment_paths?.length){

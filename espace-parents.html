@@ -27,7 +27,7 @@
 <script>
 'use strict';
 const $=id=>document.getElementById(id);let students=[],currentCode='',busy=false,loadSequence=0;
-const exercises=[{id:'u1p1-restitution',title:'Restitution des connaissances',max:6},{id:'u1p1-raisonnement',title:'Raisonnement scientifique',max:5}];
+const exercises=[{id:'u1p1-restitution',title:'Couple 1 · Restitution des connaissances',max:6},{id:'u1p1-raisonnement',title:'Couple 1 · Raisonnement scientifique',max:5},{id:'u1p1-restitution-2',title:'Couple 2 · Restitution des connaissances',max:5},{id:'u1p1-raisonnement-2',title:'Couple 2 · Raisonnement scientifique',max:5},{id:'u1p1-restitution-3',title:'Couple 3 · Restitution des connaissances',max:5},{id:'u1p1-raisonnement-3',title:'Couple 3 · Raisonnement scientifique',max:5}];
 const statuses={submitted:'Copie envoyée — en attente de correction',reviewed:'À reprendre : une copie corrigée est demandée',completed:'Travail terminé'};
 function node(tag,text,cls){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;}
 function say(text){$('pageStatus').textContent=text;}
