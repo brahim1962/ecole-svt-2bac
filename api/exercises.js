@@ -26,7 +26,19 @@ module.exports = async function handler(req, res) {
       if (sessionStatus !== 200) return res.status(sessionStatus).json(sessionData);
       const code = sessionData.student.Students_code;
       const headers = { apikey: secret, 'Content-Type': 'application/json' };
-      const exercise = 'u1p1-restitution';
+      let body;
+      if (req.method === 'POST') {
+        try { body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body; }
+        catch { return res.status(400).json({error:'Données invalides.'}); }
+      }
+      const exercise = req.method === 'GET' ? (req.query?.exercise_id || 'u1p1-restitution') : body?.exercise_id;
+      const rules = {
+        'u1p1-restitution': {text:['IV-1','IV-2'],choices:['I-1','I-2','I-3','I-4','II-1','II-2','II-3','II-4','III-1','III-2','III-3','III-4'],boolean:['V-1','V-2','V-3','V-4'],letters:['a','b','c','d']},
+        'u1p1-restitution-2': {text:['I-1','I-2','I-3','I-4'],choices:['II-1','II-2','II-3','II-4'],associations:['III-1','III-2','III-3','III-4'],boolean:[],letters:['a','b','c','d']},
+        'u1p1-restitution-3': {text:['I-1','II-1','II-2','II-3'],choices:['III-1','III-2','III-3','III-4','III-5'],boolean:['IV-1','IV-2','IV-3','IV-4'],letters:['a','b','c','d']}
+      };
+      if (typeof exercise !== 'string' || !Object.hasOwn(rules,exercise)) return res.status(400).json({error:'Exercice invalide.'});
+      const rule=rules[exercise];
       const query = new URLSearchParams({ student_code: 'eq.' + code,
         exercise_id: 'eq.' + exercise, select: '*', order: 'version.desc', limit: '50' });
       async function readWorks() {
@@ -46,24 +58,21 @@ module.exports = async function handler(req, res) {
       if (!(req.headers['content-type'] || '').startsWith('application/json')) {
         return res.status(415).json({ error: 'Format JSON requis.' });
       }
-      let body;
-      try { body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body; }
-      catch { return res.status(400).json({ error: 'Données invalides.' }); }
       if (!body || Array.isArray(body) || typeof body !== 'object'
         || JSON.stringify(body).length > 20000 || body.exercise_id !== exercise) {
         return res.status(400).json({ error: 'Exercice ou données invalides.' });
       }
       const answers = body.answers;
-      const keys = ['I-1','I-2','I-3','I-4','II-1','II-2','II-3','II-4',
-        'III-1','III-2','III-3','III-4','IV-1','IV-2','V-1','V-2','V-3','V-4'];
+      const keys=[...rule.text,...rule.choices,...(rule.associations||[]),...rule.boolean];
       if (!answers || Array.isArray(answers) || typeof answers !== 'object'
         || Object.keys(answers).length !== keys.length || keys.some(key => {
-          const value = answers[key];
-          return typeof value !== 'string' || (key.startsWith('IV-')
-            ? !value.trim() || value.length > 4000
-            : key.startsWith('V-') ? !['true','false'].includes(value)
-            : !['a','b','c','d'].includes(value));
-        })) return res.status(400).json({ error: 'Complétez toutes les réponses.' });
+          const value=answers[key];
+          return typeof value!=='string' || (rule.text.includes(key)
+            ? !value.trim() || value.length>4000
+            : rule.boolean.includes(key) ? !['true','false'].includes(value)
+            : rule.associations?.includes(key) ? !['a','b','c','d','e'].includes(value)
+            : !rule.letters.includes(value));
+        })) return res.status(400).json({error:'Complétez toutes les réponses.'});
       const cleanAnswers = Object.fromEntries(keys.map(key => [key, answers[key].trim()]));
       for (let attempt = 0; attempt < 3; attempt++) {
         const works = await readWorks();

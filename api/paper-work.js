@@ -3,7 +3,7 @@ const crypto = require('node:crypto');
 const schoolAuth = require('./school-auth.js');
 const TEACHER = '6f2f80f4-54a2-4209-8ae5-ae2666ad63fe';
 const PUBLIC_KEY = 'sb_publishable_3U3GQYUOvopdBYANuH_bdg_7_Qgqzg0';
-const EXERCISE = 'u1p1-raisonnement';
+const PAPER_EXERCISES = ['u1p1-raisonnement','u1p1-raisonnement-2','u1p1-raisonnement-3'];
 const BUCKET = 'exercise-uploads';
 const TYPES = { 'application/pdf': 'pdf', 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' };
 const LIMIT = 10 * 1024 * 1024;
@@ -64,17 +64,21 @@ module.exports = async function handler(req, res) {
     await schoolAuth({method:'GET',headers:req.headers,socket:req.socket,query:{action:'session'}},sessionResponse);
     if (sessionStatus !== 200) return res.status(sessionStatus).json(sessionData);
     const code = sessionData.student.Students_code;
-    const query = new URLSearchParams({student_code:'eq.'+code,exercise_id:'eq.'+EXERCISE,select:'*',order:'version.desc',limit:'50'});
-    const readWorks = () => api('/rest/v1/exercise_submissions?' + query);
-    if (req.method === 'GET') {
-      const submissions = await readWorks();
-      return res.status(200).json({submissions,files:submissions[0] ? await links(submissions[0]) : []});
-    }
+    let body={};
+    if(req.method==='POST') {
     if ((req.headers.origin && req.headers.origin !== 'https://' + req.headers.host) || req.headers['sec-fetch-site'] === 'cross-site') fail(403,'Origine non autorisée.');
     if (!(req.headers['content-type'] || '').startsWith('application/json')) fail(415,'Format JSON requis.');
-    let body;
     try { body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body; } catch { fail(400,'Données invalides.'); }
     if (!body || typeof body !== 'object' || Array.isArray(body) || JSON.stringify(body).length > 24000) fail(400,'Données invalides.');
+    }
+    const EXERCISE=req.method==='GET'?(req.query?.exercise_id||'u1p1-raisonnement'):(body.exercise_id||'u1p1-raisonnement');
+    if(!PAPER_EXERCISES.includes(EXERCISE))fail(400,'Exercice invalide.');
+    const query=new URLSearchParams({student_code:'eq.'+code,exercise_id:'eq.'+EXERCISE,select:'*',order:'version.desc',limit:'50'});
+    const readWorks=()=>api('/rest/v1/exercise_submissions?'+query);
+    if(req.method==='GET') {
+      const submissions=await readWorks();
+      return res.status(200).json({submissions,files:submissions[0]?await links(submissions[0]):[]});
+    }
     if (!['prepare','submit'].includes(body.action)) fail(400,'Action inconnue.');
     let works = await readWorks();
     const latest = works[0];
