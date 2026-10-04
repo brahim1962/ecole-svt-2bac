@@ -217,4 +217,15 @@ document.querySelectorAll('[data-next-reaction]').forEach(button => {
   if(!steps.querySelector(':scope > div[hidden]')) {button.disabled=true;button.textContent='Toutes les étapes sont affichées';}
  });
 });
+</script><script>
+// Retour adapté au parcours de découverte.
+if (new URLSearchParams(window.location.search).get('origine') === 'decouverte') {
+  const bouton = document.querySelector('a.button[href="cours.html"]');
+  if (bouton) {
+    bouton.href = 'decouvrir-ecole-svt.html';
+    bouton.textContent = '← Retour à Découvrir École SVT';
+    bouton.removeAttribute('onclick');
+    bouton.removeAttribute('target');
+  }
+}
 </script></body></html>
