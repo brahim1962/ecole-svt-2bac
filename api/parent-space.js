@@ -17,20 +17,20 @@ module.exports = async function handler(req, res) {
  async function thread(parent,student){const [links,accounts,students]=await Promise.all([query('school_parent_students',{parent_code:'eq.'+parent,student_code:'eq.'+student,select:'parent_code',limit:'1'}),query('school_parent_accounts',{parent_code:'eq.'+parent,active:'eq.true',select:'parent_code',limit:'1'}),query('Students',{Students_code:'eq.'+student,active:'eq.true',select:'Students_code',limit:'1'})]);if(!links.length||!accounts.length||!students.length)fail(403,'Cet enfant n’est pas accessible avec ce compte.');}
  async function messages(parent,student){const rows=await query('school_parent_messages',{parent_code:'eq.'+parent,student_code:'eq.'+student,select:'id,sender_role,body,created_at,read_at',order:'created_at.desc,id.desc',limit:'200'});return rows.reverse();}
  async function quizResults(student){
-  // Lire le schéma réel pour ne pas confondre une note brute et une note sur 20.
   try{
-   const schema=await api('/rest/v1/',{headers:{Accept:'application/openapi+json'}}),p=schema.definitions?.quiz_attempts?.properties;
-   if(!p)return{quizzes:[],quiz_notice:'Les résultats des quiz sont temporairement indisponibles.'};
-   const pick=names=>names.find(n=>Object.hasOwn(p,n));
-   const studentField=pick(['student_code','Students_code']),quizField=pick(['quiz_id']),scoreField=pick(['score_20','score20','score']),maxField=pick(['max_score','total_points']),dateField=pick(['finished_at','completed_at','submitted_at','created_at']),statusField=pick(['status']);
-   if(!studentField||!quizField||!scoreField)return{quizzes:[],quiz_notice:'Le suivi des quiz nécessite encore un réglage par le professeur.'};
-   const fields=[quizField,scoreField,maxField,dateField,statusField].filter(Boolean);const params={[studentField]:'eq.'+student,select:fields.join(','),limit:'200'};if(dateField)params.order=dateField+'.desc';
-   const attempts=await query('quiz_attempts',params),titleProps=schema.definitions?.quizzes?.properties;
-   let titles=[];if(titleProps?.id&&titleProps?.title)titles=await query('quizzes',{select:'id,title',limit:'1000'});
+   // Les tentatives référencent Students.id ; le code reste validé par la session parent.
+   const students=await query('Students',{Students_code:'eq.'+student,active:'eq.true',select:'id',limit:'2'});
+   if(students.length!==1||!students[0].id)throw new Error('Élève introuvable.');
+   const attempts=await query('quiz_attempts',{student_id:'eq.'+students[0].id,status:'eq.finished',select:'quiz_id,score,finished_at,created_at',order:'created_at.desc,id.desc',limit:'200'});
+   const ids=[...new Set(attempts.map(a=>a.quiz_id))];
+   let titles=[];
+   if(ids.length)titles=await query('quizzes',{id:'in.('+ids.join(',')+')',select:'id,title',limit:'200'});
    const titleMap=new Map(titles.map(q=>[String(q.id),q.title]));
-   return{quizzes:attempts.map(a=>({title:titleMap.get(String(a[quizField]))||'Quiz',score:a[scoreField]??null,max_score:['score_20','score20'].includes(scoreField)?20:(maxField?a[maxField]:null),completed_at:dateField?a[dateField]:null}))};
+   // Le champ score de Quiz SVT contient déjà la note sur 20.
+   return{quizzes:attempts.map(a=>({title:titleMap.get(String(a.quiz_id))||'Quiz',score:a.score??null,max_score:20,completed_at:a.finished_at||a.created_at}))};
   }catch{return{quizzes:[],quiz_notice:'Les résultats des quiz sont temporairement indisponibles. Actualisez le suivi pour réessayer.'};}
  }
+
  try{
   let body={};if(req.method==='POST'){
    if(req.headers.origin&&req.headers.origin!=='https://'+req.headers.host||req.headers['sec-fetch-site']==='cross-site')fail(403,'Origine non autorisée.');
