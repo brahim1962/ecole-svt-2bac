@@ -68,8 +68,27 @@ function render(){
   const article=node('article');article.append(node('h2',exerciseNames[s.exercise_id]||s.exercise_id));
   article.append(node('p','Élève : '+s.student_code+' · Version '+s.version+' · '+(statusNames[s.status]||s.status)));
   const date=new Date(s.submitted_at);article.append(node('p','Envoi : '+(Number.isNaN(date.getTime())?'Date inconnue':date.toLocaleString('fr-FR')),'muted'));
-  const answers=node('div');showAnswer(answers,s.answers||{},'');article.append(answers);
-  if(s.attachment_paths?.length)article.append(node('p',s.attachment_paths.length+' pièce(s) jointe(s). L’ouverture des copies sera ajoutée avec le dépôt des élèves.','muted'));
+  if(s.exercise_id!=='u1p1-raisonnement'){
+   const answers=node('div');showAnswer(answers,s.answers||{},'');article.append(answers);
+  }
+  if(s.attachment_paths?.length){
+   const copies=node('div'),open=node('button','Afficher les fichiers de la copie'),copyStatus=node('p'),links=node('div');
+   open.type='button';open.className='secondary';copyStatus.setAttribute('role','status');
+   copies.append(node('p',s.attachment_paths.length+' fichier(s) envoyé(s).','muted'),open,copyStatus,links);article.append(copies);
+   open.addEventListener('click',async()=>{
+    open.disabled=true;copyStatus.textContent='Chargement de la copie…';links.replaceChildren();
+    try{
+     const r=await fetch('/api/paper-work?id='+encodeURIComponent(s.id),{headers:{Authorization:'Bearer '+accessToken},cache:'no-store',signal:AbortSignal.timeout(25000)});
+     const data=await r.json();if(!r.ok)throw new Error(data.error||'Impossible d’ouvrir la copie.');
+     if(!data.files?.length)throw new Error('Aucun fichier disponible.');
+     for(const file of data.files){
+      const url=new URL(file.url);if(url.protocol!=='https:')throw new Error('Lien de fichier invalide.');
+      const line=node('p'),link=node('a','Ouvrir : '+file.name);link.href=url.href;link.target='_blank';link.rel='noopener noreferrer';line.append(link);links.append(line);
+     }
+     copyStatus.textContent='Cliquez sur un fichier pour l’ouvrir. Si un lien expire, affichez à nouveau les fichiers.';
+    }catch(err){copyStatus.textContent=err.name==='TimeoutError'?'Le chargement a pris trop de temps. Réessayez.':err.message;}finally{open.disabled=false;}
+   });
+  }
   const form=node('form');form.className='feedback';
   const feedbackId='feedback-'+s.id,scoreId='score-'+s.id,statusId='status-'+s.id;
   const fl=node('label','Points à corriger et conseils');fl.htmlFor=feedbackId;
