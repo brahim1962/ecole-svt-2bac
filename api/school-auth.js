@@ -93,6 +93,40 @@ return text.trim() ? JSON.parse(text) : null;
       if (!a || !s || a.session_version !== payload.version) failure(401, 'Reconnectez-vous.');
       return res.status(200).json({ student: s });
     }
+    if (action === 'change-password' && req.method === 'POST') {
+      const entry = (req.headers.cookie || '').split(';').map(s => s.trim()).find(s => s.startsWith(COOKIE + '='));
+      const value = entry ? entry.slice(COOKIE.length + 1) : '';
+      const parts = value.split('.');
+      if (parts.length !== 2 || value.length > 2048 || !equal(Buffer.from(parts[1]), Buffer.from(sign(parts[0], secret)))) failure(401, 'Reconnectez-vous avant de changer votre mot de passe.');
+      let payload;
+      try { payload = JSON.parse(Buffer.from(parts[0], 'base64url').toString()); } catch { failure(401, 'Session invalide.'); }
+      if (typeof payload.code !== 'string' || !Number.isFinite(payload.exp) || payload.exp <= Date.now() / 1000) failure(401, 'Connexion expiree.');
+      const a = await account(payload.code);
+      if (!a || a.session_version !== payload.version || !await student(payload.code)) failure(401, 'Reconnectez-vous.');
+      const current = body.current_password, next = body.new_password;
+      if (typeof current !== 'string' || !current || current.length > 128 || typeof next !== 'string' || next.length < 10 || next.length > 128) failure(400, 'Le nouveau mot de passe doit contenir entre 10 et 128 caracteres.');
+      if (next !== body.confirm_password) failure(400, 'Les deux nouveaux mots de passe ne correspondent pas.');
+      if (current === next) failure(400, 'Choisissez un mot de passe different du mot de passe actuel.');
+      const ip = req.headers['x-vercel-forwarded-for'] || req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'unknown';
+      const key = crypto.createHash('sha256').update(String(ip).split(',')[0].trim() + ':change:student:' + payload.code).digest('hex');
+      if (!await api('/rest/v1/rpc/school_login_allowed', { method: 'POST', body: JSON.stringify({ attempt_key: key }) })) failure(429, 'Trop de tentatives. Reessayez dans 15 minutes.');
+      const stored = a.password_hash || '';
+      if (!/^scrypt:[a-f0-9]{32}:[a-f0-9]{128}$/.test(stored)) failure(401, 'Mot de passe actuel incorrect.');
+      const [, oldSalt, oldHash] = stored.split(':');
+      if (!equal(await derive(current, oldSalt, 64), Buffer.from(oldHash, 'hex'))) failure(401, 'Mot de passe actuel incorrect.');
+      const salt = crypto.randomBytes(16).toString('hex');
+      const hash = (await derive(next, salt, 64)).toString('hex');
+      const version = crypto.randomUUID();
+      // Mise a jour conditionnelle : ne pas ecraser une reinitialisation simultanee.
+      const q = new URLSearchParams({ student_code: 'eq.' + payload.code, session_version: 'eq.' + a.session_version, select: 'student_code' });
+      const updated = await api('/rest/v1/school_student_accounts?' + q, {
+        method: 'PATCH', headers: { Prefer: 'return=representation' },
+        body: JSON.stringify({ password_hash: `scrypt:${salt}:${hash}`, session_version: version })
+      });
+      if (!Array.isArray(updated) || updated.length !== 1) failure(409, 'Votre acces a change. Reconnectez-vous avant de reessayer.');
+      cookie(res, '', 0);
+      return res.status(200).json({ ok: true });
+    }
     if (!['login', 'set-password'].includes(action) || req.method !== 'POST') failure(400, 'Action inconnue.');
     if (action === 'set-password') await teacher();
     const code = typeof body.student_code === 'string' ? body.student_code.trim() : '';
@@ -128,3 +162,4 @@ return text.trim() ? JSON.parse(text) : null;
     return res.status(error.status || 503).json({ error: error.status ? error.message : 'Service temporairement indisponible.' });
   }
 };
+
