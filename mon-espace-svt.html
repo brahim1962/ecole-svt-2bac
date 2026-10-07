@@ -853,7 +853,9 @@
     border-radius: 12px;
   }
 } 
-  </style>
+  
+.password-settings{background:#fff;border:1px solid #d7eadc;border-radius:14px;padding:18px;margin:20px 0;max-width:680px}.password-settings summary{cursor:pointer;font-weight:bold;color:#176b38}.password-settings p{margin:12px 0;line-height:1.5}.password-settings label{display:block;margin:14px 0 6px;font-weight:bold}.password-settings input{display:block;width:100%;padding:12px;border:1px solid #a5bcb0;border-radius:8px;font:inherit}.password-settings button{margin-top:16px;background:#24764e;color:white;border:0;border-radius:9px;padding:12px 16px;font:inherit;cursor:pointer}.password-settings button:disabled{opacity:.55;cursor:wait}.password-note{font-size:14px;color:#57756e}
+</style>
 </head>
 
 <body>
@@ -911,6 +913,17 @@
 </div>
     </section>
 
+<details class="password-settings" id="passwordSettings">
+<summary>🔐 Changer mon mot de passe</summary>
+<p>Choisissez un mot de passe personnel de 10 à 128 caractères. Après le changement, reconnectez-vous avec le nouveau mot de passe.</p>
+<p class="password-note">Ce mot de passe sera utilisé pour École SVT et Quiz SVT. En cas d’oubli, contactez votre professeur.</p>
+<form id="changePasswordForm">
+<label for="currentPassword">Mot de passe actuel</label><input id="currentPassword" type="password" autocomplete="current-password" maxlength="128" required>
+<label for="newPassword">Nouveau mot de passe</label><input id="newPassword" type="password" autocomplete="new-password" minlength="10" maxlength="128" required>
+<label for="confirmPassword">Confirmer le nouveau mot de passe</label><input id="confirmPassword" type="password" autocomplete="new-password" minlength="10" maxlength="128" required>
+<button id="changePasswordButton" type="submit">Enregistrer mon nouveau mot de passe</button>
+<p id="passwordStatus" role="status" aria-live="polite"></p>
+</form></details>
     <section class="now-section">
 
   <div class="now-intro">
@@ -1223,5 +1236,41 @@ async function chargerEleve() {
 }
 chargerEleve();
 </script>
+
+<script>
+(() => {
+  const form = document.getElementById('changePasswordForm');
+  const current = document.getElementById('currentPassword');
+  const next = document.getElementById('newPassword');
+  const confirmation = document.getElementById('confirmPassword');
+  const button = document.getElementById('changePasswordButton');
+  const status = document.getElementById('passwordStatus');
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    if (button.disabled) return;
+    status.textContent = '';
+    if (next.value !== confirmation.value) { status.textContent = 'Les deux nouveaux mots de passe ne correspondent pas.'; return; }
+    if (next.value === current.value) { status.textContent = 'Choisissez un mot de passe différent du mot de passe actuel.'; return; }
+    button.disabled = true;
+    try {
+      const response = await fetch('/api/school-auth', {
+        method: 'POST', credentials: 'same-origin', cache: 'no-store',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'change-password', current_password: current.value, new_password: next.value, confirm_password: confirmation.value })
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || 'Le changement a échoué.');
+      form.reset();
+      status.textContent = 'Mot de passe modifié. Reconnectez-vous avec votre nouveau mot de passe.';
+      sessionStorage.removeItem('studentCode');
+      window.alert('Mot de passe modifié. Reconnectez-vous avec votre nouveau mot de passe.'); window.location.replace('index.html');
+    } catch (error) {
+      current.value = ''; next.value = ''; confirmation.value = '';
+      status.textContent = error instanceof TypeError ? 'Le changement n’a pas pu être confirmé. Essayez de vous connecter avec le nouveau mot de passe avant de réessayer.' : error.message;
+    } finally { button.disabled = false; }
+  });
+})();
+</script>
 </body>
 </html>
+

@@ -5,6 +5,8 @@
 <title>Espace Parents — École SVT</title>
 <style>
 :root{--ink:#173e42;--green:#24764e;--pale:#eaf5ec;--line:#87b391}*{box-sizing:border-box}body{margin:0;background:#f4f8f5;color:var(--ink);font:17px/1.65 Arial,sans-serif}header{background:white;border-bottom:1px solid #dce8df;padding:14px max(20px,calc((100% - 1100px)/2));display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap}header a{color:var(--green);text-decoration:none;font-weight:700}main{max-width:1100px;margin:36px auto;padding:0 20px}h1{margin-bottom:5px}h2{font-size:23px}h3{font-size:19px}section,.work{background:white;border:2px dashed var(--line);border-radius:20px;padding:24px;margin:24px 0}label{display:block;font-weight:700;margin:14px 0 6px}input,select,textarea{width:100%;font:inherit;padding:12px;border:1px solid #a5bcb0;border-radius:9px;color:var(--ink);background:white}textarea{resize:vertical;min-height:120px}button,.button{font:inherit;display:inline-block;background:var(--green);color:white;padding:12px 18px;border:0;border-radius:10px;cursor:pointer;text-decoration:none}button:disabled{opacity:.55;cursor:not-allowed}.secondary{background:var(--pale);color:var(--ink)}.actions{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0}.muted{color:#57756e;font-size:15px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{background:var(--pale);border-radius:14px;padding:18px}.card strong{display:block;font-size:28px}.feedback{background:var(--pale);padding:16px;border-radius:12px;white-space:pre-wrap;overflow-wrap:anywhere}.message{max-width:90%;padding:14px 18px;margin:15px 0;background:var(--pale);border-radius:14px;overflow-wrap:anywhere}.message.teacher{margin-left:auto;background:#e7f1f7}.message p{white-space:pre-wrap;margin:6px 0}.scroll{overflow-x:auto}table{width:100%;border-collapse:collapse;text-align:left}th,td{padding:12px;border-bottom:1px solid #dce8df}footer{text-align:center;padding:30px 20px;font-size:14px;color:#57756e}[hidden]{display:none!important}#login{max-width:520px;margin:24px auto}#pageStatus{overflow-wrap:anywhere}@media(max-width:650px){main{margin:22px auto;padding:0 15px}section,.work{padding:18px}.cards{grid-template-columns:1fr}.message{max-width:100%}h1{font-size:28px}header{gap:12px}}
+
+.password-settings{background:#fff;border:1px solid #d7eadc;border-radius:14px;padding:18px;margin:20px 0;max-width:680px}.password-settings summary{cursor:pointer;font-weight:bold;color:#176b38}.password-settings p{margin:12px 0;line-height:1.5}.password-settings label{display:block;margin:14px 0 6px;font-weight:bold}.password-settings input{display:block;width:100%;padding:12px;border:1px solid #a5bcb0;border-radius:8px;font:inherit}.password-settings button{margin-top:16px;background:#24764e;color:white;border:0;border-radius:9px;padding:12px 16px;font:inherit;cursor:pointer}.password-settings button:disabled{opacity:.55;cursor:wait}.password-note{font-size:14px;color:#57756e}
 </style>
 </head>
 <body>
@@ -15,6 +17,17 @@
 <section id="login" hidden><h2>Votre accès personnel</h2><p class="muted">Utilisez le code parent et le mot de passe remis par le professeur.</p><form id="loginForm"><label for="parentCode">Code parent</label><input id="parentCode" autocomplete="username" maxlength="100" required><label for="parentPassword">Mot de passe</label><input id="parentPassword" type="password" autocomplete="current-password" maxlength="128" required><div class="actions"><button id="connect" type="submit">Accéder à mon espace</button></div></form></section>
 <div id="dashboard" hidden>
 <p id="greeting"></p><div class="actions"><button id="reload" class="secondary">Actualiser le suivi</button><button id="logout" class="secondary">Se déconnecter</button></div>
+<details class="password-settings" id="passwordSettings">
+<summary>🔐 Changer mon mot de passe</summary>
+<p>Choisissez un mot de passe personnel de 10 à 128 caractères. Après le changement, reconnectez-vous avec le nouveau mot de passe.</p>
+<p class="password-note">Votre mot de passe est personnel et distinct de celui de votre enfant. En cas d’oubli, contactez le professeur.</p>
+<form id="changePasswordForm">
+<label for="currentPassword">Mot de passe actuel</label><input id="currentPassword" type="password" autocomplete="current-password" maxlength="128" required>
+<label for="newPassword">Nouveau mot de passe</label><input id="newPassword" type="password" autocomplete="new-password" minlength="10" maxlength="128" required>
+<label for="confirmPassword">Confirmer le nouveau mot de passe</label><input id="confirmPassword" type="password" autocomplete="new-password" minlength="10" maxlength="128" required>
+<button id="changePasswordButton" type="submit">Enregistrer mon nouveau mot de passe</button>
+<p id="passwordStatus" role="status" aria-live="polite"></p>
+</form></details>
 <label for="child">Suivi de mon enfant</label><select id="child"></select><p id="childInfo" class="muted"></p>
 <div id="followup" hidden>
 <section><h2>Le travail en un regard</h2><div class="cards"><div class="card"><strong id="sentCount">0</strong>Travaux en attente de correction</div><div class="card"><strong id="reviewCount">0</strong>Travaux à reprendre</div><div class="card"><strong id="doneCount">0</strong>Travaux terminés</div></div></section>
@@ -48,4 +61,40 @@ $('refreshMessages').addEventListener('click',async()=>{const code=currentCode;$
 $('messageForm').addEventListener('submit',async e=>{e.preventDefault();if(busy)return;const text=$('messageBody').value.trim();if(!text){$('messageStatus').textContent='Écrivez votre message.';return;}busy=true;const code=currentCode;$('sendMessage').disabled=true;$('child').disabled=true;$('reload').disabled=true;$('messageBody').disabled=true;$('messageStatus').textContent='Envoi…';try{await request('/api/parent-space','POST',{action:'send',student_code:code,body:text});$('messageBody').value='';$('messageStatus').textContent='Votre message a été envoyé au professeur.';try{const data=await request('/api/parent-space?action=messages&student_code='+encodeURIComponent(code));if(code===currentCode)renderMessages(data.messages||[]);}catch{}}catch(err){$('messageStatus').textContent=err.name==='TimeoutError'?'L’envoi n’a pas pu être confirmé. Actualisez les échanges avant de réessayer.':err.message;}finally{busy=false;$('sendMessage').disabled=false;$('child').disabled=false;$('reload').disabled=false;$('messageBody').disabled=false;}});
 (async()=>{try{await enter(await request('/api/parent-auth'));}catch(err){loginView();say(err.message);}})();
 </script>
+
+<script>
+(() => {
+  const form = document.getElementById('changePasswordForm');
+  const current = document.getElementById('currentPassword');
+  const next = document.getElementById('newPassword');
+  const confirmation = document.getElementById('confirmPassword');
+  const button = document.getElementById('changePasswordButton');
+  const status = document.getElementById('passwordStatus');
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    if (button.disabled) return;
+    status.textContent = '';
+    if (next.value !== confirmation.value) { status.textContent = 'Les deux nouveaux mots de passe ne correspondent pas.'; return; }
+    if (next.value === current.value) { status.textContent = 'Choisissez un mot de passe différent du mot de passe actuel.'; return; }
+    button.disabled = true;
+    try {
+      const response = await fetch('/api/parent-auth', {
+        method: 'POST', credentials: 'same-origin', cache: 'no-store',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'change-password', current_password: current.value, new_password: next.value, confirm_password: confirmation.value })
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || 'Le changement a échoué.');
+      form.reset();
+      status.textContent = 'Mot de passe modifié. Reconnectez-vous avec votre nouveau mot de passe.';
+      loginView();say('Mot de passe modifié. Reconnectez-vous avec votre nouveau mot de passe.');
+      
+    } catch (error) {
+      current.value = ''; next.value = ''; confirmation.value = '';
+      status.textContent = error instanceof TypeError ? 'Le changement n’a pas pu être confirmé. Essayez de vous connecter avec le nouveau mot de passe avant de réessayer.' : error.message;
+    } finally { button.disabled = false; }
+  });
+})();
+</script>
 </body></html>
+
