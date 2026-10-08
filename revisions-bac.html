@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Révisions BAC — École SVT</title>
+  <style>
+    :root {
+      --vert: #087f6d;
+      --fonce: #145349;
+      --clair: #effaf5;
+      --bordure: #b9dfcf;
+      --texte: #243b35;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--texte);
+      background: #f7fbf9;
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--vert);
+      color: white;
+      padding: 16px 24px;
+    }
+
+    .barre {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      color: white;
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+    }
+
+    nav a:hover { text-decoration: underline; }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 32px 20px 48px;
+    }
+
+    h1 {
+      color: var(--fonce);
+      margin: 0 0 10px;
+      line-height: 1.3;
+    }
+
+    .introduction {
+      margin-bottom: 28px;
+      color: #526b62;
+    }
+
+    .grille {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .carte {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 26px;
+      border: 2px dashed var(--vert);
+      border-radius: 16px;
+      background: white;
+      color: var(--texte);
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+    }
+
+    .carte:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px #14534918;
+    }
+
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid #e7b942;
+      outline-offset: 5px;
+    }
+
+    .numero {
+      background: var(--clair);
+      color: var(--vert);
+      border-radius: 8px;
+      padding: 5px 12px;
+      font-weight: bold;
+    }
+
+    .carte h2 {
+      margin: 18px 0;
+      font-size: 21px;
+      line-height: 1.45;
+    }
+
+    .acces {
+      margin-top: auto;
+      padding-top: 15px;
+      color: var(--vert);
+      font-weight: bold;
+    }
+
+    .bouton {
+      display: inline-block;
+      padding: 11px 18px;
+      border: 1px solid var(--vert);
+      border-radius: 9px;
+      background: white;
+      color: var(--vert);
+      font: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .retour { margin-top: 28px; }
+
+    .contenu-unite {
+      background: white;
+      border: 2px dashed var(--vert);
+      border-radius: 16px;
+      padding: 26px;
+    }
+
+    .message {
+      background: var(--clair);
+      border: 1px solid var(--bordure);
+      border-radius: 10px;
+      padding: 18px;
+    }
+
+    .erreur {
+      color: #9b2424;
+      background: #fff0f0;
+      border-radius: 10px;
+      padding: 18px;
+    }
+
+    [hidden] { display: none !important; }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #526b62;
+      font-size: 14px;
+    }
+
+    @media (max-width: 650px) {
+      .grille { grid-template-columns: 1fr; }
+      header { padding: 15px 20px; }
+      nav { gap: 14px; font-size: 14px; }
+      h1 { font-size: 27px; }
+      .carte { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="barre">
+      <a class="logo" href="index.html">ÉCOLE SVT</a>
+      <nav aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="mon-espace-svt.html">Mon Espace SVT</a>
+        <a href="exercices-unite-1-partie-1.html">Ressources</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <p id="etat" role="status">Vérification de votre accès…</p>
+    <button id="reessayer" class="bouton" hidden>Réessayer</button>
+
+    <div id="page" hidden>
+      <section id="accueil">
+        <h1>Révisions BAC</h1>
+        <p class="introduction">
+          Choisissez une unité pour accéder aux exercices
+          du baccalauréat qui la concernent.
+        </p>
+
+        <div class="grille">
+          <a class="carte" href="revisions-bac.html?unite=1">
+            <span class="numero">Unité I</span>
+            <h2>Consommation de la matière organique et flux d’énergie</h2>
+            <span class="acces">Accéder aux exercices →</span>
+          </a>
+
+          <a class="carte" href="revisions-bac.html?unite=2">
+            <span class="numero">Unité II</span>
+            <h2>Nature et mécanisme de l’expression de l’information
+              génétique – transfert de l’information génétique
+              au cours de la reproduction sexuée</h2>
+            <span class="acces">Accéder aux exercices →</span>
+          </a>
+
+          <a class="carte" href="revisions-bac.html?unite=3">
+            <span class="numero">Unité III</span>
+            <h2>Utilisation des matières organiques et inorganiques</h2>
+            <span class="acces">Accéder aux exercices →</span>
+          </a>
+
+          <a class="carte" href="revisions-bac.html?unite=4">
+            <span class="numero">Unité IV</span>
+            <h2>Les chaînes de montagnes récentes et leur relation
+              avec la tectonique des plaques</h2>
+            <span class="acces">Accéder aux exercices →</span>
+          </a>
+        </div>
+
+        <div class="retour">
+          <a class="bouton" href="mon-espace-svt.html">
+            ← Retour à Mon Espace SVT
+          </a>
+        </div>
+      </section>
+
+      <section id="unite" hidden>
+        <p id="numero-unite" class="numero"></p>
+        <h1 id="titre-unite"></h1>
+        <p class="introduction">Exercices du baccalauréat</p>
+
+        <div class="contenu-unite">
+          <p class="message">
+            Les exercices de cette unité seront ajoutés prochainement.
+          </p>
+        </div>
+
+        <div class="retour">
+          <a class="bouton" href="revisions-bac.html">
+            ← Retour aux quatre unités
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    LABNIHI Brahim – Prof SVT<br>
+    Comprendre avant de mémoriser, raisonner avant de répondre,
+    progresser vers l’autonomie.
+  </footer>
+
+  <script>
+    const unites = {
+      "1": {
+        numero: "Unité I",
+        titre: "Consommation de la matière organique et flux d’énergie"
+      },
+      "2": {
+        numero: "Unité II",
+        titre: "Nature et mécanisme de l’expression de l’information génétique – transfert de l’information génétique au cours de la reproduction sexuée"
+      },
+      "3": {
+        numero: "Unité III",
+        titre: "Utilisation des matières organiques et inorganiques"
+      },
+      "4": {
+        numero: "Unité IV",
+        titre: "Les chaînes de montagnes récentes et leur relation avec la tectonique des plaques"
+      }
+    };
+
+    const etat = document.getElementById("etat");
+    const reessayer = document.getElementById("reessayer");
+
+    function afficherPage() {
+      const choix = new URLSearchParams(location.search).get("unite");
+      const selection = unites[choix];
+
+      if (selection) {
+        document.getElementById("accueil").hidden = true;
+        document.getElementById("unite").hidden = false;
+        document.getElementById("numero-unite").textContent =
+          selection.numero;
+        document.getElementById("titre-unite").textContent =
+          selection.titre;
+        document.title = selection.numero + " — Révisions BAC";
+      }
+
+      etat.hidden = true;
+      document.getElementById("page").hidden = false;
+    }
+
+    async function verifierAcces() {
+      etat.hidden = false;
+      etat.className = "";
+      etat.textContent = "Vérification de votre accès…";
+      reessayer.hidden = true;
+
+      const controleur = new AbortController();
+      const delai = setTimeout(() => controleur.abort(), 15000);
+
+      try {
+        const reponse = await fetch("/api/school-auth?action=session", {
+          credentials: "same-origin",
+          cache: "no-store",
+          signal: controleur.signal
+        });
+
+        if (reponse.status === 401) {
+          location.replace("index.html");
+          return;
+        }
+
+        if (!reponse.ok) throw new Error("Accès indisponible");
+
+        const donnees = await reponse.json();
+        if (!donnees.student?.Students_code) {
+          throw new Error("Session invalide");
+        }
+
+        afficherPage();
+      } catch (erreur) {
+        etat.className = "erreur";
+        etat.textContent =
+          "Impossible de vérifier votre accès. Veuillez réessayer.";
+        reessayer.hidden = false;
+      } finally {
+        clearTimeout(delai);
+      }
+    }
+
+    reessayer.addEventListener("click", verifierAcces);
+    verifierAcces();
+  </script>
+</body>
+</html>
