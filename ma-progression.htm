@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ma progression — École SVT</title>
+<style>
+:root {
+  --green: #24764e;
+  --ink: #173e42;
+  --pale: #eaf5ec;
+  --line: #87b391;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #f4f8f5;
+  color: var(--ink);
+  font: 16px/1.6 Arial, sans-serif;
+}
+header {
+  background: #003c46;
+  padding: 16px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+header a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+.logo { font-size: 22px; }
+nav { display: flex; flex-wrap: wrap; gap: 20px; }
+main {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+h1 { margin-bottom: 5px; }
+h2 { font-size: 23px; }
+h3 { font-size: 18px; }
+section {
+  background: white;
+  border: 2px dashed var(--line);
+  border-radius: 18px;
+  padding: 24px;
+  margin: 24px 0;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+.card {
+  background: var(--pale);
+  border-radius: 12px;
+  padding: 18px;
+}
+.card strong { display: block; font-size: 30px; }
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 18px 0;
+}
+button, .button {
+  display: inline-block;
+  font: inherit;
+  background: var(--green);
+  color: white;
+  border: 0;
+  border-radius: 9px;
+  padding: 11px 16px;
+  text-decoration: none;
+  cursor: pointer;
+}
+button:disabled { opacity: .55; cursor: wait; }
+.secondary { background: var(--pale); color: var(--ink); }
+.muted { color: #57756e; font-size: 14px; }
+.work {
+  border: 1px solid #d7eadc;
+  border-radius: 12px;
+  padding: 18px;
+  margin: 16px 0;
+}
+.work h3 { margin-top: 0; }
+.feedback {
+  background: var(--pale);
+  border-radius: 10px;
+  padding: 15px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.badge {
+  display: inline-block;
+  background: var(--pale);
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+.review { background: #fff1d8; color: #755019; }
+.scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; text-align: left; }
+th, td { padding: 12px; border-bottom: 1px solid #dce8df; }
+#pageStatus { overflow-wrap: anywhere; }
+footer {
+  padding: 25px 20px;
+  text-align: center;
+  color: #57756e;
+  font-size: 14px;
+}
+[hidden] { display: none !important; }
+@media (max-width: 650px) {
+  main { padding: 0 15px; margin-top: 20px; }
+  section { padding: 18px; }
+  .cards { grid-template-columns: 1fr; }
+  h1 { font-size: 28px; }
+  nav { gap: 12px; font-size: 14px; }
+}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="index.html">🧬 ÉCOLE SVT</a>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="mon-espace-svt.html">Mon Espace SVT</a>
+    <a href="exercices-unite-1-partie-1.html">Ressources</a>
+  </nav>
+</header>
+
+<main>
+  <h1>📈 Ma progression</h1>
+  <p>Comprendre mes résultats, corriger mes erreurs et avancer.</p>
+  <p id="pageStatus" role="status" aria-live="polite">
+    Chargement de ton suivi…
+  </p>
+
+  <div class="actions">
+    <button id="reload" type="button">Actualiser mon suivi</button>
+    <a class="button secondary" href="mon-espace-svt.html">
+      Retour à Mon espace SVT
+    </a>
+  </div>
+
+  <div id="dashboard" hidden>
+    <h2 id="studentName"></h2>
+    <p id="studentClass" class="muted"></p>
+
+    <section>
+      <h2>Mon travail en un regard</h2>
+      <div class="cards">
+        <div class="card">
+          <strong id="sentCount">0</strong>
+          Travaux en attente de correction
+        </div>
+        <div class="card">
+          <strong id="reviewCount">0</strong>
+          Travaux à reprendre
+        </div>
+        <div class="card">
+          <strong id="doneCount">0</strong>
+          Travaux terminés
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Mes exercices et les conseils du professeur</h2>
+      <p class="muted">
+        La dernière version de chaque travail est affichée.
+        « Non envoyé » signifie qu’aucune copie n’a encore été déposée.
+      </p>
+      <div id="works"></div>
+      <a class="button" href="exercices-unite-1-partie-1.html">
+        Ouvrir mes exercices →
+      </a>
+    </section>
+
+    <section>
+      <h2>Mes résultats des quiz</h2>
+      <p id="quizInfo" class="muted"></p>
+      <div class="scroll">
+        <table id="quizTable" hidden>
+          <thead>
+            <tr><th>Quiz</th><th>Note</th><th>Date</th></tr>
+          </thead>
+          <tbody id="quizzes"></tbody>
+        </table>
+      </div>
+      <p class="muted">
+        Les notes des quiz sont sur 20.
+        Les exercices conservent leur propre barème.
+      </p>
+      <a class="button" href="/api/quiz-access">Ouvrir Quiz SVT →</a>
+    </section>
+
+    <section id="objectifs">
+      <h2>🎯 Mes prochaines étapes</h2>
+      <p id="nextStep"></p>
+      <p>
+        Pour chaque quiz, consulte la correction dans Quiz SVT.
+        Explique tes erreurs, puis revois les notions concernées.
+      </p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  LABNIHI Brahim — Prof SVT<br>
+  Comprendre avant de mémoriser, raisonner avant de répondre,
+  progresser vers l’autonomie.
+</footer>
+
+<script>
+'use strict';
+
+const $ = id => document.getElementById(id);
+
+const exercises = [
+  {
+    id: 'u1p1-restitution',
+    title: 'Couple 1 · Restitution des connaissances',
+    max: 6
+  },
+  {
+    id: 'u1p1-raisonnement',
+    title: 'Couple 1 · Raisonnement scientifique',
+    max: 5
+  },
+  {
+    id: 'u1p1-restitution-2',
+    title: 'Couple 2 · Restitution des connaissances',
+    max: 5
+  },
+  {
+    id: 'u1p1-raisonnement-2',
+    title: 'Couple 2 · Raisonnement scientifique',
+    max: 5
+  },
+  {
+    id: 'u1p1-restitution-3',
+    title: 'Couple 3 · Restitution des connaissances',
+    max: 5
+  },
+  {
+    id: 'u1p1-raisonnement-3',
+    title: 'Couple 3 · Raisonnement scientifique',
+    max: 5
+  }
+];
+
+const statuses = {
+  submitted: 'Copie envoyée — en attente de correction',
+  reviewed: 'À reprendre : une copie corrigée est demandée',
+  completed: 'Travail terminé'
+};
+
+function node(tag, text, className) {
+  const element = document.createElement(tag);
+  if (text !== undefined) element.textContent = text;
+  if (className) element.className = className;
+  return element;
+}
+
+function date(value) {
+  if (!value) return '—';
+  const result = new Date(value);
+  return Number.isNaN(result.getTime())
+    ? '—'
+    : result.toLocaleString('fr-FR');
+}
+
+function number(value) {
+  return Number(value).toLocaleString('fr-FR');
+}
+
+function renderWorks(submissions) {
+  const latest = new Map();
+
+  for (const submission of submissions) {
+    const previous = latest.get(submission.exercise_id);
+    if (!previous || Number(submission.version) > Number(previous.version)) {
+      latest.set(submission.exercise_id, submission);
+    }
+  }
+
+  const values = [...latest.values()];
+  const waiting = values.filter(s => s.status === 'submitted').length;
+  const review = values.filter(s => s.status === 'reviewed').length;
+  const done = values.filter(s => s.status === 'completed').length;
+
+  $('sentCount').textContent = waiting;
+  $('reviewCount').textContent = review;
+  $('doneCount').textContent = done;
+
+  $('nextStep').textContent = review
+    ? 'Commence par tes travaux à reprendre. Relis les remarques du professeur, revois la notion concernée et envoie ta copie corrigée.'
+    : waiting
+      ? 'Certaines copies attendent la correction du professeur. Tu peux poursuivre ton entraînement et revoir les corrections des quiz.'
+      : 'Choisis un exercice à travailler, puis utilise les retours du professeur pour consolider tes acquis.';
+
+  $('works').replaceChildren();
+
+  for (const exercise of exercises) {
+    const submission = latest.get(exercise.id);
+    const article = node('article', undefined, 'work');
+    article.append(node('h3', exercise.title));
+
+    article.append(node(
+      'p',
+      submission
+        ? statuses[submission.status] || submission.status
+        : 'Non envoyé',
+      'badge' + (submission?.status === 'reviewed' ? ' review' : '')
+    ));
+
+    if (submission) {
+      article.append(node(
+        'p',
+        'Version ' + submission.version +
+        ' · Envoi : ' + date(submission.submitted_at),
+        'muted'
+      ));
+
+      if (submission.score !== null && submission.score !== undefined) {
+        article.append(node(
+          'p',
+          'Note : ' + number(submission.score) + ' / ' + exercise.max
+        ));
+      }
+
+      if (submission.teacher_feedback) {
+        article.append(
+          node('h3', 'Remarques et conseils du professeur'),
+          node('p', submission.teacher_feedback, 'feedback')
+        );
+      }
+    }
+
+    $('works').append(article);
+  }
+}
+
+function renderQuizzes(data) {
+  const quizzes = data.quizzes || [];
+  $('quizzes').replaceChildren();
+  $('quizInfo').textContent = data.quiz_notice ||
+    (quizzes.length
+      ? 'Tes résultats enregistrés, du plus récent au plus ancien.'
+      : 'Aucun résultat de quiz enregistré.');
+  $('quizTable').hidden = !quizzes.length;
+
+  for (const quiz of quizzes) {
+    const row = node('tr');
+    const score = quiz.score === null || quiz.score === undefined
+      ? 'Non renseignée'
+      : number(quiz.score) + ' / ' + number(quiz.max_score || 20);
+
+    row.append(
+      node('td', quiz.title),
+      node('td', score),
+      node('td', date(quiz.completed_at))
+    );
+    $('quizzes').append(row);
+  }
+}
+
+async function loadProgress() {
+  if ($('reload').disabled) return;
+  $('reload').disabled = true;
+  $('dashboard').hidden = true;
+  $('pageStatus').textContent = 'Chargement de ton suivi…';
+
+  try {
+    const response = await fetch('/api/student-progress', {
+      credentials: 'same-origin',
+      cache: 'no-store',
+      signal: AbortSignal.timeout(25000)
+    });
+
+    if (response.status === 401) {
+      window.location.replace('index.html');
+      return;
+    }
+
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.error || 'Chargement impossible.');
+    }
+    if (!data.student?.Students_code) {
+      throw new Error('La connexion n’a pas pu être vérifiée.');
+    }
+
+    const student = data.student;
+    $('studentName').textContent =
+      [student.first_name, student.last_name].filter(Boolean).join(' ');
+    $('studentClass').textContent =
+      'Classe : ' + (student.class_name || '—');
+
+    renderWorks(data.submissions || []);
+    renderQuizzes(data);
+    $('dashboard').hidden = false;
+    $('pageStatus').textContent = 'Ton suivi est actualisé.';
+  } catch (error) {
+    $('pageStatus').textContent =
+      'Impossible de charger ton suivi. ' +
+      (error.name === 'TimeoutError'
+        ? 'Réessaie dans un instant avec « Actualiser mon suivi ».'
+        : error.message);
+  } finally {
+    $('reload').disabled = false;
+  }
+}
+
+$('reload').addEventListener('click', loadProgress);
+loadProgress();
+</script>
+</body>
+</html>
