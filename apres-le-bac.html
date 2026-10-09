@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Après le BAC — École SVT</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f7fbf9;
+  color:#243b35;
+  line-height:1.65;
+}
+header{background:#087f6d;padding:16px 22px}
+.barre{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+}
+header a{color:white;text-decoration:none}
+.logo{font-size:22px;font-weight:bold}
+nav{display:flex;gap:20px;flex-wrap:wrap}
+nav a:hover{text-decoration:underline}
+main{max-width:1100px;margin:auto;padding:34px 20px 48px}
+h1,h2{color:#145349;line-height:1.4}
+h1{margin:0 0 12px}
+.introduction{color:#526b62;margin-bottom:28px}
+.grille{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:24px;
+}
+.carte{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  padding:28px;
+  background:white;
+  border:2px dashed #087f6d;
+  border-radius:16px;
+  color:#243b35;
+  text-decoration:none;
+  transition:transform .15s,box-shadow .15s;
+}
+.carte:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 24px #14534918;
+}
+.icone{font-size:38px}
+.carte h2{font-size:23px;margin:14px 0}
+.carte p{margin:0 0 22px}
+.acces{margin-top:auto;color:#087f6d;font-weight:bold}
+.bouton{
+  display:inline-block;
+  padding:11px 18px;
+  border:1px solid #087f6d;
+  border-radius:9px;
+  background:white;
+  color:#087f6d;
+  text-decoration:none;
+}
+.retour{margin-top:30px}
+.contenu{
+  padding:26px;
+  background:white;
+  border:2px dashed #087f6d;
+  border-radius:16px;
+}
+.message{
+  padding:18px;
+  background:#effaf5;
+  border:1px solid #b9dfcf;
+  border-radius:10px;
+}
+footer{
+  text-align:center;
+  padding:22px;
+  color:#526b62;
+  font-size:14px;
+}
+[hidden]{display:none!important}
+a:focus-visible{outline:3px solid #e7b942;outline-offset:5px}
+@media(max-width:650px){
+  .grille{grid-template-columns:1fr}
+  .carte{padding:22px}
+  h1{font-size:27px}
+  nav{gap:14px;font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="barre">
+    <a class="logo" href="index.html">ÉCOLE SVT</a>
+    <nav aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="mon-espace-svt.html">Mon Espace SVT</a>
+      <a href="exercices-unite-1-partie-1.html">Ressources</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section id="accueil">
+    <h1>🧭 Après le BAC</h1>
+    <p class="introduction">
+      Préparez votre orientation et votre poursuite d’études.
+    </p>
+
+    <div class="grille">
+      <a class="carte" href="apres-le-bac.html?rubrique=etudes">
+        <span class="icone" aria-hidden="true">🎓</span>
+        <h2>Principales voies d’études après un BAC Sciences Physiques</h2>
+        <p>
+          Découvrez les possibilités d’études au Maroc et à l’étranger.
+        </p>
+        <span class="acces">Découvrir les voies d’études →</span>
+      </a>
+
+      <a class="carte" href="apres-le-bac.html?rubrique=medecine">
+        <span class="icone" aria-hidden="true">🩺</span>
+        <h2>Préparation au concours de médecine</h2>
+        <p>
+          Un espace consacré à l’entraînement et à la préparation
+          du concours.
+        </p>
+        <span class="acces">Accéder à la préparation →</span>
+      </a>
+    </div>
+
+    <div class="retour">
+      <a class="bouton" href="index.html">← Retour à l’accueil</a>
+    </div>
+  </section>
+
+  <section id="etudes" hidden>
+    <h1>🎓 Principales voies d’études</h1>
+    <p class="introduction">
+      Après un BAC Sciences Physiques, explorez les études
+      au Maroc et à l’étranger.
+    </p>
+
+    <div class="grille">
+      <a class="carte" href="apres-le-bac.html?rubrique=maroc">
+        <span class="icone" aria-hidden="true">🇲🇦</span>
+        <h2>Études au Maroc</h2>
+        <p>
+          Explorez les formations et les établissements
+          pour construire votre projet d’études.
+        </p>
+        <span class="acces">Découvrir →</span>
+      </a>
+
+      <a class="carte" href="apres-le-bac.html?rubrique=etranger">
+        <span class="icone" aria-hidden="true">🌍</span>
+        <h2>Études à l’étranger</h2>
+        <p>
+          Explorez les destinations et les démarches
+          pour préparer votre projet.
+        </p>
+        <span class="acces">Découvrir →</span>
+      </a>
+    </div>
+
+    <div class="retour">
+      <a class="bouton" href="apres-le-bac.html">
+        ← Retour à Après le BAC
+      </a>
+    </div>
+  </section>
+
+  <section id="maroc" hidden>
+    <h1>🇲🇦 Études au Maroc</h1>
+    <div class="contenu">
+      <p class="message">
+        Les fiches sur les principales voies d’études au Maroc
+        seront ajoutées prochainement.
+      </p>
+    </div>
+    <div class="retour">
+      <a class="bouton" href="apres-le-bac.html?rubrique=etudes">
+        ← Retour aux voies d’études
+      </a>
+    </div>
+  </section>
+
+  <section id="etranger" hidden>
+    <h1>🌍 Études à l’étranger</h1>
+    <div class="contenu">
+      <p class="message">
+        Les fiches sur les études à l’étranger
+        seront ajoutées prochainement.
+      </p>
+    </div>
+    <div class="retour">
+      <a class="bouton" href="apres-le-bac.html?rubrique=etudes">
+        ← Retour aux voies d’études
+      </a>
+    </div>
+  </section>
+
+  <section id="medecine" hidden>
+    <h1>🩺 Préparation au concours de médecine</h1>
+    <div class="contenu">
+      <p class="message">
+        Les activités de préparation et les exercices d’entraînement
+        seront ajoutés progressivement dans cet espace.
+      </p>
+    </div>
+    <div class="retour">
+      <a class="bouton" href="apres-le-bac.html">
+        ← Retour à Après le BAC
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  LABNIHI Brahim – Prof SVT<br>
+  Comprendre avant de mémoriser, raisonner avant de répondre,
+  progresser vers l’autonomie.
+</footer>
+
+<script>
+  const rubriques = ["accueil", "etudes", "maroc", "etranger", "medecine"];
+  const choix = new URLSearchParams(location.search).get("rubrique");
+  const rubrique = rubriques.includes(choix) ? choix : "accueil";
+
+  for (const id of rubriques) {
+    document.getElementById(id).hidden = id !== rubrique;
+  }
+
+  const titres = {
+    accueil: "Après le BAC",
+    etudes: "Principales voies d’études",
+    maroc: "Études au Maroc",
+    etranger: "Études à l’étranger",
+    medecine: "Préparation au concours de médecine"
+  };
+
+  document.title = titres[rubrique] + " — École SVT";
+</script>
+</body>
+</html>
