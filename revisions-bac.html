@@ -244,11 +244,21 @@
         <h1 id="titre-unite"></h1>
         <p class="introduction">Exercices du baccalauréat</p>
 
-        <div class="contenu-unite">
-          <p class="message">
-            Les exercices de cette unité seront ajoutés prochainement.
-          </p>
-        </div>
+        <div id="exercices-unite-1" hidden>
+    <h2>BAC 2021 — Session normale</h2>
+    <p>
+      Restitution des connaissances · 6 points<br>
+      Respiration cellulaire et muscle.
+    </p>
+    <a class="bouton" href="bac-2021-normal-restitution.html">
+      Ouvrir l’exercice →
+    </a>
+  </div>
+
+  <p id="message-autres-unites" class="message">
+    Les exercices de cette unité seront ajoutés prochainement.
+  </p>
+</div>
 
         <div class="retour">
           <a class="bouton" href="revisions-bac.html">
@@ -293,6 +303,8 @@
       const selection = unites[choix];
 
       if (selection) {
+        document.getElementById("exercices-unite-1").hidden = choix !== "1";
+document.getElementById("message-autres-unites").hidden = choix === "1";
         document.getElementById("accueil").hidden = true;
         document.getElementById("unite").hidden = false;
         document.getElementById("numero-unite").textContent =
