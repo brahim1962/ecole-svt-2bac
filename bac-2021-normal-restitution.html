@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BAC 2021 — Restitution des connaissances</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f7fbf9;color:#243b35;line-height:1.65}
+header{background:#087f6d;padding:16px 22px}
+.barre{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.logo{font-size:22px;font-weight:bold}
+header a{color:white;text-decoration:none}
+nav{display:flex;gap:20px;flex-wrap:wrap}
+main{max-width:1050px;margin:auto;padding:30px 20px}
+h1,h2,h3{color:#145349;line-height:1.4}
+h1{margin-bottom:10px}
+.meta{color:#526b62}
+.conseil,.correction{background:#effaf5;border:1px solid #b9dfcf;border-radius:10px;padding:18px}
+.partie{background:white;border:2px dashed #087f6d;border-radius:14px;padding:24px;margin:24px 0}
+.partie h2{margin-top:0;font-size:21px}
+.points{font-size:16px;font-weight:normal}
+button,.bouton{display:inline-block;background:white;color:#087f6d;border:1px solid #087f6d;border-radius:8px;padding:11px 16px;font:inherit;cursor:pointer;text-decoration:none}
+button{margin:15px 0}
+.correction h3{margin-top:0}
+.qcm{border:1px solid #d6e6de;border-radius:10px;padding:16px;margin:16px 0}
+.qcm p{margin-top:0}
+ol{padding-left:26px}
+li{margin:6px 0}
+.formule{overflow-x:auto;white-space:nowrap;padding:12px;background:#f5f9f7;border-radius:8px}
+.document{display:block;max-width:100%;height:auto;margin:15px auto}
+.tableau{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th,td{border:1px solid #c9dfd3;text-align:left;padding:12px;vertical-align:top}
+th{background:#effaf5}
+footer{text-align:center;color:#526b62;padding:25px;font-size:14px}
+[hidden]{display:none!important}
+a:focus-visible,button:focus-visible{outline:3px solid #e7b942;outline-offset:4px}
+@media(max-width:600px){
+.partie{padding:18px}
+h1{font-size:26px}
+nav{gap:14px;font-size:14px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="barre">
+    <a class="logo" href="index.html">ÉCOLE SVT</a>
+    <nav aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="mon-espace-svt.html">Mon Espace SVT</a>
+      <a href="exercices-unite-1-partie-1.html">Ressources</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<p id="etat" role="status">Vérification de votre accès…</p>
+<button id="reessayer" hidden>Réessayer</button>
+
+<div id="contenu" hidden>
+  <h1>BAC 2021 — Session normale</h1>
+  <p class="meta">
+    Unité I · Restitution des connaissances · <strong>6 points</strong>
+  </p>
+
+  <p class="conseil">
+    Répondez sur votre feuille avant de consulter les corrections.
+    Comparez ensuite vos réponses avec les éléments attendus et le barème.
+  </p>
+
+  <a class="bouton" href="revisions-bac.html?unite=1">
+    ← Retour aux exercices de l’Unité I
+  </a>
+
+  <section class="partie">
+    <h2>I. Définitions <span class="points">(1 point)</span></h2>
+    <p>Définissez les notions suivantes :</p>
+    <ul>
+      <li>Sphère pédonculée.</li>
+      <li>Complexe actomyosine.</li>
+    </ul>
+
+    <button aria-expanded="false" aria-controls="correction-i">
+      Vérifier mes réponses →
+    </button>
+    <div class="correction" id="correction-i" hidden>
+      <h3>Éléments de correction</h3>
+      <p>
+        <strong>Sphère pédonculée :</strong> structure protéique de la
+        membrane interne mitochondriale qui catalyse la production
+        d’ATP par phosphorylation de l’ADP.
+      </p>
+      <p>
+        <strong>Complexe actomyosine :</strong> complexe formé par la
+        liaison de l’actine et de la myosine lors de la contraction musculaire.
+      </p>
+      <p><strong>Barème :</strong> 0,5 point par définition correcte.</p>
+    </div>
+  </section>
+
+  <section class="partie">
+    <h2>II. Formation de l’acétyl-CoA
+      <span class="points">(0,75 point)</span>
+    </h2>
+    <p>Recopiez et complétez la réaction suivante :</p>
+    <div class="formule">
+      …………… + NAD⁺ + CoA → CH₃CO-CoA + …………… + ……………
+    </div>
+
+    <button aria-expanded="false" aria-controls="correction-ii">
+      Vérifier mes réponses →
+    </button>
+    <div class="correction" id="correction-ii" hidden>
+      <h3>Éléments de correction</h3>
+      <div class="formule">
+        CH₃COCOOH + NAD⁺ + CoA → CH₃CO-CoA + NADH + H⁺ + CO₂
+      </div>
+      <p>
+        Les éléments attendus sont l’acide pyruvique,
+        le NADH + H⁺ et le dioxyde de carbone.
+      </p>
+      <p><strong>Barème :</strong> 3 × 0,25 point.</p>
+    </div>
+  </section>
+
+  <section class="partie">
+    <h2>III. Questions à choix multiple
+      <span class="points">(2 points)</span>
+    </h2>
+    <p>
+      Pour chaque item numéroté de 1 à 4, une seule proposition est correcte.
+      Écrivez les couples : (1 ; …), (2 ; …), (3 ; …), (4 ; …).
+    </p>
+
+    <div class="qcm">
+      <p><strong>1. La membrane externe des mitochondries est :</strong></p>
+      <ol type="a">
+        <li>riche en protéines de la chaîne respiratoire ;</li>
+        <li>semblable à la membrane plasmique ;</li>
+        <li>repliée sous forme de crêtes ;</li>
+        <li>riche en ATP-synthase.</li>
+      </ol>
+    </div>
+
+    <div class="qcm">
+      <p>
+        <strong>2. L’oxydation respiratoire d’une molécule
+        d’acide pyruvique fournit :</strong>
+      </p>
+      <ol type="a">
+        <li>2 ATP ;</li>
+        <li>12 ATP ;</li>
+        <li>15 ATP ;</li>
+        <li>36 ATP.</li>
+      </ol>
+    </div>
+
+    <div class="qcm">
+      <p>
+        <strong>3. Dans une cellule de muscle squelettique striée,
+        les ions du calcium :</strong>
+      </p>
+      <ol type="a">
+        <li>se fixent sur les têtes de myosine lors de la contraction ;</li>
+        <li>permettent la liaison des filaments d’actine entre eux ;</li>
+        <li>permettent la liaison des filaments de myosine entre eux ;</li>
+        <li>sont stockés dans le réticulum sarcoplasmique
+          à la fin de la contraction.</li>
+      </ol>
+    </div>
+
+    <div class="qcm">
+      <p>
+        <strong>4. La respiration cellulaire se déroule
+        selon la succession des étapes suivantes :</strong>
+      </p>
+      <ol type="a">
+        <li>Glycolyse → cycle de Krebs → formation de l’acétyl-CoA
+          → phosphorylation oxydative ;</li>
+        <li>Glycolyse → formation de l’acétyl-CoA → cycle de Krebs
+          → phosphorylation oxydative ;</li>
+        <li>Glycolyse → formation de l’acétyl-CoA
+          → phosphorylation oxydative → cycle de Krebs ;</li>
+        <li>Glycolyse → cycle de Krebs → phosphorylation oxydative
+          → formation de l’acétyl-CoA.</li>
+      </ol>
+    </div>
+
+    <button aria-expanded="false" aria-controls="correction-iii">
+      Vérifier mes réponses →
+    </button>
+    <div class="correction" id="correction-iii" hidden>
+      <h3>Éléments de correction</h3>
+      <p><strong>(1 ; b) — (2 ; c) — (3 ; d) — (4 ; b)</strong></p>
+      <p><strong>Barème :</strong> 0,5 point par réponse correcte.</p>
+    </div>
+  </section>
+
+  <section class="partie">
+    <h2>IV. Observation d’une myofibrille
+      <span class="points">(1,25 point)</span>
+    </h2>
+    <p>
+      Le document ci-dessous montre une observation microscopique
+      d’une partie de la myofibrille.
+    </p>
+
+    <img class="document"
+      src="bac-2021-myofibrille.png"
+      alt="Document original du BAC 2021 : observation d’une myofibrille
+      avec cinq structures numérotées à identifier.">
+
+    <p>
+      Nommez chacune des structures désignées par les numéros
+      1, 2, 3, 4 et 5.
+    </p>
+
+    <button aria-expanded="false" aria-controls="correction-iv">
+      Vérifier mes réponses →
+    </button>
+    <div class="correction" id="correction-iv" hidden>
+      <h3>Éléments de correction</h3>
+      <ol>
+        <li>Strie Z.</li>
+        <li>Zone H.</li>
+        <li>Bande sombre (A).</li>
+        <li>Bande claire (I).</li>
+        <li>Sarcomère.</li>
+      </ol>
+      <p><strong>Barème :</strong> 0,25 point par structure correcte.</p>
+    </div>
+  </section>
+
+  <section class="partie">
+    <h2>V. Associations <span class="points">(1 point)</span></h2>
+    <p>
+      Associez à chaque numéro du groupe 1 la lettre correspondante
+      du groupe 2. Écrivez les couples :
+      (1 ; …), (2 ; …), (3 ; …), (4 ; …).
+    </p>
+
+    <div class="tableau">
+      <table>
+        <thead>
+          <tr><th>Groupe 1</th><th>Groupe 2</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1. La chaleur retardée.</td>
+            <td>a. Réactions d’oxydoréduction du cycle de Krebs.</td>
+          </tr>
+          <tr>
+            <td>2. La chaleur initiale.</td>
+            <td>b. Réactions d’oxydoréduction
+              au niveau de la chaîne respiratoire.</td>
+          </tr>
+          <tr>
+            <td>3. La formation du gradient H⁺.</td>
+            <td>c. Synthèse d’ATP à partir des réactions
+              métaboliques aérobiques.</td>
+          </tr>
+          <tr>
+            <td>4. La production du dioxyde de carbone.</td>
+            <td>d. Synthèse d’ATP à partir de la phosphocréatine.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <button aria-expanded="false" aria-controls="correction-v">
+      Vérifier mes réponses →
+    </button>
+    <div class="correction" id="correction-v" hidden>
+      <h3>Éléments de correction</h3>
+      <p><strong>(1 ; c) — (2 ; d) — (3 ; b) — (4 ; a)</strong></p>
+      <p><strong>Barème :</strong> 0,25 point par association correcte.</p>
+    </div>
+  </section>
+
+  <a class="bouton" href="revisions-bac.html?unite=1">
+    ← Retour aux exercices de l’Unité I
+  </a>
+</div>
+</main>
+
+<footer>
+  LABNIHI Brahim – Prof SVT<br>
+  Comprendre avant de mémoriser, raisonner avant de répondre,
+  progresser vers l’autonomie.
+</footer>
+
+<script>
+document.querySelectorAll("button[aria-controls]").forEach(bouton => {
+  bouton.addEventListener("click", () => {
+    const correction =
+      document.getElementById(bouton.getAttribute("aria-controls"));
+    const ouvrir = correction.hidden;
+    correction.hidden = !ouvrir;
+    bouton.setAttribute("aria-expanded", String(ouvrir));
+    bouton.textContent = ouvrir
+      ? "Masquer la correction ↑"
+      : "Vérifier mes réponses →";
+  });
+});
+
+const etat = document.getElementById("etat");
+const reessayer = document.getElementById("reessayer");
+
+async function verifierAcces() {
+  etat.textContent = "Vérification de votre accès…";
+  reessayer.hidden = true;
+  const controleur = new AbortController();
+  const delai = setTimeout(() => controleur.abort(), 15000);
+
+  try {
+    const reponse = await fetch("/api/school-auth?action=session", {
+      credentials: "same-origin",
+      cache: "no-store",
+      signal: controleur.signal
+    });
+
+    if (reponse.status === 401) {
+      location.replace("index.html");
+      return;
+    }
+
+    if (!reponse.ok) throw new Error("Accès indisponible");
+    const donnees = await reponse.json();
+
+    if (!donnees.student?.Students_code) {
+      throw new Error("Session invalide");
+    }
+
+    etat.hidden = true;
+    document.getElementById("contenu").hidden = false;
+  } catch (erreur) {
+    etat.textContent =
+      "Impossible de vérifier votre accès. Veuillez réessayer.";
+    reessayer.hidden = false;
+  } finally {
+    clearTimeout(delai);
+  }
+}
+
+reessayer.addEventListener("click", verifierAcces);
+verifierAcces();
+</script>
+</body>
+</html>
