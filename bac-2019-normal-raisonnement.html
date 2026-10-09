@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BAC 2019 — Raisonnement scientifique</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f7fbf9;color:#243b35;line-height:1.65}
+header{background:#087f6d;padding:16px 22px}
+.barre{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+header a{color:white;text-decoration:none}
+.logo{font-size:22px;font-weight:bold}
+nav{display:flex;gap:20px;flex-wrap:wrap}
+main{max-width:1050px;margin:auto;padding:30px 20px}
+h1,h2,h3{color:#145349;line-height:1.4}
+.meta{color:#526b62}
+.conseil,.correction{background:#effaf5;border:1px solid #b9dfcf;border-radius:10px;padding:18px}
+.partie{background:white;border:2px dashed #087f6d;border-radius:14px;padding:24px;margin:24px 0}
+.partie h2{margin-top:0;font-size:21px}
+.points{font-size:16px;font-weight:normal}
+button,.bouton{display:inline-block;background:white;color:#087f6d;border:1px solid #087f6d;border-radius:8px;padding:11px 16px;font:inherit;cursor:pointer;text-decoration:none}
+button{margin:15px 0}
+.correction h3{margin-top:0}
+.document{display:block;width:100%;height:auto;margin:18px auto}
+.tableau{overflow-x:auto;margin:18px 0}
+table{width:100%;border-collapse:collapse}
+th,td{border:1px solid #c9dfd3;padding:12px;text-align:left;vertical-align:top}
+th{background:#effaf5}
+li{margin:8px 0}
+footer{text-align:center;color:#526b62;padding:25px;font-size:14px}
+[hidden]{display:none!important}
+a:focus-visible,button:focus-visible{outline:3px solid #e7b942;outline-offset:4px}
+@media(max-width:600px){
+.partie{padding:18px}
+h1{font-size:26px}
+nav{gap:14px;font-size:14px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="barre">
+    <a class="logo" href="index.html">ÉCOLE SVT</a>
+    <nav aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="mon-espace-svt.html">Mon Espace SVT</a>
+      <a href="exercices-unite-1-partie-1.html">Ressources</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<p id="etat" role="status">Vérification de votre accès…</p>
+<button id="reessayer" hidden>Réessayer</button>
+
+<div id="contenu" hidden>
+  <h1>BAC 2019 — Session normale</h1>
+  <p class="meta">
+    Unité I · Raisonnement scientifique et communication graphique
+    et écrite · Exercice 1 · <strong>5 points</strong>
+  </p>
+
+  <p class="conseil">
+    Étudiez les documents et rédigez vos réponses sur votre feuille
+    avant de consulter les corrections.
+  </p>
+
+  <a class="bouton" href="revisions-bac.html?unite=1">
+    ← Retour aux exercices de l’Unité I
+  </a>
+
+  <section class="partie">
+    <h2>Situation étudiée</h2>
+    <p>
+      Afin d’étudier la relation entre les réactions responsables
+      de la consommation d’oxygène et la libération d’énergie
+      au niveau du muscle, on suggère les données suivantes.
+    </p>
+    <p>
+      Lors des compétitions dans les zones de haute altitude,
+      les performances physiques des athlètes exerçant dans
+      les zones de basse altitude s’affaiblissent.
+      Afin de déterminer les causes de cette baisse de rendement
+      physique, une étude a été réalisée pour suivre l’évolution
+      des records de marathon en fonction de l’altitude par rapport
+      au niveau de la mer.
+    </p>
+
+    <h3>Document 1 — Records de marathon</h3>
+    <div class="tableau">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Marathon</th>
+            <th scope="col">Altitude (m)</th>
+            <th scope="col">Pression partielle d’O₂ (mmHg)</th>
+            <th scope="col">Record enregistré</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Rabat (Maroc)</th>
+            <td>29</td><td>159</td><td>2 h 10 min 36 s</td></tr>
+          <tr><th scope="row">Colorado (USA)</th>
+            <td>1 823</td><td>125</td><td>2 h 18 min 06 s</td></tr>
+          <tr><th scope="row">Mexico (Mexique)</th>
+            <td>2 240</td><td>110</td><td>2 h 19 min 24 s</td></tr>
+          <tr><th scope="row">La Paz (Bolivie)</th>
+            <td>3 658</td><td>97</td><td>2 h 26 min 00 s</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>1. Description <span class="points">(0,5 point)</span></h3>
+    <p>
+      En vous basant sur le document 1, décrivez les variations
+      des records enregistrés en fonction de l’altitude.
+    </p>
+    <button aria-expanded="false" aria-controls="c1">
+      Vérifier ma réponse →
+    </button>
+    <div class="correction" id="c1" hidden>
+      <h3>Éléments de correction</h3>
+      <p>
+        Le temps du record de marathon augmente avec l’altitude :
+        il passe de 2 h 10 min 36 s à Rabat, à 29 m,
+        à 2 h 26 min à La Paz, à 3 658 m.
+        Les performances diminuent donc lorsque l’altitude augmente.
+      </p>
+      <p><strong>Barème :</strong> 0,5 point.</p>
+    </div>
+  </section>
+
+  <section class="partie">
+    <h2>Document 2 — Approvisionnement des cellules en dioxygène</h2>
+    <p>
+      Pour illustrer la relation entre l’altitude et la baisse
+      de rendement physique des athlètes du marathon, le document 2
+      présente l’effet de l’altitude sur la quantité de dioxygène
+      qui approvisionne les cellules.
+    </p>
+
+    <svg class="document" style="max-width:650px"
+      viewBox="350 0 374 274" role="img"
+      aria-label="Document 2 : pression partielle de dioxygène
+      de l’air aux veines, au niveau de la mer et au sommet de l’Everest.">
+      <image href="bac-2019-document-2.png"
+        x="0" y="0" width="724" height="274"/>
+    </svg>
+
+    <h3>2. Hypothèse <span class="points">(0,5 point)</span></h3>
+    <p>
+      En vous basant sur les documents 1 et 2, proposez une hypothèse
+      pour expliquer la relation entre l’altitude et la baisse
+      de rendement physique des athlètes du marathon.
+    </p>
+    <button aria-expanded="false" aria-controls="c2">
+      Vérifier ma réponse →
+    </button>
+    <div class="correction" id="c2" hidden>
+      <h3>Éléments de correction</h3>
+      <p>
+        Avec l’augmentation de l’altitude, la pression partielle
+        du dioxygène diminue. La quantité de dioxygène délivrée
+        aux cellules devient insuffisante, ce qui pourrait expliquer
+        la baisse du rendement physique des athlètes.
+      </p>
+      <p>
+        Toute hypothèse reliant la baisse des performances à
+        la diminution de la pression partielle d’O₂ et à
+        l’augmentation de l’altitude peut être acceptée.
+      </p>
+      <p><strong>Barème :</strong> 0,5 point.</p>
+    </div>
+  </section>
+
+  <section class="partie">
+    <h2>Documents 3 et 4 — Dioxygène et production d’ATP</h2>
+    <p>
+      Pour déterminer le rôle du dioxygène dans les réactions
+      respiratoires responsables de la production d’énergie
+      cellulaire (ATP), on réalise l’expérience suivante :
+      une suspension mitochondriale est placée dans un milieu
+      riche en dioxygène, avec addition de composés réduits
+      (RH₂), d’ADP et de Pi.
+    </p>
+    <p>
+      Le suivi de l’évolution de la quantité de dioxygène et d’ATP
+      dans le milieu a permis d’enregistrer les résultats du document 3.
+      Le document 4 montre la chaîne respiratoire responsable de
+      la production d’ATP au niveau de la membrane mitochondriale interne.
+    </p>
+
+    <svg class="document" style="max-width:708px"
+      viewBox="10 100 690 221" role="img"
+      aria-label="Documents 3 et 4 : évolution du dioxygène et de l’ATP
+      après ajout de RH2, ADP et Pi ; schéma de la chaîne respiratoire.">
+      <image href="bac-2019-documents-3-4.png"
+        x="0" y="0" width="708" height="321"/>
+    </svg>
+
+    <h3>3. Mise en relation <span class="points">(1,25 point)</span></h3>
+    <p>
+      En vous basant sur les documents 3 et 4, montrez la relation
+      entre le dioxygène et la production d’énergie cellulaire (ATP).
+    </p>
+    <button aria-expanded="false" aria-controls="c3">
+      Vérifier ma réponse →
+    </button>
+    <div class="correction" id="c3" hidden>
+      <h3>Éléments de correction</h3>
+      <p>
+        <strong>Document 3 :</strong> après l’ajout de RH₂,
+        d’ADP et de Pi, la concentration du dioxygène diminue
+        tandis que celle de l’ATP augmente.
+      </p>
+      <p><strong>Document 4 :</strong> au niveau de la chaîne respiratoire :</p>
+      <ul>
+        <li>
+          Les composés réduits RH₂ sont oxydés et leurs électrons
+          sont transférés à travers les protéines de la membrane
+          mitochondriale interne.
+        </li>
+        <li>
+          Ce transfert permet la formation d’un gradient de protons,
+          utilisé par les sphères pédonculées pour produire l’ATP.
+        </li>
+        <li>
+          Le dioxygène est le récepteur final des électrons :
+          il est réduit en eau.
+        </li>
+      </ul>
+      <p>
+        La consommation du dioxygène est ainsi liée à
+        la production d’ATP par phosphorylation oxydative.
+      </p>
+      <p>
+        <strong>Barème :</strong> document 3 : 0,5 point ;
+        document 4 : 3 × 0,25 point.
+      </p>
+    </div>
+
+    <h3>4. Vérification de l’hypothèse
+      <span class="points">(0,75 point)</span>
+    </h3>
+    <p>
+      En vous basant sur ce qui précède, vérifiez l’hypothèse proposée
+      dans votre réponse à la question 2.
+    </p>
+    <button aria-expanded="false" aria-controls="c4">
+      Vérifier ma réponse →
+    </button>
+    <div class="correction" id="c4" hidden>
+      <h3>Éléments de correction</h3>
+      <p>
+        L’hypothèse est confirmée : en haute altitude,
+        la quantité de dioxygène qui atteint les cellules diminue.
+        Cela limite la production d’ATP au niveau de la chaîne
+        respiratoire et entraîne une baisse du rendement des athlètes.
+      </p>
+      <p><strong>Barème :</strong> 0,75 point.</p>
+    </div>
+  </section>
+
+  <section class="partie">
+    <h2>Document 5 — Entraînement en haute altitude</h2>
+    <p>
+      Pour surmonter la baisse du rendement physique lors des compétitions
+      en haute altitude, les préparateurs physiques ont recours à
+      l’entraînement dans les régions de haute altitude pendant
+      les trois semaines précédant les compétitions.
+    </p>
+    <p>
+      Le document 5 présente les résultats des analyses effectuées
+      chez un athlète avant et après des entraînements
+      dans la région de La Paz, en Bolivie.
+    </p>
+
+    <div class="tableau">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Variables</th>
+            <th scope="col">Avant l’entraînement</th>
+            <th scope="col">Après l’entraînement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Globules rouges par mm³ de sang</th>
+            <td>4,58 × 10⁶</td><td>5,17 × 10⁶</td>
+          </tr>
+          <tr>
+            <th scope="row">Globules blancs par mm³ de sang</th>
+            <td>7 400</td><td>8 400</td>
+          </tr>
+          <tr>
+            <th scope="row">Hémoglobine dans 100 mL de sang</th>
+            <td>13,5 g</td><td>15,9 g</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      <strong>NB :</strong> l’hémoglobine est une protéine présente
+      dans les globules rouges qui joue un rôle important
+      dans le transfert du dioxygène aux cellules du corps.
+    </p>
+
+    <h3>5.a. Comparaison <span class="points">(0,5 point)</span></h3>
+    <p>
+      Comparez les variables indiquées dans le document 5 chez l’athlète
+      avant et après l’entraînement dans la région de La Paz, en Bolivie.
+    </p>
+    <button aria-expanded="false" aria-controls="c5a">
+      Vérifier ma réponse →
+    </button>
+    <div class="correction" id="c5a" hidden>
+      <h3>Éléments de correction</h3>
+      <p>Après l’entraînement, les trois variables augmentent :</p>
+      <ul>
+        <li>Globules rouges : de 4,58 × 10⁶ à 5,17 × 10⁶ par mm³.</li>
+        <li>Globules blancs : de 7 400 à 8 400 par mm³.</li>
+        <li>Hémoglobine : de 13,5 g à 15,9 g dans 100 mL de sang.</li>
+      </ul>
+      <p><strong>Barème :</strong> 0,5 point.</p>
+    </div>
+
+    <h3>5.b. Explication <span class="points">(1,5 point)</span></h3>
+    <p>
+      En vous basant sur vos connaissances et les données précédentes,
+      expliquez l’impact de l’entraînement dans les zones de haute altitude
+      sur le rendement physique des athlètes.
+    </p>
+    <button aria-expanded="false" aria-controls="c5b">
+      Vérifier ma réponse →
+    </button>
+    <div class="correction" id="c5b" hidden>
+      <h3>Éléments de correction</h3>
+      <p>
+        L’entraînement en haute altitude entraîne une augmentation
+        du nombre de globules rouges et de la quantité d’hémoglobine.
+        Le transport du dioxygène vers les cellules est ainsi amélioré.
+      </p>
+      <p>
+        Cet apport favorise le fonctionnement de la chaîne respiratoire
+        et la production d’ATP dans les cellules musculaires,
+        ce qui améliore le rendement physique des athlètes.
+      </p>
+      <p><strong>Barème :</strong> 1,5 point.</p>
+    </div>
+  </section>
+
+  <a class="bouton" href="revisions-bac.html?unite=1">
+    ← Retour aux exercices de l’Unité I
+  </a>
+</div>
+</main>
+
+<footer>
+  LABNIHI Brahim – Prof SVT<br>
+  Comprendre avant de mémoriser, raisonner avant de répondre,
+  progresser vers l’autonomie.
+</footer>
+
+<script>
+document.querySelectorAll("button[aria-controls]").forEach(bouton => {
+  bouton.addEventListener("click", () => {
+    const correction =
+      document.getElementById(bouton.getAttribute("aria-controls"));
+    const ouvrir = correction.hidden;
+    correction.hidden = !ouvrir;
+    bouton.setAttribute("aria-expanded", String(ouvrir));
+    bouton.textContent = ouvrir
+      ? "Masquer la correction ↑"
+      : "Vérifier ma réponse →";
+  });
+});
+
+const etat = document.getElementById("etat");
+const reessayer = document.getElementById("reessayer");
+
+async function verifierAcces() {
+  etat.textContent = "Vérification de votre accès…";
+  reessayer.hidden = true;
+  const controleur = new AbortController();
+  const delai = setTimeout(() => controleur.abort(), 15000);
+
+  try {
+    const reponse = await fetch("/api/school-auth?action=session", {
+      credentials: "same-origin",
+      cache: "no-store",
+      signal: controleur.signal
+    });
+
+    if (reponse.status === 401) {
+      location.replace("index.html");
+      return;
+    }
+
+    if (!reponse.ok) throw new Error("Accès indisponible");
+    const donnees = await reponse.json();
+
+    if (!donnees.student?.Students_code) {
+      throw new Error("Session invalide");
+    }
+
+    etat.hidden = true;
+    document.getElementById("contenu").hidden = false;
+  } catch (erreur) {
+    etat.textContent =
+      "Impossible de vérifier votre accès. Veuillez réessayer.";
+    reessayer.hidden = false;
+  } finally {
+    clearTimeout(delai);
+  }
+}
+
+reessayer.addEventListener("click", verifierAcces);
+verifierAcces();
+</script>
+</body>
+</html>
