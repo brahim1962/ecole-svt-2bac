@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compléments de cours — École SVT</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5faf7;
+      color: #003f46;
+      line-height: 1.6;
+    }
+
+    .navbar {
+      background: #004c54;
+      color: white;
+      min-height: 70px;
+      padding: 14px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #73c900;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      color: #9de34b;
+    }
+
+    main {
+      width: 86%;
+      max-width: 1180px;
+      margin: 28px auto 50px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 28px;
+      margin-bottom: 22px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    h1 {
+      font-size: 30px;
+      margin: 0 0 10px;
+    }
+
+    .intro {
+      margin: 0;
+      color: #356368;
+    }
+
+    .unit-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .unit-row h2 {
+      font-size: 25px;
+      margin: 0;
+      min-width: 125px;
+    }
+
+    .parts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .part-button {
+      display: inline-block;
+      background: #087f3e;
+      color: white;
+      padding: 12px 26px;
+      border-radius: 9px;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .part-button:hover {
+      background: #056832;
+    }
+
+    .unit-title {
+      margin: 18px 0 0;
+      color: #356368;
+    }
+
+    .pending {
+      margin: 12px 0 0;
+      color: #356368;
+      font-size: 14px;
+    }
+
+    .preparation {
+      border: 2px dashed #66b88a;
+      scroll-margin-top: 20px;
+    }
+
+    .preparation h2 {
+      margin-top: 0;
+      color: #087f3e;
+    }
+
+    .return-button {
+      display: inline-block;
+      background: white;
+      color: #087f3e;
+      border: 1px solid #087f3e;
+      padding: 11px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .return-button:hover {
+      background: #edf7ed;
+    }
+
+    a:focus-visible {
+      outline: 3px solid #73c900;
+      outline-offset: 4px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #356368;
+      margin-top: 28px;
+    }
+
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      main {
+        width: 92%;
+        margin-top: 18px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      .unit-row h2 {
+        font-size: 23px;
+        min-width: auto;
+      }
+
+      .part-button {
+        font-size: 18px;
+        padding: 10px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="logo">🧬 ÉCOLE <span>SVT</span></div>
+
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="index.html">🏠 Accueil</a>
+      <a href="mon-espace-svt.html">🎓 Mon Espace SVT</a>
+      <a href="cours.html">📚 Ressources</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="card">
+      <h1>📚 Compléments de cours</h1>
+      <p class="intro">
+        Choisis une unité et une partie pour approfondir les notions,
+        observer les documents et explorer les animations.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="unite1">
+      <div class="unit-row">
+        <h2 id="unite1">Unité I :</h2>
+
+        <div class="parts">
+          <a href="experience-1-levures.html"
+             class="part-button"
+             aria-label="Unité I, Partie 1">
+            Partie 1
+          </a>
+
+          <a href="#partie2"
+             class="part-button"
+             aria-label="Unité I, Partie 2, en préparation">
+            Partie 2
+          </a>
+        </div>
+      </div>
+
+      <p class="unit-title">
+        Consommation de la matière organique et flux d’énergie.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="unite2">
+      <div class="unit-row">
+        <h2 id="unite2">Unité II :</h2>
+      </div>
+      <p class="pending">Les compléments seront ajoutés progressivement.</p>
+    </section>
+
+    <section class="card" aria-labelledby="unite3">
+      <div class="unit-row">
+        <h2 id="unite3">Unité III :</h2>
+      </div>
+      <p class="pending">Les compléments seront ajoutés progressivement.</p>
+    </section>
+
+    <section class="card" aria-labelledby="unite4">
+      <div class="unit-row">
+        <h2 id="unite4">Unité IV :</h2>
+      </div>
+      <p class="pending">Les compléments seront ajoutés progressivement.</p>
+    </section>
+
+    <section class="card preparation" id="partie2">
+      <h2>Unité I · Partie 2</h2>
+      <p>
+        <strong>
+          Rôle du muscle squelettique dans la conversion de l’énergie.
+        </strong>
+      </p>
+      <p>
+        En préparation : les phénomènes mécaniques de l’activité musculaire,
+        le myographe et les enregistrements musculaires.
+      </p>
+    </section>
+
+    <a href="mon-espace-svt.html" class="return-button">
+      ← Retour à Mon Espace SVT
+    </a>
+
+    <footer>
+      <p><strong>LABNIHI Brahim – Prof SVT</strong></p>
+      <p>
+        Comprendre avant de mémoriser, raisonner avant de répondre,
+        progresser vers l’autonomie.
+      </p>
+    </footer>
+
+  </main>
+
+</body>
+</html>
