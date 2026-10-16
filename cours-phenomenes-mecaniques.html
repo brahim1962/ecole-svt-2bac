@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Les phénomènes mécaniques de l’activité musculaire — École SVT</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,sans-serif;background:#f5faf7;color:#003f46;line-height:1.7}
+.navbar{background:#004c54;color:white;min-height:70px;padding:14px 6%;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-size:23px;font-weight:bold}
+.logo span{color:#73c900}
+.nav-links{display:flex;gap:26px;flex-wrap:wrap}
+.nav-links a{color:white;text-decoration:none;font-weight:bold}
+.nav-links a:hover{color:#9de34b}
+main{width:86%;max-width:1180px;margin:28px auto 50px}
+.card{background:white;border-radius:18px;padding:28px;margin-bottom:22px;box-shadow:0 4px 15px rgba(0,0,0,.05)}
+.label{color:#07853e;font-size:13px;font-weight:bold}
+h1{font-size:29px;line-height:1.3}
+h2{color:#087f3e;font-size:23px;line-height:1.4}
+h3{font-size:19px}
+p,ul,ol{margin:14px 0}
+li{margin-bottom:7px}
+.note,.correction{background:#edf7ed;border-left:4px solid #087f3e;border-radius:8px;padding:16px 18px;margin:18px 0}
+.button{display:inline-block;background:#087f3e;color:white;padding:12px 18px;border:0;border-radius:8px;text-decoration:none;font:inherit;font-weight:bold;cursor:pointer}
+.button:hover{background:#056832}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.secondary{background:white;color:#087f3e;border:1px solid #087f3e}
+.secondary:hover{background:#edf7ed}
+.exercise{border:2px dashed #19874b}
+label{display:block;font-weight:bold;margin:16px 0 7px}
+textarea{display:block;width:100%;min-height:100px;padding:12px;border:1px solid #9ab9ac;border-radius:8px;font:inherit;color:#003f46;background:white;resize:vertical}
+textarea:focus{outline:2px solid #087f3e;outline-offset:2px}
+button:focus-visible,a:focus-visible{outline:3px solid #73c900;outline-offset:3px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;margin:16px 0}
+caption{text-align:left;font-weight:bold;margin-bottom:8px}
+th,td{border:1px solid #c6dace;padding:12px;text-align:left;vertical-align:top}
+th{background:#edf7ed}
+.small{font-size:13px}
+[hidden]{display:none!important}
+section{scroll-margin-top:20px}
+footer{text-align:center;font-size:13px;margin-top:25px}
+@media(max-width:700px){
+.navbar{flex-direction:column;align-items:flex-start}
+.nav-links{gap:12px}
+main{width:92%;margin-top:18px}
+.card{padding:20px}
+h1{font-size:24px}
+h2{font-size:21px}
+th,td{padding:8px}
+}
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">🧬 ÉCOLE <span>SVT</span></div>
+  <nav class="nav-links" aria-label="Navigation principale">
+    <a href="index.html">🏠 Accueil</a>
+    <a href="mon-espace-svt.html">🎓 Mon Espace SVT</a>
+    <a href="cours.html">📚 Ressources</a>
+  </nav>
+</header>
+
+<main>
+<section class="card">
+  <div class="label">UNITÉ 1 · PARTIE 2 · ACTIVITÉ 1</div>
+  <h1>Les phénomènes mécaniques de l’activité musculaire</h1>
+  <p><strong>Partie 2 :</strong> rôle du muscle squelettique dans la conversion de l’énergie.</p>
+  <p>Dans la première partie, nous avons étudié la production d’ATP par la cellule.
+  Comment le muscle utilise-t-il cette énergie pour réaliser son activité ?</p>
+  <div class="note">
+    <strong>Objectifs :</strong> comprendre le rôle du myographe, reconnaître
+    les phases d’une secousse musculaire et expliquer le recrutement,
+    la fusion des secousses, les tétanos et la fatigue musculaire.
+  </div>
+  <p>Lis les notions, puis réponds aux exercices sur ton cahier ou dans
+  les zones proposées. Affiche ensuite chaque correction pour comparer ton raisonnement.</p>
+  <p class="small">Les réponses saisies sur cette page ne sont ni enregistrées
+  ni envoyées au professeur. Recopie-les avant de quitter ou d’actualiser la page.</p>
+  <div class="actions">
+    <a href="#exercices" class="button">Passer aux exercices →</a>
+  </div>
+</section>
+
+<section class="card">
+  <h2>1. L’activité musculaire et son enregistrement</h2>
+  <p>L’activité du muscle squelettique se manifeste par une
+  <strong>contraction</strong> suivie d’un <strong>relâchement</strong>.
+  Elle participe aux mouvements, aux efforts et au maintien de la posture.</p>
+  <p>Dans l’organisme, la contraction est déclenchée par un message nerveux
+  transmis au muscle par un nerf moteur.</p>
+  <h3>Le myographe</h3>
+  <p>Le <strong>myographe</strong> est un dispositif expérimental permettant
+  d’enregistrer la réponse mécanique d’un muscle à des stimulations.</p>
+  <ul>
+    <li>Un <strong>excitateur</strong> délivre les stimulations électriques.</li>
+    <li>Le muscle est relié à un <strong>stylet</strong> qui traduit sa réponse mécanique.</li>
+    <li>Le système d’enregistrement permet d’obtenir un tracé appelé <strong>myogramme</strong>.</li>
+    <li>Les repères de stimulation et de temps permettent de situer et de mesurer la réponse.</li>
+  </ul>
+  <div class="note">
+    Pour interpréter un myogramme, repère d’abord les stimulations,
+    puis observe le début, l’amplitude et la durée de la réponse musculaire.
+  </div>
+</section>
+
+<section class="card">
+  <h2>2. La secousse musculaire isolée</h2>
+  <p>Une stimulation isolée et efficace provoque une réponse appelée
+  <strong>secousse musculaire isolée</strong>.</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th scope="col">Phase</th><th scope="col">Manifestation</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Latence</strong></td>
+          <td>Intervalle entre la stimulation et le début de la réponse mécanique enregistrée.</td>
+        </tr>
+        <tr>
+          <td><strong>Contraction</strong></td>
+          <td>La réponse mécanique augmente jusqu’à un maximum.</td>
+        </tr>
+        <tr>
+          <td><strong>Relâchement</strong></td>
+          <td>La réponse mécanique diminue et revient au niveau de repos.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Une stimulation trop faible est <strong>inefficace</strong> :
+  aucune secousse n’est enregistrée.</p>
+</section>
+
+<section class="card">
+  <h2>3. L’intensité de stimulation et le recrutement</h2>
+  <p>Pour une durée de stimulation donnée, le <strong>seuil d’excitation</strong>
+  est la plus petite intensité qui déclenche une réponse musculaire.
+  Une stimulation d’intensité inférieure au seuil est dite <strong>infraliminaire</strong>.</p>
+  <p>Lorsque l’intensité augmente au-delà du seuil, l’amplitude de la réponse
+  du muscle entier augmente progressivement, puis atteint un maximum.</p>
+  <div class="note">
+    <strong>Le recrutement :</strong> l’augmentation de l’intensité sollicite
+    un nombre croissant de fibres musculaires. L’amplitude atteint un plateau
+    lorsque toutes les fibres recrutables dans les conditions de l’expérience participent à la réponse.
+  </div>
+  <p>Le plateau ne signifie donc pas que le muscle ne répond plus :
+  il répond avec une amplitude maximale.</p>
+</section>
+
+<section class="card">
+  <h2>4. Deux stimulations successives</h2>
+  <p>Deux stimulations efficaces de même intensité peuvent donner des réponses
+  différentes selon l’intervalle qui les sépare.</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th scope="col">Arrivée de la deuxième stimulation</th><th scope="col">Réponse observée</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Après le relâchement complet de la première secousse.</td>
+          <td><strong>Deux secousses isolées</strong>, séparées par un retour au repos.</td>
+        </tr>
+        <tr>
+          <td>Pendant le relâchement de la première secousse.</td>
+          <td><strong>Fusion incomplète</strong> : la deuxième réponse s’ajoute à une réponse encore présente. Un relâchement partiel reste visible.</td>
+        </tr>
+        <tr>
+          <td>Pendant la contraction de la première secousse, dans les conditions étudiées.</td>
+          <td><strong>Fusion complète</strong> : les réponses se superposent sans relâchement intermédiaire visible.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Le rapprochement des stimulations permet une
+  <strong>sommation des réponses mécaniques</strong>.</p>
+</section>
+
+<section class="card">
+  <h2>5. Une série de stimulations : les tétanos</h2>
+  <p>La <strong>fréquence</strong> correspond au nombre de stimulations par seconde.
+  Elle s’exprime en hertz : <strong>1 Hz = 1 stimulation par seconde</strong>.</p>
+  <ul>
+    <li>Si les stimulations sont très espacées, les secousses restent isolées.</li>
+    <li>Si les stimulations arrivent avant la fin du relâchement,
+    les secousses fusionnent partiellement : c’est le <strong>tétanos imparfait</strong>.
+    Le tracé présente des oscillations.</li>
+    <li>À une fréquence suffisamment élevée, les réponses fusionnent complètement :
+    c’est le <strong>tétanos parfait</strong>. La contraction est soutenue,
+    sans relâchement intermédiaire visible.</li>
+  </ul>
+  <div class="note">
+    <strong>À distinguer :</strong> le recrutement dépend de l’intensité
+    des stimulations ; la fusion des secousses dépend de leur rapprochement dans le temps.
+  </div>
+</section>
+
+<section class="card">
+  <h2>6. La fatigue musculaire</h2>
+  <p>Lors de stimulations répétées et prolongées, la réponse mécanique
+  peut diminuer malgré la poursuite des stimulations :
+  c’est la <strong>fatigue musculaire</strong>.</p>
+  <p>Dans les enregistrements étudiés, la secousse d’un muscle fatigué présente :</p>
+  <ul>
+    <li>une phase de latence plus longue ;</li>
+    <li>une amplitude plus faible ;</li>
+    <li>une durée plus longue.</li>
+  </ul>
+  <div class="note">
+    <strong>Bilan :</strong> le muscle est excitable et contractile.
+    Sa réponse varie avec l’intensité et la fréquence des stimulations.
+    Une activité prolongée peut entraîner sa fatigue.
+  </div>
+</section>
+
+<section class="card" id="exercices">
+  <div class="label">À TOI DE RAISONNER</div>
+  <h2>Exercices d’entraînement</h2>
+  <p>Rédige tes réponses avant d’ouvrir la correction de chaque exercice.</p>
+</section>
+
+<section class="card exercise">
+  <h2>Exercice 1 — Analyser une secousse musculaire</h2>
+  <p>Après une stimulation efficace appliquée à l’instant 0 ms,
+  la réponse mécanique commence à 20 ms. Elle atteint son maximum à 70 ms
+  et revient au repos à 150 ms.</p>
+  <p class="small">Données simplifiées pour l’entraînement.</p>
+  <ol>
+    <li>Nomme les trois phases de cette réponse et calcule leur durée.</li>
+    <li>Calcule la durée de la secousse, du début de la réponse mécanique au retour au repos.</li>
+    <li>Explique ce qu’on observerait avec une stimulation infraliminaire.</li>
+  </ol>
+  <label for="reponse1">Mes réponses :</label>
+  <textarea id="reponse1" placeholder="Je repère les intervalles, puis je calcule les durées…"></textarea>
+  <div class="actions">
+    <button type="button" class="button" aria-expanded="false"
+    aria-controls="correction1" onclick="toggleCorrection(this)">
+      Vérifier mes réponses →
+    </button>
+  </div>
+  <div id="correction1" class="correction" hidden>
+    <h3>Correction</h3>
+    <ul>
+      <li><strong>Latence :</strong> de 0 à 20 ms, soit <strong>20 ms</strong>.</li>
+      <li><strong>Contraction :</strong> de 20 à 70 ms, soit <strong>50 ms</strong>.</li>
+      <li><strong>Relâchement :</strong> de 70 à 150 ms, soit <strong>80 ms</strong>.</li>
+    </ul>
+    <p>La réponse mécanique dure <strong>150 − 20 = 130 ms</strong>.
+    L’intervalle entre la stimulation et le retour au repos est de 150 ms,
+    latence comprise.</p>
+    <p>Une stimulation infraliminaire ne déclenche aucune secousse :
+    le tracé reste au niveau de repos.</p>
+  </div>
+</section>
+
+<section class="card exercise">
+  <h2>Exercice 2 — Expliquer le recrutement</h2>
+  <p>On applique à un muscle des stimulations isolées, de même durée,
+  suffisamment espacées pour permettre un relâchement complet.</p>
+  <div class="table-wrap">
+    <table>
+      <caption>Résultats simplifiés pour l’entraînement</caption>
+      <thead>
+        <tr><th scope="col">Intensité (unités arbitraires)</th><th scope="col">Amplitude (mm)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>0</td></tr>
+        <tr><td>2</td><td>2</td></tr>
+        <tr><td>3</td><td>4</td></tr>
+        <tr><td>4</td><td>6</td></tr>
+        <tr><td>5</td><td>8</td></tr>
+        <tr><td>6</td><td>8</td></tr>
+        <tr><td>7</td><td>8</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ol>
+    <li>Détermine le seuil d’excitation parmi les intensités testées.</li>
+    <li>Décris l’évolution de l’amplitude en fonction de l’intensité.</li>
+    <li>Explique l’augmentation de l’amplitude puis son plateau.</li>
+  </ol>
+  <label for="reponse2">Mes réponses :</label>
+  <textarea id="reponse2" placeholder="Je décris les résultats, puis je les explique…"></textarea>
+  <div class="actions">
+    <button type="button" class="button" aria-expanded="false"
+    aria-controls="correction2" onclick="toggleCorrection(this)">
+      Vérifier mes réponses →
+    </button>
+  </div>
+  <div id="correction2" class="correction" hidden>
+    <h3>Correction</h3>
+    <p>La plus petite intensité testée provoquant une réponse est
+    <strong>2 unités arbitraires</strong>. L’intensité 1 est infraliminaire.</p>
+    <p>Entre les intensités 2 et 5, l’amplitude augmente de 2 à 8 mm.
+    Aux intensités 5, 6 et 7, elle reste égale à 8 mm.</p>
+    <p>L’augmentation de l’intensité recrute davantage de fibres musculaires.
+    Le plateau correspond à la participation de toutes les fibres recrutables
+    dans les conditions de l’expérience.</p>
+    <p><strong>Attention :</strong> on ne conclut pas que chaque fibre
+    se contracte de plus en plus fortement.</p>
+  </div>
+</section>
+
+<section class="card exercise">
+  <h2>Exercice 3 — Comparer deux stimulations</h2>
+  <p>On réalise trois essais avec deux stimulations efficaces de même intensité :</p>
+  <ul>
+    <li><strong>Essai A :</strong> la deuxième stimulation arrive après le retour complet au repos.</li>
+    <li><strong>Essai B :</strong> elle arrive pendant le relâchement de la première secousse.</li>
+    <li><strong>Essai C :</strong> elle arrive pendant la contraction de la première secousse, et les deux réponses fusionnent sans creux intermédiaire.</li>
+  </ul>
+  <ol>
+    <li>Nomme la réponse obtenue dans chaque essai.</li>
+    <li>Explique pourquoi les réponses des essais B et C ne sont pas deux secousses isolées.</li>
+    <li>Quelle caractéristique des stimulations a été modifiée entre les essais ?</li>
+  </ol>
+  <label for="reponse3">Mes réponses :</label>
+  <textarea id="reponse3" placeholder="Essai A : … Essai B : … Essai C : …"></textarea>
+  <div class="actions">
+    <button type="button" class="button" aria-expanded="false"
+    aria-controls="correction3" onclick="toggleCorrection(this)">
+      Vérifier mes réponses →
+    </button>
+  </div>
+  <div id="correction3" class="correction" hidden>
+    <h3>Correction</h3>
+    <ul>
+      <li><strong>A :</strong> deux secousses isolées.</li>
+      <li><strong>B :</strong> fusion incomplète des deux secousses.</li>
+      <li><strong>C :</strong> fusion complète des deux secousses.</li>
+    </ul>
+    <p>Dans B et C, la deuxième stimulation arrive alors que la première
+    réponse mécanique n’est pas terminée. Les réponses se superposent :
+    il y a sommation.</p>
+    <p>La caractéristique modifiée est <strong>l’intervalle de temps
+    entre les deux stimulations</strong>. Leur intensité reste constante.</p>
+  </div>
+</section>
+
+<section class="card exercise">
+  <h2>Exercice 4 — Tétanos et fatigue musculaire</h2>
+  <p>On observe les trois enregistrements suivants lors de séries de stimulations efficaces :</p>
+  <ul>
+    <li><strong>Enregistrement A :</strong> contraction soutenue présentant des relâchements partiels réguliers.</li>
+    <li><strong>Enregistrement B :</strong> contraction soutenue, sans relâchements intermédiaires visibles.</li>
+    <li><strong>Enregistrement C :</strong> après une contraction prolongée, la réponse diminue progressivement malgré la poursuite des stimulations.</li>
+  </ul>
+  <ol>
+    <li>Identifie le phénomène correspondant à chaque enregistrement.</li>
+    <li>Explique la différence entre A et B en utilisant la fréquence des stimulations.</li>
+    <li>Indique les modifications d’une secousse observées sur un muscle fatigué dans le cours.</li>
+  </ol>
+  <label for="reponse4">Mes réponses :</label>
+  <textarea id="reponse4" placeholder="J’identifie les phénomènes et je justifie…"></textarea>
+  <div class="actions">
+    <button type="button" class="button" aria-expanded="false"
+    aria-controls="correction4" onclick="toggleCorrection(this)">
+      Vérifier mes réponses →
+    </button>
+  </div>
+  <div id="correction4" class="correction" hidden>
+    <h3>Correction</h3>
+    <ul>
+      <li><strong>A :</strong> tétanos imparfait, avec fusion incomplète des secousses.</li>
+      <li><strong>B :</strong> tétanos parfait, avec fusion complète des secousses.</li>
+      <li><strong>C :</strong> fatigue musculaire.</li>
+    </ul>
+    <p>Dans les mêmes conditions expérimentales, la fréquence de B est
+    plus élevée que celle de A. Les stimulations sont suffisamment rapprochées
+    pour empêcher un relâchement intermédiaire visible.</p>
+    <p>Dans le cours, la secousse du muscle fatigué présente une latence
+    plus longue, une amplitude plus faible et une durée plus longue.</p>
+    <p>La fatigue se reconnaît ici à la diminution de la réponse
+    <strong>alors que les stimulations continuent</strong>.</p>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Ce que je dois savoir expliquer</h2>
+  <ul>
+    <li>Le rôle du myographe et la signification d’un myogramme.</li>
+    <li>Les trois phases d’une secousse musculaire.</li>
+    <li>Le seuil d’excitation et le recrutement des fibres.</li>
+    <li>L’effet du rapprochement de deux stimulations.</li>
+    <li>La différence entre tétanos imparfait et tétanos parfait.</li>
+    <li>Les manifestations de la fatigue musculaire.</li>
+  </ul>
+  <div class="actions">
+    <a href="cours.html" class="button">← Retour au travail à faire</a>
+    <a href="mon-espace-svt.html" class="button secondary">Mon Espace SVT</a>
+  </div>
+</section>
+
+<footer>
+  <p><strong>LABNIHI Brahim – Prof SVT</strong></p>
+  <p>Comprendre avant de mémoriser, raisonner avant de répondre, progresser vers l’autonomie.</p>
+</footer>
+</main>
+
+<script>
+function toggleCorrection(button) {
+  const correction = document.getElementById(button.getAttribute("aria-controls"));
+  const opening = correction.hidden;
+  correction.hidden = !opening;
+  button.setAttribute("aria-expanded", String(opening));
+  button.textContent = opening
+    ? "Masquer la correction"
+    : "Vérifier mes réponses →";
+}
+</script>
+</body>
+</html>
