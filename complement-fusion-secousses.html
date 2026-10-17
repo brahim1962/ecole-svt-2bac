@@ -393,7 +393,7 @@ function effacer() {
 const lecteurAudio = blocAudio.querySelector("audio");
 lecteurAudio.pause();
 lecteurAudio.currentTime = 0;
-blocAudio.hidden = true;
+
   trace.setAttribute("d", "");
   point.setAttribute("visibility", "hidden");
   signaux.replaceChildren();
@@ -408,8 +408,7 @@ blocAudio.hidden = true;
 function lancer(type) {
   effacer();
   choix = type;
-  document.getElementById("audio-fusion-incomplete").hidden =
-  type !== "incomplete";
+  
   const session = generation;
   const configuration = cas[type];
 
