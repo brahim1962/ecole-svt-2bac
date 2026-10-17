@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le muscle squelettique — École SVT</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f5faf7;
+  color:#003f46;
+  line-height:1.7;
+}
+.navbar{
+  background:#004c54;
+  color:white;
+  padding:14px 6%;
+  min-height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.logo{font-size:23px;font-weight:bold}
+.logo span{color:#73c900}
+.nav-links{display:flex;flex-wrap:wrap;gap:24px}
+.nav-links a{color:white;text-decoration:none;font-weight:bold}
+.nav-links a:hover{color:#9de34b}
+main{width:86%;max-width:1180px;margin:28px auto 50px}
+.card{
+  background:white;
+  border-radius:18px;
+  padding:28px;
+  margin-bottom:24px;
+  box-shadow:0 4px 15px rgba(0,0,0,.05);
+}
+.label{color:#087f3e;font-size:14px;font-weight:bold}
+h1{font-size:29px;line-height:1.4;margin:12px 0}
+h2{font-size:24px;color:#087f3e;line-height:1.4}
+h3{font-size:20px;line-height:1.4}
+.experiment{border:2px dashed #65b88a}
+.note{
+  background:#eaf6ef;
+  border-left:4px solid #087f3e;
+  border-radius:8px;
+  padding:16px 20px;
+  margin:20px 0;
+}
+.question{font-size:20px;font-weight:bold}
+li{margin-bottom:9px}
+figure{margin:24px 0}
+.diagram{
+  display:block;
+  width:100%;
+  height:auto;
+  background:#f7fbf9;
+  border:1px solid #c6dfd1;
+  border-radius:12px;
+}
+figcaption{font-size:13px;color:#526d69;margin-top:10px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.button{
+  display:inline-block;
+  padding:12px 20px;
+  border:0;
+  border-radius:8px;
+  background:#087f3e;
+  color:white;
+  text-decoration:none;
+  font:inherit;
+  font-weight:bold;
+  cursor:pointer;
+}
+.button:hover{background:#056832}
+.secondary{background:white;color:#087f3e;border:1px solid #087f3e}
+.secondary:hover{background:#edf7ed}
+a:focus-visible,button:focus-visible{
+  outline:3px solid #73c900;
+  outline-offset:4px;
+}
+[hidden]{display:none!important}
+footer{text-align:center;color:#526d69;font-size:13px}
+@media(max-width:700px){
+  .navbar{flex-direction:column;align-items:flex-start}
+  .nav-links{gap:12px}
+  main{width:92%;margin-top:18px}
+  .card{padding:20px}
+  h1{font-size:24px}
+  h2{font-size:21px}
+  .question{font-size:18px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">🧬 ÉCOLE <span>SVT</span></div>
+  <nav class="nav-links" aria-label="Navigation principale">
+    <a href="index.html">🏠 Accueil</a>
+    <a href="mon-espace-svt.html">🎓 Mon Espace SVT</a>
+    <a href="complements-cours.html">📚 Compléments de cours</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="card">
+  <div class="label">
+    UNITÉ I · CONSOMMATION DE LA MATIÈRE ORGANIQUE ET FLUX D’ÉNERGIE
+  </div>
+
+  <h1>Partie 2 : Rôle du muscle squelettique dans la conversion de l’énergie</h1>
+
+  <p>
+    Dans la première partie, nous avons étudié comment la cellule
+    produit de l’ATP grâce à la dégradation de la matière organique.
+    L’énergie fournie par l’hydrolyse de l’ATP permet de réaliser
+    différentes activités cellulaires.
+  </p>
+
+  <p class="question">
+    Comment le muscle squelettique utilise-t-il l’ATP pour réaliser son activité ?
+  </p>
+
+  <p>
+    L’activité musculaire se manifeste par la contraction et le relâchement
+    des muscles. Elle permet les mouvements, la réalisation d’efforts
+    et le maintien de la posture du corps.
+  </p>
+
+  <div class="note">
+    Notre progression :
+    <ol>
+      <li><strong>Observer les phénomènes mécaniques de l’activité musculaire.</strong></li>
+      <li>Découvrir la structure du muscle squelettique.</li>
+      <li>Comprendre la conversion de l’énergie chimique en énergie mécanique.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="card experiment">
+  <div class="label">ACTIVITÉ 1</div>
+  <h2>Les phénomènes mécaniques de l’activité musculaire</h2>
+
+  <p>
+    Dans l’organisme, un message nerveux transmis par un nerf moteur
+    déclenche la contraction du muscle.
+    Pour étudier sa réponse au laboratoire, on utilise des stimulations
+    électriques dont on peut faire varier les caractéristiques.
+  </p>
+
+  <h3>1. Le dispositif expérimental : le myographe</h3>
+
+  <p>
+    Le <strong>myographe</strong> permet d’enregistrer la réponse mécanique
+    d’un muscle à une ou plusieurs stimulations.
+    Le tracé obtenu est appelé <strong>myogramme</strong>.
+  </p>
+
+  <figure>
+    <svg class="diagram"
+         viewBox="0 0 960 520"
+         role="img"
+         aria-labelledby="schema-titre schema-description"
+         xmlns="http://www.w3.org/2000/svg">
+
+      <title id="schema-titre">Schéma de principe du myographe</title>
+      <desc id="schema-description">
+        Un excitateur stimule un nerf relié à un muscle fixé à un support.
+        Le muscle est relié à un levier portant un stylet.
+        Le stylet inscrit la réponse mécanique sur un cylindre enregistreur.
+      </desc>
+
+      <defs>
+        <marker id="fleche" viewBox="0 0 10 10"
+                refX="9" refY="5" markerWidth="7" markerHeight="7"
+                orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 Z" fill="#426760"/>
+        </marker>
+      </defs>
+
+      <g font-family="Arial,sans-serif" fill="#003f46">
+
+        <!-- Support et muscle -->
+        <path d="M320 105 H420 M370 105 V145"
+              fill="none" stroke="#45615b" stroke-width="8"/>
+        <text x="370" y="75" text-anchor="middle" font-size="21">
+          Support fixe
+        </text>
+
+        <path d="M370 145
+                 C340 165 333 205 370 250
+                 C407 205 400 165 370 145 Z"
+              fill="#de8b7d" stroke="#9e4e45" stroke-width="3"/>
+
+        <text x="460" y="195" font-size="21">Muscle</text>
+        <path d="M449 190 H401"
+              stroke="#426760" stroke-width="2" marker-end="url(#fleche)"/>
+
+        <!-- Nerf et électrodes -->
+        <path d="M370 177 C335 175 325 148 280 148"
+              fill="none" stroke="#c9a536" stroke-width="7"/>
+        <text x="160" y="110" font-size="20">Nerf moteur</text>
+        <path d="M235 118 L288 143"
+              stroke="#426760" stroke-width="2" marker-end="url(#fleche)"/>
+
+        <circle cx="285" cy="148" r="6" fill="#426760"/>
+        <circle cx="307" cy="151" r="6" fill="#426760"/>
+        <path d="M285 148 V320 H205 V350
+                 M307 151 V302 H230 V350"
+              fill="none" stroke="#426760" stroke-width="3"/>
+
+        <!-- Excitateur -->
+        <rect x="100" y="350" width="180" height="100" rx="12"
+              fill="#dceee7" stroke="#426760" stroke-width="3"/>
+        <circle cx="135" cy="383" r="11" fill="#087f3e"/>
+        <path d="M167 385 H190 V367 H210 V385 H245"
+              fill="none" stroke="#426760" stroke-width="3"/>
+        <text x="190" y="426" text-anchor="middle" font-size="21">
+          Excitateur
+        </text>
+
+        <!-- Liaison et levier -->
+        <path d="M370 250 V285"
+              stroke="#426760" stroke-width="3"/>
+        <path d="M340 285 H650"
+              stroke="#426760" stroke-width="5"/>
+        <path d="M415 285 L398 315 H432 Z"
+              fill="#8ba79b" stroke="#426760" stroke-width="2"/>
+        <text x="475" y="333" font-size="20">Levier et stylet</text>
+        <path d="M555 313 L578 288"
+              stroke="#426760" stroke-width="2" marker-end="url(#fleche)"/>
+
+        <!-- Cylindre -->
+        <path d="M650 158 V375
+                 C650 410 880 410 880 375 V158"
+              fill="#e3eee9" stroke="#426760" stroke-width="3"/>
+        <ellipse cx="765" cy="158" rx="115" ry="30"
+                 fill="#f7fbf9" stroke="#426760" stroke-width="3"/>
+        <path d="M650 375 C650 340 880 340 880 375"
+              fill="none" stroke="#a5bdb1" stroke-width="2"/>
+
+        <!-- Tracé -->
+        <path d="M650 285 H680
+                 C697 285 703 233 725 233
+                 C752 233 754 285 786 285
+                 H856"
+              fill="none" stroke="#087f3e" stroke-width="4"/>
+
+        <text x="765" y="97" text-anchor="middle" font-size="21">
+          Cylindre enregistreur
+        </text>
+        <text x="765" y="455" text-anchor="middle" font-size="21">
+          Myogramme
+        </text>
+        <path d="M783 430 L804 292"
+              stroke="#426760" stroke-width="2" marker-end="url(#fleche)"/>
+
+      </g>
+    </svg>
+
+    <figcaption>
+      Schéma de principe simplifié, non à l’échelle :
+      les repères de temps et de stimulation ne sont pas représentés.
+    </figcaption>
+  </figure>
+
+  <div class="note">
+    <strong>Observe avant de poursuivre :</strong>
+    quel élément déclenche la réponse du muscle ?
+    Comment cette réponse devient-elle un tracé ?
+  </div>
+
+  <div class="actions">
+    <button type="button"
+            class="button"
+            id="bouton-fonctionnement"
+            aria-expanded="false"
+            aria-controls="fonctionnement">
+      Comprendre le fonctionnement →
+    </button>
+  </div>
+
+  <div id="fonctionnement" hidden>
+    <h3>Comment obtient-on le myogramme ?</h3>
+
+    <ol>
+      <li>
+        <strong>L’excitateur délivre une stimulation électrique</strong>
+        appliquée ici au nerf moteur.
+      </li>
+      <li>
+        Si cette stimulation est efficace, elle déclenche un message
+        nerveux qui provoque la <strong>contraction du muscle</strong>.
+      </li>
+      <li>
+        Le raccourcissement du muscle déplace le levier et le stylet.
+      </li>
+      <li>
+        Le stylet inscrit ce déplacement sur le cylindre en rotation.
+        Le défilement du support permet de suivre la réponse au cours du temps.
+      </li>
+      <li>
+        Lors du relâchement, le système revient vers sa position initiale.
+        L’ensemble du tracé constitue le <strong>myogramme</strong>.
+      </li>
+    </ol>
+
+    <div class="note">
+      <strong>À retenir :</strong> le myogramme représente une réponse
+      mécanique du muscle. Ce n’est pas un enregistrement
+      du message nerveux.
+    </div>
+
+    <h3>Quelles caractéristiques peut-on faire varier ?</h3>
+
+    <ul>
+      <li>
+        <strong>L’intensité</strong> de la stimulation :
+        pour étudier le seuil d’excitation et le recrutement.
+      </li>
+      <li>
+        <strong>L’intervalle entre deux stimulations</strong> :
+        pour étudier la fusion de deux secousses.
+      </li>
+      <li>
+        <strong>La fréquence d’une série de stimulations</strong> :
+        pour étudier les tétanos.
+      </li>
+      <li>
+        <strong>La durée d’une stimulation répétée</strong> :
+        pour observer l’apparition d’une fatigue musculaire.
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="actions">
+  <a href="complements-cours.html" class="button secondary">
+    ← Retour aux unités et aux parties
+  </a>
+  <a href="mon-espace-svt.html" class="button secondary">
+    Mon Espace SVT
+  </a>
+</div>
+
+<footer>
+  <p><strong>LABNIHI Brahim – Prof SVT</strong></p>
+  <p>
+    Comprendre avant de mémoriser, raisonner avant de répondre,
+    progresser vers l’autonomie.
+  </p>
+</footer>
+
+</main>
+
+<script>
+const bouton = document.getElementById("bouton-fonctionnement");
+const fonctionnement = document.getElementById("fonctionnement");
+
+bouton.addEventListener("click", function () {
+  const ouvrir = fonctionnement.hidden;
+  fonctionnement.hidden = !ouvrir;
+  bouton.setAttribute("aria-expanded", String(ouvrir));
+  bouton.textContent = ouvrir
+    ? "Masquer l’explication"
+    : "Comprendre le fonctionnement →";
+});
+</script>
+
+</body>
+</html>
