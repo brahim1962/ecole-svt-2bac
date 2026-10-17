@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La secousse musculaire isolée — École SVT</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5faf7;color:#003f46;line-height:1.7}
+.navbar{background:#004c54;color:white;padding:14px 6%;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:70px}
+.logo{font-size:23px;font-weight:bold}
+.logo span{color:#73c900}
+nav{display:flex;flex-wrap:wrap;gap:22px}
+nav a{color:white;text-decoration:none;font-weight:bold}
+main{width:86%;max-width:1180px;margin:28px auto 50px}
+.card{background:white;padding:28px;border-radius:18px;margin-bottom:24px;box-shadow:0 4px 15px #0000000d}
+.label{color:#087f3e;font-size:14px;font-weight:bold}
+h1{font-size:29px;line-height:1.4}
+h2{color:#087f3e;font-size:23px;line-height:1.4}
+.note{background:#eaf6ef;border-left:4px solid #087f3e;border-radius:8px;padding:16px 20px;margin:18px 0}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0}
+.button{display:inline-block;border:0;border-radius:8px;background:#087f3e;color:white;padding:12px 18px;font:inherit;font-weight:bold;text-decoration:none;cursor:pointer}
+.button:hover{background:#056832}
+.secondary{background:white;color:#087f3e;border:1px solid #087f3e}
+.secondary:hover{background:#edf7ed}
+button:disabled{opacity:.5;cursor:default}
+a:focus-visible,button:focus-visible{outline:3px solid #73c900;outline-offset:4px}
+svg{display:block;width:100%;height:auto}
+.simulation{border:1px solid #c6dfd1;border-radius:12px;background:#fbfdfc;padding:10px}
+.status{min-height:58px;font-weight:bold;margin:12px 0}
+.small{font-size:13px;color:#526d69}
+[hidden]{display:none!important}
+li{margin-bottom:10px}
+footer{text-align:center;font-size:13px;color:#526d69}
+@media(max-width:700px){
+.navbar{flex-direction:column;align-items:flex-start}
+nav{gap:12px}
+main{width:92%;margin-top:18px}
+.card{padding:20px}
+h1{font-size:24px}
+h2{font-size:21px}
+.button{padding:10px 14px}
+}
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">🧬 ÉCOLE <span>SVT</span></div>
+  <nav aria-label="Navigation principale">
+    <a href="index.html">🏠 Accueil</a>
+    <a href="mon-espace-svt.html">🎓 Mon Espace SVT</a>
+    <a href="complements-cours.html">📚 Compléments de cours</a>
+  </nav>
+</header>
+
+<main>
+<section class="card">
+  <div class="label">UNITÉ I · PARTIE 2 · ACTIVITÉ 1</div>
+  <h1>La secousse musculaire isolée</h1>
+  <p>
+    Après avoir découvert le myographe, observons la réponse
+    d’un muscle à une seule stimulation électrique.
+  </p>
+  <div class="note">
+    <strong>Question :</strong> toute stimulation provoque-t-elle
+    une contraction ? Comment évolue la réponse du muscle au cours du temps ?
+  </div>
+</section>
+
+<section class="card">
+  <h2>1. Comparer deux stimulations isolées</h2>
+  <p>
+    Lance d’abord la stimulation inefficace, puis la stimulation efficace.
+    Observe simultanément le muscle et le tracé.
+  </p>
+
+  <div class="actions">
+    <button type="button" class="button secondary" id="inefficace">
+      Stimulation inefficace
+    </button>
+    <button type="button" class="button" id="efficace">
+      Stimulation efficace
+    </button>
+    <button type="button" class="button secondary" id="reset">
+      Recommencer
+    </button>
+  </div>
+
+  <div class="simulation">
+    <svg viewBox="0 0 960 460"
+         role="img" aria-labelledby="titre-schema description-schema"
+         xmlns="http://www.w3.org/2000/svg">
+      <title id="titre-schema">Simulation d’une secousse musculaire isolée</title>
+      <desc id="description-schema">
+        À gauche, un muscle se raccourcit puis retrouve sa longueur.
+        À droite, le myogramme se dessine progressivement après la stimulation.
+      </desc>
+
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10"
+                refX="9" refY="5" markerWidth="6" markerHeight="6"
+                orient="auto">
+          <path d="M0 0 L10 5 L0 10 Z" fill="#426760"/>
+        </marker>
+      </defs>
+
+      <g font-family="Arial,sans-serif" fill="#003f46">
+        <text x="120" y="40" text-anchor="middle" font-size="21">
+          Muscle
+        </text>
+        <path d="M65 85 H175 M120 85 V115"
+              stroke="#426760" stroke-width="7" fill="none"/>
+
+        <path id="muscle"
+              d="M120 115 C75 150 75 230 120 270 C165 230 165 150 120 115 Z"
+              fill="#de8b7d" stroke="#9e4e45" stroke-width="3"/>
+
+        <line id="tendon" x1="120" y1="270" x2="120" y2="320"
+              stroke="#426760" stroke-width="3"/>
+        <line x1="60" y1="270" x2="180" y2="270"
+              stroke="#a8bdb3" stroke-dasharray="5 5"/>
+        <text x="120" y="360" text-anchor="middle" font-size="17">
+          Vue simplifiée
+        </text>
+
+        <!-- Axes du myogramme -->
+        <path d="M300 315 V65 M300 315 H920"
+              fill="none" stroke="#426760" stroke-width="2"
+              marker-end="url(#arrow)"/>
+        <text x="300" y="40" font-size="19">Réponse mécanique</text>
+        <text x="805" y="355" font-size="18">Temps (ms)</text>
+
+        <!-- Repères -->
+        <g font-size="17" text-anchor="middle">
+          <text x="320" y="340">0</text>
+          <text x="384" y="340">20</text>
+          <text x="544" y="340">70</text>
+          <text x="800" y="340">150</text>
+        </g>
+
+        <g stroke="#c8d9d0" stroke-dasharray="5 5">
+          <line x1="384" y1="85" x2="384" y2="315"/>
+          <line x1="544" y1="85" x2="544" y2="315"/>
+          <line x1="800" y1="85" x2="800" y2="315"/>
+        </g>
+
+        <path id="trace" d="" fill="none" stroke="#087f3e"
+              stroke-width="4" stroke-linecap="round"/>
+        <circle id="point" cx="320" cy="315" r="5"
+                fill="#087f3e" visibility="hidden"/>
+
+        <!-- Signal électrique distinct du myogramme -->
+        <text x="300" y="392" font-size="17">Stimulation</text>
+        <path d="M300 425 H900" stroke="#a8bdb3" fill="none"/>
+        <path id="signal" d="" fill="none"
+              stroke="#c64e38" stroke-width="3"/>
+        <text x="320" y="452" text-anchor="middle" font-size="16">
+          t = 0
+        </text>
+
+        <!-- Noms des phases -->
+        <g id="phases" visibility="hidden" font-size="17" text-anchor="middle">
+          <text x="352" y="102" fill="#7a6420">Latence</text>
+          <text x="464" y="77" fill="#087f3e">Contraction</text>
+          <text x="672" y="102" fill="#266ea0">Relâchement</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <p class="status" id="status" role="status" aria-live="polite">
+    Choisis une stimulation pour lancer l’observation.
+  </p>
+
+  <p class="small">
+    Simulation pédagogique ralentie : les durées indiquées sont des valeurs
+    d’exemple. La déformation du muscle et le tracé ne sont pas à l’échelle.
+  </p>
+
+  <div class="note">
+    <strong>Avant d’afficher l’explication :</strong>
+    compare les deux résultats. Après la stimulation efficace,
+    la réponse mécanique commence-t-elle immédiatement ?
+  </div>
+
+  <button type="button" class="button" id="expliquer"
+          aria-expanded="false" aria-controls="explication">
+    Comprendre les résultats →
+  </button>
+
+  <div id="explication" hidden>
+    <h3>Stimulation inefficace</h3>
+    <p>
+      Une stimulation d’intensité inférieure au seuil d’excitation
+      ne déclenche aucune réponse mécanique enregistrable.
+      Le tracé reste au niveau de repos.
+    </p>
+
+    <h3>Stimulation efficace</h3>
+    <p>
+      Une stimulation isolée et efficace provoque une
+      <strong>secousse musculaire isolée</strong>,
+      composée de trois phases.
+    </p>
+
+    <ol>
+      <li>
+        <strong>La phase de latence :</strong>
+        intervalle entre l’application de la stimulation et le début
+        de la réponse mécanique. Dans cet exemple : de 0 à 20 ms.
+      </li>
+      <li>
+        <strong>La phase de contraction :</strong>
+        le muscle se raccourcit et le tracé monte jusqu’au maximum.
+        Dans cet exemple : de 20 à 70 ms.
+      </li>
+      <li>
+        <strong>La phase de relâchement :</strong>
+        le muscle retrouve progressivement sa longueur initiale
+        et le tracé revient au niveau de repos.
+        Dans cet exemple : de 70 à 150 ms.
+      </li>
+    </ol>
+
+    <div class="note">
+      <strong>À retenir :</strong> le signal de stimulation et la secousse
+      musculaire sont deux événements distincts. La stimulation déclenche
+      la réponse ; le myogramme représente la réponse mécanique du muscle.
+    </div>
+  </div>
+</section>
+
+<div class="actions">
+  <a href="complement-muscle.html" class="button secondary">
+    ← Retour au myographe
+  </a>
+  <a href="complements-cours.html" class="button secondary">
+    Retour aux unités et aux parties
+  </a>
+</div>
+
+<footer>
+  <p><strong>LABNIHI Brahim – Prof SVT</strong></p>
+  <p>
+    Comprendre avant de mémoriser, raisonner avant de répondre,
+    progresser vers l’autonomie.
+  </p>
+</footer>
+</main>
+
+<script>
+const trace = document.getElementById("trace");
+const point = document.getElementById("point");
+const signal = document.getElementById("signal");
+const muscle = document.getElementById("muscle");
+const tendon = document.getElementById("tendon");
+const phases = document.getElementById("phases");
+const statusText = document.getElementById("status");
+const efficace = document.getElementById("efficace");
+const inefficace = document.getElementById("inefficace");
+const reset = document.getElementById("reset");
+const expliquer = document.getElementById("expliquer");
+const explication = document.getElementById("explication");
+
+let frame = null;
+let generation = 0;
+
+function amplitude(t) {
+  if (t <= 20 || t >= 150) return 0;
+  if (t <= 70) {
+    return (1 - Math.cos(Math.PI * (t - 20) / 50)) / 2;
+  }
+  return (1 + Math.cos(Math.PI * (t - 70) / 80)) / 2;
+}
+
+function dessiner(t, active) {
+  let d = "";
+  const fin = Math.floor(t);
+
+  for (let i = 0; i <= fin; i++) {
+    const x = 320 + i * 3.2;
+    const y = 315 - (active ? amplitude(i) * 155 : 0);
+    d += (i === 0 ? "M" : "L") + x + " " + y + " ";
+  }
+
+  const a = active ? amplitude(t) : 0;
+  const x = 320 + t * 3.2;
+  const y = 315 - a * 155;
+  d += "L" + x + " " + y;
+  trace.setAttribute("d", d);
+  point.setAttribute("cx", x);
+  point.setAttribute("cy", y);
+
+  const bas = 270 - a * 60;
+  const largeur = 45 + a * 12;
+  const hauteur = bas - 115;
+
+  muscle.setAttribute("d",
+    `M120 115
+     C${120-largeur} ${115+hauteur*.23}
+      ${120-largeur} ${115+hauteur*.74} 120 ${bas}
+     C${120+largeur} ${115+hauteur*.74}
+      ${120+largeur} ${115+hauteur*.23} 120 115 Z`
+  );
+
+  tendon.setAttribute("y1", bas);
+  tendon.setAttribute("y2", bas + 50);
+}
+
+function arreter() {
+  generation++;
+  if (frame !== null) cancelAnimationFrame(frame);
+  frame = null;
+  efficace.disabled = false;
+  inefficace.disabled = false;
+}
+
+function recommencer() {
+  arreter();
+  dessiner(0, false);
+  trace.setAttribute("d", "");
+  signal.setAttribute("d", "");
+  point.setAttribute("visibility", "hidden");
+  phases.setAttribute("visibility", "hidden");
+  explication.hidden = true;
+  expliquer.setAttribute("aria-expanded", "false");
+  expliquer.textContent = "Comprendre les résultats →";
+  statusText.textContent = "Choisis une stimulation pour lancer l’observation.";
+}
+
+function lancer(active) {
+  recommencer();
+  const session = generation;
+  efficace.disabled = true;
+  inefficace.disabled = true;
+  point.setAttribute("visibility", "visible");
+
+  // Même durée du signal ; hauteur différente pour les deux intensités.
+  const sommet = active ? 395 : 413;
+  signal.setAttribute("d",
+    `M300 425 H320 V${sommet} H326 V425 H900`
+  );
+
+  let debut = null;
+  let dernierePhase = "";
+
+  function animer(now) {
+    if (session !== generation) return;
+    if (debut === null) debut = now;
+
+    const t = Math.min((now - debut) / 35, 180);
+    dessiner(t, active);
+
+    let texte;
+    if (!active) {
+      texte = "Stimulation inefficace : aucune réponse mécanique.";
+    } else if (t < 20) {
+      texte = "Latence : la stimulation a eu lieu, la réponse mécanique n’a pas encore commencé.";
+    } else if (t < 70) {
+      texte = "Contraction : le muscle se raccourcit, le tracé monte.";
+    } else if (t < 150) {
+      texte = "Relâchement : le muscle retrouve sa longueur initiale.";
+    } else {
+      texte = "La secousse est terminée : retour au niveau de repos.";
+    }
+
+    if (texte !== dernierePhase) {
+      statusText.textContent = texte;
+      dernierePhase = texte;
+    }
+
+    if (t < 180) {
+      frame = requestAnimationFrame(animer);
+    } else {
+      frame = null;
+      efficace.disabled = false;
+      inefficace.disabled = false;
+      if (active) phases.setAttribute("visibility", "visible");
+    }
+  }
+
+  frame = requestAnimationFrame(animer);
+}
+
+efficace.addEventListener("click", () => lancer(true));
+inefficace.addEventListener("click", () => lancer(false));
+reset.addEventListener("click", recommencer);
+
+expliquer.addEventListener("click", () => {
+  const ouvrir = explication.hidden;
+  explication.hidden = !ouvrir;
+  expliquer.setAttribute("aria-expanded", String(ouvrir));
+  expliquer.textContent = ouvrir
+    ? "Masquer l’explication"
+    : "Comprendre les résultats →";
+});
+</script>
+
+</body>
+</html>
