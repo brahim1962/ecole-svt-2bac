@@ -389,11 +389,7 @@ function effacer() {
   if (frame !== null) cancelAnimationFrame(frame);
   frame = null;
   choix = null;
-  const blocAudio = document.getElementById("audio-fusion-incomplete");
-const lecteurAudio = blocAudio.querySelector("audio");
-lecteurAudio.pause();
-lecteurAudio.currentTime = 0;
-
+  
   trace.setAttribute("d", "");
   point.setAttribute("visibility", "hidden");
   signaux.replaceChildren();
