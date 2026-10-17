@@ -135,7 +135,7 @@ h2{font-size:21px}
                 stroke-dasharray="5 5"/>
           <text x="750" y="57" text-anchor="middle"
                 fill="#a65620" font-size="17">
-            Fin des stimulations
+            Dernière stimulation
           </text>
         </g>
 
@@ -276,7 +276,9 @@ function reponse(t, type) {
 
     if (t < finStimulations + 70) {
       const u = (t - finStimulations) / 70;
-      return 1.65 * (1 + Math.cos(Math.PI * u)) / 2;
+      return 1.65
+  * (Math.exp(-4 * u) - Math.exp(-4))
+  / (1 - Math.exp(-4));
     }
 
     return 0;
@@ -300,7 +302,9 @@ function reponse(t, type) {
       * (1 - Math.cos(2 * Math.PI * ecoule / 25)) / 2;
 
     const u = (t - finStimulations) / 70;
-    return hauteurFinale * (1 + Math.cos(Math.PI * u)) / 2;
+    return hauteurFinale
+  * (Math.exp(-4 * u) - Math.exp(-4))
+  / (1 - Math.exp(-4));
   }
 
   return 0;
