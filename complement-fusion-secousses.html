@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fusion des secousses musculaires — École SVT</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5faf7;color:#003f46;line-height:1.7}
+.navbar{background:#004c54;color:white;padding:14px 6%;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:70px}
+.logo{font-size:23px;font-weight:bold}
+.logo span{color:#73c900}
+nav{display:flex;flex-wrap:wrap;gap:22px}
+nav a{color:white;text-decoration:none;font-weight:bold}
+main{width:86%;max-width:1180px;margin:28px auto 50px}
+.card{background:white;padding:28px;border-radius:18px;margin-bottom:24px;box-shadow:0 4px 15px #0000000d}
+.label{color:#087f3e;font-size:14px;font-weight:bold}
+h1{font-size:29px;line-height:1.4}
+h2{color:#087f3e;font-size:23px;line-height:1.4}
+.note{background:#eaf6ef;border-left:4px solid #087f3e;border-radius:8px;padding:16px 20px;margin:18px 0}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin:16px 0}
+.button{display:inline-block;border:0;border-radius:8px;background:#087f3e;color:white;padding:11px 18px;font:inherit;font-weight:bold;text-decoration:none;cursor:pointer}
+.button:hover{background:#056832}
+.secondary{background:white;color:#087f3e;border:1px solid #087f3e}
+.secondary:hover{background:#edf7ed}
+.button[aria-pressed="true"]{background:#004c54;color:white;box-shadow:0 0 0 3px #b8dcca}
+a:focus-visible,button:focus-visible{outline:3px solid #73c900;outline-offset:4px}
+.simulation{border:1px solid #c6dfd1;border-radius:12px;background:#fbfdfc;padding:10px}
+svg{display:block;width:100%;height:auto;max-height:320px;margin:auto}
+.status{min-height:54px;font-weight:bold}
+.small{font-size:13px;color:#526d69}
+[hidden]{display:none!important}
+li{margin-bottom:10px}
+footer{text-align:center;font-size:13px;color:#526d69}
+@media(max-width:700px){
+.navbar{flex-direction:column;align-items:flex-start}
+nav{gap:12px}
+main{width:92%;margin-top:18px}
+.card{padding:20px}
+h1{font-size:24px}
+h2{font-size:21px}
+}
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">🧬 ÉCOLE <span>SVT</span></div>
+  <nav aria-label="Navigation principale">
+    <a href="index.html">🏠 Accueil</a>
+    <a href="mon-espace-svt.html">🎓 Mon Espace SVT</a>
+    <a href="complements-cours.html">📚 Compléments de cours</a>
+  </nav>
+</header>
+
+<main>
+<section class="card">
+  <div class="label">UNITÉ I · PARTIE 2 · ACTIVITÉ 1</div>
+  <h1>La réponse à deux stimulations successives</h1>
+  <p>
+    On applique au même muscle deux stimulations efficaces
+    de même intensité et de même durée.
+    Seul l’intervalle entre les stimulations varie.
+  </p>
+  <div class="note">
+    <strong>Question :</strong> comment le rapprochement des deux
+    stimulations modifie-t-il la réponse mécanique du muscle ?
+  </div>
+</section>
+
+<section class="card">
+  <h2>1. Comparer les trois cas</h2>
+  <p>
+    Choisis un cas pour lancer son enregistrement.
+    Tu peux passer directement à un autre cas ou rejouer le même.
+  </p>
+
+  <div class="actions">
+    <button type="button" class="button secondary cas"
+            data-cas="isolees" aria-pressed="false">
+      Deux secousses isolées
+    </button>
+    <button type="button" class="button secondary cas"
+            data-cas="incomplete" aria-pressed="false">
+      Fusion incomplète
+    </button>
+    <button type="button" class="button secondary cas"
+            data-cas="complete" aria-pressed="false">
+      Fusion complète
+    </button>
+    <button type="button" class="button secondary" id="reset">
+      Effacer
+    </button>
+  </div>
+
+  <div class="simulation">
+    <svg viewBox="0 0 1000 390"
+         role="img" aria-labelledby="titre description"
+         xmlns="http://www.w3.org/2000/svg">
+      <title id="titre">Réponse mécanique à deux stimulations</title>
+      <desc id="description">
+        Le tracé vert représente la réponse mécanique.
+        Les deux signaux rouges représentent des stimulations
+        identiques dont l’intervalle dépend du cas choisi.
+      </desc>
+
+      <g font-family="Arial,sans-serif" fill="#003f46">
+        <text x="100" y="35" font-size="21">
+          Réponse mécanique du muscle
+        </text>
+
+        <path d="M100 260 V60 M100 260 H950"
+              fill="none" stroke="#426760" stroke-width="2"/>
+        <path d="M94 70 L100 60 L106 70
+                 M940 254 L950 260 L940 266"
+              fill="none" stroke="#426760" stroke-width="2"/>
+
+        <text x="820" y="291" font-size="18">Temps →</text>
+        <text x="110" y="284" font-size="16">Repos</text>
+
+        <line x1="130" y1="165" x2="925" y2="165"
+              stroke="#b8cfc1" stroke-dasharray="5 5"/>
+        <text x="930" y="158" text-anchor="end"
+              font-size="16" fill="#526d69">
+          Maximum d’une secousse isolée de référence
+        </text>
+
+        <path id="trace" d="" fill="none" stroke="#087f3e"
+              stroke-width="4" stroke-linecap="round"/>
+        <circle id="point" r="5" fill="#087f3e" visibility="hidden"/>
+
+        <text x="100" y="325" font-size="18">
+          Stimulations de même intensité
+        </text>
+        <path d="M100 365 H950" stroke="#a8bdb3" fill="none"/>
+        <g id="signaux"></g>
+      </g>
+    </svg>
+  </div>
+
+  <p id="status" class="status" role="status" aria-live="polite">
+    Choisis un cas pour observer le tracé.
+  </p>
+
+  <p class="small">
+    Simulation pédagogique ralentie : les courbes illustrent les trois
+    situations. Les durées et les amplitudes sont schématiques.
+  </p>
+
+  <div class="note">
+    <strong>Observe :</strong> le muscle revient-il au repos entre
+    les deux réponses ? La deuxième réponse dépasse-t-elle
+    le maximum d’une secousse isolée ?
+  </div>
+
+  <button type="button" class="button" id="expliquer"
+          aria-expanded="false" aria-controls="explication">
+    Comprendre le cas observé →
+  </button>
+
+  <div id="explication" hidden></div>
+</section>
+
+<div class="actions">
+  <a href="complement-recrutement.html" class="button secondary">
+    ← Retour au recrutement
+  </a>
+  <a href="complement-muscle.html" class="button secondary">
+    Retour au myographe
+  </a>
+  <a href="complements-cours.html" class="button secondary">
+    Unités et parties
+  </a>
+</div>
+
+<footer>
+  <p><strong>LABNIHI Brahim – Prof SVT</strong></p>
+  <p>
+    Comprendre avant de mémoriser, raisonner avant de répondre,
+    progresser vers l’autonomie.
+  </p>
+</footer>
+</main>
+
+<script>
+const ns = "http://www.w3.org/2000/svg";
+const trace = document.getElementById("trace");
+const point = document.getElementById("point");
+const signaux = document.getElementById("signaux");
+const statusText = document.getElementById("status");
+const boutons = [...document.querySelectorAll(".cas")];
+const expliquer = document.getElementById("expliquer");
+const explication = document.getElementById("explication");
+
+let frame = null;
+let generation = 0;
+let choix = null;
+
+const cas = {
+  isolees: {
+    intervalle: 180,
+    nom: "Deux secousses isolées",
+    bilan: "Deux secousses séparées par un retour complet au repos.",
+    texte: `
+      <h3>Deux secousses isolées</h3>
+      <p>La deuxième stimulation arrive après le relâchement complet
+      de la première secousse. Le muscle est revenu au repos.</p>
+      <p>Les deux stimulations provoquent deux secousses distinctes,
+      de même amplitude dans les conditions représentées.</p>
+      <div class="note"><strong>À retenir :</strong>
+      un intervalle suffisamment long permet un retour au repos
+      entre les deux secousses.</div>`
+  },
+  incomplete: {
+    intervalle: 90,
+    nom: "Fusion incomplète",
+    bilan: "Un relâchement partiel sépare les deux sommets ; la deuxième réponse est plus ample.",
+    texte: `
+      <h3>Fusion incomplète</h3>
+      <p>La deuxième stimulation arrive pendant le relâchement
+      de la première secousse.</p>
+      <p>La deuxième réponse mécanique se développe alors que la première
+      n’est pas terminée. Les réponses se superposent :
+      la deuxième élévation est plus ample qu’une secousse isolée.</p>
+      <div class="note"><strong>À retenir :</strong>
+      un relâchement partiel reste visible entre les deux sommets,
+      sans retour complet au repos.</div>`
+  },
+  complete: {
+    intervalle: 20,
+    nom: "Fusion complète",
+    bilan: "Une seule courbe plus ample, sans relâchement intermédiaire.",
+    texte: `
+      <h3>Fusion complète</h3>
+      <p>La deuxième stimulation arrive pendant la contraction
+      de la première secousse, dans la situation représentée.</p>
+      <p>Les réponses mécaniques fusionnent en une seule courbe,
+      plus ample qu’une secousse isolée,
+      sans relâchement intermédiaire visible.</p>
+      <div class="note"><strong>À retenir :</strong>
+      le rapprochement des stimulations entraîne une sommation
+      des réponses mécaniques.</div>`
+  }
+};
+
+function secousse(t) {
+  if (t <= 20 || t >= 150) return 0;
+  if (t <= 70) {
+    return (1 - Math.cos(Math.PI * (t - 20) / 50)) / 2;
+  }
+  return (1 + Math.cos(Math.PI * (t - 70) / 80)) / 2;
+}
+
+// Courbe schématique continue et lisse pour la fusion complète.
+function fusionComplete(t) {
+  if (t <= 40) return secousse(t);
+
+  if (t <= 100) {
+    const u = (t - 40) / 60;
+    const valeurInitiale = secousse(40);
+    const penteInitiale =
+      Math.PI / 100 * Math.sin(Math.PI * (40 - 20) / 50);
+
+    const h00 = 2*u*u*u - 3*u*u + 1;
+    const h10 = u*u*u - 2*u*u + u;
+    const h01 = -2*u*u*u + 3*u*u;
+
+    return h00 * valeurInitiale
+      + h10 * 60 * penteInitiale
+      + h01 * 1.7;
+  }
+
+  if (t < 200) {
+    return 1.7 * (1 + Math.cos(Math.PI * (t - 100) / 100)) / 2;
+  }
+
+  return 0;
+}
+
+function reponse(t, type) {
+  if (type === "complete") return fusionComplete(t);
+  return secousse(t) + secousse(t - cas[type].intervalle);
+}
+
+function xTemps(t) {
+  return 130 + t * 2.08;
+}
+
+function dessiner(t, type) {
+  let d = "";
+  for (let i = 0; i <= Math.floor(t); i++) {
+    const x = xTemps(i);
+    const y = 260 - reponse(i, type) * 95;
+    d += (i === 0 ? "M" : "L") + x + " " + y + " ";
+  }
+
+  const x = xTemps(t);
+  const y = 260 - reponse(t, type) * 95;
+  trace.setAttribute("d", d + "L" + x + " " + y);
+  point.setAttribute("cx", x);
+  point.setAttribute("cy", y);
+}
+
+function ajouterSignal(temps, numero) {
+  const x = xTemps(temps);
+  const chemin = document.createElementNS(ns, "path");
+  chemin.setAttribute("d",
+    `M${x-6} 365 H${x} V340 H${x+4} V365 H${x+10}`);
+  chemin.setAttribute("fill", "none");
+  chemin.setAttribute("stroke", "#c64e38");
+  chemin.setAttribute("stroke-width", "2.5");
+  signaux.appendChild(chemin);
+
+  const texte = document.createElementNS(ns, "text");
+  texte.setAttribute("x", x + 2);
+  texte.setAttribute("y", "386");
+  texte.setAttribute("text-anchor", "middle");
+  texte.setAttribute("font-size", "16");
+  texte.setAttribute("fill", "#003f46");
+  texte.textContent = "S" + numero;
+  signaux.appendChild(texte);
+}
+
+function effacer() {
+  generation++;
+  if (frame !== null) cancelAnimationFrame(frame);
+  frame = null;
+  choix = null;
+  trace.setAttribute("d", "");
+  point.setAttribute("visibility", "hidden");
+  signaux.replaceChildren();
+  boutons.forEach(b => b.setAttribute("aria-pressed", "false"));
+  explication.hidden = true;
+  explication.innerHTML = "";
+  expliquer.setAttribute("aria-expanded", "false");
+  expliquer.textContent = "Comprendre le cas observé →";
+  statusText.textContent = "Choisis un cas pour observer le tracé.";
+}
+
+function lancer(type) {
+  effacer();
+  choix = type;
+  const session = generation;
+  const configuration = cas[type];
+
+  boutons.forEach(b => {
+    b.setAttribute("aria-pressed", String(b.dataset.cas === type));
+  });
+
+  explication.innerHTML = configuration.texte;
+  point.setAttribute("visibility", "visible");
+  ajouterSignal(0, 1);
+  statusText.textContent = configuration.nom + " : première stimulation.";
+
+  let debut = null;
+  let secondeVisible = false;
+
+  function animer(now) {
+    if (session !== generation) return;
+    if (debut === null) debut = now;
+
+    const t = Math.min((now - debut) / 17, 380);
+
+    if (!secondeVisible && t >= configuration.intervalle) {
+      ajouterSignal(configuration.intervalle, 2);
+      secondeVisible = true;
+      statusText.textContent = configuration.nom + " : deuxième stimulation.";
+    }
+
+    dessiner(t, type);
+
+    if (t < 380) {
+      frame = requestAnimationFrame(animer);
+    } else {
+      frame = null;
+      statusText.textContent = configuration.bilan;
+    }
+  }
+
+  frame = requestAnimationFrame(animer);
+}
+
+boutons.forEach(b => {
+  b.addEventListener("click", () => lancer(b.dataset.cas));
+});
+
+document.getElementById("reset").addEventListener("click", effacer);
+
+expliquer.addEventListener("click", () => {
+  if (choix === null) {
+    statusText.textContent = "Choisis d’abord l’un des trois cas.";
+    return;
+  }
+  const ouvrir = explication.hidden;
+  explication.hidden = !ouvrir;
+  expliquer.setAttribute("aria-expanded", String(ouvrir));
+  expliquer.textContent = ouvrir
+    ? "Masquer l’explication"
+    : "Comprendre le cas observé →";
+});
+</script>
+</body>
+</html>
