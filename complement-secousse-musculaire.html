@@ -25,7 +25,13 @@ h2{color:#087f3e;font-size:23px;line-height:1.4}
 .secondary:hover{background:#edf7ed}
 button:disabled{opacity:.5;cursor:default}
 a:focus-visible,button:focus-visible{outline:3px solid #73c900;outline-offset:4px}
-svg{display:block;width:100%;height:auto}
+svg{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:340px;
+  margin:auto;
+}
 .simulation{border:1px solid #c6dfd1;border-radius:12px;background:#fbfdfc;padding:10px}
 .status{min-height:58px;font-weight:bold;margin:12px 0}
 .small{font-size:13px;color:#526d69}
@@ -149,6 +155,21 @@ h2{font-size:21px}
               stroke-width="4" stroke-linecap="round"/>
         <circle id="point" cx="320" cy="315" r="5"
                 fill="#087f3e" visibility="hidden"/>
+        <g id="amplitude-secousse" visibility="hidden">
+  <line x1="544" y1="160" x2="600" y2="160"
+        stroke="#a65620" stroke-dasharray="4 4"/>
+
+  <line x1="590" y1="315" x2="590" y2="160"
+        stroke="#a65620" stroke-width="3"/>
+
+  <path d="M584 171 L590 160 L596 171
+           M584 304 L590 315 L596 304"
+        fill="none" stroke="#a65620" stroke-width="3"/>
+
+  <text x="605" y="235" font-size="19" fill="#a65620">
+    Amplitude
+  </text>
+</g>
 
         <!-- Signal électrique distinct du myogramme -->
         <text x="300" y="392" font-size="17">Stimulation</text>
@@ -256,6 +277,7 @@ const signal = document.getElementById("signal");
 const muscle = document.getElementById("muscle");
 const tendon = document.getElementById("tendon");
 const phases = document.getElementById("phases");
+const flecheAmplitude = document.getElementById("amplitude-secousse");  
 const statusText = document.getElementById("status");
 const efficace = document.getElementById("efficace");
 const inefficace = document.getElementById("inefficace");
@@ -323,6 +345,7 @@ function recommencer() {
   signal.setAttribute("d", "");
   point.setAttribute("visibility", "hidden");
   phases.setAttribute("visibility", "hidden");
+  flecheAmplitude.setAttribute("visibility", "hidden")
   explication.hidden = true;
   expliquer.setAttribute("aria-expanded", "false");
   expliquer.textContent = "Comprendre les résultats →";
@@ -351,6 +374,9 @@ function lancer(active) {
 
     const t = Math.min((now - debut) / 35, 180);
     dessiner(t, active);
+    if (active && t >= 70) {
+  flecheAmplitude.setAttribute("visibility", "visible");
+}
 
     let texte;
     if (!active) {
