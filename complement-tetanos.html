@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Les tétanos musculaires — École SVT</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5faf7;color:#003f46;line-height:1.7}
+.navbar{background:#004c54;color:white;padding:14px 6%;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:70px}
+.logo{font-size:23px;font-weight:bold}
+.logo span{color:#73c900}
+nav{display:flex;flex-wrap:wrap;gap:22px}
+nav a{color:white;text-decoration:none;font-weight:bold}
+main{width:86%;max-width:1180px;margin:28px auto 50px}
+.card{background:white;padding:28px;border-radius:18px;margin-bottom:24px;box-shadow:0 4px 15px #0000000d}
+.label{color:#087f3e;font-size:14px;font-weight:bold}
+h1{font-size:29px;line-height:1.4}
+h2{color:#087f3e;font-size:23px;line-height:1.4}
+.note{background:#eaf6ef;border-left:4px solid #087f3e;border-radius:8px;padding:16px 20px;margin:18px 0}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin:16px 0}
+.button{display:inline-block;border:0;border-radius:8px;background:#087f3e;color:white;padding:11px 18px;font:inherit;font-weight:bold;text-decoration:none;cursor:pointer}
+.button:hover{background:#056832}
+.secondary{background:white;color:#087f3e;border:1px solid #087f3e}
+.secondary:hover{background:#edf7ed}
+.button[aria-pressed="true"]{background:#004c54;color:white;box-shadow:0 0 0 3px #b8dcca}
+a:focus-visible,button:focus-visible{outline:3px solid #73c900;outline-offset:4px}
+.simulation{border:1px solid #c6dfd1;border-radius:12px;background:#fbfdfc;padding:10px}
+svg{display:block;width:100%;height:auto;max-height:320px;margin:auto}
+.status{min-height:54px;font-weight:bold}
+.small{font-size:13px;color:#526d69}
+[hidden]{display:none!important}
+li{margin-bottom:10px}
+footer{text-align:center;font-size:13px;color:#526d69}
+@media(max-width:700px){
+.navbar{flex-direction:column;align-items:flex-start}
+nav{gap:12px}
+main{width:92%;margin-top:18px}
+.card{padding:20px}
+h1{font-size:24px}
+h2{font-size:21px}
+}
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">🧬 ÉCOLE <span>SVT</span></div>
+  <nav aria-label="Navigation principale">
+    <a href="index.html">🏠 Accueil</a>
+    <a href="mon-espace-svt.html">🎓 Mon Espace SVT</a>
+    <a href="complements-cours.html">📚 Compléments de cours</a>
+  </nav>
+</header>
+
+<main>
+<section class="card">
+  <div class="label">UNITÉ I · PARTIE 2 · ACTIVITÉ 1</div>
+  <h1>Les tétanos musculaires</h1>
+
+  <p>
+    Après avoir étudié deux stimulations successives,
+    observons la réponse du muscle à une série de stimulations efficaces
+    de même intensité.
+  </p>
+
+  <div class="note">
+    <strong>Question :</strong> comment la fréquence des stimulations
+    modifie-t-elle la contraction du muscle ?
+  </div>
+
+  <p>
+    La <strong>fréquence</strong> est le nombre de stimulations par seconde.
+    Elle s’exprime en hertz :
+    <strong>1 Hz = 1 stimulation par seconde</strong>.
+  </p>
+</section>
+
+<section class="card">
+  <h2>1. Comparer deux fréquences de stimulation</h2>
+
+  <p>
+    Lance chaque cas séparément.
+    Observe les relâchements éventuels entre les réponses
+    et le retour au repos à la fin des stimulations.
+  </p>
+
+  <div class="actions">
+    <button type="button" class="button secondary cas"
+            data-cas="imparfait" aria-pressed="false">
+      Tétanos imparfait
+    </button>
+
+    <button type="button" class="button secondary cas"
+            data-cas="parfait" aria-pressed="false">
+      Tétanos parfait
+    </button>
+
+    <button type="button" class="button secondary" id="reset">
+      Effacer
+    </button>
+  </div>
+
+  <div class="simulation">
+    <svg viewBox="0 0 1000 400"
+         role="img" aria-labelledby="titre description"
+         xmlns="http://www.w3.org/2000/svg">
+
+      <title id="titre">Comparaison des tétanos imparfait et parfait</title>
+      <desc id="description">
+        Une série de signaux rouges représente les stimulations.
+        La réponse verte présente des oscillations pour le tétanos imparfait,
+        ou un plateau lisse pour le tétanos parfait.
+        À la fin de la série, la réponse revient au repos.
+      </desc>
+
+      <g font-family="Arial,sans-serif" fill="#003f46">
+        <text x="100" y="35" font-size="21">
+          Réponse mécanique du muscle
+        </text>
+
+        <path d="M100 260 V60 M100 260 H950"
+              fill="none" stroke="#426760" stroke-width="2"/>
+
+        <path d="M94 70 L100 60 L106 70
+                 M940 254 L950 260 L940 266"
+              fill="none" stroke="#426760" stroke-width="2"/>
+
+        <text x="110" y="285" font-size="16">Repos</text>
+        <text x="835" y="290" font-size="18">Temps →</text>
+
+        <g id="repere-fin" visibility="hidden">
+          <line x1="750" y1="70" x2="750" y2="365"
+                stroke="#a65620" stroke-width="2"
+                stroke-dasharray="5 5"/>
+          <text x="750" y="57" text-anchor="middle"
+                fill="#a65620" font-size="17">
+            Fin des stimulations
+          </text>
+        </g>
+
+        <path id="trace" d="" fill="none"
+              stroke="#087f3e" stroke-width="4"
+              stroke-linecap="round"/>
+
+        <circle id="point" r="5" fill="#087f3e"
+                visibility="hidden"/>
+
+        <text x="100" y="325" font-size="18">
+          Stimulations de même intensité
+        </text>
+
+        <path d="M100 365 H950" fill="none" stroke="#a8bdb3"/>
+        <g id="signaux"></g>
+      </g>
+    </svg>
+  </div>
+
+  <p class="status" id="status" role="status" aria-live="polite">
+    Choisis un cas pour lancer l’observation.
+  </p>
+
+  <p class="small">
+    Simulation pédagogique ralentie : les courbes et les intervalles
+    sont schématiques. Les deux séries ont la même durée
+    et des fréquences différentes.
+  </p>
+
+  <div class="note">
+    <strong>Observe avant d’expliquer :</strong>
+    dans quel cas des relâchements partiels restent-ils visibles ?
+    Quel cas correspond à la fréquence la plus élevée ?
+  </div>
+
+  <button type="button" class="button" id="expliquer"
+          aria-expanded="false" aria-controls="explication">
+    Comprendre le cas observé →
+  </button>
+
+  <div id="explication" hidden></div>
+</section>
+
+<div class="actions">
+  <a href="complement-fusion-secousses.html" class="button secondary">
+    ← Retour aux deux stimulations
+  </a>
+
+  <a href="complement-muscle.html" class="button secondary">
+    Retour au myographe
+  </a>
+
+  <a href="complements-cours.html" class="button secondary">
+    Unités et parties
+  </a>
+</div>
+
+<footer>
+  <p><strong>LABNIHI Brahim – Prof SVT</strong></p>
+  <p>
+    Comprendre avant de mémoriser, raisonner avant de répondre,
+    progresser vers l’autonomie.
+  </p>
+</footer>
+</main>
+
+<script>
+const ns = "http://www.w3.org/2000/svg";
+const trace = document.getElementById("trace");
+const point = document.getElementById("point");
+const signaux = document.getElementById("signaux");
+const repereFin = document.getElementById("repere-fin");
+const statusText = document.getElementById("status");
+const boutons = [...document.querySelectorAll(".cas")];
+const expliquer = document.getElementById("expliquer");
+const explication = document.getElementById("explication");
+
+let frame = null;
+let generation = 0;
+let choix = null;
+
+const debutStimulations = 20;
+const finStimulations = 320;
+const finTrace = 410;
+
+const cas = {
+  imparfait: {
+    intervalle: 25,
+    nom: "Tétanos imparfait",
+    bilan: "Tétanos imparfait : les relâchements partiels restent visibles.",
+    texte: `
+      <h3>Le tétanos imparfait</h3>
+      <p>Les stimulations sont suffisamment rapprochées pour que
+      chaque nouvelle réponse se développe avant le relâchement
+      complet de la précédente.</p>
+      <p>Les secousses fusionnent partiellement :
+      le muscle reste contracté, mais des
+      <strong>relâchements partiels</strong> subsistent.</p>
+      <div class="note"><strong>Sur le tracé :</strong>
+      les oscillations correspondent à une alternance de renforcement
+      de la contraction et de relâchement partiel,
+      sans retour au repos.</div>`
+  },
+
+  parfait: {
+    intervalle: 10,
+    nom: "Tétanos parfait",
+    bilan: "Tétanos parfait : contraction soutenue, sans relâchement intermédiaire visible.",
+    texte: `
+      <h3>Le tétanos parfait</h3>
+      <p>La fréquence des stimulations est plus élevée.
+      Les réponses mécaniques fusionnent complètement.</p>
+      <p>Le muscle présente une contraction soutenue,
+      <strong>sans relâchement intermédiaire visible</strong>.</p>
+      <div class="note"><strong>Sur le tracé :</strong>
+      un plateau lisse remplace les oscillations
+      du tétanos imparfait.</div>`
+  }
+};
+
+function xTemps(t) {
+  return 110 + t * 2;
+}
+
+function reponse(t, type) {
+  const debutReponse = 30;
+
+  if (t <= debutReponse) return 0;
+
+  if (type === "parfait") {
+    if (t < 95) {
+      const u = (t - debutReponse) / (95 - debutReponse);
+      return 1.65 * (1 - Math.cos(Math.PI * u)) / 2;
+    }
+
+    if (t <= finStimulations) return 1.65;
+
+    if (t < finStimulations + 70) {
+      const u = (t - finStimulations) / 70;
+      return 1.65 * (1 + Math.cos(Math.PI * u)) / 2;
+    }
+
+    return 0;
+  }
+
+  if (t <= finStimulations) {
+    const ecoule = t - debutReponse;
+    const montee = 1.45 * (1 - Math.exp(-ecoule / 30));
+    const oscillation = 0.11
+      * (1 - Math.exp(-ecoule / 18))
+      * (1 - Math.cos(2 * Math.PI * ecoule / 25)) / 2;
+
+    return Math.max(0, montee - oscillation);
+  }
+
+  if (t < finStimulations + 70) {
+    const ecoule = finStimulations - debutReponse;
+    const hauteurFinale =
+      1.45 * (1 - Math.exp(-ecoule / 30))
+      - 0.11 * (1 - Math.exp(-ecoule / 18))
+      * (1 - Math.cos(2 * Math.PI * ecoule / 25)) / 2;
+
+    const u = (t - finStimulations) / 70;
+    return hauteurFinale * (1 + Math.cos(Math.PI * u)) / 2;
+  }
+
+  return 0;
+}
+
+function dessiner(t, type) {
+  let d = "";
+
+  for (let i = 0; i <= Math.floor(t); i++) {
+    const x = xTemps(i);
+    const y = 260 - reponse(i, type) * 100;
+    d += (i === 0 ? "M" : "L") + x + " " + y + " ";
+  }
+
+  const x = xTemps(t);
+  const y = 260 - reponse(t, type) * 100;
+
+  trace.setAttribute("d", d + "L" + x + " " + y);
+  point.setAttribute("cx", x);
+  point.setAttribute("cy", y);
+}
+
+function ajouterSignal(t) {
+  const x = xTemps(t);
+  const chemin = document.createElementNS(ns, "path");
+
+  chemin.setAttribute("d",
+    `M${x-2} 365 H${x} V342 H${x+3} V365`);
+  chemin.setAttribute("fill", "none");
+  chemin.setAttribute("stroke", "#c64e38");
+  chemin.setAttribute("stroke-width", "2");
+
+  signaux.appendChild(chemin);
+}
+
+function effacer() {
+  generation++;
+  if (frame !== null) cancelAnimationFrame(frame);
+  frame = null;
+  choix = null;
+
+  trace.setAttribute("d", "");
+  point.setAttribute("visibility", "hidden");
+  repereFin.setAttribute("visibility", "hidden");
+  signaux.replaceChildren();
+
+  boutons.forEach(b => b.setAttribute("aria-pressed", "false"));
+
+  explication.hidden = true;
+  explication.innerHTML = "";
+  expliquer.setAttribute("aria-expanded", "false");
+  expliquer.textContent = "Comprendre le cas observé →";
+
+  statusText.textContent = "Choisis un cas pour lancer l’observation.";
+}
+
+function lancer(type) {
+  effacer();
+  choix = type;
+
+  const session = generation;
+  const configuration = cas[type];
+
+  boutons.forEach(b => {
+    b.setAttribute("aria-pressed", String(b.dataset.cas === type));
+  });
+
+  explication.innerHTML = configuration.texte + `
+    <h3>À la fin de la série</h3>
+    <p>Lorsque les stimulations cessent, la contraction n’est plus
+    entretenue et le muscle se relâche.</p>
+    <div class="note"><strong>À distinguer :</strong>
+    le recrutement dépend de l’intensité des stimulations.
+    La fusion des secousses dépend de leur rapprochement
+    dans le temps, donc de leur fréquence.</div>`;
+
+  point.setAttribute("visibility", "visible");
+  statusText.textContent = configuration.nom + " : début de la série.";
+
+  let prochaineStimulation = debutStimulations;
+  let debut = null;
+  let arretAnnonce = false;
+
+  function animer(now) {
+    if (session !== generation) return;
+    if (debut === null) debut = now;
+
+    const t = Math.min((now - debut) / 18, finTrace);
+
+    while (prochaineStimulation <= t &&
+           prochaineStimulation <= finStimulations) {
+      ajouterSignal(prochaineStimulation);
+      prochaineStimulation += configuration.intervalle;
+    }
+
+    if (t >= finStimulations && !arretAnnonce) {
+      repereFin.setAttribute("visibility", "visible");
+      statusText.textContent =
+        "Fin des stimulations : le muscle se relâche.";
+      arretAnnonce = true;
+    }
+
+    dessiner(t, type);
+
+    if (t < finTrace) {
+      frame = requestAnimationFrame(animer);
+    } else {
+      frame = null;
+      statusText.textContent =
+        configuration.bilan + " Puis retour au repos.";
+    }
+  }
+
+  frame = requestAnimationFrame(animer);
+}
+
+boutons.forEach(b => {
+  b.addEventListener("click", () => lancer(b.dataset.cas));
+});
+
+document.getElementById("reset").addEventListener("click", effacer);
+
+expliquer.addEventListener("click", () => {
+  if (choix === null) {
+    statusText.textContent = "Choisis d’abord l’un des deux cas.";
+    return;
+  }
+
+  const ouvrir = explication.hidden;
+  explication.hidden = !ouvrir;
+  expliquer.setAttribute("aria-expanded", String(ouvrir));
+  expliquer.textContent = ouvrir
+    ? "Masquer l’explication"
+    : "Comprendre le cas observé →";
+});
+</script>
+</body>
+</html>
