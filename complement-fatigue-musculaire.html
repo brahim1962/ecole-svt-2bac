@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La fatigue musculaire — École SVT</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5faf7;color:#003f46;line-height:1.7}
+.navbar{background:#004c54;color:white;padding:14px 6%;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:70px}
+.logo{font-size:23px;font-weight:bold}
+.logo span{color:#73c900}
+nav{display:flex;flex-wrap:wrap;gap:22px}
+nav a{color:white;text-decoration:none;font-weight:bold}
+main{width:86%;max-width:1180px;margin:28px auto 50px}
+.card{background:white;padding:28px;border-radius:18px;margin-bottom:24px;box-shadow:0 4px 15px #0000000d}
+.label{color:#087f3e;font-size:14px;font-weight:bold}
+h1{font-size:29px;line-height:1.4}
+h2{color:#087f3e;font-size:23px;line-height:1.4}
+.note{background:#eaf6ef;border-left:4px solid #087f3e;border-radius:8px;padding:16px 20px;margin:18px 0}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin:16px 0}
+.button{display:inline-block;border:0;border-radius:8px;background:#087f3e;color:white;padding:11px 18px;font:inherit;font-weight:bold;text-decoration:none;cursor:pointer}
+.button:hover{background:#056832}
+.secondary{background:white;color:#087f3e;border:1px solid #087f3e}
+.secondary:hover{background:#edf7ed}
+.button[aria-pressed="true"]{background:#004c54;color:white;box-shadow:0 0 0 3px #b8dcca}
+a:focus-visible,button:focus-visible{outline:3px solid #73c900;outline-offset:4px}
+.simulation{border:1px solid #c6dfd1;border-radius:12px;background:#fbfdfc;padding:10px}
+svg{display:block;width:100%;height:auto;max-height:320px;margin:auto}
+.status{min-height:54px;font-weight:bold}
+.small{font-size:13px;color:#526d69}
+[hidden]{display:none!important}
+li{margin-bottom:10px}
+footer{text-align:center;font-size:13px;color:#526d69}
+@media(max-width:700px){
+.navbar{flex-direction:column;align-items:flex-start}
+nav{gap:12px}
+main{width:92%;margin-top:18px}
+.card{padding:20px}
+h1{font-size:24px}
+h2{font-size:21px}
+}
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">🧬 ÉCOLE <span>SVT</span></div>
+  <nav aria-label="Navigation principale">
+    <a href="index.html">🏠 Accueil</a>
+    <a href="mon-espace-svt.html">🎓 Mon Espace SVT</a>
+    <a href="complements-cours.html">📚 Compléments de cours</a>
+  </nav>
+</header>
+
+<main>
+<section class="card">
+  <div class="label">UNITÉ I · PARTIE 2 · ACTIVITÉ 1</div>
+  <h1>La fatigue musculaire</h1>
+  <p>
+    Nous avons observé une contraction soutenue lors d’une série
+    de stimulations rapprochées.
+    Que devient cette réponse lorsque les stimulations se prolongent ?
+  </p>
+  <div class="note">
+    <strong>Question :</strong> le muscle peut-il maintenir
+    indéfiniment la même réponse mécanique ?
+  </div>
+</section>
+
+<section class="card">
+  <h2>1. Observer et comparer</h2>
+  <p>
+    Lance les deux observations séparément.
+    Repère si les stimulations continuent lorsque la réponse diminue.
+  </p>
+
+  <div class="actions">
+    <button type="button" class="button secondary cas"
+            data-cas="fatigue" aria-pressed="false">
+      Stimulations prolongées
+    </button>
+    <button type="button" class="button secondary cas"
+            data-cas="comparaison" aria-pressed="false">
+      Comparer les secousses
+    </button>
+    <button type="button" class="button secondary" id="reset">
+      Effacer
+    </button>
+  </div>
+
+  <div class="simulation">
+    <svg viewBox="0 0 1000 400"
+         role="img" aria-labelledby="titre description"
+         xmlns="http://www.w3.org/2000/svg">
+
+      <title id="titre">Observation de la fatigue musculaire</title>
+      <desc id="description">
+        Le premier mode montre une contraction qui diminue malgré
+        la poursuite des stimulations. Le deuxième compare deux secousses :
+        muscle non fatigué en vert et muscle fatigué en orange pointillé.
+      </desc>
+
+      <g font-family="Arial,sans-serif" fill="#003f46">
+        <text x="100" y="35" font-size="21">
+          Réponse mécanique du muscle
+        </text>
+
+        <path d="M100 260 V65 M100 260 H950"
+              fill="none" stroke="#426760" stroke-width="2"/>
+        <path d="M94 75 L100 65 L106 75
+                 M940 254 L950 260 L940 266"
+              fill="none" stroke="#426760" stroke-width="2"/>
+
+        <text x="110" y="286" font-size="16">Repos</text>
+        <text x="835" y="290" font-size="18">Temps →</text>
+
+        <g id="legende" visibility="hidden" font-size="17">
+          <line x1="430" y1="65" x2="470" y2="65"
+                stroke="#087f3e" stroke-width="4"/>
+          <text x="480" y="71">Muscle non fatigué</text>
+          <line x1="700" y1="65" x2="740" y2="65"
+                stroke="#b16a20" stroke-width="4"
+                stroke-dasharray="8 5"/>
+          <text x="750" y="71">Muscle fatigué</text>
+        </g>
+
+        <path id="trace1" d="" fill="none" stroke="#087f3e"
+              stroke-width="4" stroke-linecap="round"/>
+        <path id="trace2" d="" fill="none" stroke="#b16a20"
+              stroke-width="4" stroke-dasharray="8 5"
+              stroke-linecap="round"/>
+
+        <text x="100" y="325" font-size="18" id="titre-signaux">
+          Stimulations électriques
+        </text>
+        <path d="M100 365 H950" fill="none" stroke="#a8bdb3"/>
+        <g id="signaux"></g>
+      </g>
+    </svg>
+  </div>
+
+  <p class="status" id="status" role="status" aria-live="polite">
+    Choisis une observation.
+  </p>
+
+  <p class="small">
+    Modèles pédagogiques ralentis, sans échelle de temps chiffrée.
+    Les deux modes correspondent à des expériences distinctes.
+    La comparaison illustre les caractéristiques des secousses étudiées dans cette activité.
+  </p>
+
+  <div class="note">
+    <strong>Avant d’expliquer :</strong>
+    distingue une diminution de la réponse pendant les stimulations
+    d’un relâchement après leur arrêt.
+    Pour les deux secousses, compare la latence, l’amplitude et la durée.
+  </div>
+
+  <button type="button" class="button" id="expliquer"
+          aria-expanded="false" aria-controls="explication">
+    Comprendre l’observation →
+  </button>
+
+  <div id="explication" hidden></div>
+</section>
+
+<section class="card">
+  <h2>Bilan de l’activité 1</h2>
+  <ul>
+    <li>
+      <strong>Excitabilité :</strong> le muscle répond
+      à une stimulation efficace.
+    </li>
+    <li>
+      <strong>Contractilité :</strong> il peut se contracter.
+    </li>
+    <li>
+      <strong>Recrutement :</strong> l’augmentation de l’intensité
+      sollicite davantage de fibres jusqu’à une réponse maximale.
+    </li>
+    <li>
+      <strong>Sommation et tétanos :</strong> le rapprochement
+      des stimulations entraîne la fusion des réponses mécaniques.
+    </li>
+    <li>
+      <strong>Fatigabilité :</strong> une activité prolongée
+      peut entraîner une diminution de la réponse musculaire.
+    </li>
+  </ul>
+</section>
+
+<div class="actions">
+  <a href="complement-tetanos.html" class="button secondary">
+    ← Retour aux tétanos
+  </a>
+  <a href="complement-muscle.html" class="button secondary">
+    Retour au début de la partie 2
+  </a>
+  <a href="complements-cours.html" class="button secondary">
+    Unités et parties
+  </a>
+</div>
+
+<footer>
+  <p><strong>LABNIHI Brahim – Prof SVT</strong></p>
+  <p>
+    Comprendre avant de mémoriser, raisonner avant de répondre,
+    progresser vers l’autonomie.
+  </p>
+</footer>
+</main>
+
+<script>
+const ns = "http://www.w3.org/2000/svg";
+const trace1 = document.getElementById("trace1");
+const trace2 = document.getElementById("trace2");
+const signaux = document.getElementById("signaux");
+const legende = document.getElementById("legende");
+const titreSignaux = document.getElementById("titre-signaux");
+const statusText = document.getElementById("status");
+const boutons = [...document.querySelectorAll(".cas")];
+const expliquer = document.getElementById("expliquer");
+const explication = document.getElementById("explication");
+
+let frame = null;
+let generation = 0;
+let choix = null;
+
+const textes = {
+  fatigue: `
+    <h3>Une diminution malgré les stimulations</h3>
+    <p>Au début, la série de stimulations rapprochées
+    provoque une contraction soutenue.</p>
+    <p>Lorsque l’activité se prolonge, la réponse mécanique
+    diminue progressivement, alors que les stimulations
+    de même intensité et de même fréquence continuent.</p>
+    <div class="note"><strong>C’est la fatigue musculaire :</strong>
+    le muscle ne maintient plus la même réponse malgré
+    la poursuite de la stimulation.</div>
+    <p>Cette observation diffère du relâchement étudié à la fin
+    d’un tétanos : ici, les stimulations ne se sont pas arrêtées
+    lorsque la réponse commence à diminuer.</p>`,
+
+  comparaison: `
+    <h3>Comparer deux secousses</h3>
+    <p>On compare des réponses obtenues avec une stimulation
+    identique, avant et après fatigue.</p>
+    <p>Dans les enregistrements étudiés, le muscle fatigué présente :</p>
+    <ul>
+      <li><strong>Une latence plus longue :</strong>
+      la réponse mécanique commence plus tard après la stimulation.</li>
+      <li><strong>Une amplitude plus faible :</strong>
+      le sommet est moins élevé.</li>
+      <li><strong>Une durée plus longue :</strong>
+      l’intervalle entre le début de la réponse mécanique
+      et le retour au repos est plus grand.</li>
+    </ul>
+    <div class="note"><strong>Pour comparer correctement :</strong>
+    les deux courbes utilisent le même repère de stimulation
+    et les mêmes échelles.</div>`
+};
+
+function xTemps(t) {
+  return 110 + t * 2;
+}
+
+function reponseProlongee(t) {
+  if (t <= 30) return 0;
+
+  if (t < 90) {
+    const u = (t - 30) / 60;
+    return 1.6 * (1 - Math.cos(Math.PI * u)) / 2;
+  }
+
+  if (t <= 150) return 1.6;
+
+  if (t < 350) {
+    const u = (t - 150) / 200;
+    return 1.6 * (1 + Math.cos(Math.PI * u)) / 2;
+  }
+
+  return 0;
+}
+
+function secousse(t, debut, sommet, fin, hauteur) {
+  if (t <= debut || t >= fin) return 0;
+
+  if (t <= sommet) {
+    const u = (t - debut) / (sommet - debut);
+    return hauteur * (1 - Math.cos(Math.PI * u)) / 2;
+  }
+
+  const u = (t - sommet) / (fin - sommet);
+  return hauteur * (1 + Math.cos(Math.PI * u)) / 2;
+}
+
+function dessiner(chemin, t, fonction) {
+  let d = "";
+
+  for (let i = 0; i <= Math.floor(t); i++) {
+    const x = xTemps(i);
+    const y = 260 - fonction(i) * 100;
+    d += (i === 0 ? "M" : "L") + x + " " + y + " ";
+  }
+
+  d += "L" + xTemps(t) + " " + (260 - fonction(t) * 100);
+  chemin.setAttribute("d", d);
+}
+
+function ajouterSignal(t) {
+  const x = xTemps(t);
+  const chemin = document.createElementNS(ns, "path");
+  chemin.setAttribute("d",
+    `M${x-2} 365 H${x} V342 H${x+3} V365`);
+  chemin.setAttribute("fill", "none");
+  chemin.setAttribute("stroke", "#c64e38");
+  chemin.setAttribute("stroke-width", "2");
+  signaux.appendChild(chemin);
+}
+
+function effacer() {
+  generation++;
+  if (frame !== null) cancelAnimationFrame(frame);
+  frame = null;
+  choix = null;
+
+  trace1.setAttribute("d", "");
+  trace2.setAttribute("d", "");
+  signaux.replaceChildren();
+  legende.setAttribute("visibility", "hidden");
+
+  boutons.forEach(b => b.setAttribute("aria-pressed", "false"));
+
+  explication.hidden = true;
+  explication.innerHTML = "";
+  expliquer.setAttribute("aria-expanded", "false");
+  expliquer.textContent = "Comprendre l’observation →";
+
+  titreSignaux.textContent = "Stimulations électriques";
+  statusText.textContent = "Choisis une observation.";
+}
+
+function lancer(type) {
+  effacer();
+  choix = type;
+  const session = generation;
+
+  boutons.forEach(b => {
+    b.setAttribute("aria-pressed", String(b.dataset.cas === type));
+  });
+
+  explication.innerHTML = textes[type];
+
+  if (type === "comparaison") {
+    legende.setAttribute("visibility", "visible");
+    titreSignaux.textContent = "Même stimulation pour les deux essais";
+  } else {
+    titreSignaux.textContent = "Stimulations maintenues pendant toute l’observation";
+  }
+
+  let debut = null;
+  let prochaineStimulation = 20;
+  let phasePrecedente = "";
+
+  function animer(now) {
+    if (session !== generation) return;
+    if (debut === null) debut = now;
+
+    const t = Math.min((now - debut) / 20, 410);
+    let message;
+
+    if (type === "fatigue") {
+      while (prochaineStimulation <= t &&
+             prochaineStimulation <= 410) {
+        ajouterSignal(prochaineStimulation);
+        prochaineStimulation += 10;
+      }
+
+      dessiner(trace1, t, reponseProlongee);
+
+      if (t < 150) {
+        message = "Les stimulations rapprochées entretiennent une contraction soutenue.";
+      } else if (t < 350) {
+        message = "La réponse diminue malgré la poursuite des stimulations : fatigue musculaire.";
+      } else {
+        message = "La réponse est revenue au niveau de repos ; les stimulations continuent.";
+      }
+    } else {
+      if (prochaineStimulation === 20 && t >= 20) {
+        ajouterSignal(20);
+        prochaineStimulation = Infinity;
+      }
+
+      dessiner(trace1, t,
+        temps => secousse(temps, 40, 95, 180, 1.5));
+
+      dessiner(trace2, t,
+        temps => secousse(temps, 65, 150, 300, 0.85));
+
+      message = t < 300
+        ? "Observe le début, la hauteur et la durée des deux réponses."
+        : "Muscle fatigué : latence plus longue, amplitude plus faible, durée plus longue.";
+    }
+
+    if (message !== phasePrecedente) {
+      statusText.textContent = message;
+      phasePrecedente = message;
+    }
+
+    if (t < 410) {
+      frame = requestAnimationFrame(animer);
+    } else {
+      frame = null;
+    }
+  }
+
+  frame = requestAnimationFrame(animer);
+}
+
+boutons.forEach(b => {
+  b.addEventListener("click", () => lancer(b.dataset.cas));
+});
+
+document.getElementById("reset").addEventListener("click", effacer);
+
+expliquer.addEventListener("click", () => {
+  if (choix === null) {
+    statusText.textContent = "Choisis d’abord une observation.";
+    return;
+  }
+
+  const ouvrir = explication.hidden;
+  explication.hidden = !ouvrir;
+  expliquer.setAttribute("aria-expanded", String(ouvrir));
+  expliquer.textContent = ouvrir
+    ? "Masquer l’explication"
+    : "Comprendre l’observation →";
+});
+</script>
+</body>
+</html>
