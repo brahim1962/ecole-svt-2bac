@@ -40,6 +40,23 @@ main{width:92%;margin-top:18px}
 h1{font-size:24px}
 h2{font-size:21px}
 }
+  .observation-audio{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 280px;
+  align-items:center;
+  gap:16px;
+}
+.observation-audio > *{
+  min-width:0;
+}
+.observation-audio .note{
+  margin:0;
+}
+@media(max-width:900px){
+  .observation-audio{
+    grid-template-columns:1fr;
+  }
+}
 </style>
 </head>
 <body>
@@ -88,7 +105,7 @@ h2{font-size:21px}
       Effacer
     </button>
   </div>
-
+<div class="observation-audio">
   <div class="simulation">
     <svg viewBox="0 0 1000 400"
          role="img" aria-labelledby="titre description"
@@ -139,7 +156,17 @@ h2{font-size:21px}
       </g>
     </svg>
   </div>
+<div class="note">
+    <p><strong>🎧 La fatigue musculaire — Explication du professeur</strong></p>
 
+    <audio controls preload="metadata"
+           style="display:block;width:100%;"
+           aria-label="Explication de la fatigue musculaire">
+      <source src="fatigue-audio.mp4" type="audio/mp4">
+      Votre navigateur ne permet pas la lecture de cet audio.
+    </audio>
+  </div>
+</div>
   <p class="status" id="status" role="status" aria-live="polite">
     Choisis une observation.
   </p>
