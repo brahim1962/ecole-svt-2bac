@@ -243,7 +243,33 @@ footer{text-align:center;color:#526d69;font-size:13px}
                  fill="#f7fbf9" stroke="#426760" stroke-width="3"/>
         <path d="M650 375 C650 340 880 340 880 375"
               fill="none" stroke="#a5bdb1" stroke-width="2"/>
+<!-- Stylet enregistrant les stimulations -->
+<path d="M500 325 H650"
+      fill="none" stroke="#426760" stroke-width="3"/>
 
+<path d="M650 325 H685 V310 H690 V325 H856"
+      fill="none" stroke="#c64e38" stroke-width="3"/>
+
+<text x="765" y="305" text-anchor="middle"
+      font-size="16" fill="#c64e38">
+  Signal de stimulation
+</text>
+
+<!-- Stylet enregistrant le temps -->
+<path d="M500 365 H650"
+      fill="none" stroke="#426760" stroke-width="3"/>
+
+<path d="M650 365
+         Q655 350 660 365 T680 365 T700 365
+         T720 365 T740 365 T760 365 T780 365
+         T800 365 T820 365 T840 365 T860 365"
+      fill="none" stroke="#266ea0" stroke-width="2.5"/>
+
+<text x="765" y="347" text-anchor="middle"
+      font-size="16" fill="#266ea0">
+  Signal du temps
+</text>
+        
         <!-- Tracé -->
         <path d="M650 285 H680
                  C697 285 703 233 725 233
@@ -264,8 +290,9 @@ footer{text-align:center;color:#526d69;font-size:13px}
     </svg>
 
     <figcaption>
-      Schéma de principe simplifié, non à l’échelle :
-      les repères de temps et de stimulation ne sont pas représentés.
+      Schéma de principe simplifié, non à l’échelle.
+Les trois stylets enregistrent la réponse mécanique du muscle,
+le signal de stimulation et le signal du temps.
     </figcaption>
   </figure>
 
