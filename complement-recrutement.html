@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le recrutement des fibres musculaires — École SVT</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5faf7;color:#003f46;line-height:1.7}
+.navbar{background:#004c54;color:white;padding:14px 6%;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:70px}
+.logo{font-size:23px;font-weight:bold}
+.logo span{color:#73c900}
+nav{display:flex;flex-wrap:wrap;gap:22px}
+nav a{color:white;text-decoration:none;font-weight:bold}
+main{width:86%;max-width:1180px;margin:28px auto 50px}
+.card{background:white;padding:28px;border-radius:18px;margin-bottom:24px;box-shadow:0 4px 15px #0000000d}
+.label{color:#087f3e;font-size:14px;font-weight:bold}
+h1{font-size:29px;line-height:1.4}
+h2{color:#087f3e;font-size:23px;line-height:1.4}
+.note{background:#eaf6ef;border-left:4px solid #087f3e;border-radius:8px;padding:16px 20px;margin:18px 0}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:16px 0}
+.button{display:inline-block;border:0;border-radius:8px;background:#087f3e;color:white;padding:11px 18px;font:inherit;font-weight:bold;text-decoration:none;cursor:pointer}
+.button:hover{background:#056832}
+.secondary{background:white;color:#087f3e;border:1px solid #087f3e}
+.secondary:hover{background:#edf7ed}
+button:disabled{opacity:.5;cursor:default}
+a:focus-visible,button:focus-visible{outline:3px solid #73c900;outline-offset:4px}
+.simulation{border:1px solid #c6dfd1;border-radius:12px;background:#fbfdfc;padding:10px}
+svg{display:block;width:100%;height:auto;max-height:340px;margin:auto}
+.status{min-height:54px;font-weight:bold}
+.small{font-size:13px;color:#526d69}
+[hidden]{display:none!important}
+li{margin-bottom:10px}
+footer{text-align:center;font-size:13px;color:#526d69}
+@media(max-width:700px){
+.navbar{flex-direction:column;align-items:flex-start}
+nav{gap:12px}
+main{width:92%;margin-top:18px}
+.card{padding:20px}
+h1{font-size:24px}
+h2{font-size:21px}
+}
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">🧬 ÉCOLE <span>SVT</span></div>
+  <nav aria-label="Navigation principale">
+    <a href="index.html">🏠 Accueil</a>
+    <a href="mon-espace-svt.html">🎓 Mon Espace SVT</a>
+    <a href="complements-cours.html">📚 Compléments de cours</a>
+  </nav>
+</header>
+
+<main>
+<section class="card">
+  <div class="label">UNITÉ I · PARTIE 2 · ACTIVITÉ 1</div>
+  <h1>Le recrutement des fibres musculaires</h1>
+  <p>
+    Un muscle est constitué de nombreuses fibres musculaires.
+    Observons sa réponse à des stimulations isolées d’intensité croissante.
+  </p>
+  <div class="note">
+    <strong>Question :</strong> pourquoi l’amplitude de la secousse augmente-t-elle,
+    puis reste-t-elle constante malgré l’augmentation de l’intensité ?
+  </div>
+</section>
+
+<section class="card">
+  <h2>1. Observer des stimulations d’intensité croissante</h2>
+  <p>
+    Clique successivement sur « Appliquer la stimulation ».
+    Chaque essai utilise une intensité supérieure à celle du précédent.
+  </p>
+
+  <div class="actions">
+    <button type="button" class="button" id="stimuler">
+      Appliquer I1 →
+    </button>
+    <button type="button" class="button secondary" id="reset">
+      Recommencer
+    </button>
+  </div>
+
+  <div class="simulation">
+    <svg viewBox="0 0 1080 440"
+         role="img" aria-labelledby="titre description"
+         xmlns="http://www.w3.org/2000/svg">
+      <title id="titre">Recrutement et amplitude des secousses</title>
+      <desc id="description">
+        À gauche, huit fibres représentent le muscle.
+        À droite, douze essais montrent une absence de réponse à I1,
+        une amplitude croissante de I2 à I9, puis un plateau.
+      </desc>
+
+      <g font-family="Arial,sans-serif" fill="#003f46">
+        <text x="120" y="35" text-anchor="middle" font-size="21">
+          Fibres du muscle
+        </text>
+
+        <g id="fibres"></g>
+
+        <text x="120" y="335" text-anchor="middle" font-size="18"
+              id="compteur">0 fibre recrutée sur 8</text>
+        <text x="120" y="365" text-anchor="middle" font-size="16">
+          Représentation simplifiée
+        </text>
+
+        <text x="295" y="35" font-size="20">
+          Réponse mécanique du muscle entier
+        </text>
+
+        <path d="M285 285 V65 M285 285 H1040"
+              fill="none" stroke="#426760" stroke-width="2"/>
+        <path d="M279 75 L285 65 L291 75
+                 M1030 279 L1040 285 L1030 291"
+              fill="none" stroke="#426760" stroke-width="2"/>
+
+        <text x="290" y="315" font-size="16">
+          Essais successifs : intensité croissante →
+        </text>
+
+        <g id="traces"></g>
+        <g id="reperes"></g>
+
+        <text x="290" y="350" font-size="17">
+          Stimulations électriques
+        </text>
+        <line x1="285" y1="410" x2="1040" y2="410"
+              stroke="#a8bdb3"/>
+        <g id="signaux"></g>
+
+        <g id="plateau" visibility="hidden">
+          <path d="M810 80 H1025"
+                stroke="#a65620" stroke-width="2"
+                stroke-dasharray="5 5"/>
+          <text x="915" y="65" text-anchor="middle"
+                font-size="18" fill="#a65620">
+            Amplitude maximale
+          </text>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <p class="status" id="status" role="status" aria-live="polite">
+    Commence par l’intensité I1.
+  </p>
+
+  <p class="small">
+    Modèle pédagogique : huit fibres représentent l’ensemble du muscle.
+    Les essais sont suffisamment espacés pour permettre un relâchement complet.
+    La durée des stimulations reste constante. Le temps est simplifié.
+  </p>
+
+  <div class="note">
+    <strong>Observe :</strong> à partir de quelle intensité le muscle répond-il ?
+    À partir de quelle intensité l’amplitude cesse-t-elle d’augmenter ?
+  </div>
+
+  <button type="button" class="button" id="expliquer"
+          aria-expanded="false" aria-controls="explication">
+    Comprendre les résultats →
+  </button>
+
+  <div id="explication" hidden>
+    <h3>Une stimulation infraliminaire</h3>
+    <p>
+      À <strong>I1</strong>, aucune réponse mécanique n’est enregistrée :
+      l’intensité est inférieure au seuil d’excitation.
+      La stimulation est <strong>infraliminaire</strong>.
+    </p>
+
+    <h3>Le seuil d’excitation</h3>
+    <p>
+      <strong>I2</strong> est la plus petite intensité testée provoquant
+      une secousse. Elle correspond ici au seuil d’excitation,
+      pour la durée de stimulation utilisée.
+    </p>
+
+    <h3>Le recrutement progressif</h3>
+    <p>
+      De <strong>I2 à I9</strong>, l’augmentation de l’intensité
+      recrute un nombre croissant de fibres musculaires.
+      Leurs réponses s’ajoutent : l’amplitude de la secousse
+      du muscle entier augmente.
+    </p>
+
+    <h3>L’amplitude maximale</h3>
+    <p>
+      À partir de <strong>I9</strong>, toutes les fibres représentées
+      participent à la réponse. L’augmentation de l’intensité
+      à I10, I11 et I12 ne recrute plus de fibres supplémentaires :
+      l’amplitude reste constante.
+    </p>
+
+    <div class="note">
+      <strong>À retenir :</strong> l’augmentation de l’amplitude
+      s’explique par la participation de davantage de fibres,
+      et non par une contraction de plus en plus forte de chaque fibre.
+    </div>
+
+    <p>
+      Ce phénomène est appelé <strong>recrutement des fibres musculaires</strong>.
+    </p>
+  </div>
+</section>
+
+<div class="actions">
+  <a href="complement-secousse-musculaire.html" class="button secondary">
+    ← Retour à la secousse musculaire
+  </a>
+  <a href="complement-muscle.html" class="button secondary">
+    Retour au myographe
+  </a>
+  <a href="complements-cours.html" class="button secondary">
+    Unités et parties
+  </a>
+</div>
+
+<footer>
+  <p><strong>LABNIHI Brahim – Prof SVT</strong></p>
+  <p>
+    Comprendre avant de mémoriser, raisonner avant de répondre,
+    progresser vers l’autonomie.
+  </p>
+</footer>
+</main>
+
+<script>
+const ns = "http://www.w3.org/2000/svg";
+const fibresGroup = document.getElementById("fibres");
+const tracesGroup = document.getElementById("traces");
+const reperesGroup = document.getElementById("reperes");
+const signauxGroup = document.getElementById("signaux");
+const plateau = document.getElementById("plateau");
+const compteur = document.getElementById("compteur");
+const statusText = document.getElementById("status");
+const stimuler = document.getElementById("stimuler");
+const reset = document.getElementById("reset");
+const expliquer = document.getElementById("expliquer");
+const explication = document.getElementById("explication");
+
+let essai = 0;
+let frame = null;
+let generation = 0;
+const fibres = [];
+
+function element(tag, attributes, parent, text) {
+  const el = document.createElementNS(ns, tag);
+  for (const [key, value] of Object.entries(attributes)) {
+    el.setAttribute(key, value);
+  }
+  if (text !== undefined) el.textContent = text;
+  parent.appendChild(el);
+  return el;
+}
+
+for (let i = 0; i < 8; i++) {
+  fibres.push(element("rect", {
+    x: 42 + i * 20,
+    y: 100,
+    width: 14,
+    height: 185,
+    rx: 7,
+    fill: "#e2e9e5",
+    stroke: "#7b9588",
+    "stroke-width": 1.5
+  }, fibresGroup));
+}
+
+for (let i = 1; i <= 12; i++) {
+  element("text", {
+    x: 300 + (i - 1) * 60,
+    y: 435,
+    "text-anchor": "middle",
+    "font-size": 17
+  }, reperesGroup, "I" + i);
+}
+
+function forme(t) {
+  if (t <= 0.12 || t >= 0.92) return 0;
+  if (t <= 0.42) {
+    return (1 - Math.cos(Math.PI * (t - 0.12) / 0.30)) / 2;
+  }
+  return (1 + Math.cos(Math.PI * (t - 0.42) / 0.50)) / 2;
+}
+
+function mettreFibres(nombre, contraction) {
+  fibres.forEach((fibre, index) => {
+    const recrutee = index < nombre;
+    const reduction = recrutee ? contraction * 48 : 0;
+    fibre.setAttribute("height", 185 - reduction);
+    fibre.setAttribute("width", recrutee ? 14 + contraction * 3 : 14);
+    fibre.setAttribute("fill", recrutee ? "#de8b7d" : "#e2e9e5");
+    fibre.setAttribute("stroke", recrutee ? "#9e4e45" : "#7b9588");
+  });
+}
+
+function lancer() {
+  if (essai >= 12) return;
+  essai++;
+  const numero = essai;
+  const session = generation;
+  const nombre = Math.min(8, Math.max(0, numero - 1));
+  const hauteur = nombre / 8 * 205;
+  const departX = 290 + (numero - 1) * 60;
+
+  stimuler.disabled = true;
+  compteur.textContent = nombre + (nombre > 1 ? " fibres recrutées" : " fibre recrutée") + " sur 8";
+
+  const signalX = 300 + (numero - 1) * 60;
+  const signalH = 9 + numero * 3.5;
+
+  element("path", {
+    d: `M${signalX-7} 410 H${signalX}
+        V${410-signalH} H${signalX+4} V410 H${signalX+12}`,
+    fill: "none",
+    stroke: "#c64e38",
+    "stroke-width": 2
+  }, signauxGroup);
+
+  const trace = element("path", {
+    d: "",
+    fill: "none",
+    stroke: "#087f3e",
+    "stroke-width": 3,
+    "stroke-linecap": "round"
+  }, tracesGroup);
+
+  statusText.textContent = "Stimulation I" + numero + " : observation de la réponse…";
+  let debut = null;
+
+  function animer(now) {
+    if (session !== generation) return;
+    if (debut === null) debut = now;
+    const progression = Math.min((now - debut) / 1400, 1);
+    let d = "";
+
+    for (let j = 0; j <= 100; j++) {
+      const t = j / 100;
+      if (t > progression) break;
+      const x = departX + t * 50;
+      const y = 285 - forme(t) * hauteur;
+      d += (j === 0 ? "M" : "L") + x + " " + y + " ";
+    }
+
+    trace.setAttribute("d", d);
+    mettreFibres(nombre, forme(progression));
+
+    if (progression < 1) {
+      frame = requestAnimationFrame(animer);
+    } else {
+      frame = null;
+      mettreFibres(nombre, 0);
+
+      if (numero === 1) {
+        statusText.textContent = "I1 : stimulation infraliminaire, aucune secousse.";
+      } else if (numero < 9) {
+        statusText.textContent = "I" + numero + " : " + nombre +
+          " fibre(s) recrutée(s), l’amplitude augmente.";
+      } else {
+        statusText.textContent = "I" + numero +
+          " : toutes les fibres sont recrutées, l’amplitude est maximale.";
+        plateau.setAttribute("visibility", "visible");
+      }
+
+      if (essai < 12) {
+        stimuler.disabled = false;
+        stimuler.textContent = "Appliquer I" + (essai + 1) + " →";
+      } else {
+        stimuler.textContent = "Série terminée";
+      }
+    }
+  }
+
+  frame = requestAnimationFrame(animer);
+}
+
+function recommencer() {
+  generation++;
+  if (frame !== null) cancelAnimationFrame(frame);
+  frame = null;
+  essai = 0;
+  tracesGroup.replaceChildren();
+  signauxGroup.replaceChildren();
+  plateau.setAttribute("visibility", "hidden");
+  mettreFibres(0, 0);
+  compteur.textContent = "0 fibre recrutée sur 8";
+  statusText.textContent = "Commence par l’intensité I1.";
+  stimuler.disabled = false;
+  stimuler.textContent = "Appliquer I1 →";
+  explication.hidden = true;
+  expliquer.setAttribute("aria-expanded", "false");
+  expliquer.textContent = "Comprendre les résultats →";
+}
+
+stimuler.addEventListener("click", lancer);
+reset.addEventListener("click", recommencer);
+
+expliquer.addEventListener("click", () => {
+  const ouvrir = explication.hidden;
+  explication.hidden = !ouvrir;
+  expliquer.setAttribute("aria-expanded", String(ouvrir));
+  expliquer.textContent = ouvrir
+    ? "Masquer l’explication"
+    : "Comprendre les résultats →";
+});
+</script>
+</body>
+</html>
