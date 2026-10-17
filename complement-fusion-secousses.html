@@ -227,7 +227,7 @@ const cas = {
       sans retour complet au repos.</div>`
   },
   complete: {
-    intervalle: 20,
+    intervalle: 35,
     nom: "Fusion complète",
     bilan: "Une seule courbe plus ample, sans relâchement intermédiaire.",
     texte: `
@@ -252,26 +252,54 @@ function secousse(t) {
 }
 
 // Courbe schématique continue et lisse pour la fusion complète.
-function fusionComplete(t) {
-  if (t <= 40) return secousse(t);
+function raccord(u, debut, fin, pente) {
+  const h00 = 2*u*u*u - 3*u*u + 1;
+  const h10 = u*u*u - 2*u*u + u;
+  const h01 = -2*u*u*u + 3*u*u;
+  return h00 * debut + h10 * pente + h01 * fin;
+}
 
-  if (t <= 100) {
-    const u = (t - 40) / 60;
-    const valeurInitiale = secousse(40);
-    const penteInitiale =
-      Math.PI / 100 * Math.sin(Math.PI * (40 - 20) / 50);
+function fusionIncomplete(t) {
+  if (t <= 90) return secousse(t);
 
-    const h00 = 2*u*u*u - 3*u*u + 1;
-    const h10 = u*u*u - 2*u*u + u;
-    const h01 = -2*u*u*u + 3*u*u;
+  // Relâchement partiel après la première secousse.
+  if (t <= 110) {
+    const u = (t - 90) / 20;
+    const pente = -Math.PI / 160
+      * Math.sin(Math.PI * (90 - 70) / 80);
 
-    return h00 * valeurInitiale
-      + h10 * 60 * penteInitiale
-      + h01 * 1.7;
+    return raccord(u, secousse(90), 0.65, pente * 20);
   }
 
-  if (t < 200) {
-    return 1.7 * (1 + Math.cos(Math.PI * (t - 100) / 100)) / 2;
+  // Deuxième sommet plus haut que le premier.
+  if (t <= 155) {
+    const u = (t - 110) / 45;
+    return 0.65 + 0.80 * (1 - Math.cos(Math.PI * u)) / 2;
+  }
+
+  if (t < 245) {
+    return 1.45
+      * (1 + Math.cos(Math.PI * (t - 155) / 90)) / 2;
+  }
+
+  return 0;
+}
+
+function fusionComplete(t) {
+  // S2 arrive à 35 ; sa réponse mécanique débute à 55.
+  if (t <= 55) return secousse(t);
+
+  if (t <= 110) {
+    const u = (t - 55) / 55;
+    const pente = Math.PI / 100
+      * Math.sin(Math.PI * (55 - 20) / 50);
+
+    return raccord(u, secousse(55), 1.7, pente * 55);
+  }
+
+  if (t < 210) {
+    return 1.7
+      * (1 + Math.cos(Math.PI * (t - 110) / 100)) / 2;
   }
 
   return 0;
@@ -279,6 +307,8 @@ function fusionComplete(t) {
 
 function reponse(t, type) {
   if (type === "complete") return fusionComplete(t);
+  if (type === "incomplete") return fusionIncomplete(t);
+
   return secousse(t) + secousse(t - cas[type].intervalle);
 }
 
