@@ -2,52 +2,55 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Phénomènes thermiques — École SVT</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Investigation — Phénomènes thermiques | École SVT</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f5faf7;color:#003f46;line-height:1.7}
+body{margin:0;background:#f5faf7;color:#003f46;font-family:Arial,sans-serif;line-height:1.7}
 .navbar{background:#004c54;color:white;padding:14px 6%;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .logo{font-size:23px;font-weight:bold}
 .logo span{color:#73c900}
-.nav-links{display:flex;gap:20px;flex-wrap:wrap}
-.nav-links a{color:white;text-decoration:none;font-weight:bold}
-main{width:90%;max-width:1100px;margin:26px auto 50px}
-.card{background:white;border-radius:16px;padding:25px;margin-bottom:22px;box-shadow:0 4px 15px rgba(0,0,0,.05)}
+nav{display:flex;gap:18px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-weight:bold}
+main{max-width:1100px;width:92%;margin:26px auto 50px}
+.card{background:white;border-radius:16px;padding:25px;margin-bottom:22px;box-shadow:0 4px 15px #0000000d}
 .experiment{border:2px dashed #65b88a}
-h1{font-size:29px;line-height:1.4}
+h1{font-size:28px;line-height:1.4}
 h2{font-size:23px;color:#087f3e}
 h3{font-size:19px}
-.label{color:#087f3e;font-size:14px;font-weight:bold}
-.figure{width:100%;height:auto;border:1px solid #c6dfd1;border-radius:10px;display:block}
-figcaption{font-size:13px;color:#526d69;margin-top:9px}
-figure{margin:18px 0}
-.note{background:#eaf6ef;border-left:4px solid #087f3e;border-radius:8px;padding:15px 18px;margin:16px 0}
-.question{padding:16px 0;border-bottom:1px solid #e1ebe5}
-.question:last-child{border-bottom:0}
-.question p{margin:0 0 12px}
-.button{display:inline-block;background:#087f3e;color:white;border:0;border-radius:8px;padding:11px 17px;font:inherit;font-weight:bold;cursor:pointer;text-decoration:none}
+.label{font-size:14px;color:#087f3e;font-weight:bold}
+.note,.correction{background:#eaf6ef;border-left:4px solid #087f3e;border-radius:8px;padding:15px 18px;margin:15px 0}
+.question{margin:20px 0}
+.button{display:inline-block;background:#087f3e;color:white;border:0;border-radius:8px;padding:11px 18px;font:inherit;font-weight:bold;cursor:pointer;text-decoration:none}
 .button:hover{background:#056832}
 .secondary{background:white;color:#087f3e;border:1px solid #087f3e}
 .secondary:hover{background:#edf7ed}
-.answer{background:#eaf6ef;border-left:4px solid #087f3e;border-radius:8px;padding:13px 17px;margin-top:13px}
+textarea{width:100%;min-height:95px;padding:12px;border:1px solid #9ebbb0;border-radius:8px;font:inherit;color:#003f46;background:#f8fbff;resize:vertical}
 [hidden]{display:none!important}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
-footer{text-align:center;color:#526d69;font-size:13px;margin-top:30px}
-button:focus-visible,a:focus-visible{outline:3px solid #73c900;outline-offset:3px}
-@media(max-width:700px){
-main{width:94%}
-.card{padding:18px}
-h1{font-size:24px}
-h2{font-size:21px}
-}
+.figure-window{position:relative;overflow:hidden;border:1px solid #c6dfd1;border-radius:10px;background:white}
+.figure-window img{display:block;width:100%;height:auto}
+.figure-window.aerobie img{width:200%;max-width:none}
+.figure-window.anaerobie img{width:200%;max-width:none;transform:translateX(-50%)}
+.figure-window.aerobie,.figure-window.anaerobie{width:100%;overflow:hidden}
+.figure-window.aerobie img,.figure-window.anaerobie img{width:100%;transform:none}
+.figure-window.aerobie img{clip-path:inset(0 50% 0 0)}
+.figure-window.anaerobie img{clip-path:inset(0 0 0 50%)}
+.figure-full{display:block;width:100%;height:auto;border:1px solid #c6dfd1;border-radius:10px}
+.figure-crop{width:100%;overflow:hidden;border:1px solid #c6dfd1;border-radius:10px}
+.figure-crop img{display:block;width:200%;max-width:none}
+.figure-crop.right img{transform:translateX(-50%)}
+.caption{font-size:13px;color:#526d69}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+footer{text-align:center;font-size:13px;color:#526d69;margin-top:30px}
+button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid #73c900;outline-offset:3px}
+@media(max-width:700px){.card{padding:18px}h1{font-size:24px}h2{font-size:21px}}
 </style>
 </head>
 <body>
 
 <header class="navbar">
   <div class="logo">🧬 ÉCOLE <span>SVT</span></div>
-  <nav class="nav-links">
+  <nav aria-label="Navigation principale">
     <a href="index.html">🏠 Accueil</a>
     <a href="mon-espace-svt.html">🎓 Mon Espace SVT</a>
     <a href="complements-cours.html">📚 Compléments de cours</a>
@@ -55,195 +58,245 @@ h2{font-size:21px}
 </header>
 
 <main>
-
 <section class="card">
   <div class="label">UNITÉ I · PARTIE 2 · ACTIVITÉ 2</div>
   <h1>Les phénomènes thermiques accompagnant l’activité musculaire</h1>
   <p>
-    Lors d’une contraction, le muscle développe une tension et dégage
-    également de la chaleur.
+    Lors d'un effort, le muscle se contracte et dégage de la chaleur.
+    Mais cette chaleur a-t-elle une seule origine ?
   </p>
   <div class="note">
     <strong>Problème scientifique :</strong>
-    D’où provient la chaleur dégagée par un muscle en activité ?
-    Le dioxygène intervient-il dans tous les phénomènes thermiques ?
+    D'où provient la chaleur dégagée par le muscle ?
+    Le dioxygène est-il indispensable à tout dégagement de chaleur ?
   </div>
-  <p>
-    Pour répondre, nous allons exploiter les résultats obtenus dans
-    deux conditions expérimentales : en milieu aérobie et en milieu anaérobie.
-  </p>
 </section>
 
 <section class="card experiment">
-  <h2>1. J’observe</h2>
+  <h2>1. Je formule mes hypothèses</h2>
   <p>
-    Le document suivant présente les variations de la tension musculaire
-    et de la quantité de chaleur dégagée lors d’une secousse musculaire,
-    dans deux milieux différents.
+    Avant d'examiner les résultats expérimentaux,
+    propose une ou plusieurs explications possibles.
   </p>
+  <label for="hypothese"><strong>Mon hypothèse :</strong></label>
+  <textarea id="hypothese" placeholder="Je pense que... parce que..."></textarea>
+  <div class="actions">
+    <button class="button" type="button" id="commencer">
+      Découvrir les résultats expérimentaux →
+    </button>
+  </div>
+</section>
 
+<section class="card experiment" id="etape-aerobie" hidden>
+  <h2>2. J'observe — Milieu aérobie</h2>
+  <p>
+    Un muscle est soumis à une stimulation efficace en présence
+    de dioxygène. On enregistre sa tension et la chaleur dégagée.
+  </p>
   <figure>
-    <img class="figure"
-         src="figure-thermique-complement.png"
-         alt="Graphiques comparant la tension musculaire et les chaleurs initiale et retardée en milieux aérobie et anaérobie."
-         loading="eager">
-    <figcaption>
-      Fig. 2 — Réponse mécanique et phénomènes thermiques du muscle
-      en milieux aérobie et anaérobie.
-    </figcaption>
+    <div class="figure-crop">
+      <img src="figure-thermique-complement.png"
+           alt="Partie gauche du document : résultats en milieu aérobie">
+    </div>
+    <figcaption class="caption">Document 1 — Milieu aérobie.</figcaption>
   </figure>
-
-  <div class="note">
-    <strong>Consigne :</strong>
-    Observe d’abord le graphique du milieu aérobie, puis celui du
-    milieu anaérobie. Compare ensuite les résultats.
+  <div class="question">
+    <p><strong>Question 1.</strong> Identifie les différentes phases du dégagement de chaleur.</p>
+    <textarea aria-label="Réponse à la question 1"></textarea>
+    <button class="button" type="button" data-reponse="r1">Vérifier mes réponses →</button>
+    <div class="correction" id="r1" hidden>
+      On distingue une chaleur initiale, comprenant les chaleurs
+      de contraction et de relâchement, puis une chaleur retardée.
+    </div>
   </div>
+  <div class="question">
+    <p><strong>Question 2.</strong> Compare la durée de ces deux phases.</p>
+    <textarea aria-label="Réponse à la question 2"></textarea>
+    <button class="button" type="button" data-reponse="r2">Vérifier mes réponses →</button>
+    <div class="correction" id="r2" hidden>
+      La chaleur initiale est brève, environ 0,3 seconde.
+      La chaleur retardée dure environ 1 à 2 minutes.
+    </div>
+  </div>
+  <button class="button" type="button" id="suivant-anaerobie">
+    Étudier le milieu anaérobie →
+  </button>
 </section>
 
-<section class="card experiment">
-  <h2>2. Je raisonne</h2>
-
-  <h3>A. En milieu aérobie</h3>
-
+<section class="card experiment" id="etape-anaerobie" hidden>
+  <h2>3. J'observe — Milieu anaérobie</h2>
+  <p>
+    On réalise une expérience comparable, mais cette fois
+    en absence de dioxygène.
+  </p>
+  <figure>
+    <div class="figure-crop right">
+      <img src="figure-thermique-complement.png"
+           alt="Partie droite du document : résultats en milieu anaérobie">
+    </div>
+    <figcaption class="caption">Document 2 — Milieu anaérobie.</figcaption>
+  </figure>
   <div class="question">
-    <p><strong>Question 1.</strong> Quelles sont les différentes chaleurs dégagées par le muscle en milieu aérobie ?</p>
-    <button class="button" type="button" aria-expanded="false" aria-controls="rep1" onclick="verifier(this,'rep1')">Vérifier mes réponses →</button>
-    <div class="answer" id="rep1" hidden>
-      On distingue une <strong>chaleur initiale</strong>, constituée de la
-      chaleur de contraction et de la chaleur de relâchement,
-      puis une <strong>chaleur retardée</strong>.
+    <p><strong>Question 3.</strong> Quelles chaleurs observe-t-on en absence de dioxygène ?</p>
+    <textarea aria-label="Réponse à la question 3"></textarea>
+    <button class="button" type="button" data-reponse="r3">Vérifier mes réponses →</button>
+    <div class="correction" id="r3" hidden>
+      La chaleur initiale persiste, mais la chaleur retardée
+      n'apparaît pas.
     </div>
   </div>
+  <button class="button" type="button" id="suivant-comparaison">
+    Comparer les deux milieux →
+  </button>
+</section>
 
+<section class="card experiment" id="etape-comparaison" hidden>
+  <h2>4. Je compare et je confronte mes hypothèses</h2>
+  <p>Observe maintenant l'ensemble du document.</p>
+  <img class="figure-full" src="figure-thermique-complement.png"
+       alt="Comparaison complète des résultats en milieux aérobie et anaérobie">
   <div class="question">
-    <p><strong>Question 2.</strong> Compare la durée de la chaleur initiale à celle de la chaleur retardée.</p>
-    <button class="button" type="button" aria-expanded="false" aria-controls="rep2" onclick="verifier(this,'rep2')">Vérifier mes réponses →</button>
-    <div class="answer" id="rep2" hidden>
-      La chaleur initiale est brève, de l’ordre de
-      <strong>0,3 seconde</strong>. La chaleur retardée se prolonge
-      pendant environ <strong>1 à 2 minutes</strong>.
-    </div>
-  </div>
-
-  <h3>B. En milieu anaérobie</h3>
-
-  <div class="question">
-    <p><strong>Question 3.</strong> Quelles chaleurs observe-t-on lorsque le muscle fonctionne en absence de dioxygène ?</p>
-    <button class="button" type="button" aria-expanded="false" aria-controls="rep3" onclick="verifier(this,'rep3')">Vérifier mes réponses →</button>
-    <div class="answer" id="rep3" hidden>
-      On observe uniquement la <strong>chaleur initiale</strong>,
-      comprenant la chaleur de contraction et celle de relâchement.
-      La chaleur retardée n’apparaît pas.
-    </div>
-  </div>
-
-  <h3>C. Comparaison des deux milieux</h3>
-
-  <div class="question">
-    <p><strong>Question 4.</strong> Quelle différence essentielle constates-tu entre les deux milieux ?</p>
-    <button class="button" type="button" aria-expanded="false" aria-controls="rep4" onclick="verifier(this,'rep4')">Vérifier mes réponses →</button>
-    <div class="answer" id="rep4" hidden>
+    <p><strong>Question 4.</strong> Quelle différence essentielle existe entre les deux milieux ?</p>
+    <textarea aria-label="Réponse à la question 4"></textarea>
+    <button class="button" type="button" data-reponse="r4">Vérifier mes réponses →</button>
+    <div class="correction" id="r4" hidden>
       La chaleur initiale existe dans les deux milieux.
-      En revanche, la chaleur retardée apparaît uniquement
-      en <strong>milieu aérobie</strong>.
+      La chaleur retardée apparaît uniquement en présence
+      de dioxygène.
     </div>
   </div>
-</section>
-
-<section class="card experiment">
-  <h2>3. J’interprète et je vérifie</h2>
-
   <div class="question">
-    <p><strong>Question 5.</strong> Pourquoi peut-on relier la chaleur retardée aux réactions métaboliques aérobies ?</p>
-    <button class="button" type="button" aria-expanded="false" aria-controls="rep5" onclick="verifier(this,'rep5')">Vérifier mes réponses →</button>
-    <div class="answer" id="rep5" hidden>
-      La chaleur retardée n’apparaît qu’en présence de dioxygène.
-      Cette observation permet de la relier aux
-      <strong>réactions métaboliques aérobies</strong>,
-      notamment celles participant à la restauration des réserves
-      énergétiques après l’activité musculaire.
+    <p><strong>Question 5.</strong> Ton hypothèse de départ est-elle confirmée ou réfutée ? Justifie.</p>
+    <textarea aria-label="Réponse à la question 5"></textarea>
+    <div class="note">
+      Reviens à ton hypothèse initiale et confronte-la
+      aux résultats expérimentaux. Une hypothèse peut être
+      confirmée, partiellement confirmée ou réfutée.
     </div>
   </div>
+  <button class="button" type="button" id="suivant-interpretation">
+    Interpréter les résultats →
+  </button>
+</section>
 
+<section class="card experiment" id="etape-interpretation" hidden>
+  <h2>5. J'explique les résultats</h2>
   <div class="question">
-    <p><strong>Question 6.</strong> Pourquoi la chaleur initiale persiste-t-elle en absence de dioxygène ?</p>
-    <button class="button" type="button" aria-expanded="false" aria-controls="rep6" onclick="verifier(this,'rep6')">Vérifier mes réponses →</button>
-    <div class="answer" id="rep6" hidden>
-      La chaleur initiale accompagne les phénomènes de contraction
-      et de relâchement. Elle peut être dégagée sans apport immédiat
-      de dioxygène, grâce aux transformations énergétiques liées
-      à l’activité musculaire, notamment à l’utilisation de l’ATP.
+    <p><strong>Question 6.</strong> Pourquoi peut-on relier la chaleur retardée aux réactions métaboliques aérobies ?</p>
+    <textarea aria-label="Réponse à la question 6"></textarea>
+    <button class="button" type="button" data-reponse="r6">Vérifier mes réponses →</button>
+    <div class="correction" id="r6" hidden>
+      La chaleur retardée n'apparaît qu'en présence
+      de dioxygène. Elle est associée aux réactions
+      métaboliques aérobies qui participent notamment
+      à la restauration des réserves énergétiques.
     </div>
   </div>
+  <div class="question">
+    <p><strong>Question 7.</strong> Pourquoi la chaleur initiale persiste-t-elle en absence de dioxygène ?</p>
+    <textarea aria-label="Réponse à la question 7"></textarea>
+    <button class="button" type="button" data-reponse="r7">Vérifier mes réponses →</button>
+    <div class="correction" id="r7" hidden>
+      La chaleur initiale accompagne la contraction et le
+      relâchement. Elle est liée aux transformations énergétiques
+      immédiates, notamment à l'utilisation de l'ATP,
+      qui ne nécessite pas directement de dioxygène.
+    </div>
+  </div>
+  <button class="button" type="button" id="suivant-bilan">
+    Construire mon bilan →
+  </button>
 </section>
 
-<section class="card experiment">
-  <h2>4. Je conclus</h2>
-
+<section class="card experiment" id="etape-bilan" hidden>
+  <h2>6. Je construis mon bilan</h2>
   <p>
-    À partir des résultats précédents, rédige une conclusion
-    indiquant les différents types de chaleur dégagée et
-    leur relation avec la présence de dioxygène.
+    Rédige une conclusion qui distingue les deux chaleurs
+    et précise leur relation avec le dioxygène.
   </p>
-
-  <button class="button" type="button" aria-expanded="false" aria-controls="conclusion" onclick="verifier(this,'conclusion')">Vérifier mes réponses →</button>
-
-  <div class="answer" id="conclusion" hidden>
+  <textarea aria-label="Ma conclusion personnelle"></textarea>
+  <div class="actions">
+    <button class="button" type="button" data-reponse="bilan">
+      Vérifier mes réponses →
+    </button>
+  </div>
+  <div class="correction" id="bilan" hidden>
+    <strong>Bilan :</strong>
     <p>
-      L’activité musculaire s’accompagne d’un dégagement de chaleur.
-      On distingue :
+      L'activité musculaire s'accompagne d'un dégagement
+      de chaleur initiale, observée en milieux aérobie et
+      anaérobie, et d'une chaleur retardée, observée
+      uniquement en milieu aérobie.
     </p>
-    <ul>
-      <li><strong>La chaleur initiale :</strong> brève, observée en milieux aérobie et anaérobie, accompagnant la contraction et le relâchement.</li>
-      <li><strong>La chaleur retardée :</strong> plus prolongée, observée uniquement en milieu aérobie, liée aux réactions métaboliques dépendant du dioxygène.</li>
-    </ul>
     <p>
-      L’activité musculaire met ainsi en jeu des phénomènes
-      <strong>électriques, chimiques, thermiques et mécaniques</strong>.
+      Ces résultats mettent en évidence la participation
+      des transformations énergétiques à l'activité musculaire.
     </p>
   </div>
-</section>
-
-<section class="card experiment">
-  <h2>5. Je réinvestis mes connaissances</h2>
+  <h3>Je réinvestis</h3>
   <p>
-    Un muscle réalise une secousse dans un milieu privé de dioxygène.
-    Un élève affirme :
-    <em>« Sans dioxygène, le muscle ne dégage aucune chaleur. »</em>
+    Un élève affirme : « Sans dioxygène, le muscle ne dégage
+    aucune chaleur. » Explique pourquoi cette affirmation
+    est incorrecte.
   </p>
-  <p><strong>Cette affirmation est-elle correcte ? Justifie ta réponse à partir des résultats expérimentaux.</strong></p>
-
-  <button class="button" type="button" aria-expanded="false" aria-controls="transfert" onclick="verifier(this,'transfert')">Vérifier mes réponses →</button>
-  <div class="answer" id="transfert" hidden>
-    Cette affirmation est incorrecte. Le graphique du milieu anaérobie
-    montre que le muscle dégage encore une chaleur initiale.
-    Seule la chaleur retardée disparaît en absence de dioxygène.
+  <textarea aria-label="Ma réponse de réinvestissement"></textarea>
+  <button class="button" type="button" data-reponse="transfert">
+    Vérifier mes réponses →
+  </button>
+  <div class="correction" id="transfert" hidden>
+    En milieu anaérobie, le muscle dégage toujours
+    une chaleur initiale. Seule la chaleur retardée
+    disparaît.
   </div>
 </section>
 
 <div class="actions">
-  <a class="button secondary" href="complement-muscle.html">← Retour au complément sur le muscle</a>
-  <a class="button secondary" href="complements-cours.html">Compléments de cours</a>
+  <a class="button secondary" href="complement-muscle.html">
+    ← Retour au complément sur le muscle
+  </a>
+  <a class="button secondary" href="complements-cours.html">
+    Compléments de cours
+  </a>
 </div>
 
 <footer>
   <p><strong>LABNIHI Brahim – Prof SVT</strong></p>
-  <p>Comprendre avant de mémoriser, raisonner avant de répondre, progresser vers l’autonomie.</p>
+  <p>Comprendre avant de mémoriser, raisonner avant de répondre, progresser vers l'autonomie.</p>
 </footer>
-
 </main>
 
 <script>
-function verifier(bouton,identifiant){
-  const reponse=document.getElementById(identifiant);
-  const ouvrir=reponse.hidden;
-  reponse.hidden=!ouvrir;
-  bouton.setAttribute("aria-expanded",String(ouvrir));
-  bouton.textContent=ouvrir
-    ? "Masquer la correction"
-    : "Vérifier mes réponses →";
+function afficher(id){
+  const element=document.getElementById(id);
+  element.hidden=false;
+  element.scrollIntoView({behavior:"smooth",block:"start"});
 }
+document.getElementById("commencer").addEventListener("click",()=>{
+  afficher("etape-aerobie");
+});
+document.getElementById("suivant-anaerobie").addEventListener("click",()=>{
+  afficher("etape-anaerobie");
+});
+document.getElementById("suivant-comparaison").addEventListener("click",()=>{
+  afficher("etape-comparaison");
+});
+document.getElementById("suivant-interpretation").addEventListener("click",()=>{
+  afficher("etape-interpretation");
+});
+document.getElementById("suivant-bilan").addEventListener("click",()=>{
+  afficher("etape-bilan");
+});
+document.querySelectorAll("[data-reponse]").forEach(bouton=>{
+  bouton.addEventListener("click",()=>{
+    const element=document.getElementById(bouton.dataset.reponse);
+    const ouvrir=element.hidden;
+    element.hidden=!ouvrir;
+    bouton.setAttribute("aria-expanded",String(ouvrir));
+    bouton.textContent=ouvrir
+      ?"Masquer la correction"
+      :"Vérifier mes réponses →";
+  });
+});
 </script>
-
 </body>
 </html>
