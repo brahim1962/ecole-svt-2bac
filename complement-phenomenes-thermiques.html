@@ -66,6 +66,40 @@ textarea{width:100%;min-height:95px;padding:12px;border:1px solid #9ebbb0;border
 }
 .caption{font-size:13px;color:#526d69}
 .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+  /* Graphique à gauche, questions à droite */
+.analyse-cote-a-cote{
+  display:grid;
+  grid-template-columns: 55% 1fr;
+  gap:20px;
+  align-items:start;
+}
+
+.analyse-cote-a-cote figure{
+  margin:0;
+  position:sticky;
+  top:15px;
+}
+
+.analyse-cote-a-cote .figure-crop{
+  width:100%;
+  max-width:none;
+  margin:0;
+}
+
+.analyse-cote-a-cote .question{
+  margin-top:0;
+}
+
+/* Affichage vertical sur smartphone */
+@media(max-width:800px){
+  .analyse-cote-a-cote{
+    grid-template-columns:1fr;
+  }
+
+  .analyse-cote-a-cote figure{
+    position:static;
+  }
+}
 footer{text-align:center;font-size:13px;color:#526d69;margin-top:30px}
 button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid #73c900;outline-offset:3px}
 @media(max-width:700px){.card{padding:18px}h1{font-size:24px}h2{font-size:21px}}
@@ -118,6 +152,7 @@ button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid #7
     Un muscle est soumis à une stimulation efficace en présence
     de dioxygène. On enregistre sa tension et la chaleur dégagée.
   </p>
+  <div class="analyse-cote-a-cote">
   <figure>
     <div class="figure-crop">
       <img src="figure-thermique-complement.png"
@@ -125,6 +160,7 @@ button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid #7
     </div>
     <figcaption class="caption">Document 1 — Milieu aérobie.</figcaption>
   </figure>
+   <div class="questions-colonne"> 
   <div class="question">
     <p><strong>Question 1.</strong> Identifie les différentes phases du dégagement de chaleur.</p>
     <textarea aria-label="Réponse à la question 1"></textarea>
@@ -143,6 +179,8 @@ button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid #7
       La chaleur retardée dure environ 1 à 2 minutes.
     </div>
   </div>
+     </div>
+</div>
   <button class="button" type="button" id="suivant-anaerobie">
     Étudier le milieu anaérobie →
   </button>
@@ -154,6 +192,7 @@ button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid #7
     On réalise une expérience comparable, mais cette fois
     en absence de dioxygène.
   </p>
+  <div class="analyse-cote-a-cote">
   <figure>
     <div class="figure-crop right">
       <img src="figure-thermique-complement.png"
@@ -161,6 +200,7 @@ button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid #7
     </div>
     <figcaption class="caption">Document 2 — Milieu anaérobie.</figcaption>
   </figure>
+    <div class="questions-colonne">
   <div class="question">
     <p><strong>Question 3.</strong> Quelles chaleurs observe-t-on en absence de dioxygène ?</p>
     <textarea aria-label="Réponse à la question 3"></textarea>
@@ -170,6 +210,8 @@ button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid #7
       n'apparaît pas.
     </div>
   </div>
+     </div>
+</div> 
   <button class="button" type="button" id="suivant-comparaison">
     Comparer les deux milieux →
   </button>
