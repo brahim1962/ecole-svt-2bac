@@ -189,6 +189,7 @@ h2{font-size:21px}
     Comprendre l’observation →
   </button>
 
+  <div id="message-explication" class="note" role="status" aria-live="polite" hidden></div>
   <div id="explication" hidden></div>
 </section>
 
@@ -249,6 +250,7 @@ const statusText = document.getElementById("status");
 const boutons = [...document.querySelectorAll(".cas")];
 const expliquer = document.getElementById("expliquer");
 const explication = document.getElementById("explication");
+const messageExplication = document.getElementById("message-explication");
 
 let frame = null;
 let generation = 0;
@@ -359,6 +361,8 @@ function effacer() {
 
   boutons.forEach(b => b.setAttribute("aria-pressed", "false"));
 
+  messageExplication.hidden = true;
+  messageExplication.textContent = "";
   explication.hidden = true;
   explication.innerHTML = "";
   expliquer.setAttribute("aria-expanded", "false");
@@ -453,7 +457,8 @@ document.getElementById("reset").addEventListener("click", effacer);
 
 expliquer.addEventListener("click", () => {
   if (choix === null) {
-    statusText.textContent = "Choisis d’abord une observation.";
+    messageExplication.textContent = "Choisis d’abord une observation parmi les deux cas proposés.";
+    messageExplication.hidden = false;
     return;
   }
 
