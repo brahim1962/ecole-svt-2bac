@@ -188,6 +188,7 @@ h2{font-size:21px}
   </button>
   
 
+  <p id="message-explication" class="note" role="status" aria-live="polite" hidden></p>
   <div id="explication" hidden></div>
 </section>
 
@@ -224,6 +225,7 @@ const statusText = document.getElementById("status");
 const boutons = [...document.querySelectorAll(".cas")];
 const expliquer = document.getElementById("expliquer");
 const explication = document.getElementById("explication");
+const messageExplication = document.getElementById("message-explication");
 
 let frame = null;
 let generation = 0;
@@ -396,6 +398,8 @@ function effacer() {
   boutons.forEach(b => b.setAttribute("aria-pressed", "false"));
   explication.hidden = true;
   explication.innerHTML = "";
+  messageExplication.hidden = true;
+  messageExplication.textContent = "";
   expliquer.setAttribute("aria-expanded", "false");
   expliquer.textContent = "Comprendre le cas observé →";
   statusText.textContent = "Choisis un cas pour observer le tracé.";
@@ -453,9 +457,11 @@ document.getElementById("reset").addEventListener("click", effacer);
 
 expliquer.addEventListener("click", () => {
   if (choix === null) {
-    statusText.textContent = "Choisis d’abord l’un des trois cas.";
+    messageExplication.textContent = "Choisis d’abord une observation parmi les trois cas proposés ci-dessus.";
+    messageExplication.hidden = false;
     return;
   }
+  messageExplication.hidden = true;
   const ouvrir = explication.hidden;
   explication.hidden = !ouvrir;
   expliquer.setAttribute("aria-expanded", String(ouvrir));
