@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Activité 4 — Contraction musculaire | École SVT</title>
+<style>
+:root {
+  --vert:#18784b;
+  --clair:#eefaf2;
+  --bleu:#eaf4ff;
+  --texte:#20352c;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  font-family:Arial,sans-serif;
+  color:var(--texte);
+  background:#f5f8f6;
+  line-height:1.6;
+}
+header {
+  background:#08634c;
+  color:white;
+  padding:15px 5%;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+header strong { font-size:22px; }
+nav { display:flex; flex-wrap:wrap; gap:15px; }
+nav a { color:white; text-decoration:none; }
+main { max-width:1250px; margin:auto; padding:22px 15px; }
+h1 { color:#075b43; margin-bottom:6px; }
+h2 { color:#096b4c; }
+.intro { margin-bottom:25px; }
+.activite {
+  border:2px dashed #29945e;
+  border-radius:15px;
+  background:white;
+  padding:22px;
+  margin-bottom:24px;
+}
+.contenu {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+  align-items:start;
+}
+.document {
+  background:#f8fbf9;
+  border:1px solid #d4e7da;
+  padding:14px;
+  border-radius:10px;
+}
+.document img {
+  display:block;
+  width:100%;
+  height:auto;
+  margin:12px auto;
+}
+.legende { font-size:14px; color:#50635b; }
+.question {
+  background:#fff;
+  border-bottom:1px solid #dce8e0;
+  padding:14px 0;
+}
+.question:first-child { padding-top:0; }
+.question label { display:block; font-weight:bold; margin-bottom:8px; }
+textarea {
+  display:block;
+  width:100%;
+  min-height:95px;
+  padding:12px;
+  border:1px solid #a9c6db;
+  border-radius:8px;
+  background:var(--bleu);
+  font:inherit;
+  resize:vertical;
+}
+button, .retour {
+  display:inline-block;
+  margin-top:12px;
+  padding:10px 15px;
+  background:#087a54;
+  border:0;
+  border-radius:8px;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  text-decoration:none;
+}
+button:hover, .retour:hover { background:#065c40; }
+.correction {
+  display:none;
+  background:var(--clair);
+  border-left:4px solid #26945d;
+  border-radius:6px;
+  margin-top:12px;
+  padding:14px;
+}
+.correction.visible { display:block; }
+.correction img { max-width:100%; height:auto; }
+footer { text-align:center; padding:25px; color:#587066; }
+@media(max-width:800px) {
+  .contenu { grid-template-columns:1fr; }
+  .activite { padding:15px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <strong>ÉCOLE SVT</strong>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="mon-espace-svt.html">Mon Espace SVT</a>
+    <a href="cours.html">Ressources</a>
+  </nav>
+</header>
+
+<main>
+<h1>Activité 4 — Mécanisme de la contraction musculaire</h1>
+<p class="intro">
+  <strong>Objectif :</strong> comprendre les modifications
+  du sarcomère au cours de la contraction et expliquer
+  le mécanisme moléculaire du glissement des myofilaments.
+</p>
+
+<section class="activite">
+  <h2>1. Modifications du sarcomère au cours de la contraction</h2>
+  <div class="contenu">
+
+    <div class="document">
+      <h3>Document 1 — Observation de deux sarcomères</h3>
+      <img
+        src="contraction-sarcomeres-observation.png"
+        alt="Sarcomères au repos et contracté">
+      <p class="legende">
+        Comparaison de l'ultrastructure d'un sarcomère
+        dans un muscle au repos et dans un muscle contracté.
+      </p>
+    </div>
+
+    <div>
+      <div class="question">
+        <label for="q1">
+          Question 1 — Déterminez les modifications
+          subies par le sarcomère lors du passage
+          de son état relâché à son état contracté.
+        </label>
+        <textarea id="q1" placeholder="Rédigez votre réponse..."></textarea>
+        <button type="button" onclick="verifier('c1',this)">
+          Vérifier mes réponses →
+        </button>
+        <div class="correction" id="c1">
+          <strong>Correction de référence du professeur</strong>
+          <p>
+            Lors de la contraction, le sarcomère se raccourcit.
+            La bande claire I et la zone H diminuent,
+            tandis que la longueur de la bande sombre A
+            reste constante.
+          </p>
+          <p>
+            Ces observations s'expliquent par le glissement
+            des filaments d'actine par rapport aux filaments
+            de myosine, vers le centre du sarcomère.
+          </p>
+          <img
+            src="contraction-sarcomeres-correction.png"
+            alt="Figure annotée de comparaison des sarcomères">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="activite">
+  <h2>2. Mécanisme moléculaire de la contraction</h2>
+  <div class="contenu">
+
+    <div class="document">
+      <h3>Document 2 — Cycle moléculaire de la contraction</h3>
+      <img
+        src="contraction-cycle-original-nettoye.png"
+        alt="Cycle moléculaire de la contraction musculaire">
+      <p class="legende">
+        Schéma du cours présentant les étapes A, B, C et D
+        du fonctionnement des ponts actine-myosine.
+      </p>
+    </div>
+
+    <div>
+      <div class="question">
+        <label for="q2">
+          Question 2 — Expliquez le rôle de l'hydrolyse
+          de l'ATP dans la préparation de la tête de myosine.
+        </label>
+        <textarea id="q2"></textarea>
+        <button type="button" onclick="verifier('c2',this)">
+          Vérifier mes réponses →
+        </button>
+        <div class="correction" id="c2">
+          L'hydrolyse de l'ATP en ADP et Pi fournit
+          l'énergie permettant à la tête de myosine
+          d'adopter une conformation énergisée,
+          prête à intervenir dans le cycle de contraction.
+        </div>
+      </div>
+
+      <div class="question">
+        <label for="q3">
+          Question 3 — Expliquez le rôle des ions Ca²⁺
+          dans la formation des ponts actine-myosine.
+        </label>
+        <textarea id="q3"></textarea>
+        <button type="button" onclick="verifier('c3',this)">
+          Vérifier mes réponses →
+        </button>
+        <div class="correction" id="c3">
+          Les ions Ca²⁺ se fixent sur la troponine.
+          Cette fixation provoque un déplacement
+          de la tropomyosine, libérant les sites
+          de fixation de la myosine sur l'actine.
+          Des ponts actine-myosine peuvent alors se former.
+        </div>
+      </div>
+
+      <div class="question">
+        <label for="q4">
+          Question 4 — Expliquez comment le mouvement
+          de la tête de myosine entraîne le glissement
+          des filaments d'actine.
+        </label>
+        <textarea id="q4"></textarea>
+        <button type="button" onclick="verifier('c4',this)">
+          Vérifier mes réponses →
+        </button>
+        <div class="correction" id="c4">
+          La libération du Pi, puis de l'ADP,
+          accompagne le basculement de la tête de myosine.
+          Ce mouvement exerce une traction sur l'actine
+          et provoque son glissement par rapport
+          au filament de myosine.
+        </div>
+      </div>
+
+      <div class="question">
+        <label for="q5">
+          Question 5 — Précisez le rôle de la fixation
+          d'une nouvelle molécule d'ATP et expliquez
+          les conditions du relâchement musculaire.
+        </label>
+        <textarea id="q5"></textarea>
+        <button type="button" onclick="verifier('c5',this)">
+          Vérifier mes réponses →
+        </button>
+        <div class="correction" id="c5">
+          La fixation d'une nouvelle molécule d'ATP
+          sur la tête de myosine entraîne son détachement
+          de l'actine. Le cycle peut recommencer
+          si les conditions sont réunies.
+          Lors du relâchement, les ions Ca²⁺
+          sont repompés vers le réticulum sarcoplasmique,
+          ce qui empêche la formation de nouveaux ponts.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="activite">
+  <h2>3. Synthèse — De l'excitation à la contraction</h2>
+
+  <div class="question">
+    <label for="q6">
+      Question 6 — Reconstituez les principales étapes
+      reliant l'excitation de la fibre musculaire
+      au glissement des myofilaments, puis au relâchement.
+    </label>
+    <textarea id="q6"></textarea>
+    <button type="button" onclick="verifier('c6',this)">
+      Vérifier mes réponses →
+    </button>
+    <div class="correction" id="c6">
+      <strong>Correction de référence du professeur</strong>
+      <p>
+        Excitation de la fibre musculaire
+        → libération de Ca²⁺ par le réticulum sarcoplasmique
+        → fixation du Ca²⁺ sur la troponine
+        → déplacement de la tropomyosine
+        → formation des ponts actine-myosine
+        → basculement des têtes de myosine
+        → glissement des filaments d'actine
+        → raccourcissement du sarcomère.
+      </p>
+      <p>
+        La fixation d'un nouvel ATP permet le détachement
+        de la myosine. Lorsque l'excitation cesse,
+        le Ca²⁺ est repompé vers le réticulum
+        sarcoplasmique, ce qui permet le relâchement.
+      </p>
+    </div>
+  </div>
+
+  <div class="question">
+    <label for="q7">
+      Question 7 — Montrez que l'ATP est indispensable
+      à la contraction musculaire ainsi qu'au relâchement.
+    </label>
+    <textarea id="q7"></textarea>
+    <button type="button" onclick="verifier('c7',this)">
+      Vérifier mes réponses →
+    </button>
+    <div class="correction" id="c7">
+      L'ATP est indispensable à plusieurs niveaux :
+      son hydrolyse prépare la tête de myosine
+      au cycle de contraction ; sa fixation sur
+      la myosine permet le détachement du pont
+      actine-myosine ; il fournit également
+      l'énergie nécessaire au transport actif
+      des ions Ca²⁺ vers le réticulum sarcoplasmique,
+      favorisant ainsi le relâchement musculaire.
+    </div>
+  </div>
+</section>
+
+<a class="retour" href="cours.html">
+  ← Retour aux activités
+</a>
+</main>
+
+<footer>
+  ÉCOLE SVT — Comprendre avant de mémoriser
+</footer>
+
+<script>
+function verifier(id, bouton) {
+  const correction = document.getElementById(id);
+  const visible = correction.classList.toggle("visible");
+
+  bouton.textContent = visible
+    ? "Masquer la correction ↑"
+    : "Vérifier mes réponses →";
+}
+</script>
+
+</body>
+</html>
