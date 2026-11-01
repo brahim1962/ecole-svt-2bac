@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comprendre la contraction musculaire — École SVT</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f5faf7;
+  color:#003f46;
+  line-height:1.7;
+}
+.navbar{
+  background:#004c54;
+  color:white;
+  padding:15px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
+}
+.logo{font-size:23px;font-weight:bold}
+.logo span{color:#73c900}
+nav{display:flex;flex-wrap:wrap;gap:18px}
+nav a{color:white;text-decoration:none;font-weight:bold}
+main{max-width:1150px;width:92%;margin:28px auto}
+.card{
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  margin-bottom:22px;
+}
+.exploration{border:2px dashed #65b88a}
+h1{color:#075b43}
+h2{color:#087f3e}
+.question{
+  background:#eaf4ff;
+  padding:18px;
+  border-radius:10px;
+  font-weight:bold;
+}
+.animation{
+  width:100%;
+  height:570px;
+  border:1px solid #c6dfd1;
+  border-radius:12px;
+  background:white;
+}
+textarea{
+  display:block;
+  width:100%;
+  min-height:90px;
+  padding:12px;
+  border:1px solid #a7c6dc;
+  background:#eaf4ff;
+  border-radius:8px;
+  font:inherit;
+  resize:vertical;
+}
+button,.button{
+  display:inline-block;
+  background:#087f3e;
+  color:white;
+  border:0;
+  border-radius:8px;
+  padding:12px 18px;
+  margin-top:12px;
+  font:inherit;
+  font-weight:bold;
+  cursor:pointer;
+  text-decoration:none;
+}
+.correction{
+  background:#eaf6ef;
+  border-left:4px solid #087f3e;
+  padding:16px;
+  border-radius:8px;
+  margin-top:15px;
+}
+[hidden]{display:none!important}
+@media(max-width:700px){
+  .animation{height:490px}
+  .card{padding:17px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">🧬 ÉCOLE <span>SVT</span></div>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="mon-espace-svt.html">Mon Espace SVT</a>
+    <a href="complements-cours.html">Compléments de cours</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="card">
+  <h1>Comprendre le mécanisme de la contraction musculaire</h1>
+  <p>
+    Dans ce complément, nous allons chercher à comprendre
+    comment les interactions entre les protéines contractiles
+    permettent de transformer l'énergie chimique de l'ATP
+    en mouvement mécanique.
+  </p>
+</section>
+
+<section class="card exploration">
+
+  <h2>1. Le paradoxe du raccourcissement du sarcomère</h2>
+
+  <div class="question">
+    Comment un sarcomère peut-il se raccourcir alors que
+    ses filaments d'actine et de myosine conservent leur longueur ?
+  </div>
+
+  <p>
+    Avant de poursuivre, réfléchissez à cette question.
+    Formulez une première hypothèse.
+  </p>
+
+  <textarea id="hypothese"
+    placeholder="Écrivez votre hypothèse ici..."></textarea>
+
+  <h3>Explorer le sarcomère</h3>
+
+  <p>
+    Utilisez les boutons de l'animation pour observer
+    le passage de l'état relâché à l'état contracté.
+  </p>
+
+  <iframe
+    class="animation"
+    src="animation-glissement-sarcomere.html"
+    title="Animation interactive du glissement des myofilaments"
+    loading="lazy">
+  </iframe>
+
+  <p><strong>À observer :</strong></p>
+  <ul>
+    <li>Le déplacement des stries Z.</li>
+    <li>Le déplacement des filaments d'actine.</li>
+    <li>La longueur de la bande sombre A.</li>
+    <li>Le chevauchement entre actine et myosine.</li>
+  </ul>
+
+  <h3>Construire une explication</h3>
+
+  <p>
+    À partir de vos observations, expliquez comment
+    le sarcomère peut se raccourcir sans que
+    les myofilaments se raccourcissent.
+  </p>
+
+  <textarea id="explication"
+    placeholder="Rédigez votre explication..."></textarea>
+
+  <button type="button" id="verifier"
+    aria-expanded="false" aria-controls="correction">
+    Vérifier mes réponses →
+  </button>
+
+  <div class="correction" id="correction" hidden>
+    <strong>Explication scientifique</strong>
+
+    <p>
+      Lors de la contraction, les filaments d'actine
+      glissent entre les filaments de myosine
+      vers le centre du sarcomère.
+    </p>
+
+    <p>
+      Les stries Z se rapprochent, les bandes I
+      et la zone H diminuent, tandis que
+      la longueur de la bande A reste constante.
+    </p>
+
+    <p>
+      Les filaments conservent leur longueur :
+      c'est l'augmentation de leur chevauchement
+      qui provoque le raccourcissement du sarcomère.
+    </p>
+
+    <strong>Conclusion à retenir</strong>
+    <p>
+      La contraction du sarcomère résulte du
+      <strong>glissement</strong> des filaments d'actine
+      par rapport aux filaments de <strong>myosine</strong>.
+    </p>
+  </div>
+
+</section>
+
+<a href="complement-muscle.html" class="button">
+  ← Retour au complément sur le muscle
+</a>
+
+</main>
+
+<script>
+const bouton = document.getElementById("verifier");
+const correction = document.getElementById("correction");
+
+bouton.addEventListener("click",()=>{
+  const ouvrir = correction.hidden;
+  correction.hidden = !ouvrir;
+  bouton.setAttribute("aria-expanded",String(ouvrir));
+  bouton.textContent = ouvrir
+    ? "Masquer l'explication ↑"
+    : "Vérifier mes réponses →";
+});
+</script>
+
+</body>
+</html>
