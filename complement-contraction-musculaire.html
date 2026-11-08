@@ -265,6 +265,38 @@ button,.button{
   </div>
 
 </section>
+<section class="card exploration">
+  <h2>3. Le cycle des têtes de myosine</h2>
+  <p>Suivons une tête de myosine au cours d’un cycle. Le calcium rend possible sa fixation sur l’actine. L’ATP permet à la tête de se détacher et de se préparer à un nouveau cycle.</p>
+
+  <ol type="A">
+    <li><strong>Préparation de la tête.</strong> La tête de myosine hydrolyse l’ATP en ADP et phosphate inorganique (Pi). Elle change d’orientation et garde l’ADP et le Pi fixés.</li>
+    <li><strong>Formation du pont actine–myosine.</strong> Le Ca<sup>2+</sup> se fixe sur la troponine. La tropomyosine se déplace et découvre les sites de fixation de la myosine sur l’actine. La tête peut alors s’y fixer.</li>
+    <li><strong>Pivotement et glissement.</strong> La libération du Pi accompagne le pivotement de la tête, qui entraîne le filament d’actine vers le centre du sarcomère. L’ADP est ensuite libéré.</li>
+    <li><strong>Détachement.</strong> Une nouvelle molécule d’ATP se fixe sur la tête de myosine et provoque son détachement de l’actine. Son hydrolyse prépare le cycle suivant.</li>
+  </ol>
+  <p>Les cycles se répètent tant que le Ca<sup>2+</sup> maintient les sites accessibles et que l’ATP est disponible.</p>
+</section>
+
+<section class="card exploration">
+  <h2>4. De l’excitation au relâchement</h2>
+
+  <h3>De l’excitation à la contraction</h3>
+  <p>L’excitation de la fibre musculaire déclenche la libération de Ca<sup>2+</sup> par le réticulum sarcoplasmique. Le Ca<sup>2+</sup> se fixe sur la troponine et rend possibles les cycles des têtes de myosine. Le glissement des myofilaments rapproche les stries Z et raccourcit le sarcomère.</p>
+
+  <h3>Du retour du calcium au relâchement</h3>
+  <p>Quand la stimulation cesse, des pompes qui consomment de l’ATP ramènent le Ca<sup>2+</sup> dans le réticulum sarcoplasmique. La tropomyosine masque à nouveau les sites sur l’actine. L’ATP permet aux têtes encore fixées de se détacher, et de nouveaux ponts cessent de se former.</p>
+
+  <p class="question"><label for="reponse-relachement">Pourquoi le relâchement du muscle nécessite-t-il de l’ATP ? Donnez deux raisons.</label></p>
+  <textarea id="reponse-relachement" placeholder="Rédigez votre explication..."></textarea>
+  <button type="button" id="verifier-relachement" aria-expanded="false" aria-controls="correction-relachement">
+    Vérifier mes réponses →
+  </button>
+  <div class="correction" id="correction-relachement" hidden>
+    <p>L’ATP permet le <strong>détachement des têtes de myosine</strong> de l’actine en se fixant sur elles. Il fournit aussi l’énergie nécessaire aux pompes qui <strong>ramènent le Ca<sup>2+</sup> dans le réticulum sarcoplasmique</strong>.</p>
+  </div>
+</section>
+
 <a href="complement-muscle.html" class="button">
   ← Retour au complément sur le muscle
 </a>
@@ -281,6 +313,18 @@ bouton.addEventListener("click",()=>{
   bouton.setAttribute("aria-expanded",String(ouvrir));
   bouton.textContent = ouvrir
     ? "Masquer l'explication ↑"
+    : "Vérifier mes réponses →";
+});
+
+const boutonRelachement = document.getElementById("verifier-relachement");
+const correctionRelachement = document.getElementById("correction-relachement");
+
+boutonRelachement.addEventListener("click", () => {
+  const ouvrir = correctionRelachement.hidden;
+  correctionRelachement.hidden = !ouvrir;
+  boutonRelachement.setAttribute("aria-expanded", String(ouvrir));
+  boutonRelachement.textContent = ouvrir
+    ? "Masquer la correction ↑"
     : "Vérifier mes réponses →";
 });
 </script>
