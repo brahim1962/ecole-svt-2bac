@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Activité 5 — Les voies de régénération de l’ATP | École SVT</title>
+<style>
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f5faf7;
+  color:#003f46;
+  line-height:1.7;
+}
+.navbar{
+  background:#004c54;
+  color:white;
+  padding:15px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
+}
+.logo{font-size:23px;font-weight:bold}
+.logo span{color:#73c900}
+nav{display:flex;flex-wrap:wrap;gap:18px}
+nav a{color:white;text-decoration:none;font-weight:bold}
+main{max-width:1150px;width:92%;margin:28px auto}
+.card{
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  margin-bottom:22px;
+}
+.exploration{border:2px dashed #65b88a}
+h1{color:#075b43}
+h2{color:#087f3e}
+.question{
+  background:#eaf4ff;
+  padding:18px;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+textarea{
+  display:block;
+  width:100%;
+  min-height:90px;
+  padding:12px;
+  border:1px solid #a7c6dc;
+  background:#eaf4ff;
+  border-radius:8px;
+  font:inherit;
+  resize:vertical;
+}
+button,.button{
+  display:inline-block;
+  background:#087f3e;
+  color:white;
+  border:0;
+  border-radius:8px;
+  padding:12px 18px;
+  margin-top:12px;
+  font:inherit;
+  font-weight:bold;
+  cursor:pointer;
+  text-decoration:none;
+}
+.correction{
+  background:#eaf6ef;
+  border-left:4px solid #087f3e;
+  padding:16px;
+  border-radius:8px;
+  margin-top:15px;
+}
+[hidden]{display:none!important}
+@media(max-width:700px){
+  
+  .card{padding:17px}
+}
+
+details{margin:12px 0}
+summary.button{display:list-item;width:fit-content}
+.equation{background:#eaf4ff;padding:10px 14px;border-radius:8px}
+figure{margin:1em auto;text-align:center}
+figure img{display:block;width:100%;max-width:420px;height:auto;margin:auto}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:8px;border-bottom:1px solid #c6dfd1;vertical-align:top}
+th{background:#eaf6ef}
+</style>
+</head>
+<body>
+<header class="navbar">
+  <div class="logo">🧬 ÉCOLE <span>SVT</span></div>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="mon-espace-svt.html">Mon Espace SVT</a>
+    <a href="complements-cours.html">Compléments de cours</a>
+  </nav>
+</header>
+<main>
+<section class="card">
+  <h1>Activité 5 — Les voies de régénération de l’ATP</h1>
+  <p>Lors d’un effort, les têtes de myosine et les pompes qui ramènent le calcium dans le réticulum sarcoplasmique utilisent de l’ATP. Les réserves d’ATP de la fibre sont faibles. Comment la fibre musculaire renouvelle-t-elle cet ATP pendant l’effort ?</p>
+</section>
+
+<section class="card exploration">
+  <h2>1. Explorer les trois voies</h2>
+  <p>Avant d’ouvrir chaque voie, essayez de prévoir si elle utilise du dioxygène et dans quel type d’effort elle est particulièrement sollicitée.</p>
+
+  <details name="voies-atp">
+    <summary class="button">Voie anaérobie alactique →</summary>
+    <div class="correction">
+      <p>C’est la voie la plus rapide. Elle ne consomme pas directement de dioxygène et ne produit pas de lactate. Elle contribue fortement à l’apport en ATP au début d’un effort très bref et intense.</p>
+      <p class="equation">Phosphocréatine (PCr) + ADP ⇄ créatine (Cr) + ATP<br><strong>Enzyme</strong> · créatine kinase</p>
+      <p class="equation">2 ADP ⇄ AMP + ATP<br><strong>Enzyme</strong> · adénylate kinase (myokinase)</p>
+      <p>Les réserves de phosphocréatine sont limitées. Pendant la récupération, l’ATP fourni par la respiration cellulaire permet de reconstituer ces réserves.</p>
+    </div>
+  </details>
+
+  <details name="voies-atp">
+    <summary class="button">Voie anaérobie lactique →</summary>
+    <div class="correction">
+      <p>Cette voie fournit rapidement de l’ATP lors d’un effort intense. Elle n’utilise pas directement de dioxygène. L’ATP est formé pendant la glycolyse. La lactate déshydrogénase (LDH) transforme le pyruvate en lactate et régénère le NAD<sup>+</sup>, ce qui permet à la glycolyse de se poursuivre.</p>
+      <p class="equation"><strong>Bilan simplifié pour un glucose</strong><br>Glucose → 2 lactates<br>Gain net de la glycolyse · <strong>2 ATP</strong></p>
+    </div>
+  </details>
+
+  <details name="voies-atp">
+    <summary class="button">Voie aérobie →</summary>
+    <div class="correction">
+      <p>La respiration cellulaire utilise du dioxygène. Elle fournit davantage d’ATP par molécule de glucose, à un débit maximal plus faible que celui des voies anaérobies. Sa contribution est particulièrement importante lors des efforts prolongés.</p>
+      <p class="equation">C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> + 6 O<sub>2</sub> → 6 CO<sub>2</sub> + 6 H<sub>2</sub>O<br>Bilan théorique retenu dans le cours · <strong>38 ATP par glucose</strong></p>
+    </div>
+  </details>
+
+  <p><strong>À retenir</strong> · Les trois voies peuvent fonctionner en parallèle. Leur contribution relative varie selon l’intensité et la durée de l’effort.</p>
+</section>
+
+<section class="card exploration">
+  <h2>2. Relier le type de fibre à l’effort</h2>
+  <figure>
+    <img src="fibres-musculaires-activite-5.webp" width="326" height="111" alt="Schéma d’une coupe musculaire où des fibres rouges et des fibres claires se côtoient.">
+    <figcaption>Fibres rouges et fibres claires dans une coupe de muscle.</figcaption>
+  </figure>
+  <table>
+    <thead><tr><th scope="col">Critère</th><th scope="col">Fibres de type I</th><th scope="col">Fibres de type II</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Contraction</th><td>Lente</td><td>Rapide</td></tr>
+      <tr><th scope="row">Métabolisme</th><td>Riches en mitochondries, à forte capacité aérobie</td><td>Capacité variable. Les plus glycolytiques sont riches en glycogène et moins riches en mitochondries.</td></tr>
+      <tr><th scope="row">Fatigabilité</th><td>Résistantes à la fatigue</td><td>Plus fatigables, surtout les plus glycolytiques</td></tr>
+      <tr><th scope="row">Effort typique</th><td>Posture et endurance</td><td>Efforts puissants et brefs, comme le sprint</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="card exploration">
+  <h2>3. Raisonner</h2>
+  <p class="question"><label for="reponse-atp">Comparez un départ de sprint et une course d’endurance. Dans chaque cas, indiquez quelle voie contribue particulièrement à l’apport en ATP et justifiez votre choix.</label></p>
+  <textarea id="reponse-atp" placeholder="Rédigez votre raisonnement..."></textarea>
+  <details>
+    <summary class="button">Vérifier mes réponses →</summary>
+    <div class="correction">
+      <p><strong>Départ du sprint</strong> · La voie anaérobie alactique fournit très vite de l’ATP, notamment grâce à la phosphocréatine. Si l’effort intense se prolonge, la contribution de la glycolyse augmente.</p>
+      <p><strong>Course d’endurance</strong> · La voie aérobie fournit une part importante de l’ATP sur la durée. Les fibres de type I, riches en mitochondries et résistantes à la fatigue, sont adaptées à ce type d’effort.</p>
+    </div>
+  </details>
+</section>
+
+<a class="button" href="complement-muscle.html">← Retour à la Partie 2</a>
+</main>
+</body>
+</html>
