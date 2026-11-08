@@ -87,6 +87,18 @@ button,.button{
   .animation{height:850px}
   .card{padding:17px}
 }
+
+.schema-cycle{position:relative;max-width:720px;margin:0 auto}
+.schema-cycle img{display:block;width:100%;height:auto;border-radius:8px}
+.repere-cycle{
+  display:none;position:absolute;transform:translate(-50%,-50%);
+  width:clamp(19px,5%,38px);aspect-ratio:1;border-radius:50%;
+  border:3px solid #005a95;box-shadow:0 0 0 2px white;
+  pointer-events:none;
+}
+.repere-cycle.actif{display:block}
+.boutons-cycle{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.boutons-cycle button[aria-pressed="true"]{background:#005a95}
 </style>
 </head>
 
@@ -269,12 +281,28 @@ button,.button{
   <h2>3. Le cycle des têtes de myosine</h2>
   <p>Suivons une tête de myosine au cours d’un cycle. Le calcium rend possible sa fixation sur l’actine. L’ATP permet à la tête de se détacher et de se préparer à un nouveau cycle.</p>
 
-  <ol type="A">
-    <li><strong>Préparation de la tête.</strong> La tête de myosine hydrolyse l’ATP en ADP et phosphate inorganique (Pi). Elle change d’orientation et garde l’ADP et le Pi fixés.</li>
-    <li><strong>Formation du pont actine–myosine.</strong> Le Ca<sup>2+</sup> se fixe sur la troponine. La tropomyosine se déplace et découvre les sites de fixation de la myosine sur l’actine. La tête peut alors s’y fixer.</li>
-    <li><strong>Pivotement et glissement.</strong> La libération du Pi accompagne le pivotement de la tête, qui entraîne le filament d’actine vers le centre du sarcomère. L’ADP est ensuite libéré.</li>
-    <li><strong>Détachement.</strong> Une nouvelle molécule d’ATP se fixe sur la tête de myosine et provoque son détachement de l’actine. Son hydrolyse prépare le cycle suivant.</li>
-  </ol>
+  <div id="cycle-myosine">
+    <p>Observez le schéma, puis cliquez sur les étapes A à D pour suivre le cycle dans l’ordre.</p>
+    <div class="schema-cycle">
+      <img src="cycle-contraction-musculaire.webp" width="893" height="585" alt="Cycle de contraction avec quatre flèches A à D autour des filaments d’actine et de myosine.">
+      <span aria-hidden="true" class="repere-cycle" data-repere="A" style="left:31.5%;top:30.8%"></span>
+      <span aria-hidden="true" class="repere-cycle" data-repere="B" style="left:67.8%;top:32.4%"></span>
+      <span aria-hidden="true" class="repere-cycle" data-repere="C" style="left:68.4%;top:67%"></span>
+      <span aria-hidden="true" class="repere-cycle" data-repere="D" style="left:30%;top:67%"></span>
+    </div>
+    <div class="boutons-cycle" role="group" aria-label="Étapes du cycle">
+    <button type="button" aria-pressed="false" aria-controls="cycle-explication-A" data-etape="A">Étape A</button>
+    <button type="button" aria-pressed="false" aria-controls="cycle-explication-B" data-etape="B">Étape B</button>
+    <button type="button" aria-pressed="false" aria-controls="cycle-explication-C" data-etape="C">Étape C</button>
+    <button type="button" aria-pressed="false" aria-controls="cycle-explication-D" data-etape="D">Étape D</button>
+    </div>
+    <div aria-live="polite">
+    <p class="correction" id="cycle-explication-A" hidden><strong>Préparation de la tête.</strong> La tête de myosine hydrolyse l’ATP en ADP et phosphate inorganique (Pi). Elle change d’orientation et garde l’ADP et le Pi fixés.</p>
+    <p class="correction" id="cycle-explication-B" hidden><strong>Formation du pont actine–myosine.</strong> Le Ca<sup>2+</sup> se fixe sur la troponine. La tropomyosine se déplace et découvre les sites de fixation de la myosine sur l’actine. La tête peut alors s’y fixer.</p>
+    <p class="correction" id="cycle-explication-C" hidden><strong>Pivotement et glissement.</strong> La libération du Pi accompagne le pivotement de la tête, qui entraîne le filament d’actine vers le centre du sarcomère. L’ADP est ensuite libéré.</p>
+    <p class="correction" id="cycle-explication-D" hidden><strong>Détachement.</strong> Une nouvelle molécule d’ATP se fixe sur la tête de myosine et provoque son détachement de l’actine. Son hydrolyse prépare le cycle suivant.</p>
+    </div>
+  </div>
   <p>Les cycles se répètent tant que le Ca<sup>2+</sup> maintient les sites accessibles et que l’ATP est disponible.</p>
 </section>
 
@@ -327,6 +355,20 @@ boutonRelachement.addEventListener("click", () => {
     ? "Masquer la correction ↑"
     : "Vérifier mes réponses →";
 });
+
+const cycle = document.getElementById("cycle-myosine");
+const boutonsCycle = cycle.querySelectorAll("button[data-etape]");
+
+for (const boutonEtape of boutonsCycle) {
+  boutonEtape.addEventListener("click", () => {
+    for (const boutonCycle of boutonsCycle) {
+      const active = boutonCycle === boutonEtape;
+      boutonCycle.setAttribute("aria-pressed", String(active));
+      document.getElementById(boutonCycle.getAttribute("aria-controls")).hidden = !active;
+      cycle.querySelector('[data-repere="' + boutonCycle.dataset.etape + '"]').classList.toggle("actif", active);
+    }
+  });
+}
 </script>
 
 </body>
