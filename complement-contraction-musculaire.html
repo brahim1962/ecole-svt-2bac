@@ -99,6 +99,13 @@ button,.button{
 .repere-cycle.actif{display:block}
 .boutons-cycle{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
 .boutons-cycle button[aria-pressed="true"]{background:#005a95}
+
+.etapes-relachement{padding-left:2em}
+.etapes-relachement li{
+  background:#eaf4ff;border:1px solid #a7c6dc;
+  border-radius:8px;padding:12px 16px;margin-top:10px;
+}
+#etape-suivante:disabled{opacity:.75;cursor:default}
 </style>
 </head>
 
@@ -309,11 +316,21 @@ button,.button{
 <section class="card exploration">
   <h2>4. De l’excitation au relâchement</h2>
 
-  <h3>De l’excitation à la contraction</h3>
-  <p>L’excitation de la fibre musculaire déclenche la libération de Ca<sup>2+</sup> par le réticulum sarcoplasmique. Le Ca<sup>2+</sup> se fixe sur la troponine et rend possibles les cycles des têtes de myosine. Le glissement des myofilaments rapproche les stries Z et raccourcit le sarcomère.</p>
-
-  <h3>Du retour du calcium au relâchement</h3>
-  <p>Quand la stimulation cesse, des pompes qui consomment de l’ATP ramènent le Ca<sup>2+</sup> dans le réticulum sarcoplasmique. La tropomyosine masque à nouveau les sites sur l’actine. L’ATP permet aux têtes encore fixées de se détacher, et de nouveaux ponts cessent de se former.</p>
+  <p>Avant chaque clic, essayez de prévoir l’étape suivante, puis vérifiez votre idée.</p>
+  <ol id="etapes-relachement" class="etapes-relachement">
+    <li hidden><strong>Excitation</strong><br>Un message nerveux déclenche l’excitation de la fibre musculaire.</li>
+    <li hidden><strong>Libération du calcium</strong><br>Le réticulum sarcoplasmique libère des ions Ca<sup>2+</sup> dans la fibre.</li>
+    <li hidden><strong>Fixation sur la troponine</strong><br>Le Ca<sup>2+</sup> se fixe sur la troponine.</li>
+    <li hidden><strong>Déplacement de la tropomyosine</strong><br>La tropomyosine se déplace et découvre les sites de fixation de la myosine sur l’actine.</li>
+    <li hidden><strong>Formation des ponts actine–myosine</strong><br>Les têtes de myosine se fixent sur l’actine.</li>
+    <li hidden><strong>Pivotement des têtes</strong><br>La libération du phosphate inorganique (Pi) accompagne le pivotement. L’ADP est ensuite libéré.</li>
+    <li hidden><strong>Glissement et contraction</strong><br>Les têtes entraînent l’actine vers le centre du sarcomère. La fixation d’un nouvel ATP détache chaque tête et son hydrolyse la prépare au cycle suivant. La répétition de ces cycles rapproche les stries Z.</li>
+    <li hidden><strong>Retour du calcium</strong><br>Quand la stimulation cesse, des pompes utilisant l’ATP ramènent le Ca<sup>2+</sup> dans le réticulum sarcoplasmique.</li>
+    <li hidden><strong>Relâchement</strong><br>La tropomyosine masque de nouveau les sites sur l’actine. L’ATP détache les têtes encore fixées. De nouveaux ponts cessent de se former et le muscle se relâche.</li>
+  </ol>
+  <button type="button" id="etape-suivante" aria-controls="etapes-relachement">Afficher la première étape →</button>
+  <button type="button" id="recommencer-etapes" hidden>Recommencer</button>
+  <p id="progression-etapes" role="status">0 étape sur 9</p>
 
   <p class="question"><label for="reponse-relachement">Pourquoi le relâchement du muscle nécessite-t-il de l’ATP ? Donnez deux raisons.</label></p>
   <textarea id="reponse-relachement" placeholder="Rédigez votre explication..."></textarea>
@@ -369,6 +386,38 @@ for (const boutonEtape of boutonsCycle) {
     }
   });
 }
+
+const etapesRelachement = document.querySelectorAll("#etapes-relachement li");
+const etapeSuivante = document.getElementById("etape-suivante");
+const recommencerEtapes = document.getElementById("recommencer-etapes");
+const progressionEtapes = document.getElementById("progression-etapes");
+let etapesAffichees = 0;
+
+etapeSuivante.addEventListener("click", () => {
+  const etape = etapesRelachement[etapesAffichees];
+  etape.hidden = false;
+  etapesAffichees += 1;
+  recommencerEtapes.hidden = false;
+  const termine = etapesAffichees === etapesRelachement.length;
+  progressionEtapes.textContent =
+    "Étape " + etapesAffichees + " sur " + etapesRelachement.length +
+    " — " + etape.querySelector("strong").textContent;
+  etapeSuivante.textContent = termine ? "Séquence complète" : "Afficher l’étape suivante →";
+  if (termine) {
+    recommencerEtapes.focus();
+    etapeSuivante.disabled = true;
+  }
+});
+
+recommencerEtapes.addEventListener("click", () => {
+  for (const etape of etapesRelachement) etape.hidden = true;
+  etapesAffichees = 0;
+  etapeSuivante.disabled = false;
+  etapeSuivante.textContent = "Afficher la première étape →";
+  progressionEtapes.textContent = "0 étape sur " + etapesRelachement.length;
+  etapeSuivante.focus();
+  recommencerEtapes.hidden = true;
+});
 </script>
 
 </body>
