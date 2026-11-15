@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Unité I — Travail à faire — École SVT</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5faf7;
+      color: #003f46;
+    }
+
+    /* ===== BARRE DE NAVIGATION ===== */
+
+    .navbar {
+      background: #004c54;
+      color: white;
+      min-height: 70px;
+      padding: 14px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #73c900;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      color: #9de34b;
+    }
+
+    /* ===== CONTENU ===== */
+
+    main {
+      width: 86%;
+      max-width: 1180px;
+      margin: 28px auto 50px;
+    }
+
+    .page-title {
+      background: white;
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+
+    .page-title h1 {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .page-title p {
+      color: #356368;
+    }
+
+    .course-card {
+      background: white;
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .course-label {
+      color: #07853e;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .course-card h2 {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .course-card p {
+      line-height: 1.6;
+      color: #34565a;
+      margin-bottom: 22px;
+    }
+
+    .course-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      background: #087f3e;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .button-secondary {
+      background: white;
+      color: #087f3e;
+      border: 1px solid #087f3e;
+    }
+
+    /* ===== SMARTPHONE ===== */
+
+    @media (max-width: 700px) {
+
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      main {
+        width: 92%;
+        margin-top: 18px;
+      }
+
+      .page-title,
+      .course-card {
+        padding: 20px;
+      }
+
+      .page-title h1 {
+        font-size: 25px;
+      }
+
+      .course-card h2 {
+        font-size: 21px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+
+    <div class="logo">
+      🧬 ÉCOLE <span>SVT</span>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html">🏠 Accueil</a>
+      <a href="mon-espace-svt.html">🎓 Mon Espace SVT</a>
+      <a href="mon-professeur.html">👨‍🏫 Mon professeur</a>
+    </nav>
+
+  </header>
+
+  <main>
+
+    <section class="page-title">
+
+      <h1>Unité I — Travail à faire</h1>
+
+<p>
+    Consommation de la matière organique et flux d’énergie.
+</p>
+
+    </section>
+
+    <section class="course-card">
+
+      <div class="course-label">
+        COURS À FAIRE MAINTENANT
+      </div>
+
+      <h2>La cellule, unité structurale du vivant</h2>
+
+      <p>
+        Reprends les notions essentielles du cours, observe les documents
+        et assure-toi d'avoir compris avant de passer aux exercices.
+      </p>
+
+      <div class="course-actions">
+
+        <a href="cours-cellule.html" class="button">
+          📖 Ouvrir le cours →
+        </a>
+
+              </div>
+
+    </section>
+    <section class="course-card">
+
+  <div class="course-label">
+    COURS À FAIRE MAINTENANT
+  </div>
+
+  <h2>⚡ Matière et ATP : l'énergie dans la cellule</h2>
+
+  <p>
+    Approfondis les relations entre matière, énergie et activité cellulaire,
+    puis comprends le rôle de l'ATP dans le travail cellulaire.
+  </p>
+
+  <div class="course-actions">
+
+    <a href="cours-matiere-atp.html" class="button">
+      📖 Ouvrir le cours →
+    </a>
+
+  </div>
+
+</section>
+  <section class="course-card" style="margin-top: 22px; margin-bottom: 22px;">
+
+  <div class="course-label">
+    BLOC 1 · NOTIONS ET EXERCICES
+  </div>
+
+  <h2>Respiration, fermentation et mitochondries</h2>
+
+  <p>
+    Compare les voies de dégradation du glucose, comprends le rôle
+    des mitochondries et entraîne-toi avec trois exercices corrigés.
+  </p>
+
+  <div class="course-actions">
+    <a href="cours-respiration-fermentation.html" class="button">
+      📖 Comprendre et s’entraîner →
+    </a>
+  </div>
+
+</section> 
+ <section class="course-card" style="margin-top: 22px; margin-bottom: 22px;">
+
+  <div class="course-label">
+    BLOC 2 · NOTIONS ET EXERCICES
+  </div>
+
+  <h2>La glycolyse : du glucose au pyruvate</h2>
+
+  <p>
+    Localise la glycolyse, comprends son bilan et entraîne-toi
+    à exploiter une expérience de marquage radioactif.
+  </p>
+
+  <div class="course-actions">
+    <a href="cours-glycolyse.html" class="button">
+      📖 Comprendre et s’entraîner →
+    </a>
+  </div>
+
+</section> 
+    <section class="course-card" style="margin-top: 22px; margin-bottom: 22px;">
+
+  <div class="course-label">
+    BLOC 3 · NOTIONS ET EXERCICES
+  </div>
+
+  <h2>Formation de l’acétyl-CoA et cycle de Krebs</h2>
+
+  <p>
+    Comprends la dégradation du pyruvate dans la matrice mitochondriale
+    et établis les bilans par pyruvate et par glucose.
+  </p>
+
+  <div class="course-actions">
+    <a href="cours-cycle-krebs.html" class="button">
+      📖 Comprendre et s’entraîner →
+    </a>
+  </div>
+
+</section>
+    <section class="course-card" style="margin-top: 22px; margin-bottom: 22px;">
+
+  <div class="course-label">
+    BLOC 4 · NOTIONS ET EXERCICES
+  </div>
+
+  <h2>La phosphorylation oxydative</h2>
+
+  <p>
+    Comprends le transfert des électrons, le gradient de protons
+    et les rôles du dioxygène et de l’ATP synthase dans la production d’ATP.
+  </p>
+
+  <div class="course-actions">
+    <a href="cours-phosphorylation-oxydative.html" class="button">
+      📖 Comprendre et s’entraîner →
+    </a>
+  </div>
+
+</section>
+    <section class="course-card" style="margin-top: 22px; margin-bottom: 22px;">
+
+  <div class="course-label">
+    BLOC 5 · NOTIONS ET EXERCICES
+  </div>
+
+  <h2>Fermentations et rendement énergétique</h2>
+
+  <p>
+    Compare les fermentations alcoolique et lactique,
+    établis le bilan en ATP et calcule le rendement énergétique.
+  </p>
+
+  <div class="course-actions">
+    <a href="cours-fermentations-rendement.html" class="button">
+      📖 Comprendre et s’entraîner →
+    </a>
+  </div>
+</section>
+
+<section class="course-card" style="margin-top: 22px; margin-bottom: 22px;">
+
+  <div class="course-label">
+    PARTIE 2 · ACTIVITÉ 1 · NOTIONS ET EXERCICES
+  </div>
+
+  <h2>Les phénomènes mécaniques de l’activité musculaire</h2>
+
+  <p>
+    Découvre le myographe, analyse la secousse musculaire,
+    le recrutement des fibres, la fusion des secousses,
+    les tétanos et la fatigue musculaire.
+  </p>
+
+  <div class="course-actions">
+    <a href="cours-phenomenes-mecaniques.html" class="button">
+      📖 Comprendre et s’entraîner →
+    </a>
+  </div>
+
+</section>
+<section class="course-card" style="margin-top: 22px; margin-bottom: 22px;">
+
+  <div class="course-label">
+    PARTIE 2 · ACTIVITÉ 2 · NOTIONS ET EXERCICES
+  </div>
+
+  <h2>Les phénomènes accompagnant l’activité musculaire</h2>
+
+  <p>
+    Étudie les phénomènes thermiques accompagnant l'activité
+    musculaire, exploite les résultats expérimentaux
+    et construis les conclusions scientifiques.
+  </p>
+
+  <div class="course-actions">
+    <a href="cours-phenomenes-thermiques.html" class="button">
+      📖 Comprendre et s’entraîner →
+    </a>
+  </div>
+
+</section>
+    <section class="course-card">
+  <div class="course-tag">
+    PARTIE 2 · ACTIVITÉ 3 · NOTIONS ET EXERCICES
+  </div>
+
+  <h2>Structure et ultrastructure du muscle strié squelettique</h2>
+
+  <p>
+    Découvrir l'organisation du muscle strié squelettique,
+    de la fibre musculaire jusqu'aux myofilaments
+    d'actine et de myosine.
+  </p>
+
+  <div class="course-actions">
+    <a href="cours-structure-muscle.html" class="button">
+      📖 Comprendre et s'entraîner →
+    </a>
+  </div>
+</section>
+    <section class="course-card">
+  <h2>Activité 4 — Mécanisme de la contraction musculaire</h2>
+
+  <p>
+    Comprendre les modifications du sarcomère au cours
+    de la contraction musculaire et expliquer le mécanisme
+    moléculaire du glissement des myofilaments d’actine
+    par rapport aux myofilaments de myosine.
+  </p>
+
+  <div class="course-actions">
+    <a href="cours-contraction-musculaire.html" class="button">
+      Comprendre et s'entraîner →
+    </a>
+  </div>
+</section>
+
+<div class="course-actions">
+  <a href="cours.html" class="button button-secondary">
+    ← Choisir une unité
+  </a>
+</div>
+
+  </main>
+</body>
+</html>
